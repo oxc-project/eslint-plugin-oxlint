@@ -3,6 +3,7 @@
   "version": "0.0.1-beta.0",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
+  "packageManager": "pnpm@8.13.1",
   "exports": {
     ".": {
       "import": "./index.js",
