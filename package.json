@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-oxlint",
   "version": "0.0.0",
-  "description": "Turns off all rules already supported by oxlint",
+  "description": "Turn off all rules already supported by oxlint",
   "type": "module",
   "exports": {
     ".": {

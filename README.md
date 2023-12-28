@@ -1,6 +1,6 @@
 # eslint-plugin-oxlint
 
-Turns off all rules already supported by `oxlint`. The rules extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
+Turn off all rules already supported by `oxlint`. The rules extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
 
 ## What is oxlint?
 
