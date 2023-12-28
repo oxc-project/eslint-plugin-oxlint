@@ -1,0 +1,43 @@
+{
+  "name": "eslint-plugin-oxlint",
+  "version": "0.0.0",
+  "description": "Turns off all rules already supported by oxlint",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "default": "./index.js"
+    },
+    "./rules": {
+      "import": "./rules.js",
+      "default": "./rules.js"
+    }
+  },
+  "scripts": {
+    "generate": "tsx ./scripts/generate-rules.ts",
+    "lint": "npx oxlint && npx eslint",
+    "release": "bumpp package.json"
+  },
+  "keywords": [
+    "oxc",
+    "oxlint",
+    "eslint",
+    "rules"
+  ],
+  "author": "Dunqing <dengqing0821@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "axios": "^1.6.3",
+    "eslint": "^8.56.0",
+    "eslint-plugin-unicorn": "^50.0.1",
+    "oxlint": "^0.0.22",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "^3.0.0"
+  }
+}
