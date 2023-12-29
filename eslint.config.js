@@ -8,7 +8,7 @@ const compat = new FlatCompat({ resolvePluginsRelativeTo: __dirname });
 
 export default [
     eslint.configs.recommended,
-    oxlint,
     unicorn.configs["flat/recommended"],
+    oxlint,
     ...compat.extends("plugin:@typescript-eslint/recommended"),
 ]

@@ -14,6 +14,13 @@
       "default": "./rules.js"
     }
   },
+  "author": "Dunqing <dengqing0821@gmail.com>",
+  "homepage": "https://github.com/oxc-project/eslint-plugin-oxlint",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:oxc-project/eslint-plugin-oxlint.git"
+  },
+  "license": "MIT",
   "scripts": {
     "generate": "tsx ./scripts/generate-rules.ts",
     "lint": "npx oxlint && npx eslint",
@@ -25,8 +32,6 @@
     "eslint",
     "rules"
   ],
-  "author": "Dunqing <dengqing0821@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.0",
     "@types/node": "^20.10.5",
