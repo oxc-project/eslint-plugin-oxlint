@@ -20,8 +20,9 @@ This is a flat config usage.
 // eslint.config.js
 import oxlint from "eslint-plugin-oxlint"
 export default [
-  oxlint,
   ... // other plugins
+  // oxlint should be the last one
+  oxlint,
 ]
 ```
 
