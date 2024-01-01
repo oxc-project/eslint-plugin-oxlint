@@ -21,8 +21,7 @@ This is a flat config usage.
 import oxlint from "eslint-plugin-oxlint"
 export default [
   ... // other plugins
-  // oxlint should be the last one
-  oxlint,
+  oxlint, // oxlint should be the last one
 ]
 ```
 
