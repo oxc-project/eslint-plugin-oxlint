@@ -39,6 +39,7 @@ export const eslintRules = {
   "no-global-assign": "off",
   "no-import-assign": "off",
   "no-inner-declarations": "off",
+  "no-irregular-whitespace": "off",
   "no-loss-of-precision": "off",
   "no-mixed-operators": "off",
   "no-new-symbol": "off",
@@ -60,6 +61,7 @@ export const eslintRules = {
   "no-unused-private-class-members": "off",
   "no-useless-catch": "off",
   "no-useless-escape": "off",
+  "no-var": "off",
   "require-yield": "off",
   "use-isnan": "off",
   "valid-typeof": "off"
