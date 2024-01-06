@@ -7,10 +7,12 @@
   "exports": {
     ".": {
       "import": "./index.js",
+      "require": "./index.cjs",
       "default": "./index.js"
     },
     "./rules": {
       "import": "./rules.js",
+      "require": "./rules.cjs",
       "default": "./rules.js"
     }
   },

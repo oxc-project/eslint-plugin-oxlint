@@ -1,4 +1,4 @@
-import oxlint from "./index.js"
+import oxlint from "./index.cjs"
 import unicorn from "eslint-plugin-unicorn"
 import { FlatCompat } from '@eslint/eslintrc'
 import eslint from "@eslint/js"

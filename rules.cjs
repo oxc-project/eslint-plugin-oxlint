@@ -245,7 +245,7 @@ const jsxA11yRules = {
   "jsx-a11y/no-distracting-elements": "off"
 }
 
-export {
+module.exports = {
   eslintRules,
   typescriptRules,
   jestRules,
