@@ -43,7 +43,7 @@
     "bumpp": "^9.2.1",
     "eslint": "^8.56.0",
     "eslint-plugin-unicorn": "^50.0.1",
-    "oxlint": "^0.0.22",
+    "oxlint": "^0.1.2",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }
