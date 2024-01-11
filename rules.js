@@ -208,7 +208,8 @@ const reactRules = {
   "react/no-render-return-value": "off",
   "react/no-string-refs": "off",
   "react/no-unescaped-entities": "off",
-  "react/no-is-mounted": "off"
+  "react/no-is-mounted": "off",
+  "react/no-unknown-property": "off"
 }
 
 
@@ -242,7 +243,24 @@ const jsxA11yRules = {
   "jsx-a11y/scope": "off",
   "jsx-a11y/tab-index-no-positive": "off",
   "jsx-a11y/aria-role": "off",
-  "jsx-a11y/no-distracting-elements": "off"
+  "jsx-a11y/no-distracting-elements": "off",
+  "jsx-a11y/role-support-aria-props": "off"
+}
+
+
+const nextjsRules = {
+  "nextjs/google-font-display": "off",
+  "nextjs/google-font-preconnect": "off",
+  "nextjs/inline-script-id": "off",
+  "nextjs/next-script-for-ga": "off",
+  "nextjs/no-assign-module-variable": "off",
+  "nextjs/no-async-client-component": "off",
+  "nextjs/no-css-tags": "off",
+  "nextjs/no-head-import-in-document": "off",
+  "nextjs/no-img-element": "off",
+  "nextjs/no-script-component-in-head": "off",
+  "nextjs/no-sync-scripts": "off",
+  "nextjs/no-title-in-document-head": "off"
 }
 
 export {
@@ -252,5 +270,6 @@ export {
   unicornRules,
   reactRules,
   importRules,
-  jsxA11yRules
+  jsxA11yRules,
+  nextjsRules
 }
