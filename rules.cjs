@@ -84,7 +84,8 @@ const typescriptRules = {
   "@typescript-eslint/no-unnecessary-type-constraint": "off",
   "@typescript-eslint/no-unsafe-declaration-merging": "off",
   "@typescript-eslint/no-var-requires": "off",
-  "@typescript-eslint/prefer-as-const": "off"
+  "@typescript-eslint/prefer-as-const": "off",
+  "@typescript-eslint/triple-slash-reference": "off"
 }
 
 
@@ -107,6 +108,7 @@ const jestRules = {
   "jest/no-mocks-import": "off",
   "jest/no-standalone-expect": "off",
   "jest/no-test-prefixes": "off",
+  "jest/no-test-return-statement": "off",
   "jest/prefer-todo": "off",
   "jest/valid-describe-callback": "off",
   "jest/valid-expect": "off",
@@ -204,12 +206,14 @@ const reactRules = {
   "react/react-in-jsx-scope": "off",
   "react/no-children-prop": "off",
   "react/no-dangerously-set-inner-html": "off",
+  "react/no-direct-mutation-state": "off",
   "react/no-find-dom-node": "off",
   "react/no-render-return-value": "off",
   "react/no-string-refs": "off",
   "react/no-unescaped-entities": "off",
   "react/no-is-mounted": "off",
-  "react/no-unknown-property": "off"
+  "react/no-unknown-property": "off",
+  "react/require-render-return": "off"
 }
 
 
@@ -240,11 +244,13 @@ const jsxA11yRules = {
   "jsx-a11y/no-aria-hidden-on-focusable": "off",
   "jsx-a11y/no-autofocus": "off",
   "jsx-a11y/prefer-tag-over-role": "off",
+  "jsx-a11y/role-has-required-aria-props": "off",
   "jsx-a11y/scope": "off",
   "jsx-a11y/tab-index-no-positive": "off",
   "jsx-a11y/aria-role": "off",
   "jsx-a11y/no-distracting-elements": "off",
-  "jsx-a11y/role-support-aria-props": "off"
+  "jsx-a11y/role-support-aria-props": "off",
+  "jsx-a11y/autocomplete-valid": "off"
 }
 
 
