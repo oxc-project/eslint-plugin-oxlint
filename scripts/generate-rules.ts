@@ -1,11 +1,18 @@
 import axios from 'axios'
 import { writeFileSync } from 'node:fs'
 import path from 'node:path'
+import { getLatestOxlintVersion } from './oxlint-version.js';
 
 
 const __dirname = new URL('.', import.meta.url).pathname
 
-const oxlintRulesUrl = "https://raw.githubusercontent.com/oxc-project/oxc/main/crates/oxc_linter/src/rules.rs"
+
+
+const oxlintVersion = await getLatestOxlintVersion();
+
+console.log("Generating rules for " + oxlintVersion)
+
+const oxlintRulesUrl = `https://raw.githubusercontent.com/oxc-project/oxc/${oxlintVersion}/crates/oxc_linter/src/rules.rs`;
 const RulesRe = /oxc_macros::declare_all_lint_rules.*{([^*]*),\s*}/gm
 const rulesMap = new Map<string, Array<string>>()
 const ignoreScope = new Set(["oxc", "deepscan"])
