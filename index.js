@@ -6,4 +6,10 @@ const rules = Object.values(ruleMaps).reduce((accumulator, object) => ({ ...accu
 
 export default {
   rules,
+  configs: {
+    recommended: {
+      plugins: ["oxlint"],
+      rules,
+    },
+  },
 };

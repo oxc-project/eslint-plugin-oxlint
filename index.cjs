@@ -4,5 +4,11 @@ const ruleMaps = require('./rules.cjs')
 const rules = Object.values(ruleMaps).reduce((accumulator, object) => ({ ...accumulator, ...object }))
 
 module.exports = {
-  rules
+  rules,
+  configs: {
+    recommended: {
+      plugins: ["oxlint"],
+      rules,
+    },
+  },
 }
