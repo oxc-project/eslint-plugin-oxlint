@@ -58,6 +58,16 @@ And then you can add the following script to your `package.json`:
 
 You need to install both the [oxc](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode) and [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extensions
 
+## Rules
+
+<!-- begin auto-generated rules list -->
+<!-- end auto-generated rules list -->
+
+## Configs
+
+<!-- begin auto-generated configs list -->
+<!-- end auto-generated configs list -->
+
 ## License
 
 [MIT](https://github.com/Dunqing/eslint-plugin-oxlint/blob/main/LICENSE)
