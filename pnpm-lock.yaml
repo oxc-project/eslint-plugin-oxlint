@@ -32,6 +32,9 @@ devDependencies:
   oxlint:
     specifier: ^0.2.0
     version: 0.2.0
+  prettier:
+    specifier: ^3.2.4
+    version: 3.2.4
   tsx:
     specifier: ^4.7.0
     version: 4.7.0
@@ -1784,6 +1787,12 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier@3.2.4:
+    resolution: {integrity: sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /prompts@2.4.2:

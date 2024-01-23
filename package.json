@@ -26,6 +26,7 @@
   "scripts": {
     "generate": "tsx ./scripts/generate-rules.ts",
     "lint": "npx oxlint && npx eslint",
+    "format": "npx prettier --write .",
     "release": "bumpp package.json"
   },
   "keywords": [
@@ -44,6 +45,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-unicorn": "^50.0.1",
     "oxlint": "^0.2.0",
+    "prettier": "^3.2.4",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }
