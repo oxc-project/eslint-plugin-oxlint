@@ -219,6 +219,7 @@ const reactRules = {
 
 const importRules = {
   "import/default": "off",
+  "import/no-named-as-default-member": "off",
   "import/named": "off",
   "import/no-cycle": "off",
   "import/no-self-import": "off",
@@ -231,8 +232,10 @@ const jsxA11yRules = {
   "jsx-a11y/alt-text": "off",
   "jsx-a11y/anchor-has-content": "off",
   "jsx-a11y/anchor-is-valid": "off",
+  "jsx-a11y/aria-activedescendant-has-tabindex": "off",
   "jsx-a11y/aria-props": "off",
   "jsx-a11y/aria-unsupported-elements": "off",
+  "jsx-a11y/click-events-have-key-events": "off",
   "jsx-a11y/heading-has-content": "off",
   "jsx-a11y/html-has-lang": "off",
   "jsx-a11y/lang": "off",
@@ -243,6 +246,7 @@ const jsxA11yRules = {
   "jsx-a11y/no-access-key": "off",
   "jsx-a11y/no-aria-hidden-on-focusable": "off",
   "jsx-a11y/no-autofocus": "off",
+  "jsx-a11y/no-redundant-roles": "off",
   "jsx-a11y/prefer-tag-over-role": "off",
   "jsx-a11y/role-has-required-aria-props": "off",
   "jsx-a11y/scope": "off",
@@ -262,11 +266,14 @@ const nextjsRules = {
   "nextjs/no-assign-module-variable": "off",
   "nextjs/no-async-client-component": "off",
   "nextjs/no-css-tags": "off",
+  "nextjs/no-head-element": "off",
   "nextjs/no-head-import-in-document": "off",
   "nextjs/no-img-element": "off",
   "nextjs/no-script-component-in-head": "off",
   "nextjs/no-sync-scripts": "off",
-  "nextjs/no-title-in-document-head": "off"
+  "nextjs/no-title-in-document-head": "off",
+  "nextjs/no-typos": "off",
+  "nextjs/no-document-import-in-page": "off"
 }
 
 module.exports = {
