@@ -1,6 +1,6 @@
 # eslint-plugin-oxlint
 
-Turn off all rules already supported by `oxlint`. The rules extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
+Turn off all rules already supported by `oxlint`. The rules are extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
 
 ## What is oxlint?
 
@@ -23,7 +23,7 @@ This plugin is optimized for flat config usage (eslint >= 9.0). See [here](https
 import oxlint from "eslint-plugin-oxlint";
 export default [
   ...// other plugins
-  oxlint, // oxlint should be the last one
+  oxlint.configs["flat/recommended"], // oxlint should be the last one
 ];
 ```
 
