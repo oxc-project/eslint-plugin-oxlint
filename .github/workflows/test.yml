@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  pull_request_target:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Run Linters
+        run: pnpm lint
