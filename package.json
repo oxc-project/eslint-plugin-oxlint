@@ -44,6 +44,7 @@
     "axios": "^1.6.3",
     "bumpp": "^9.2.1",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-unicorn": "^50.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
