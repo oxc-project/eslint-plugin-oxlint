@@ -7,10 +7,12 @@ const rules = Object.values(ruleMaps).reduce((accumulator, object) => ({
 }));
 
 export default {
-  rules,
   configs: {
     recommended: {
       plugins: ["oxlint"],
+      rules,
+    },
+    "flat/recommended": {
       rules,
     },
   },
