@@ -26,7 +26,9 @@
   "scripts": {
     "generate": "tsx ./scripts/generate-rules.ts",
     "lint": "npx oxlint && npx eslint",
-    "release": "bumpp package.json"
+    "format": "npx prettier --write .",
+    "release": "bumpp package.json",
+    "prepare": "husky install"
   },
   "keywords": [
     "oxc",
@@ -42,9 +44,17 @@
     "axios": "^1.6.3",
     "bumpp": "^9.2.1",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-unicorn": "^50.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "oxlint": "^0.2.0",
+    "prettier": "^3.2.4",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{js,cjs,ts}": "eslint",
+    "*": "prettier --ignore-unknown --write"
   }
 }
