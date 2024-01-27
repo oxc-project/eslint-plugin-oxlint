@@ -4,7 +4,7 @@ on:
   pull_request_target:
 
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,7 +15,7 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version-file: .node-version
           cache: pnpm
 
       - name: Install Dependencies
