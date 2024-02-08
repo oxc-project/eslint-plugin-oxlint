@@ -8,6 +8,7 @@ const eslintRules = {
   "eqeqeq": "off",
   "for-direction": "off",
   "getter-return": "off",
+  "no-this-before-super": "off",
   "no-array-constructor": "off",
   "no-async-promise-executor": "off",
   "no-bitwise": "off",
@@ -62,6 +63,7 @@ const eslintRules = {
   "no-useless-catch": "off",
   "no-useless-escape": "off",
   "no-var": "off",
+  "no-void": "off",
   "require-yield": "off",
   "use-isnan": "off",
   "valid-typeof": "off"
@@ -70,9 +72,9 @@ const eslintRules = {
 
 const typescriptRules = {
   "@typescript-eslint/adjacent-overload-signatures": "off",
+  "@typescript-eslint/array-type": "off",
   "@typescript-eslint/ban-ts-comment": "off",
   "@typescript-eslint/ban-types": "off",
-  "@typescript-eslint/consistent-type-exports": "off",
   "@typescript-eslint/no-duplicate-enum-values": "off",
   "@typescript-eslint/no-empty-interface": "off",
   "@typescript-eslint/no-explicit-any": "off",
@@ -106,9 +108,12 @@ const jestRules = {
   "jest/no-interpolation-in-snapshots": "off",
   "jest/no-jasmine-globals": "off",
   "jest/no-mocks-import": "off",
+  "jest/no-restricted-jest-methods": "off",
+  "jest/no-restricted-matchers": "off",
   "jest/no-standalone-expect": "off",
   "jest/no-test-prefixes": "off",
   "jest/no-test-return-statement": "off",
+  "jest/prefer-called-with": "off",
   "jest/prefer-todo": "off",
   "jest/valid-describe-callback": "off",
   "jest/valid-expect": "off",
@@ -198,14 +203,15 @@ const unicornRules = {
 
 const reactRules = {
   "react/button-has-type": "off",
+  "react/jsx-no-target-blank": "off",
   "react/jsx-key": "off",
-  "react/jsx-no-comment-text-nodes": "off",
+  "react/jsx-no-comment-textnodes": "off",
   "react/jsx-no-duplicate-props": "off",
   "react/jsx-no-useless-fragment": "off",
   "react/jsx-no-undef": "off",
   "react/react-in-jsx-scope": "off",
   "react/no-children-prop": "off",
-  "react/no-dangerously-set-inner-html": "off",
+  "react/no-danger": "off",
   "react/no-direct-mutation-state": "off",
   "react/no-find-dom-node": "off",
   "react/no-render-return-value": "off",
@@ -217,9 +223,18 @@ const reactRules = {
 }
 
 
+const reactPerfRules = {
+  "react-perf/jsx-no-jsx-as-prop": "off",
+  "react-perf/jsx-no-new-array-as-prop": "off",
+  "react-perf/jsx-no-new-function-as-prop": "off",
+  "react-perf/jsx-no-new-object-as-prop": "off"
+}
+
+
 const importRules = {
   "import/default": "off",
   "import/no-named-as-default-member": "off",
+  "import/no-named-as-default": "off",
   "import/named": "off",
   "import/no-cycle": "off",
   "import/no-self-import": "off",
@@ -250,10 +265,10 @@ const jsxA11yRules = {
   "jsx-a11y/prefer-tag-over-role": "off",
   "jsx-a11y/role-has-required-aria-props": "off",
   "jsx-a11y/scope": "off",
-  "jsx-a11y/tab-index-no-positive": "off",
+  "jsx-a11y/tabindex-no-positive": "off",
   "jsx-a11y/aria-role": "off",
   "jsx-a11y/no-distracting-elements": "off",
-  "jsx-a11y/role-support-aria-props": "off",
+  "jsx-a11y/role-supports-aria-props": "off",
   "jsx-a11y/autocomplete-valid": "off"
 }
 
@@ -273,7 +288,9 @@ const nextjsRules = {
   "nextjs/no-sync-scripts": "off",
   "nextjs/no-title-in-document-head": "off",
   "nextjs/no-typos": "off",
-  "nextjs/no-document-import-in-page": "off"
+  "nextjs/no-document-import-in-page": "off",
+  "nextjs/no-unwanted-polyfillio": "off",
+  "nextjs/no-before-interactive-script-outside-document": "off"
 }
 
 export {
@@ -282,6 +299,7 @@ export {
   jestRules,
   unicornRules,
   reactRules,
+  reactPerfRules,
   importRules,
   jsxA11yRules,
   nextjsRules
