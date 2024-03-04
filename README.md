@@ -35,7 +35,7 @@ If you are using legacy configuration (eslint < 9.0), you can use the following 
 // .eslintrc.js
 module.exports = {
   ... // other config
-  presets: [
+  extends: [
     ... // other presets
     "plugin:oxlint/recommended",
   ],
