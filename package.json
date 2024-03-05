@@ -28,7 +28,7 @@
     "lint": "npx oxlint && npx eslint",
     "format": "npx prettier --write .",
     "release": "bumpp package.json",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "keywords": [
     "oxc",
