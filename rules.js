@@ -44,6 +44,8 @@ const eslintRules = {
   "no-loss-of-precision": "off",
   "no-mixed-operators": "off",
   "no-new-symbol": "off",
+  "no-new-wrappers": "off",
+  "no-nonoctal-decimal-escape": "off",
   "no-obj-calls": "off",
   "no-prototype-builtins": "off",
   "no-redeclare": "off",
@@ -74,6 +76,7 @@ const typescriptRules = {
   "@typescript-eslint/adjacent-overload-signatures": "off",
   "@typescript-eslint/array-type": "off",
   "@typescript-eslint/ban-ts-comment": "off",
+  "@typescript-eslint/ban-tslint-comment": "off",
   "@typescript-eslint/ban-types": "off",
   "@typescript-eslint/no-duplicate-enum-values": "off",
   "@typescript-eslint/no-empty-interface": "off",
@@ -87,6 +90,8 @@ const typescriptRules = {
   "@typescript-eslint/no-unsafe-declaration-merging": "off",
   "@typescript-eslint/no-var-requires": "off",
   "@typescript-eslint/prefer-as-const": "off",
+  "@typescript-eslint/prefer-function-type": "off",
+  "@typescript-eslint/prefer-ts-expect-error": "off",
   "@typescript-eslint/triple-slash-reference": "off"
 }
 
@@ -114,7 +119,9 @@ const jestRules = {
   "jest/no-test-prefixes": "off",
   "jest/no-test-return-statement": "off",
   "jest/prefer-called-with": "off",
+  "jest/prefer-equality-matcher": "off",
   "jest/prefer-todo": "off",
+  "jest/require-to-throw-message": "off",
   "jest/valid-describe-callback": "off",
   "jest/valid-expect": "off",
   "jest/valid-title": "off"
@@ -147,6 +154,7 @@ const unicornRules = {
   "unicorn/no-new-buffer": "off",
   "unicorn/no-null": "off",
   "unicorn/no-object-as-default-parameter": "off",
+  "unicorn/no-process-exit": "off",
   "unicorn/no-static-only-class": "off",
   "unicorn/no-thenable": "off",
   "unicorn/no-this-assignment": "off",
@@ -219,7 +227,8 @@ const reactRules = {
   "react/no-unescaped-entities": "off",
   "react/no-is-mounted": "off",
   "react/no-unknown-property": "off",
-  "react/require-render-return": "off"
+  "react/require-render-return": "off",
+  "react/void-dom-elements-no-children": "off"
 }
 
 
@@ -233,13 +242,18 @@ const reactPerfRules = {
 
 const importRules = {
   "import/default": "off",
-  "import/no-named-as-default-member": "off",
-  "import/no-named-as-default": "off",
+  "import/export": "off",
   "import/named": "off",
-  "import/no-cycle": "off",
-  "import/no-self-import": "off",
+  "import/namespace": "off",
   "import/no-amd": "off",
-  "import/export": "off"
+  "import/no-cycle": "off",
+  "import/no-deprecated": "off",
+  "import/no-named-as-default": "off",
+  "import/no-named-as-default-member": "off",
+  "import/no-self-import": "off",
+  "import/no-unresolved": "off",
+  "import/no-unused-modules": "off",
+  "import/no-duplicates": "off"
 }
 
 
