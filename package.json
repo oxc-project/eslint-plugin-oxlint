@@ -29,8 +29,7 @@
     "format": "npx prettier --write .",
     "release": "bumpp package.json",
     "prepare": "husky",
-    "test": "vitest",
-    "test:ci": "vitest run --coverage"
+    "test": "vitest run"
   },
   "keywords": [
     "oxc",
