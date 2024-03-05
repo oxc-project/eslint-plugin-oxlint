@@ -1,5 +1,7 @@
 # eslint-plugin-oxlint
 
+![NPM Version](https://img.shields.io/npm/v/eslint-plugin-oxlint) ![NPM Downloads](https://img.shields.io/npm/dm/eslint-plugin-oxlint)
+
 Turn off all rules already supported by `oxlint`. The rules are extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
 
 ## What is oxlint?
