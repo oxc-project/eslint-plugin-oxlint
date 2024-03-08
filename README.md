@@ -1,5 +1,6 @@
 # eslint-plugin-oxlint
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/oxc-project/eslint-plugin-oxlint/.github%2Fworkflows%2Ftest.yml?branch=main)
 ![NPM Version](https://img.shields.io/npm/v/eslint-plugin-oxlint) ![NPM Downloads](https://img.shields.io/npm/dm/eslint-plugin-oxlint)
 
 Turn off all rules already supported by `oxlint`. The rules are extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
