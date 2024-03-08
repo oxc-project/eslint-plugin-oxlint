@@ -1,6 +1,9 @@
 name: Test
 
 on:
+  push:
+    branches:
+      - main
   pull_request_target:
 
 jobs:
@@ -22,4 +25,7 @@ jobs:
         run: pnpm i
 
       - name: Run Linters
-        run: pnpm lint
+        run: pnpm run lint
+
+      - name: Run tests
+        run: pnpm run test --coverage
