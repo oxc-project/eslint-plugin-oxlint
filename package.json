@@ -25,10 +25,14 @@
   "license": "MIT",
   "scripts": {
     "generate": "tsx ./scripts/generate-rules.ts",
-    "lint": "npx oxlint && npx eslint",
     "format": "npx prettier --write .",
     "release": "bumpp package.json",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "npm-run-all \"lint:*\"",
+    "lint:docs": "npx markdownlint \"**/*.md\" -p .eslintignore",
+    "lint:eslint-docs": "npm run update:eslint-docs -- --check",
+    "lint:js": "npx oxlint && npx eslint",
+    "update:eslint-docs": "eslint-doc-generator"
   },
   "keywords": [
     "oxc",
@@ -43,11 +47,14 @@
     "@typescript-eslint/parser": "^6.16.0",
     "axios": "^1.6.3",
     "bumpp": "^9.2.1",
-    "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-doc-generator": "^1.6.2",
     "eslint-plugin-unicorn": "^50.0.1",
+    "eslint": "^8.56.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.0",
+    "markdownlint-cli": "^0.33.0",
+    "npm-run-all": "^4.1.5",
     "oxlint": "^0.2.8",
     "prettier": "^3.2.4",
     "tsx": "^4.7.0",
