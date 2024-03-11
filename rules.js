@@ -120,6 +120,8 @@ const jestRules = {
   "jest/no-test-return-statement": "off",
   "jest/prefer-called-with": "off",
   "jest/prefer-equality-matcher": "off",
+  "jest/prefer-strict-equal": "off",
+  "jest/prefer-to-have-length": "off",
   "jest/prefer-todo": "off",
   "jest/require-to-throw-message": "off",
   "jest/valid-describe-callback": "off",

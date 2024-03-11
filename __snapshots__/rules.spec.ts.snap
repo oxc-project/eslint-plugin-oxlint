@@ -188,6 +188,12 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/prefer-equality-matcher": [
     "off",
   ],
+  "jest/prefer-strict-equal": [
+    "off",
+  ],
+  "jest/prefer-to-have-length": [
+    "off",
+  ],
   "jest/prefer-todo": [
     "off",
   ],
