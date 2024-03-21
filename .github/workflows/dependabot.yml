@@ -9,19 +9,31 @@ permissions:
   pull-requests: write
   contents: write
 
+env:
+  OXLINT_PACKAGE_NAME: oxlint
+
 jobs:
   bump-oxlint-rules:
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'bump-oxlint'
+    if: github.actor == 'dependabot[bot]' && github.event.label.name == 'dependencies'
     steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/checkout@v4
+        if: contains(steps.metadata.outputs.dependency-names, env.OXLINT_PACKAGE_NAME)
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Install pnpm
+        if: contains(steps.metadata.outputs.dependency-names, env.OXLINT_PACKAGE_NAME)
         uses: pnpm/action-setup@v2
 
       - name: Set node
+        if: contains(steps.metadata.outputs.dependency-names, env.OXLINT_PACKAGE_NAME)
         uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
@@ -29,9 +41,11 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install Dependencies
+        if: contains(steps.metadata.outputs.dependency-names, env.OXLINT_PACKAGE_NAME)
         run: pnpm i
 
       - name: Bump oxlint rules
+        if: contains(steps.metadata.outputs.dependency-names, env.OXLINT_PACKAGE_NAME)
         run: |
           # Generate rules from latest oxlint
           pnpm run generate
