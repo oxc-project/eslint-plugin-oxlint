@@ -1,12 +1,10 @@
 import axios from "axios";
 
-export async function getLatestOxlintVersion() {
+export async function getLatestOxlintVersion(): Promise<string> {
   const tagsUrl = "https://api.github.com/repos/oxc-project/oxc/tags";
-  const response = await axios.get(tagsUrl);
-  const tags = response.data.map((tag: any) => tag.name);
-  const oxlintTags: string[] = tags.filter((tag: string) =>
-    tag.startsWith("oxlint_v"),
-  );
+  const { data } = await axios.get<Array<{ name: string }>>(tagsUrl);
+  const tags = data.map((tag) => tag.name);
+  const oxlintTags = tags.filter((tag) => tag.startsWith("oxlint_v"));
   const latestVersion = oxlintTags
     .slice(1)
     .reduce((latest: string, current: string) => {
