@@ -58,3 +58,9 @@ jobs:
           git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
           git commit -am "feat(oxlint): bump oxlint rules"
           git push
+
+          # Edit title message for changelog purpose
+          gh pr edit "$PR_URL" --title "feat(oxlint): bump oxlint rules"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
