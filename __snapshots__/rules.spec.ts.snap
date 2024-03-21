@@ -80,6 +80,9 @@ exports[`contains all the oxlint rules 1`] = `
   "getter-return": [
     "off",
   ],
+  "guard-for-in": [
+    "off",
+  ],
   "import/default": [
     "off",
   ],
@@ -96,6 +99,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "import/no-cycle": [
+    "off",
+  ],
+  "import/no-default-export": [
     "off",
   ],
   "import/no-deprecated": [
@@ -188,7 +194,19 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/prefer-equality-matcher": [
     "off",
   ],
+  "jest/prefer-expect-resolves": [
+    "off",
+  ],
+  "jest/prefer-spy-on": [
+    "off",
+  ],
   "jest/prefer-strict-equal": [
+    "off",
+  ],
+  "jest/prefer-to-be": [
+    "off",
+  ],
+  "jest/prefer-to-contain": [
     "off",
   ],
   "jest/prefer-to-have-length": [
@@ -287,6 +305,12 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/tabindex-no-positive": [
     "off",
   ],
+  "max-lines": [
+    "off",
+  ],
+  "max-params": [
+    "off",
+  ],
   "nextjs/google-font-display": [
     "off",
   ],
@@ -374,6 +398,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-constant-condition": [
     "off",
   ],
+  "no-continue": [
+    "off",
+  ],
   "no-control-regex": [
     "off",
   ],
@@ -405,6 +432,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "no-empty-static-block": [
+    "off",
+  ],
+  "no-eq-null": [
     "off",
   ],
   "no-eval": [
@@ -452,6 +482,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-obj-calls": [
     "off",
   ],
+  "no-proto": [
+    "off",
+  ],
   "no-prototype-builtins": [
     "off",
   ],
@@ -477,6 +510,12 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "no-sparse-arrays": [
+    "off",
+  ],
+  "no-template-curly-in-string": [
+    "off",
+  ],
+  "no-ternary": [
     "off",
   ],
   "no-this-before-super": [
@@ -506,10 +545,16 @@ exports[`contains all the oxlint rules 1`] = `
   "no-useless-escape": [
     "off",
   ],
+  "no-useless-rename": [
+    "off",
+  ],
   "no-var": [
     "off",
   ],
   "no-void": [
+    "off",
+  ],
+  "no-with": [
     "off",
   ],
   "react-perf/jsx-no-jsx-as-prop": [
@@ -582,6 +627,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "require-yield": [
+    "off",
+  ],
+  "tree-shaking/no-side-effects-in-initialization": [
     "off",
   ],
   "unicorn/catch-error-name": [

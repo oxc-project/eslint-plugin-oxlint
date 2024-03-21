@@ -8,7 +8,12 @@ const eslintRules = {
   "eqeqeq": "off",
   "for-direction": "off",
   "getter-return": "off",
+  "guard-for-in": "off",
+  "max-lines": "off",
+  "max-params": "off",
+  "no-ternary": "off",
   "no-this-before-super": "off",
+  "no-template-curly-in-string": "off",
   "no-array-constructor": "off",
   "no-async-promise-executor": "off",
   "no-bitwise": "off",
@@ -21,6 +26,7 @@ const eslintRules = {
   "no-const-assign": "off",
   "no-constant-binary-expression": "off",
   "no-constant-condition": "off",
+  "no-continue": "off",
   "no-control-regex": "off",
   "no-debugger": "off",
   "no-delete-var": "off",
@@ -35,6 +41,7 @@ const eslintRules = {
   "no-eval": "off",
   "no-ex-assign": "off",
   "no-extra-boolean-cast": "off",
+  "no-eq-null": "off",
   "no-fallthrough": "off",
   "no-func-assign": "off",
   "no-global-assign": "off",
@@ -47,6 +54,7 @@ const eslintRules = {
   "no-new-wrappers": "off",
   "no-nonoctal-decimal-escape": "off",
   "no-obj-calls": "off",
+  "no-proto": "off",
   "no-prototype-builtins": "off",
   "no-redeclare": "off",
   "no-regex-spaces": "off",
@@ -64,8 +72,10 @@ const eslintRules = {
   "no-unused-private-class-members": "off",
   "no-useless-catch": "off",
   "no-useless-escape": "off",
+  "no-useless-rename": "off",
   "no-var": "off",
   "no-void": "off",
+  "no-with": "off",
   "require-yield": "off",
   "use-isnan": "off",
   "valid-typeof": "off"
@@ -120,7 +130,11 @@ const jestRules = {
   "jest/no-test-return-statement": "off",
   "jest/prefer-called-with": "off",
   "jest/prefer-equality-matcher": "off",
+  "jest/prefer-expect-resolves": "off",
+  "jest/prefer-spy-on": "off",
   "jest/prefer-strict-equal": "off",
+  "jest/prefer-to-be": "off",
+  "jest/prefer-to-contain": "off",
   "jest/prefer-to-have-length": "off",
   "jest/prefer-todo": "off",
   "jest/require-to-throw-message": "off",
@@ -255,7 +269,8 @@ const importRules = {
   "import/no-self-import": "off",
   "import/no-unresolved": "off",
   "import/no-unused-modules": "off",
-  "import/no-duplicates": "off"
+  "import/no-duplicates": "off",
+  "import/no-default-export": "off"
 }
 
 
@@ -309,6 +324,11 @@ const nextjsRules = {
   "nextjs/no-before-interactive-script-outside-document": "off"
 }
 
+
+const treeShakingRules = {
+  "tree-shaking/no-side-effects-in-initialization": "off"
+}
+
 export {
   eslintRules,
   typescriptRules,
@@ -318,5 +338,6 @@ export {
   reactPerfRules,
   importRules,
   jsxA11yRules,
-  nextjsRules
+  nextjsRules,
+  treeShakingRules
 }
