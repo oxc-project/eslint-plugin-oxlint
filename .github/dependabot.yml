@@ -5,3 +5,13 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "oxlint"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    dependency-name: "oxlint"
+    prefix-development: feat
+    labels:
+      - "bump-oxlint"
