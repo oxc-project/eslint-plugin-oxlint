@@ -71,6 +71,9 @@ exports[`contains all the oxlint rules 1`] = `
   "default-case-last": [
     "off",
   ],
+  "default-param-last": [
+    "off",
+  ],
   "eqeqeq": [
     "off",
   ],
@@ -188,7 +191,13 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/no-test-return-statement": [
     "off",
   ],
+  "jest/no-untyped-mock-factory": [
+    "off",
+  ],
   "jest/prefer-called-with": [
+    "off",
+  ],
+  "jest/prefer-comparison-matcher": [
     "off",
   ],
   "jest/prefer-equality-matcher": [
@@ -464,6 +473,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-irregular-whitespace": [
     "off",
   ],
+  "no-iterator": [
+    "off",
+  ],
   "no-loss-of-precision": [
     "off",
   ],
@@ -495,6 +507,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "no-return-await": [
+    "off",
+  ],
+  "no-script-url": [
     "off",
   ],
   "no-self-assign": [
@@ -570,6 +585,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "react/button-has-type": [
+    "off",
+  ],
+  "react/checked-requires-onchange-or-readonly": [
     "off",
   ],
   "react/jsx-key": [
