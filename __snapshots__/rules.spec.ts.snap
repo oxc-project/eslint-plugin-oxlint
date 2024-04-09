@@ -53,6 +53,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-as-const": [
     "off",
   ],
+  "@typescript-eslint/prefer-for-of": [
+    "off",
+  ],
   "@typescript-eslint/prefer-function-type": [
     "off",
   ],
@@ -69,6 +72,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "default-case-last": [
+    "off",
+  ],
+  "default-param-last": [
     "off",
   ],
   "eqeqeq": [
@@ -188,13 +194,22 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/no-test-return-statement": [
     "off",
   ],
+  "jest/no-untyped-mock-factory": [
+    "off",
+  ],
   "jest/prefer-called-with": [
+    "off",
+  ],
+  "jest/prefer-comparison-matcher": [
     "off",
   ],
   "jest/prefer-equality-matcher": [
     "off",
   ],
   "jest/prefer-expect-resolves": [
+    "off",
+  ],
+  "jest/prefer-mock-promise-shorthand": [
     "off",
   ],
   "jest/prefer-spy-on": [
@@ -225,6 +240,12 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "jest/valid-title": [
+    "off",
+  ],
+  "jsdoc/check-access": [
+    "off",
+  ],
+  "jsdoc/empty-tags": [
     "off",
   ],
   "jsx-a11y/alt-text": [
@@ -464,6 +485,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-irregular-whitespace": [
     "off",
   ],
+  "no-iterator": [
+    "off",
+  ],
   "no-loss-of-precision": [
     "off",
   ],
@@ -495,6 +519,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "no-return-await": [
+    "off",
+  ],
+  "no-script-url": [
     "off",
   ],
   "no-self-assign": [
@@ -570,6 +597,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "react/button-has-type": [
+    "off",
+  ],
+  "react/checked-requires-onchange-or-readonly": [
     "off",
   ],
   "react/jsx-key": [
