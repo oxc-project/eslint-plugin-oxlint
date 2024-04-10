@@ -8,7 +8,8 @@
     ".": {
       "import": "./index.js",
       "require": "./index.cjs",
-      "default": "./index.js"
+      "default": "./index.js",
+      "types": "./index.type.ts"
     },
     "./rules": {
       "import": "./rules.js",
