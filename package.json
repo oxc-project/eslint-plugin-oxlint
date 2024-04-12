@@ -9,12 +9,13 @@
       "import": "./index.js",
       "require": "./index.cjs",
       "default": "./index.js",
-      "types": "./index.type.ts"
+      "types": "./index.d.ts"
     },
     "./rules": {
       "import": "./rules.js",
       "require": "./rules.cjs",
-      "default": "./rules.js"
+      "default": "./rules.js",
+      "types": "./rules.d.ts"
     }
   },
   "author": "Dunqing <dengqing0821@gmail.com>",
