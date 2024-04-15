@@ -17,6 +17,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/ban-types": [
     "off",
   ],
+  "@typescript-eslint/consistent-type-definitions": [
+    "off",
+  ],
   "@typescript-eslint/no-duplicate-enum-values": [
     "off",
   ],
@@ -207,6 +210,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "jest/prefer-expect-resolves": [
+    "off",
+  ],
+  "jest/prefer-lowercase-title": [
     "off",
   ],
   "jest/prefer-mock-promise-shorthand": [
