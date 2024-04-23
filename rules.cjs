@@ -155,7 +155,6 @@ const jestRules = {
 
 const unicornRules = {
   "unicorn/catch-error-name": "off",
-  "unicorn/prefer-node-protocol": "off",
   "unicorn/empty-brace-spaces": "off",
   "unicorn/error-message": "off",
   "unicorn/escape-case": "off",
@@ -163,9 +162,10 @@ const unicornRules = {
   "unicorn/filename-case": "off",
   "unicorn/new-for-builtins": "off",
   "unicorn/no-abusive-eslint-disable": "off",
-  "unicorn/no-array-reduce": "off",
   "unicorn/no-array-for-each": "off",
+  "unicorn/no-array-reduce": "off",
   "unicorn/no-await-expression-member": "off",
+  "unicorn/no-await-in-promise-methods": "off",
   "unicorn/no-console-spaces": "off",
   "unicorn/no-document-cookie": "off",
   "unicorn/no-empty-file": "off",
@@ -180,6 +180,7 @@ const unicornRules = {
   "unicorn/no-null": "off",
   "unicorn/no-object-as-default-parameter": "off",
   "unicorn/no-process-exit": "off",
+  "unicorn/no-single-promise-in-promise-methods": "off",
   "unicorn/no-static-only-class": "off",
   "unicorn/no-thenable": "off",
   "unicorn/no-this-assignment": "off",
@@ -190,6 +191,7 @@ const unicornRules = {
   "unicorn/no-useless-fallback-in-spread": "off",
   "unicorn/no-useless-length-check": "off",
   "unicorn/no-useless-promise-resolve-reject": "off",
+  "unicorn/no-useless-spread": "off",
   "unicorn/no-useless-switch-case": "off",
   "unicorn/no-zero-fractions": "off",
   "unicorn/number-literal-case": "off",
@@ -201,6 +203,7 @@ const unicornRules = {
   "unicorn/prefer-blob-reading-methods": "off",
   "unicorn/prefer-code-point": "off",
   "unicorn/prefer-date-now": "off",
+  "unicorn/prefer-node-protocol": "off",
   "unicorn/prefer-dom-node-append": "off",
   "unicorn/prefer-dom-node-dataset": "off",
   "unicorn/prefer-dom-node-remove": "off",
@@ -212,7 +215,6 @@ const unicornRules = {
   "unicorn/prefer-modern-dom-apis": "off",
   "unicorn/prefer-modern-math-apis": "off",
   "unicorn/prefer-native-coercion-functions": "off",
-  "unicorn/no-useless-spread": "off",
   "unicorn/prefer-number-properties": "off",
   "unicorn/prefer-optional-catch-binding": "off",
   "unicorn/prefer-prototype-methods": "off",
@@ -277,7 +279,6 @@ const importRules = {
   "import/no-named-as-default": "off",
   "import/no-named-as-default-member": "off",
   "import/no-self-import": "off",
-  "import/no-unresolved": "off",
   "import/no-unused-modules": "off",
   "import/no-duplicates": "off",
   "import/no-default-export": "off"
@@ -337,7 +338,12 @@ const nextjsRules = {
 
 const jsdocRules = {
   "jsdoc/check-access": "off",
-  "jsdoc/empty-tags": "off"
+  "jsdoc/check-property-names": "off",
+  "jsdoc/empty-tags": "off",
+  "jsdoc/require-property": "off",
+  "jsdoc/require-property-type": "off",
+  "jsdoc/require-property-name": "off",
+  "jsdoc/require-property-description": "off"
 }
 
 

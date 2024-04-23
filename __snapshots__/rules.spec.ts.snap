@@ -128,9 +128,6 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-self-import": [
     "off",
   ],
-  "import/no-unresolved": [
-    "off",
-  ],
   "import/no-unused-modules": [
     "off",
   ],
@@ -251,7 +248,22 @@ exports[`contains all the oxlint rules 1`] = `
   "jsdoc/check-access": [
     "off",
   ],
+  "jsdoc/check-property-names": [
+    "off",
+  ],
   "jsdoc/empty-tags": [
+    "off",
+  ],
+  "jsdoc/require-property": [
+    "off",
+  ],
+  "jsdoc/require-property-description": [
+    "off",
+  ],
+  "jsdoc/require-property-name": [
+    "off",
+  ],
+  "jsdoc/require-property-type": [
     "off",
   ],
   "jsx-a11y/alt-text": [
@@ -701,6 +713,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-await-expression-member": [
     "off",
   ],
+  "unicorn/no-await-in-promise-methods": [
+    "off",
+  ],
   "unicorn/no-console-spaces": [
     "off",
   ],
@@ -741,6 +756,9 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "unicorn/no-process-exit": [
+    "off",
+  ],
+  "unicorn/no-single-promise-in-promise-methods": [
     "off",
   ],
   "unicorn/no-static-only-class": [
