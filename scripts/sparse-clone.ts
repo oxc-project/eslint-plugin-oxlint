@@ -32,8 +32,10 @@ function cloneOrUpdateRepo(
     fs.existsSync(`${targetDirectory}/.git`)
   ) {
     console.log(`Repository exists, updating ${targetDirectory}...`);
+
     shell.cd(targetDirectory);
     configureSparseCheckout(cloneDirectory);
+
     // Pull the latest changes
     if (shell.exec("git pull").code !== 0) {
       shell.echo("Error: Git pull failed");
@@ -42,6 +44,7 @@ function cloneOrUpdateRepo(
     console.log(`Repository updated and configured for ${cloneDirectory}.`);
   } else {
     console.log(`Cloning new repository into ${targetDirectory}...`);
+
     // Clone the repository without checking out files
     if (
       shell.exec(
@@ -51,8 +54,8 @@ function cloneOrUpdateRepo(
       shell.echo("Error: Git clone failed");
       shell.exit(1);
     }
-    shell.cd(targetDirectory);
 
+    shell.cd(targetDirectory);
     configureSparseCheckout(cloneDirectory);
 
     // Checkout the specified directory
@@ -67,7 +70,6 @@ function cloneOrUpdateRepo(
   }
 }
 
-// Example usage
 cloneOrUpdateRepo(
   "https://github.com/oxc-project/oxc.git",
   TARGET_DIRECTORY,
