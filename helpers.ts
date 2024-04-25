@@ -1,4 +1,4 @@
-import { ESLint } from "eslint";
+import type { ESLint } from "eslint";
 
 export const ESLintTestConfig: ESLint.Options = {
   useEslintrc: false,

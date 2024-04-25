@@ -1,10 +1,10 @@
 import * as ruleMaps from "./rules.js";
 
 // merge objects into one array
-const rules = Object.values(ruleMaps).reduce((accumulator, object) => ({
-  ...accumulator,
-  ...object,
-}));
+const rules = Object.values(ruleMaps).reduce(
+  (accumulator, object) => Object.assign(accumulator, object),
+  {},
+);
 
 export default {
   configs: {
