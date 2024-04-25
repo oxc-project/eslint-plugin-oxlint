@@ -1,15 +1,28 @@
-import axios from "axios";
 import { writeFileSync } from "node:fs";
 import path from "node:path";
-import { getLatestOxlintVersion } from "./oxlint-version.js";
+import { getLatestVersionFromClonedRepo } from "./oxlint-version.js";
+import { readFile } from "node:fs/promises";
+import { TARGET_DIRECTORY, VERSION_PREFIX } from "./constants.js";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 
-const oxlintVersion = await getLatestOxlintVersion();
+const oxlintVersion = await getLatestVersionFromClonedRepo(
+  TARGET_DIRECTORY,
+  VERSION_PREFIX,
+);
 
-console.log("Generating rules for " + oxlintVersion);
+console.log(`Generating rules for ${oxlintVersion}`);
 
-const oxlintRulesUrl = `https://raw.githubusercontent.com/oxc-project/oxc/${oxlintVersion}/crates/oxc_linter/src/rules.rs`;
+const oxlintRulesFile = path.join(
+  __dirname,
+  "..",
+  ".oxc_sparse",
+  "crates",
+  "oxc_linter",
+  "src",
+  "rules.rs",
+);
+
 const RulesRe = /oxc_macros::declare_all_lint_rules.*{([^*]*),\s*}/gm;
 const rulesMap = new Map<string, Array<string>>();
 const ignoreScope = new Set(["oxc", "deepscan"]);
@@ -20,8 +33,8 @@ const scopeMaps = {
 };
 
 async function generateRules(isCjs = false) {
-  await axios.get(oxlintRulesUrl).then((response) => {
-    const rules = RulesRe.exec(response.data || "")?.[1];
+  await readFile(oxlintRulesFile, { encoding: "utf8" }).then((content) => {
+    const rules = RulesRe.exec(content || "")?.[1];
     if (rules) {
       for (const rule of rules.trim().split(",")) {
         const [scope, name] = rule.trim().split("::");
@@ -42,17 +55,18 @@ async function generateRules(isCjs = false) {
     }
     exportScopes.push(scope);
     const rules = rulesMap.get(scope);
-    code +=
-      `\nconst ` +
-      scope.replaceAll(/_(\w)/g, (_, c) => c.toUpperCase()) +
-      "Rules" +
-      " = {\n";
+    code += `const ${scope.replaceAll(/_(\w)/g, (_, c) =>
+      c.toUpperCase(),
+    )}Rules = {\n`;
     const ruleScope = Reflect.has(scopeMaps, scope)
       ? scopeMaps[scope as "eslint"]
       : scope.replace("_", "-");
     code += rules
       ?.map((rule) => {
-        return `  "${ruleScope ? ruleScope + "/" : ""}${rule.replaceAll("_", "-")}": "off"`;
+        return `  "${ruleScope ? `${ruleScope}/` : ""}${rule.replaceAll(
+          "_",
+          "-",
+        )}": "off"`;
       })
       .join(",\n");
     code += "\n}\n\n";
