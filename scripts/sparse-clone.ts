@@ -1,6 +1,7 @@
 import shell from "shelljs";
 import fs from "node:fs";
 import { TARGET_DIRECTORY, SPARSE_CLONE_DIRECTORY } from "./constants.js";
+import { getLatestVersionFromClonedRepo } from "./oxlint-version.js";
 
 // Function to initialize or reconfigure sparse-checkout
 function configureSparseCheckout(cloneDirectory: string) {
@@ -20,6 +21,20 @@ function configureSparseCheckout(cloneDirectory: string) {
   }
 }
 
+function checkoutLatestTag(targetDirectory: string, cloneDirectory: string) {
+  const latestTag = getLatestVersionFromClonedRepo(targetDirectory);
+
+  // Checkout the specified directory
+  if (shell.exec(`git checkout ${latestTag}`, { silent: true }).code !== 0) {
+    shell.echo("Error: Git checkout failed");
+    shell.exit(1);
+  }
+
+  console.log(
+    `Successfully cloned ${cloneDirectory} into ${targetDirectory}/${cloneDirectory} at ${latestTag}`,
+  );
+}
+
 // Function to clone or update a repository
 function cloneOrUpdateRepo(
   repositoryUrl: string,
@@ -34,14 +49,9 @@ function cloneOrUpdateRepo(
     console.log(`Repository exists, updating ${targetDirectory}...`);
 
     shell.cd(targetDirectory);
-    configureSparseCheckout(cloneDirectory);
 
-    // Pull the latest changes
-    if (shell.exec("git pull").code !== 0) {
-      shell.echo("Error: Git pull failed");
-      shell.exit(1);
-    }
-    console.log(`Repository updated and configured for ${cloneDirectory}.`);
+    configureSparseCheckout(cloneDirectory);
+    checkoutLatestTag(targetDirectory, cloneDirectory);
   } else {
     console.log(`Cloning new repository into ${targetDirectory}...`);
 
@@ -56,17 +66,9 @@ function cloneOrUpdateRepo(
     }
 
     shell.cd(targetDirectory);
+
     configureSparseCheckout(cloneDirectory);
-
-    // Checkout the specified directory
-    if (shell.exec("git checkout").code !== 0) {
-      shell.echo("Error: Git checkout failed");
-      shell.exit(1);
-    }
-
-    console.log(
-      `Successfully cloned ${cloneDirectory} into ${targetDirectory}/${cloneDirectory}`,
-    );
+    checkoutLatestTag(targetDirectory, cloneDirectory);
   }
 }
 

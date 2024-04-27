@@ -1,9 +1,15 @@
 import shell from "shelljs";
+import { VERSION_PREFIX } from "./constants.js";
+import fs from "node:fs";
 
-export async function getLatestVersionFromClonedRepo(
+export function getLatestVersionFromClonedRepo(
   targetDirectory: string,
-  versionPrefix = "oxlint_v",
+  versionPrefix = VERSION_PREFIX,
 ) {
+  if (!fs.existsSync(targetDirectory)) {
+    return "";
+  }
+
   shell.cd(targetDirectory);
 
   const oxlintTags = shell

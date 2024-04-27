@@ -27,12 +27,13 @@
   "license": "MIT",
   "scripts": {
     "generate": "tsx ./scripts/generate-rules.ts",
+    "traverse": "tsx ./scripts/traverse-rules.ts",
     "clone": "tsx ./scripts/sparse-clone.ts",
     "lint": "npx oxlint && npx eslint",
     "format": "npx prettier --write .",
     "release": "bumpp package.json",
     "prepare": "husky",
-    "test": "vitest run"
+    "test": "vitest run --reporter=verbose"
   },
   "keywords": [
     "oxc",
@@ -47,7 +48,7 @@
     "@types/shelljs": "^0.8.15",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^6.16.0",
-    "@vitest/coverage-v8": "^1.5.0",
+    "@vitest/coverage-v8": "^1.5.2",
     "bumpp": "^9.2.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -59,7 +60,7 @@
     "shelljs": "^0.8.5",
     "tsx": "^4.7.2",
     "typescript": "^5.4.4",
-    "vitest": "^1.5.0"
+    "vitest": "^1.5.2"
   },
   "lint-staged": {
     "*.{js,cjs,ts}": "eslint",

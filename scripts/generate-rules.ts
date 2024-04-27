@@ -2,14 +2,22 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 import { getLatestVersionFromClonedRepo } from "./oxlint-version.js";
 import { readFile } from "node:fs/promises";
-import { TARGET_DIRECTORY, VERSION_PREFIX } from "./constants.js";
+import { TARGET_DIRECTORY, VERSION_PREFIX, prefixScope } from "./constants.js";
+import { ignoreScope, convertScope } from "./constants.js";
 
 const __dirname = new URL(".", import.meta.url).pathname;
 
-const oxlintVersion = await getLatestVersionFromClonedRepo(
+const oxlintVersion = getLatestVersionFromClonedRepo(
   TARGET_DIRECTORY,
   VERSION_PREFIX,
 );
+
+if (!oxlintVersion) {
+  console.log(
+    "Failed to get the latest version of oxlint, did you forget to run `pnpm clone`?",
+  );
+  process.exit(1);
+}
 
 console.log(`Generating rules for ${oxlintVersion}`);
 
@@ -25,13 +33,6 @@ const oxlintRulesFile = path.join(
 
 const RulesRe = /oxc_macros::declare_all_lint_rules.*{([^*]*),\s*}/gm;
 const rulesMap = new Map<string, Array<string>>();
-const ignoreScope = new Set(["oxc", "deepscan"]);
-
-const scopeMaps = {
-  eslint: "",
-  typescript: "@typescript-eslint",
-};
-
 async function generateRules(isCjs = false) {
   await readFile(oxlintRulesFile, { encoding: "utf8" }).then((content) => {
     const rules = RulesRe.exec(content || "")?.[1];
@@ -58,12 +59,10 @@ async function generateRules(isCjs = false) {
     code += `const ${scope.replaceAll(/_(\w)/g, (_, c) =>
       c.toUpperCase(),
     )}Rules = {\n`;
-    const ruleScope = Reflect.has(scopeMaps, scope)
-      ? scopeMaps[scope as "eslint"]
-      : scope.replace("_", "-");
+    const ruleScope = convertScope(scope);
     code += rules
       ?.map((rule) => {
-        return `  "${ruleScope ? `${ruleScope}/` : ""}${rule.replaceAll(
+        return `  "${prefixScope(ruleScope)}${rule.replaceAll(
           "_",
           "-",
         )}": "off"`;

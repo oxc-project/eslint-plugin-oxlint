@@ -80,8 +80,7 @@ const eslintRules = {
   "no-with": "off",
   "require-yield": "off",
   "use-isnan": "off",
-  "valid-typeof": "off",
-  "no-await-in-loop": "off"
+  "valid-typeof": "off"
 }
 
 const typescriptRules = {
@@ -330,9 +329,7 @@ const nextjsRules = {
 const jsdocRules = {
   "jsdoc/check-access": "off",
   "jsdoc/check-property-names": "off",
-  "jsdoc/check-tag-names": "off",
   "jsdoc/empty-tags": "off",
-  "jsdoc/implements-on-classes": "off",
   "jsdoc/require-property": "off",
   "jsdoc/require-property-type": "off",
   "jsdoc/require-property-name": "off",
