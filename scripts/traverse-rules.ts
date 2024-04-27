@@ -132,8 +132,6 @@ export async function traverseRules() {
     failureResultMap,
   );
 
-  console.log("successResultMap", successResultMap);
-
   if (Object.keys(failureResultMap).length > 0) {
     console.log("Failure Result Map:");
     console.log(failureResultMap);

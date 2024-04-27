@@ -251,13 +251,7 @@ exports[`contains all the oxlint rules 1`] = `
   "jsdoc/check-property-names": [
     "off",
   ],
-  "jsdoc/check-tag-names": [
-    "off",
-  ],
   "jsdoc/empty-tags": [
-    "off",
-  ],
-  "jsdoc/implements-on-classes": [
     "off",
   ],
   "jsdoc/require-property": [
@@ -411,9 +405,6 @@ exports[`contains all the oxlint rules 1`] = `
     "off",
   ],
   "no-async-promise-executor": [
-    "off",
-  ],
-  "no-await-in-loop": [
     "off",
   ],
   "no-bitwise": [
