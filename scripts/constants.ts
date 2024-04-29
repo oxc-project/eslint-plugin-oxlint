@@ -10,6 +10,9 @@ export const SPARSE_CLONE_DIRECTORY = "crates/oxc_linter/src";
 export const ignoreScope = new Set(["oxc", "deepscan"]);
 
 // these are the mappings from the scope in the rules.rs to the eslint scope
+// only used for the scopes where the directory structure doesn't reflect the eslint scope
+// such as `typescript` vs `@typescript-eslint` or others. Eslint as a scope is an exception,
+// as eslint doesn't have a scope.
 export const scopeMaps = {
   eslint: "",
   typescript: "@typescript-eslint",

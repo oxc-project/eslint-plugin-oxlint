@@ -1,4 +1,4 @@
-const ruleMaps = require("./rules.cjs");
+const ruleMaps = require("./rules-by-scope.cjs");
 
 // merge objects into one array
 const rules = Object.values(ruleMaps).reduce(

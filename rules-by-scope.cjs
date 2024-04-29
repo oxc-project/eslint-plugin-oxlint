@@ -5,15 +5,12 @@ const eslintRules = {
   "constructor-super": "off",
   "default-case-last": "off",
   "default-param-last": "off",
-  "eqeqeq": "off",
+  eqeqeq: "off",
   "for-direction": "off",
   "getter-return": "off",
   "guard-for-in": "off",
   "max-lines": "off",
   "max-params": "off",
-  "no-ternary": "off",
-  "no-this-before-super": "off",
-  "no-template-curly-in-string": "off",
   "no-array-constructor": "off",
   "no-async-promise-executor": "off",
   "no-bitwise": "off",
@@ -38,10 +35,10 @@ const eslintRules = {
   "no-empty-character-class": "off",
   "no-empty-pattern": "off",
   "no-empty-static-block": "off",
+  "no-eq-null": "off",
   "no-eval": "off",
   "no-ex-assign": "off",
   "no-extra-boolean-cast": "off",
-  "no-eq-null": "off",
   "no-fallthrough": "off",
   "no-func-assign": "off",
   "no-global-assign": "off",
@@ -66,6 +63,9 @@ const eslintRules = {
   "no-setter-return": "off",
   "no-shadow-restricted-names": "off",
   "no-sparse-arrays": "off",
+  "no-template-curly-in-string": "off",
+  "no-ternary": "off",
+  "no-this-before-super": "off",
   "no-undef": "off",
   "no-unsafe-finally": "off",
   "no-unsafe-negation": "off",
@@ -80,33 +80,24 @@ const eslintRules = {
   "no-with": "off",
   "require-yield": "off",
   "use-isnan": "off",
-  "valid-typeof": "off"
-}
+  "valid-typeof": "off",
+};
 
-const typescriptRules = {
-  "@typescript-eslint/adjacent-overload-signatures": "off",
-  "@typescript-eslint/array-type": "off",
-  "@typescript-eslint/ban-ts-comment": "off",
-  "@typescript-eslint/ban-tslint-comment": "off",
-  "@typescript-eslint/ban-types": "off",
-  "@typescript-eslint/consistent-type-definitions": "off",
-  "@typescript-eslint/no-duplicate-enum-values": "off",
-  "@typescript-eslint/no-empty-interface": "off",
-  "@typescript-eslint/no-explicit-any": "off",
-  "@typescript-eslint/no-extra-non-null-assertion": "off",
-  "@typescript-eslint/no-misused-new": "off",
-  "@typescript-eslint/no-namespace": "off",
-  "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
-  "@typescript-eslint/no-this-alias": "off",
-  "@typescript-eslint/no-unnecessary-type-constraint": "off",
-  "@typescript-eslint/no-unsafe-declaration-merging": "off",
-  "@typescript-eslint/no-var-requires": "off",
-  "@typescript-eslint/prefer-as-const": "off",
-  "@typescript-eslint/prefer-for-of": "off",
-  "@typescript-eslint/prefer-function-type": "off",
-  "@typescript-eslint/prefer-ts-expect-error": "off",
-  "@typescript-eslint/triple-slash-reference": "off"
-}
+const importRules = {
+  "import/default": "off",
+  "import/export": "off",
+  "import/named": "off",
+  "import/namespace": "off",
+  "import/no-amd": "off",
+  "import/no-cycle": "off",
+  "import/no-default-export": "off",
+  "import/no-deprecated": "off",
+  "import/no-duplicates": "off",
+  "import/no-named-as-default": "off",
+  "import/no-named-as-default-member": "off",
+  "import/no-self-import": "off",
+  "import/no-unused-modules": "off",
+};
 
 const jestRules = {
   "jest/expect-expect": "off",
@@ -146,8 +137,126 @@ const jestRules = {
   "jest/require-to-throw-message": "off",
   "jest/valid-describe-callback": "off",
   "jest/valid-expect": "off",
-  "jest/valid-title": "off"
-}
+  "jest/valid-title": "off",
+};
+
+const jsdocRules = {
+  "jsdoc/check-access": "off",
+  "jsdoc/check-property-names": "off",
+  "jsdoc/empty-tags": "off",
+  "jsdoc/require-property": "off",
+  "jsdoc/require-property-description": "off",
+  "jsdoc/require-property-name": "off",
+  "jsdoc/require-property-type": "off",
+};
+
+const jsxA11yRules = {
+  "jsx-a11y/alt-text": "off",
+  "jsx-a11y/anchor-has-content": "off",
+  "jsx-a11y/anchor-is-valid": "off",
+  "jsx-a11y/aria-activedescendant-has-tabindex": "off",
+  "jsx-a11y/aria-props": "off",
+  "jsx-a11y/aria-role": "off",
+  "jsx-a11y/aria-unsupported-elements": "off",
+  "jsx-a11y/autocomplete-valid": "off",
+  "jsx-a11y/click-events-have-key-events": "off",
+  "jsx-a11y/heading-has-content": "off",
+  "jsx-a11y/html-has-lang": "off",
+  "jsx-a11y/iframe-has-title": "off",
+  "jsx-a11y/img-redundant-alt": "off",
+  "jsx-a11y/lang": "off",
+  "jsx-a11y/media-has-caption": "off",
+  "jsx-a11y/mouse-events-have-key-events": "off",
+  "jsx-a11y/no-access-key": "off",
+  "jsx-a11y/no-aria-hidden-on-focusable": "off",
+  "jsx-a11y/no-autofocus": "off",
+  "jsx-a11y/no-distracting-elements": "off",
+  "jsx-a11y/no-redundant-roles": "off",
+  "jsx-a11y/prefer-tag-over-role": "off",
+  "jsx-a11y/role-has-required-aria-props": "off",
+  "jsx-a11y/role-supports-aria-props": "off",
+  "jsx-a11y/scope": "off",
+  "jsx-a11y/tabindex-no-positive": "off",
+};
+
+const nextjsRules = {
+  "nextjs/google-font-display": "off",
+  "nextjs/google-font-preconnect": "off",
+  "nextjs/inline-script-id": "off",
+  "nextjs/next-script-for-ga": "off",
+  "nextjs/no-assign-module-variable": "off",
+  "nextjs/no-async-client-component": "off",
+  "nextjs/no-before-interactive-script-outside-document": "off",
+  "nextjs/no-css-tags": "off",
+  "nextjs/no-document-import-in-page": "off",
+  "nextjs/no-head-element": "off",
+  "nextjs/no-head-import-in-document": "off",
+  "nextjs/no-img-element": "off",
+  "nextjs/no-script-component-in-head": "off",
+  "nextjs/no-sync-scripts": "off",
+  "nextjs/no-title-in-document-head": "off",
+  "nextjs/no-typos": "off",
+  "nextjs/no-unwanted-polyfillio": "off",
+};
+
+const reactRules = {
+  "react/button-has-type": "off",
+  "react/checked-requires-onchange-or-readonly": "off",
+  "react/jsx-key": "off",
+  "react/jsx-no-comment-textnodes": "off",
+  "react/jsx-no-duplicate-props": "off",
+  "react/jsx-no-target-blank": "off",
+  "react/jsx-no-undef": "off",
+  "react/jsx-no-useless-fragment": "off",
+  "react/no-children-prop": "off",
+  "react/no-danger": "off",
+  "react/no-direct-mutation-state": "off",
+  "react/no-find-dom-node": "off",
+  "react/no-is-mounted": "off",
+  "react/no-render-return-value": "off",
+  "react/no-string-refs": "off",
+  "react/no-unescaped-entities": "off",
+  "react/no-unknown-property": "off",
+  "react/react-in-jsx-scope": "off",
+  "react/require-render-return": "off",
+  "react/void-dom-elements-no-children": "off",
+};
+
+const reactPerfRules = {
+  "react-perf/jsx-no-jsx-as-prop": "off",
+  "react-perf/jsx-no-new-array-as-prop": "off",
+  "react-perf/jsx-no-new-function-as-prop": "off",
+  "react-perf/jsx-no-new-object-as-prop": "off",
+};
+
+const treeShakingRules = {
+  "tree-shaking/no-side-effects-in-initialization": "off",
+};
+
+const typescriptRules = {
+  "@typescript-eslint/adjacent-overload-signatures": "off",
+  "@typescript-eslint/array-type": "off",
+  "@typescript-eslint/ban-ts-comment": "off",
+  "@typescript-eslint/ban-tslint-comment": "off",
+  "@typescript-eslint/ban-types": "off",
+  "@typescript-eslint/consistent-type-definitions": "off",
+  "@typescript-eslint/no-duplicate-enum-values": "off",
+  "@typescript-eslint/no-empty-interface": "off",
+  "@typescript-eslint/no-explicit-any": "off",
+  "@typescript-eslint/no-extra-non-null-assertion": "off",
+  "@typescript-eslint/no-misused-new": "off",
+  "@typescript-eslint/no-namespace": "off",
+  "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+  "@typescript-eslint/no-this-alias": "off",
+  "@typescript-eslint/no-unnecessary-type-constraint": "off",
+  "@typescript-eslint/no-unsafe-declaration-merging": "off",
+  "@typescript-eslint/no-var-requires": "off",
+  "@typescript-eslint/prefer-as-const": "off",
+  "@typescript-eslint/prefer-for-of": "off",
+  "@typescript-eslint/prefer-function-type": "off",
+  "@typescript-eslint/prefer-ts-expect-error": "off",
+  "@typescript-eslint/triple-slash-reference": "off",
+};
 
 const unicornRules = {
   "unicorn/catch-error-name": "off",
@@ -193,13 +302,12 @@ const unicornRules = {
   "unicorn/number-literal-case": "off",
   "unicorn/numeric-separators-style": "off",
   "unicorn/prefer-add-event-listener": "off",
-  "unicorn/prefer-array-flat-map": "off",
   "unicorn/prefer-array-flat": "off",
+  "unicorn/prefer-array-flat-map": "off",
   "unicorn/prefer-array-some": "off",
   "unicorn/prefer-blob-reading-methods": "off",
   "unicorn/prefer-code-point": "off",
   "unicorn/prefer-date-now": "off",
-  "unicorn/prefer-node-protocol": "off",
   "unicorn/prefer-dom-node-append": "off",
   "unicorn/prefer-dom-node-dataset": "off",
   "unicorn/prefer-dom-node-remove": "off",
@@ -211,6 +319,7 @@ const unicornRules = {
   "unicorn/prefer-modern-dom-apis": "off",
   "unicorn/prefer-modern-math-apis": "off",
   "unicorn/prefer-native-coercion-functions": "off",
+  "unicorn/prefer-node-protocol": "off",
   "unicorn/prefer-number-properties": "off",
   "unicorn/prefer-optional-catch-binding": "off",
   "unicorn/prefer-prototype-methods": "off",
@@ -228,128 +337,19 @@ const unicornRules = {
   "unicorn/require-number-to-fixed-digits-argument": "off",
   "unicorn/switch-case-braces": "off",
   "unicorn/text-encoding-identifier-case": "off",
-  "unicorn/throw-new-error": "off"
-}
-
-const reactRules = {
-  "react/button-has-type": "off",
-  "react/checked-requires-onchange-or-readonly": "off",
-  "react/jsx-no-target-blank": "off",
-  "react/jsx-key": "off",
-  "react/jsx-no-comment-textnodes": "off",
-  "react/jsx-no-duplicate-props": "off",
-  "react/jsx-no-useless-fragment": "off",
-  "react/jsx-no-undef": "off",
-  "react/react-in-jsx-scope": "off",
-  "react/no-children-prop": "off",
-  "react/no-danger": "off",
-  "react/no-direct-mutation-state": "off",
-  "react/no-find-dom-node": "off",
-  "react/no-render-return-value": "off",
-  "react/no-string-refs": "off",
-  "react/no-unescaped-entities": "off",
-  "react/no-is-mounted": "off",
-  "react/no-unknown-property": "off",
-  "react/require-render-return": "off",
-  "react/void-dom-elements-no-children": "off"
-}
-
-const reactPerfRules = {
-  "react-perf/jsx-no-jsx-as-prop": "off",
-  "react-perf/jsx-no-new-array-as-prop": "off",
-  "react-perf/jsx-no-new-function-as-prop": "off",
-  "react-perf/jsx-no-new-object-as-prop": "off"
-}
-
-const importRules = {
-  "import/default": "off",
-  "import/export": "off",
-  "import/named": "off",
-  "import/namespace": "off",
-  "import/no-amd": "off",
-  "import/no-cycle": "off",
-  "import/no-deprecated": "off",
-  "import/no-named-as-default": "off",
-  "import/no-named-as-default-member": "off",
-  "import/no-self-import": "off",
-  "import/no-unused-modules": "off",
-  "import/no-duplicates": "off",
-  "import/no-default-export": "off"
-}
-
-const jsxA11yRules = {
-  "jsx-a11y/alt-text": "off",
-  "jsx-a11y/anchor-has-content": "off",
-  "jsx-a11y/anchor-is-valid": "off",
-  "jsx-a11y/aria-activedescendant-has-tabindex": "off",
-  "jsx-a11y/aria-props": "off",
-  "jsx-a11y/aria-unsupported-elements": "off",
-  "jsx-a11y/click-events-have-key-events": "off",
-  "jsx-a11y/heading-has-content": "off",
-  "jsx-a11y/html-has-lang": "off",
-  "jsx-a11y/lang": "off",
-  "jsx-a11y/iframe-has-title": "off",
-  "jsx-a11y/img-redundant-alt": "off",
-  "jsx-a11y/media-has-caption": "off",
-  "jsx-a11y/mouse-events-have-key-events": "off",
-  "jsx-a11y/no-access-key": "off",
-  "jsx-a11y/no-aria-hidden-on-focusable": "off",
-  "jsx-a11y/no-autofocus": "off",
-  "jsx-a11y/no-redundant-roles": "off",
-  "jsx-a11y/prefer-tag-over-role": "off",
-  "jsx-a11y/role-has-required-aria-props": "off",
-  "jsx-a11y/scope": "off",
-  "jsx-a11y/tabindex-no-positive": "off",
-  "jsx-a11y/aria-role": "off",
-  "jsx-a11y/no-distracting-elements": "off",
-  "jsx-a11y/role-supports-aria-props": "off",
-  "jsx-a11y/autocomplete-valid": "off"
-}
-
-const nextjsRules = {
-  "nextjs/google-font-display": "off",
-  "nextjs/google-font-preconnect": "off",
-  "nextjs/inline-script-id": "off",
-  "nextjs/next-script-for-ga": "off",
-  "nextjs/no-assign-module-variable": "off",
-  "nextjs/no-async-client-component": "off",
-  "nextjs/no-css-tags": "off",
-  "nextjs/no-head-element": "off",
-  "nextjs/no-head-import-in-document": "off",
-  "nextjs/no-img-element": "off",
-  "nextjs/no-script-component-in-head": "off",
-  "nextjs/no-sync-scripts": "off",
-  "nextjs/no-title-in-document-head": "off",
-  "nextjs/no-typos": "off",
-  "nextjs/no-document-import-in-page": "off",
-  "nextjs/no-unwanted-polyfillio": "off",
-  "nextjs/no-before-interactive-script-outside-document": "off"
-}
-
-const jsdocRules = {
-  "jsdoc/check-access": "off",
-  "jsdoc/check-property-names": "off",
-  "jsdoc/empty-tags": "off",
-  "jsdoc/require-property": "off",
-  "jsdoc/require-property-type": "off",
-  "jsdoc/require-property-name": "off",
-  "jsdoc/require-property-description": "off"
-}
-
-const treeShakingRules = {
-  "tree-shaking/no-side-effects-in-initialization": "off"
-}
+  "unicorn/throw-new-error": "off",
+};
 
 module.exports = {
   eslintRules,
-  typescriptRules,
-  jestRules,
-  unicornRules,
-  reactRules,
-  reactPerfRules,
   importRules,
+  jestRules,
+  jsdocRules,
   jsxA11yRules,
   nextjsRules,
-  jsdocRules,
-  treeShakingRules
-}
+  reactRules,
+  reactPerfRules,
+  treeShakingRules,
+  typescriptRules,
+  unicornRules,
+};

@@ -1,4 +1,4 @@
-import * as ruleMaps from "./rules.js";
+import * as ruleMaps from "./rules-by-scope.js";
 
 // merge objects into one array
 const rules = Object.values(ruleMaps).reduce(

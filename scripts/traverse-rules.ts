@@ -7,49 +7,81 @@ import {
   TARGET_DIRECTORY,
 } from "./constants.js";
 
-interface ResultMap {
-  [key: string]: string[];
-}
-
 // Recursive function to read files in a directory, this currently assumes that the directory
 // structure is semi-consistent within the oxc_linter crate
 export async function readFilesRecursively(
   directory: string,
-  successResultMap: ResultMap,
-  failureResultMap: ResultMap,
+  successResultArray: Rule[],
+  failureResultArray: Rule[],
 ): Promise<void> {
   const entries = await fs.promises.readdir(directory, { withFileTypes: true });
+
+  // Check if the current directory contains a 'mod.rs' file
+  // eslint-disable-next-line unicorn/prevent-abbreviations
+  const containsModRs = entries.some(
+    (entry) => entry.isFile() && entry.name === "mod.rs",
+  );
 
   for (const entry of entries) {
     const entryPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
-      await readFilesRecursively(entryPath, successResultMap, failureResultMap); // Recursive call for directories
-    } else if (entry.isFile()) {
+      await readFilesRecursively(
+        entryPath,
+        successResultArray,
+        failureResultArray,
+      ); // Recursive call for directories
+    } else if (entry.isFile() && (!containsModRs || entry.name === "mod.rs")) {
       await processFile(
         entryPath,
         directory,
-        successResultMap,
-        failureResultMap,
+        successResultArray,
+        failureResultArray,
       ); // Process each file
     }
   }
+}
+
+export interface Rule {
+  value: string;
+  scope: string;
+  category: string;
+  error?: string;
 }
 
 // Function to process each file and extract the desired word
 async function processFile(
   filePath: string,
   currentDirectory: string,
-  successResultMap: ResultMap,
-  failureResultMap: ResultMap,
+  successResultArray: Rule[],
+  failureResultArray: Rule[],
 ): Promise<void> {
   const content = await fs.promises.readFile(filePath, "utf8");
 
-  // find the correct macro block where `);' is the end of the block
-  // ensure that the `);` is on its own line, with no characters before it
-  const blockRegex = /declare_oxc_lint!\(([\S\s]*?)^\s*\);/gm;
+  // find the correct macro block where `);` or `}` is the end of the block
+  // ensure that the `);` or `}` is on its own line, with no characters before it
+  const blockRegex =
+    /declare_oxc_lint!\s*(\(([\S\s]*?)^\s*\)\s*;?|\s*{([\S\s]*?)^\s*}\s)/gm;
+
   let match = blockRegex.exec(content);
+
+  // 'ok' way to get the scope, depends on the directory structure
+  const scope = getFolderNameUnderRules(filePath);
+  // when the file is called `mod.rs` we want to use the parent directory name as the rule name
+  // Note that this is fairly brittle, as relying on the directory structure can be risky
+  let effectiveRuleName = `${prefixScope(scope)}${getFileNameWithoutExtension(filePath, currentDirectory)}`;
+  effectiveRuleName = effectiveRuleName.replaceAll("_", "-");
+
+  if (match === null) {
+    failureResultArray.push({
+      value: effectiveRuleName,
+      scope: scope,
+      category: "unknown",
+      error: "No match block for `declare_oxc_lint`",
+    });
+  }
+
   while (match !== null) {
-    const block = match[1];
+    const block = match[2] ? match[2] : match[3];
 
     // Remove comments to prevent them from affecting the regex
     const cleanBlock = block.replace(/\/\/.*$|\/\*[\S\s]*?\*\//gm, "").trim();
@@ -59,31 +91,23 @@ async function processFile(
     const keywordRegex = /,\s*(\w+)\s*,?\s*$/;
     const keywordMatch = keywordRegex.exec(cleanBlock);
 
-    // 'ok' way to get the scope, depends on the directory structure
-    const scope = getFolderNameUnderRules(filePath);
-
     if (ignoreScope.has(scope)) {
       break;
     }
 
-    // when the file is called `mod.rs` we want to use the parent directory name as the rule name
-    // Note that this is fairly brittle, as relying on the directory structure can be risky
-    let effectiveRuleName = `${prefixScope(scope)}${getFileNameWithoutExtension(filePath, currentDirectory)}`;
-    effectiveRuleName = effectiveRuleName.replaceAll("_", "-");
-
     if (keywordMatch) {
-      const word = keywordMatch[1]; // Capture the last keyword, trimming any spaces
-      if (!successResultMap[word]) {
-        successResultMap[word] = [];
-      }
-
-      // Add the file path to the array for the found word
-      successResultMap[word].push(effectiveRuleName);
+      successResultArray.push({
+        value: effectiveRuleName,
+        scope: scope,
+        category: keywordMatch[1],
+      });
     } else {
-      if (!failureResultMap.unknown) {
-        failureResultMap.unknown = [];
-      }
-      failureResultMap.unknown.push(effectiveRuleName);
+      failureResultArray.push({
+        value: effectiveRuleName,
+        scope: `unknown: ${scope}`,
+        category: "unknown",
+        error: "Could not extract keyword from macro block",
+      });
     }
 
     match = blockRegex.exec(content); // Update match for the next iteration
@@ -117,9 +141,12 @@ export function getFileNameWithoutExtension(
     : path.basename(filePath, path.extname(filePath));
 }
 
-export async function traverseRules() {
-  const successResultMap: ResultMap = {};
-  const failureResultMap: ResultMap = {};
+export async function traverseRules(): Promise<{
+  successResultArray: Rule[];
+  failureResultArray: Rule[];
+}> {
+  const successResultArray: Rule[] = [];
+  const failureResultArray: Rule[] = [];
   const startDirectory = path.join(
     TARGET_DIRECTORY,
     SPARSE_CLONE_DIRECTORY,
@@ -128,14 +155,13 @@ export async function traverseRules() {
 
   await readFilesRecursively(
     startDirectory,
-    successResultMap,
-    failureResultMap,
+    successResultArray,
+    failureResultArray,
   );
 
-  if (Object.keys(failureResultMap).length > 0) {
-    console.log("Failure Result Map:");
-    console.log(failureResultMap);
-  }
-}
+  console.log(
+    `\n>> Parsed ${successResultArray.length} rules encountered ${failureResultArray.length} failures\n`,
+  );
 
-await traverseRules();
+  return { successResultArray, failureResultArray };
+}
