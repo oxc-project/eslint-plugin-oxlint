@@ -1,19 +1,17 @@
-import * as ruleMaps from "./rules-by-scope.js";
-
-// merge objects into one array
-const rules = Object.values(ruleMaps).reduce(
-  (accumulator, object) => Object.assign(accumulator, object),
-  {},
-);
+import * as ruleMapsByScope from "./rules-by-scope.js";
+import * as ruleMapsByCategory from "./rules-by-scope.js";
+import { createFlatRulesConfig } from "./utils.js";
 
 export default {
   configs: {
     recommended: {
       plugins: ["oxlint"],
-      rules,
+      rules: ruleMapsByCategory.correctnessRules,
     },
     "flat/recommended": {
-      rules,
+      rules: ruleMapsByCategory.correctnessRules,
     },
+    ...createFlatRulesConfig(ruleMapsByScope),
+    ...createFlatRulesConfig(ruleMapsByCategory),
   },
 };

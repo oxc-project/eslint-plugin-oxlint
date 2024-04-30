@@ -1,19 +1,20 @@
-const ruleMaps = require("./rules-by-scope.cjs");
+/* eslint-disable @typescript-eslint/no-var-requires,no-undef */
+const ruleMapsByScope = require("./rules-by-scope.cjs");
+const ruleMapsByCategory = require("./rules-by-category.cjs");
+const { createFlatRulesConfig } = require("./utils.cjs");
 
-// merge objects into one array
-const rules = Object.values(ruleMaps).reduce(
-  (accumulator, object) => Object.assign(accumulator, object),
-  {},
-);
-
-module.exports = {
+const config = {
   configs: {
     recommended: {
       plugins: ["oxlint"],
-      rules,
+      rules: ruleMapsByCategory.correctnessRules,
     },
     "flat/recommended": {
-      rules,
+      rules: ruleMapsByCategory.correctnessRules,
     },
+    ...createFlatRulesConfig(ruleMapsByScope),
+    ...createFlatRulesConfig(ruleMapsByCategory),
   },
 };
+
+module.exports = config;
