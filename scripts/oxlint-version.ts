@@ -1,13 +1,13 @@
-import shell from "shelljs";
-import { VERSION_PREFIX } from "./constants.js";
-import fs from "node:fs";
+import shell from 'shelljs';
+import { VERSION_PREFIX } from './constants.js';
+import fs from 'node:fs';
 
 export function getLatestVersionFromClonedRepo(
   targetDirectory: string,
-  versionPrefix = VERSION_PREFIX,
+  versionPrefix = VERSION_PREFIX
 ) {
   if (!fs.existsSync(targetDirectory)) {
-    return "";
+    return '';
   }
 
   shell.cd(targetDirectory);
@@ -17,18 +17,22 @@ export function getLatestVersionFromClonedRepo(
       `git describe --tags  --match='${versionPrefix}*' $(git rev-list --tags)`,
       {
         silent: true,
-      },
+      }
     )
     .stdout.trim()
-    .split("\n");
+    .split('\n');
 
-  const latestVersion = oxlintTags
-    .slice(1)
-    .reduce((latest: string, current: string) => {
-      const latestNumber = Number.parseInt(latest.replace(versionPrefix, ""));
-      const currentNumber = Number.parseInt(current.replace(versionPrefix, ""));
-      return currentNumber > latestNumber ? current : latest;
-    }, oxlintTags[0]);
+  let latestVersion = oxlintTags[0];
+  for (let index = 1; index < oxlintTags.length; index++) {
+    const current = oxlintTags[index];
+    const latestNumber = Number.parseInt(
+      latestVersion.replace(versionPrefix, '')
+    );
+    const currentNumber = Number.parseInt(current.replace(versionPrefix, ''));
+    if (currentNumber > latestNumber) {
+      latestVersion = current;
+    }
+  }
 
   return latestVersion;
 }

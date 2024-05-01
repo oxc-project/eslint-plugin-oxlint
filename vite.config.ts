@@ -1,0 +1,29 @@
+import { defineConfig } from 'vite';
+import path from 'node:path';
+import dts from 'vite-plugin-dts';
+
+export default defineConfig({
+  build: {
+    lib: {
+      entry: [path.resolve(import.meta.dirname, 'src/index.ts')],
+      fileName: (format, entryName) => {
+        return `${entryName}.${format === 'es' ? 'mjs' : 'cjs'}`;
+      },
+      name: 'eslint-plugin-oxlint',
+      formats: ['cjs', 'es'],
+    },
+    rollupOptions: {
+      external: (id: string) => !id.startsWith('.') && !path.isAbsolute(id),
+      output: {
+        preserveModules: true,
+      },
+    },
+    outDir: 'lib',
+    minify: false,
+  },
+  plugins: [
+    dts({
+      include: 'src/**',
+    }),
+  ],
+});

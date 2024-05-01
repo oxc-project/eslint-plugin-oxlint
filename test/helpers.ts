@@ -1,8 +1,8 @@
-import type { ESLint } from "eslint";
+import type { ESLint } from 'eslint';
 
 export const ESLintTestConfig: ESLint.Options = {
   useEslintrc: false,
   baseConfig: {
-    extends: ["plugin:oxlint/recommended"],
+    extends: ['plugin:oxlint/all'],
   },
 };
