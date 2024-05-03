@@ -3,7 +3,7 @@
   "version": "0.2.9",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
-  "packageManager": "pnpm@8.13.1",
+  "packageManager": "pnpm@9.0.6",
   "exports": {
     ".": {
       "import": "./lib/index.mjs",
@@ -32,7 +32,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "generate": "tsx ./scripts/generate-rules.ts",
+    "generate": "tsx ./scripts/generate.ts",
     "clone": "tsx ./scripts/sparse-clone.ts",
     "build": "vite build",
     "lint": "npx oxlint && npx eslint",
@@ -56,11 +56,13 @@
     "@typescript-eslint/parser": "^6.16.0",
     "@vitest/coverage-v8": "^1.5.2",
     "bumpp": "^9.2.1",
+    "dedent": "^1.5.3",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-unicorn": "^52.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.0",
+    "memfs": "^4.9.2",
     "oxlint": "^0.3.0",
     "prettier": "^3.2.4",
     "shelljs": "^0.8.5",

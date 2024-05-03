@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import { promises } from 'node:fs';
 import path from 'node:path';
 import {
   ignoreScope,
@@ -15,7 +15,7 @@ export async function readFilesRecursively(
   skippedResultArray: Rule[],
   failureResultArray: Rule[]
 ): Promise<void> {
-  const entries = await fs.promises.readdir(directory, { withFileTypes: true });
+  const entries = await promises.readdir(directory, { withFileTypes: true });
 
   // Check if the current directory contains a 'mod.rs' file
   // eslint-disable-next-line unicorn/prevent-abbreviations
@@ -59,7 +59,7 @@ async function processFile(
   skippedResultArray: Rule[],
   failureResultArray: Rule[]
 ): Promise<void> {
-  const content = await fs.promises.readFile(filePath, 'utf8');
+  const content = await promises.readFile(filePath, 'utf8');
 
   // find the correct macro block where `);` or `}` is the end of the block
   // ensure that the `);` or `}` is on its own line, with no characters before it
@@ -70,11 +70,23 @@ async function processFile(
 
   // 'ok' way to get the scope, depends on the directory structure
   const scope = getFolderNameUnderRules(filePath);
+  const shouldIgnoreRule = ignoreScope.has(scope);
 
   // when the file is called `mod.rs` we want to use the parent directory name as the rule name
   // Note that this is fairly brittle, as relying on the directory structure can be risky
   let effectiveRuleName = `${prefixScope(scope)}${getFileNameWithoutExtension(filePath, currentDirectory)}`;
   effectiveRuleName = effectiveRuleName.replace(/_/g, '-');
+
+  // add the rule to the skipped array and continue to see if there's a match regardless
+  if (shouldIgnoreRule) {
+    skippedResultArray.push({
+      value: effectiveRuleName,
+      scope: scope,
+      category: 'unknown',
+    });
+
+    return;
+  }
 
   if (match === null) {
     failureResultArray.push({
@@ -95,16 +107,6 @@ async function processFile(
     // since trailing commas are optional in Rust and the last keyword may not have one
     const keywordRegex = /,\s*(\w+)\s*,?\s*$/;
     const keywordMatch = keywordRegex.exec(cleanBlock);
-
-    if (ignoreScope.has(scope)) {
-      skippedResultArray.push({
-        value: effectiveRuleName,
-        scope: scope,
-        category: keywordMatch ? keywordMatch[1] : 'unknown',
-      });
-
-      break;
-    }
 
     if (keywordMatch) {
       successResultArray.push({
@@ -175,7 +177,7 @@ export async function traverseRules(): Promise<{
   );
 
   console.log(
-    `\n>> Parsed ${successResultArray.length} rules, skipped ${skippedResultArray.length} and encountered ${failureResultArray.length} failures\n`
+    `>> Parsed ${successResultArray.length} rules, skipped ${skippedResultArray.length} and encountered ${failureResultArray.length} failures\n`
   );
 
   return { successResultArray, skippedResultArray, failureResultArray };

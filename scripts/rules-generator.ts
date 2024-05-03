@@ -2,23 +2,10 @@ import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { getLatestVersionFromClonedRepo } from './oxlint-version.js';
 import { TARGET_DIRECTORY, VERSION_PREFIX } from './constants.js';
-import { type Rule, traverseRules } from './traverse-rules.js';
+import type { Rule } from './traverse-rules.js';
 import prettier from 'prettier';
 
 const __dirname = new URL('.', import.meta.url).pathname;
-
-const oxlintVersion = getLatestVersionFromClonedRepo(
-  TARGET_DIRECTORY,
-  VERSION_PREFIX
-);
-
-if (!oxlintVersion) {
-  throw new Error(
-    'Failed to get the latest version of oxlint, did you forget to run `pnpm clone`?'
-  );
-}
-
-console.log(`Generating rules for ${oxlintVersion}`);
 
 export enum RulesGrouping {
   CATEGORY = 'category',
@@ -27,7 +14,7 @@ export enum RulesGrouping {
 
 export type ResultMap = Map<string, string[]>;
 
-class RulesGenerator {
+export class RulesGenerator {
   private rulesGrouping: RulesGrouping;
   private rulesArray: Rule[];
   constructor(
@@ -58,6 +45,21 @@ class RulesGenerator {
   }
 
   public async generateRules() {
+    const oxlintVersion = getLatestVersionFromClonedRepo(
+      TARGET_DIRECTORY,
+      VERSION_PREFIX
+    );
+
+    if (!oxlintVersion) {
+      throw new Error(
+        'Failed to get the latest version of oxlint, did you forget to run `pnpm clone`?'
+      );
+    }
+
+    console.log(
+      `Generating rules for ${oxlintVersion}, grouped by ${this.rulesGrouping}`
+    );
+
     const rulesGrouping = this.rulesGrouping;
     const rulesArray = this.rulesArray;
 
@@ -106,18 +108,3 @@ class RulesGenerator {
     );
   }
 }
-
-const { successResultArray, failureResultArray } = await traverseRules();
-
-if (failureResultArray.length > 0) {
-  throw new Error(
-    `Failed to generate rules for the following rules ${failureResultArray}`
-  );
-}
-
-const generator = new RulesGenerator(successResultArray);
-
-generator.setRulesGrouping(RulesGrouping.SCOPE);
-generator.generateRules();
-generator.setRulesGrouping(RulesGrouping.CATEGORY);
-generator.generateRules();
