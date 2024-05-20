@@ -13,7 +13,7 @@
     {
       "groupName": "npm packages",
       "matchManagers": ["npm"],
-      "excludeDepNames": ["oxlint"]
+      "excludeDepNames": ["oxlint", "eslint"]
     },
     {
       "groupName": "oxlint",
