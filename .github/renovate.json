@@ -5,12 +5,12 @@
     {
       "groupName": "npm packages",
       "matchManagers": ["npm"],
-      "excludePackageNames": ["oxlint"]
+      "excludeDepNames": ["oxlint"]
     },
     {
       "groupName": "oxlint",
       "matchManagers": ["npm"],
-      "matchPackageNames": ["oxlint"]
+      "matchDepNames": ["oxlint"]
     }
   ]
 }
