@@ -6,16 +6,22 @@
   "packageManager": "pnpm@9.1.1",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs",
-      "default": "./index.js",
-      "types": "./index.d.ts"
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs",
+      "default": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
     },
-    "./rules": {
-      "import": "./rules.js",
-      "require": "./rules.cjs",
-      "default": "./rules.js",
-      "types": "./rules.d.ts"
+    "./rules-by-category": {
+      "import": "./lib/rules-by-category.mjs",
+      "require": "./lib/rules-by-category.cjs",
+      "default": "./lib/rules-by-category.mjs",
+      "types": "./lib/rules-by-category.d.ts"
+    },
+    "./rules-by-scope": {
+      "import": "./lib/rules-by-scope.mjs",
+      "require": "./lib/rules-by-scope.cjs",
+      "default": "./lib/rules-by-scope.mjs",
+      "types": "./lib/rules-by-scope.d.ts"
     }
   },
   "author": "Dunqing <dengqing0821@gmail.com>",
@@ -26,12 +32,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "generate": "tsx ./scripts/generate-rules.ts",
+    "generate": "tsx ./scripts/generate.ts",
+    "clone": "tsx ./scripts/sparse-clone.ts",
+    "build": "vite build",
     "lint": "npx oxlint && npx eslint",
     "format": "npx prettier --write .",
     "release": "bumpp package.json",
     "prepare": "husky",
-    "test": "vitest run"
+    "test": "vitest --reporter=verbose"
   },
   "keywords": [
     "oxc",
@@ -43,24 +51,32 @@
     "@eslint/eslintrc": "^3.0.0",
     "@types/eslint": "^8.56.5",
     "@types/node": "^20.12.5",
+    "@types/shelljs": "^0.8.15",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "@vitest/coverage-v8": "^1.5.0",
-    "axios": "^1.6.3",
+    "@vitest/coverage-v8": "^1.5.2",
     "bumpp": "^9.2.1",
-    "eslint": "8",
+    "dedent": "^1.5.3",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-unicorn": "^53.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.0",
+    "memfs": "^4.9.2",
     "oxlint": "^0.3.0",
     "prettier": "^3.2.4",
+    "shelljs": "^0.8.5",
     "tsx": "^4.7.2",
     "typescript": "^5.4.4",
-    "vitest": "^1.5.0"
+    "vite": "^5.2.10",
+    "vite-plugin-dts": "^3.9.0",
+    "vitest": "^1.5.2"
   },
   "lint-staged": {
     "*.{js,cjs,ts}": "eslint",
     "*": "prettier --ignore-unknown --write"
+  },
+  "dependencies": {
+    "scule": "^1.3.0"
   }
 }

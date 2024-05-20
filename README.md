@@ -23,10 +23,10 @@ This plugin is optimized for flat config usage (eslint >= 9.0). See [here](https
 
 ```js
 // eslint.config.js
-import oxlint from "eslint-plugin-oxlint";
+import oxlint from 'eslint-plugin-oxlint';
 export default [
   ...// other plugins
-  oxlint.configs["flat/recommended"], // oxlint should be the last one
+  oxlint.configs['flat/recommended'], // oxlint should be the last one
 ];
 ```
 
@@ -57,9 +57,65 @@ And then you can add the following script to your `package.json`:
 }
 ```
 
+## All Configs
+
+```js
+  configs: {
+    // recmmended only contains the `correctness` category
+    recommended: { plugins: [Array], rules: [Object] },
+    'flat/recommended': { rules: [Object] },
+
+    // all rules available
+    all: { plugins: [Array], rules: [Object] },
+    'flat/all': { rules: [Object] },
+
+    // turn eslint rules off by plugin
+    'flat/eslint': { rules: [Object] },
+    'flat/import': { rules: [Object] },
+    'flat/jest': { rules: [Object] },
+    'flat/jsdoc': { rules: [Object] },
+    'flat/jsx-a11y': { rules: [Object] },
+    'flat/nextjs': { rules: [Object] },
+    'flat/react': { rules: [Object] },
+    'flat/react-perf': { rules: [Object] },
+    'flat/tree-shaking': { rules: [Object] },
+    'flat/typescript': { rules: [Object] },
+    'flat/unicorn': { rules: [Object] },
+
+    // turn eslint rules off by oxlint category
+    'flat/pedantic': { rules: [Object] },
+    'flat/nursery': { rules: [Object] },
+    'flat/style': { rules: [Object] },
+    'flat/correctness': { rules: [Object] },
+    'flat/restriction': { rules: [Object] },
+    'flat/suspicious': { rules: [Object] }
+  }
+```
+
 ## VSCode Support
 
 You need to install both the [oxc](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode) and [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extensions
+
+## Contributing
+
+sparse clone the oxlint repository to have a local copy
+
+```shell
+pnpm clone
+```
+
+generates the rules from the sparse cloned Rust library, only for the latest version,
+new rules that haven't been released will not be included.
+
+```shell
+pnpm generate
+```
+
+build cjs and esm versions of the library
+
+```shell
+pnpm build
+```
 
 ## License
 

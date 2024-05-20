@@ -5,7 +5,7 @@ on:
   pull_request:
     types: [opened, synchronize]
     branches:
-      - "renovate/oxlint-**"
+      - 'renovate/oxlint-**'
     paths:
       - package.json
 
@@ -30,7 +30,7 @@ jobs:
         with:
           node-version-file: .node-version
           cache: pnpm
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: pnpm i
