@@ -44,7 +44,7 @@ export class RulesGenerator {
     return map;
   }
 
-  public async generateRules() {
+  public async generateRulesCode() {
     const oxlintVersion = getLatestVersionFromClonedRepo(
       TARGET_DIRECTORY,
       VERSION_PREFIX
@@ -97,13 +97,16 @@ export class RulesGenerator {
       config: path.resolve(__dirname, '..', 'prettier.config.js'),
     });
 
-    const output = await prettier.format(code, {
+    return await prettier.format(code, {
       ...prettierConfig,
       parser: 'typescript',
     });
+  }
 
+  public async generateRules() {
+    const output = await this.generateRulesCode();
     writeFileSync(
-      path.resolve(__dirname, '..', `src/rules-by-${rulesGrouping}.ts`),
+      path.resolve(__dirname, '..', `src/rules-by-${this.rulesGrouping}.ts`),
       output
     );
   }

@@ -74,11 +74,11 @@ And then you can add the following script to your `package.json`:
     'flat/import': { rules: [Object] },
     'flat/jest': { rules: [Object] },
     'flat/jsdoc': { rules: [Object] },
-    'flat/jsxA11y': { rules: [Object] },
+    'flat/jsx-a11y': { rules: [Object] },
     'flat/nextjs': { rules: [Object] },
     'flat/react': { rules: [Object] },
-    'flat/reactPerf': { rules: [Object] },
-    'flat/treeShaking': { rules: [Object] },
+    'flat/react-perf': { rules: [Object] },
+    'flat/tree-shaking': { rules: [Object] },
     'flat/typescript': { rules: [Object] },
     'flat/unicorn': { rules: [Object] },
 
@@ -98,7 +98,7 @@ You need to install both the [oxc](https://marketplace.visualstudio.com/items?it
 
 ## Contributing
 
-sparse clone the oxclint repository to have a local copy
+sparse clone the oxlint repository to have a local copy
 
 ```shell
 pnpm clone

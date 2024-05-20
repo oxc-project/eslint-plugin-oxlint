@@ -39,7 +39,7 @@
     "format": "npx prettier --write .",
     "release": "bumpp package.json",
     "prepare": "husky",
-    "test": "vitest run --reporter=verbose"
+    "test": "vitest --reporter=verbose"
   },
   "keywords": [
     "oxc",
@@ -75,5 +75,8 @@
   "lint-staged": {
     "*.{js,cjs,ts}": "eslint",
     "*": "prettier --ignore-unknown --write"
+  },
+  "dependencies": {
+    "scule": "^1.3.0"
   }
 }
