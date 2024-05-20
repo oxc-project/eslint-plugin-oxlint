@@ -1,0 +1,46 @@
+name: Bump oxlint
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - 'renovate/oxlint-**'
+    paths:
+      - package.json
+
+permissions:
+  pull-requests: write
+  contents: write
+
+env:
+  OXLINT_PACKAGE_NAME: oxlint
+
+jobs:
+  bump-oxlint-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: taiki-e/checkout-action@v1
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Bump oxlint rules
+        run: |
+          # Generate rules from latest oxlint
+          pnpm run generate
+
+          # Update test snapshots
+          pnpm run test -u
+
+      - uses: stefanzweifel/git-auto-commit-action@v5

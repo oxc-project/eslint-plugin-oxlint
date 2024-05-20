@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automerge": true,
+  "packageRules": [
+    {
+      "groupName": "github-actions",
+      "matchManagers": ["github-actions"]
+    },
+    {
+      "groupName": "node",
+      "matchManagers": ["nodenv"]
+    },
+    {
+      "groupName": "npm packages",
+      "matchManagers": ["npm"],
+      "excludeDepNames": ["oxlint"]
+    },
+    {
+      "groupName": "oxlint",
+      "matchManagers": ["npm"],
+      "matchDepNames": ["oxlint"]
+    }
+  ]
+}
