@@ -3,6 +3,10 @@
   "automerge": true,
   "packageRules": [
     {
+      "groupName": "github-actions",
+      "matchManagers": ["github-actions"]
+    },
+    {
       "groupName": "npm packages",
       "matchManagers": ["npm"],
       "excludeDepNames": ["oxlint"]
