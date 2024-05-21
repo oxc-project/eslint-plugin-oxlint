@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.1.2",
   "exports": {
     ".": {
       "import": "./lib/index.mjs",
