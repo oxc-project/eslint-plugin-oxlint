@@ -22,9 +22,6 @@ jobs:
     steps:
       - uses: taiki-e/checkout-action@v1
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-
       - name: Set node
         uses: actions/setup-node@v4
         with:
@@ -32,14 +29,17 @@ jobs:
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
       - name: Install Dependencies
         run: pnpm i
 
       - name: Bump oxlint rules
         run: |
+          pnpm run clone
           # Generate rules from latest oxlint
           pnpm run generate
-
           # Update test snapshots
           pnpm run test -u
 
