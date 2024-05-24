@@ -22,15 +22,14 @@ jobs:
     steps:
       - uses: taiki-e/checkout-action@v1
 
+      - name: Install pnpm
+        run: corepack enable
+
       - name: Set node
         uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           cache: pnpm
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
 
       - name: Install Dependencies
         run: pnpm i
