@@ -20,7 +20,7 @@ jobs:
   bump-oxlint-rules:
     runs-on: ubuntu-latest
     steps:
-      - uses: taiki-e/checkout-action@v1
+      - uses: actions/checkout@v4 # must use actions/checkout for `git-auto-commit-action` to work
 
       - name: Install pnpm
         run: corepack enable
@@ -45,6 +45,3 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'bump oxlint'
-          commit_user_name: 'github-actions[bot]'
-          commit_user_email: '41898282+github-actions[bot]@users.noreply.github.com'
-          commit_author: Boshen
