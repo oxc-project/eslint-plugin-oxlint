@@ -1,11 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "automerge": true,
+  "extends": ["github>Boshen/renovate"],
   "packageRules": [
-    {
-      "groupName": "github-actions",
-      "matchManagers": ["github-actions"]
-    },
     {
       "groupName": "node",
       "matchManagers": ["nodenv"]
@@ -18,7 +14,8 @@
     {
       "groupName": "oxlint",
       "matchManagers": ["npm"],
-      "matchDepNames": ["oxlint"]
+      "matchDepNames": ["oxlint"],
+      "schedule": ["at any time"]
     }
   ]
 }
