@@ -59,7 +59,7 @@
     "dedent": "^1.5.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-unicorn": "^53.0.0",
+    "eslint-plugin-unicorn": "^54.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
     "memfs": "^4.9.2",
