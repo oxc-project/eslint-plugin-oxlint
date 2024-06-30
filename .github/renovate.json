@@ -3,10 +3,6 @@
   "extends": ["github>Boshen/renovate"],
   "packageRules": [
     {
-      "groupName": "node",
-      "matchManagers": ["nodenv"]
-    },
-    {
       "groupName": "npm packages",
       "matchManagers": ["npm"],
       "ignoreDeps": ["oxlint", "eslint"]
