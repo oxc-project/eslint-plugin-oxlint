@@ -1,13 +1,17 @@
 name: Bump oxlint
 
 on:
-  workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize]
+  push:
     branches:
-      - 'renovate/oxlint-**'
-    paths:
-      - package.json
+      - test-bump
+  workflow_dispatch:
+    inputs:
+      version:
+        required: false
+        type: string
+      issue-number:
+        required: false
+        type: string
 
 permissions:
   pull-requests: write
@@ -20,28 +24,35 @@ jobs:
   bump-oxlint-rules:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4 # must use actions/checkout for `git-auto-commit-action` to work
+      - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        run: corepack enable
+      - run: corepack enable
 
-      - name: Set node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           cache: pnpm
 
-      - name: Install Dependencies
-        run: pnpm i
-
       - name: Bump oxlint rules
         run: |
+          pnpm install
+          pnpm update oxlint
+          pnpm install
           pnpm run clone
           # Generate rules from latest oxlint
           pnpm run generate
           # Update test snapshots
           pnpm run test -u
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: peter-evans/create-pull-request@v6
         with:
-          commit_message: 'bump oxlint'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Release ${{ inputs.version }}
+          committer: Boshen <Boshen@users.noreply.github.com>
+          author: Boshen <Boshen@users.noreply.github.com>
+          branch: release
+          branch-suffix: timestamp
+          title: Release ${{ inputs.version }}
+          body: From https://github.com/oxc-project/oxc/pull/${{ inputs.issue-number }}
+          assignees: Boshen
+          base: main
