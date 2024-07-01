@@ -1,9 +1,6 @@
 name: Bump oxlint
 
 on:
-  push:
-    branches:
-      - test-bump
   workflow_dispatch:
     inputs:
       version:
@@ -13,15 +10,11 @@ on:
         required: false
         type: string
 
-permissions:
-  pull-requests: write
-  contents: write
-
 env:
   OXLINT_PACKAGE_NAME: oxlint
 
 jobs:
-  bump-oxlint-rules:
+  bump:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,10 +32,8 @@ jobs:
           pnpm update oxlint
           pnpm install
           pnpm run clone
-          # Generate rules from latest oxlint
-          pnpm run generate
-          # Update test snapshots
-          pnpm run test -u
+          pnpm run generate # Generate rules from latest oxlint
+          pnpm run test -u # Update test snapshots
 
       - uses: peter-evans/create-pull-request@v6
         with:
