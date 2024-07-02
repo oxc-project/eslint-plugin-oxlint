@@ -73,13 +73,13 @@ const nurseryRules = {
   'getter-return': 'off',
   'no-undef': 'off',
   'no-unreachable': 'off',
-  'no-useless-constructor': 'off',
   'import/export': 'off',
   'import/no-deprecated': 'off',
   'import/no-unused-modules': 'off',
   'react/require-render-return': 'off',
   'react/rules-of-hooks': 'off',
   'tree-shaking/no-side-effects-in-initialization': 'off',
+  '@typescript-eslint/consistent-type-imports': 'off',
 };
 
 const restrictionRules = {
@@ -108,6 +108,7 @@ const restrictionRules = {
   'react/no-danger': 'off',
   'react/no-unknown-property': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
+  '@typescript-eslint/no-dynamic-delete': 'off',
   '@typescript-eslint/no-explicit-any': 'off',
   '@typescript-eslint/no-import-type-side-effects': 'off',
   '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'off',
@@ -171,6 +172,7 @@ const styleRules = {
   'jest/prefer-todo': 'off',
   'jest/require-hook': 'off',
   'jest/require-top-level-describe': 'off',
+  'react/no-set-state': 'off',
   'react/prefer-es6-class': 'off',
   '@typescript-eslint/adjacent-overload-signatures': 'off',
   '@typescript-eslint/array-type': 'off',
@@ -366,6 +368,7 @@ const perfRules = {
 const suspiciousRules = {
   'no-new': 'off',
   'no-useless-concat': 'off',
+  'no-useless-constructor': 'off',
   'import/no-duplicates': 'off',
   'import/no-named-as-default': 'off',
   'import/no-named-as-default-member': 'off',
