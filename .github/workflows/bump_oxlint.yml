@@ -6,9 +6,6 @@ on:
       version:
         required: false
         type: string
-      issue-number:
-        required: false
-        type: string
 
 env:
   OXLINT_PACKAGE_NAME: oxlint
@@ -44,6 +41,5 @@ jobs:
           branch: release
           branch-suffix: timestamp
           title: Release ${{ inputs.version }}
-          body: From https://github.com/oxc-project/oxc/pull/${{ inputs.issue-number }}
           assignees: Boshen
           base: main
