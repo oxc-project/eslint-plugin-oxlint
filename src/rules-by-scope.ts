@@ -53,6 +53,7 @@ const eslintRules = {
   'no-irregular-whitespace': 'off',
   'no-iterator': 'off',
   'no-loss-of-precision': 'off',
+  'no-multi-str': 'off',
   'no-new': 'off',
   'no-new-native-nonconstructor': 'off',
   'no-new-wrappers': 'off',
@@ -73,6 +74,7 @@ const eslintRules = {
   'no-ternary': 'off',
   'no-this-before-super': 'off',
   'no-undef': 'off',
+  'no-undefined': 'off',
   'no-unreachable': 'off',
   'no-unsafe-finally': 'off',
   'no-unsafe-negation': 'off',
@@ -116,6 +118,7 @@ const importRules = {
 };
 
 const jestRules = {
+  'jest/consistent-test-it': 'off',
   'jest/expect-expect': 'off',
   'jest/max-expects': 'off',
   'jest/max-nested-describe': 'off',
@@ -331,6 +334,7 @@ const unicornRules = {
   'unicorn/no-lonely-if': 'off',
   'unicorn/no-magic-array-flat-depth': 'off',
   'unicorn/no-negated-condition': 'off',
+  'unicorn/no-negation-in-equality-check': 'off',
   'unicorn/no-nested-ternary': 'off',
   'unicorn/no-new-array': 'off',
   'unicorn/no-new-buffer': 'off',
