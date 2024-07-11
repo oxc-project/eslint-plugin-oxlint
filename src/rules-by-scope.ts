@@ -148,6 +148,7 @@ const jestRules = {
   'jest/prefer-comparison-matcher': 'off',
   'jest/prefer-equality-matcher': 'off',
   'jest/prefer-expect-resolves': 'off',
+  'jest/prefer-hooks-in-order': 'off',
   'jest/prefer-hooks-on-top': 'off',
   'jest/prefer-jest-mocked': 'off',
   'jest/prefer-lowercase-title': 'off',
