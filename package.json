@@ -54,7 +54,7 @@
     "@types/shelljs": "^0.8.15",
     "@typescript-eslint/eslint-plugin": "^7.12.0",
     "@typescript-eslint/parser": "^7.12.0",
-    "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/coverage-v8": "^2.0.0",
     "bumpp": "^9.4.1",
     "dedent": "^1.5.3",
     "eslint": "^8.57.0",
@@ -70,7 +70,7 @@
     "typescript": "^5.4.5",
     "vite": "^5.2.13",
     "vite-plugin-dts": "^3.9.1",
-    "vitest": "^1.6.0"
+    "vitest": "^2.0.0"
   },
   "lint-staged": {
     "*.{js,cjs,ts}": "eslint",
