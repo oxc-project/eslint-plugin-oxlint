@@ -52,6 +52,7 @@ const eslintRules = {
   'no-inner-declarations': 'off',
   'no-irregular-whitespace': 'off',
   'no-iterator': 'off',
+  'no-label-var': 'off',
   'no-loss-of-precision': 'off',
   'no-multi-str': 'off',
   'no-new': 'off',
