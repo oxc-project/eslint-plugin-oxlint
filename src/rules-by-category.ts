@@ -135,6 +135,7 @@ const styleRules = {
   'guard-for-in': 'off',
   'max-params': 'off',
   'no-continue': 'off',
+  'no-label-var': 'off',
   'no-multi-str': 'off',
   'no-script-url': 'off',
   'no-template-curly-in-string': 'off',
