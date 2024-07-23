@@ -32,8 +32,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "generate": "tsx ./scripts/generate.ts",
-    "clone": "tsx ./scripts/sparse-clone.ts",
+    "generate": "node --import @oxc-node/core/register ./scripts/generate.ts",
+    "clone": "node --import @oxc-node/core/register ./scripts/sparse-clone.ts",
     "build": "vite build",
     "lint": "npx oxlint && npx eslint",
     "format": "npx prettier --write .",
@@ -49,6 +49,7 @@
   ],
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
+    "@oxc-node/core": "^0.0.11",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.2",
     "@types/shelljs": "^0.8.15",
@@ -66,7 +67,6 @@
     "oxlint": "^0.5.3",
     "prettier": "^3.3.1",
     "shelljs": "^0.8.5",
-    "tsx": "^4.15.1",
     "typescript": "^5.4.5",
     "vite": "^5.2.13",
     "vite-plugin-dts": "^3.9.1",
