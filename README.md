@@ -7,7 +7,7 @@ Turn off all rules already supported by `oxlint`. The rules are extracted from [
 
 ## What is oxlint?
 
-You can see https://oxc-project.github.io/blog/2023-12-12-announcing-oxlint.html
+You can see https://oxc.rs/blog/2023-12-12-announcing-oxlint.html
 
 ## Installation
 
