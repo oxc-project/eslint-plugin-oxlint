@@ -5,7 +5,7 @@ const { successResultArray, failureResultArray } = await traverseRules();
 
 if (failureResultArray.length > 0) {
   throw new Error(
-    `Failed to generate rules for the following rules ${failureResultArray}`
+    `Failed to generate rules for the following rules ${JSON.stringify(failureResultArray)}`
   );
 }
 
