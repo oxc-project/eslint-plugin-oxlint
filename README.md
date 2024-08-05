@@ -3,11 +3,11 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/oxc-project/eslint-plugin-oxlint/.github%2Fworkflows%2Ftest.yml?branch=main)
 ![NPM Version](https://img.shields.io/npm/v/eslint-plugin-oxlint) ![NPM Downloads](https://img.shields.io/npm/dm/eslint-plugin-oxlint)
 
-Turn off all rules already supported by `oxlint`. The rules are extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
+Turn off all rules already supported by `oxlint`. The rules are extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs).
 
 ## What is oxlint?
 
-You can see https://oxc.rs/blog/2023-12-12-announcing-oxlint.html
+See https://oxc.rs/blog/2023-12-12-announcing-oxlint.html
 
 ## Installation
 
@@ -19,7 +19,9 @@ pnpm add eslint-plugin-oxlint --D
 
 ### Flat config
 
-This plugin is optimized for flat config usage (eslint >= 9.0). See [here](https://eslint.org/docs/latest/use/configure/configuration-files-new) for more details. Use it like this:
+This plugin is optimized for flat config usage (eslint >= 9.0). See [here](https://eslint.org/docs/latest/use/configure/configuration-files-new) for more details.
+
+Example:
 
 ```js
 // eslint.config.js
