@@ -10,7 +10,7 @@
     {
       "groupName": "oxlint",
       "matchManagers": ["npm"],
-      "matchDepNames": ["oxlint"],
+      "matchPackageNames": ["oxlint"],
       "schedule": ["at any time"]
     }
   ]
