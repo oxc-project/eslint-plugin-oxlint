@@ -4,7 +4,7 @@ import { traverseRules } from './traverse-rules.js';
 const { successResultArray, failureResultArray } = await traverseRules();
 
 if (failureResultArray.length > 0) {
-  throw new Error(
+  console.error(
     `Failed to generate rules for the following rules ${JSON.stringify(failureResultArray)}`
   );
 }
