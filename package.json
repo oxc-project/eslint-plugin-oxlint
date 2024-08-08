@@ -24,6 +24,10 @@
       "types": "./lib/rules-by-scope.d.ts"
     }
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "author": "Dunqing <dengqing0821@gmail.com>",
   "homepage": "https://github.com/oxc-project/eslint-plugin-oxlint",
   "repository": {
