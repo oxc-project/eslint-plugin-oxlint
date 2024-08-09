@@ -6,22 +6,22 @@
   "packageManager": "pnpm@9.6.0",
   "exports": {
     ".": {
+      "types": "./lib/index.d.ts",
       "import": "./lib/index.mjs",
       "require": "./lib/index.cjs",
-      "default": "./lib/index.mjs",
-      "types": "./lib/index.d.ts"
+      "default": "./lib/index.mjs"
     },
     "./rules-by-category": {
+      "types": "./lib/rules-by-category.d.ts",
       "import": "./lib/rules-by-category.mjs",
       "require": "./lib/rules-by-category.cjs",
-      "default": "./lib/rules-by-category.mjs",
-      "types": "./lib/rules-by-category.d.ts"
+      "default": "./lib/rules-by-category.mjs"
     },
     "./rules-by-scope": {
+      "types": "./lib/rules-by-scope.d.ts",
       "import": "./lib/rules-by-scope.mjs",
       "require": "./lib/rules-by-scope.cjs",
-      "default": "./lib/rules-by-scope.mjs",
-      "types": "./lib/rules-by-scope.d.ts"
+      "default": "./lib/rules-by-scope.mjs"
     }
   },
   "files": [
