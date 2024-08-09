@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        required: false
+        required: true
         type: string
 
 env:
@@ -35,11 +35,11 @@ jobs:
       - uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Release ${{ inputs.version }}
+          commit-message: 'release: ${{ inputs.version }}'
           committer: Boshen <Boshen@users.noreply.github.com>
           author: Boshen <Boshen@users.noreply.github.com>
           branch: release
           branch-suffix: timestamp
-          title: Release ${{ inputs.version }}
+          title: 'release: ${{ inputs.version }}'
           assignees: Boshen
           base: main
