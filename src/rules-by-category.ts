@@ -7,7 +7,6 @@ const pedanticRules = {
   'no-array-constructor': 'off',
   'no-case-declarations': 'off',
   'no-constructor-return': 'off',
-  'no-fallthrough': 'off',
   'no-inner-declarations': 'off',
   'no-new-wrappers': 'off',
   'no-prototype-builtins': 'off',
@@ -41,19 +40,12 @@ const pedanticRules = {
   'unicorn/no-typeof-undefined': 'off',
   'unicorn/no-unreadable-iife': 'off',
   'unicorn/no-useless-switch-case': 'off',
-  'unicorn/prefer-array-flat': 'off',
-  'unicorn/prefer-array-some': 'off',
   'unicorn/prefer-blob-reading-methods': 'off',
-  'unicorn/prefer-date-now': 'off',
   'unicorn/prefer-dom-node-dataset': 'off',
   'unicorn/prefer-dom-node-remove': 'off',
   'unicorn/prefer-event-target': 'off',
   'unicorn/prefer-math-trunc': 'off',
-  'unicorn/prefer-native-coercion-functions': 'off',
-  'unicorn/prefer-regexp-test': 'off',
   'unicorn/prefer-string-replace-all': 'off',
-  'unicorn/prefer-string-slice': 'off',
-  'unicorn/prefer-type-error': 'off',
 };
 
 const nurseryRules = {
@@ -74,7 +66,6 @@ const restrictionRules = {
   'default-case': 'off',
   'no-bitwise': 'off',
   'no-console': 'off',
-  'no-empty': 'off',
   'no-empty-function': 'off',
   'no-eq-null': 'off',
   'no-eval': 'off',
@@ -84,7 +75,6 @@ const restrictionRules = {
   'no-restricted-globals': 'off',
   'no-undefined': 'off',
   'no-unsafe-optional-chaining': 'off',
-  'no-var': 'off',
   'no-void': 'off',
   'import/no-amd': 'off',
   'import/no-cycle': 'off',
@@ -110,7 +100,6 @@ const restrictionRules = {
   'unicorn/no-length-as-slice-end': 'off',
   'unicorn/no-magic-array-flat-depth': 'off',
   'unicorn/no-process-exit': 'off',
-  'unicorn/prefer-modern-math-apis': 'off',
   'unicorn/prefer-number-properties': 'off',
 };
 
@@ -162,11 +151,7 @@ const styleRules = {
   'unicorn/prefer-includes': 'off',
   'unicorn/prefer-logical-operator-over-ternary': 'off',
   'unicorn/prefer-modern-dom-apis': 'off',
-  'unicorn/prefer-optional-catch-binding': 'off',
   'unicorn/prefer-reflect-apply': 'off',
-  'unicorn/require-array-join-separator': 'off',
-  'unicorn/text-encoding-identifier-case': 'off',
-  'unicorn/throw-new-error': 'off',
 };
 
 const conditionalFixRules = {
@@ -196,8 +181,15 @@ const conditionalFixRules = {
   'unicorn/prefer-spread': 'off',
 };
 
-const correctnessRules = {
+const dangerousFixRules = {
   'for-direction': 'off',
+};
+
+const conditionalFixSuggestionRules = {
+  'func-names': 'off',
+};
+
+const correctnessRules = {
   'no-async-promise-executor': 'off',
   'no-caller': 'off',
   'no-class-assign': 'off',
@@ -216,7 +208,6 @@ const correctnessRules = {
   'no-empty-pattern': 'off',
   'no-empty-static-block': 'off',
   'no-ex-assign': 'off',
-  'no-extra-boolean-cast': 'off',
   'no-func-assign': 'off',
   'no-global-assign': 'off',
   'no-import-assign': 'off',
@@ -325,11 +316,6 @@ const correctnessRules = {
   'unicorn/no-new-array': 'off',
   'unicorn/no-thenable': 'off',
   'unicorn/no-useless-length-check': 'off',
-  'unicorn/prefer-set-size': 'off',
-};
-
-const pendingRules = {
-  'func-names': 'off',
 };
 
 const perfRules = {
@@ -394,6 +380,26 @@ const fixRules = {
   'vitest/no-import-node-test': 'off',
 };
 
+const pendingRules = {
+  'no-empty': 'off',
+  'no-extra-boolean-cast': 'off',
+  'no-fallthrough': 'off',
+  'no-var': 'off',
+  'unicorn/prefer-array-flat': 'off',
+  'unicorn/prefer-array-some': 'off',
+  'unicorn/prefer-date-now': 'off',
+  'unicorn/prefer-modern-math-apis': 'off',
+  'unicorn/prefer-native-coercion-functions': 'off',
+  'unicorn/prefer-optional-catch-binding': 'off',
+  'unicorn/prefer-regexp-test': 'off',
+  'unicorn/prefer-set-size': 'off',
+  'unicorn/prefer-string-slice': 'off',
+  'unicorn/prefer-type-error': 'off',
+  'unicorn/require-array-join-separator': 'off',
+  'unicorn/text-encoding-identifier-case': 'off',
+  'unicorn/throw-new-error': 'off',
+};
+
 const suspiciousRules = {
   'no-new': 'off',
   'no-useless-concat': 'off',
@@ -416,9 +422,11 @@ export {
   restrictionRules,
   styleRules,
   conditionalFixRules,
+  dangerousFixRules,
+  conditionalFixSuggestionRules,
   correctnessRules,
-  pendingRules,
   perfRules,
   fixRules,
+  pendingRules,
   suspiciousRules,
 };

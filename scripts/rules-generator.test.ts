@@ -29,6 +29,7 @@ suite('RulesGenerator', () => {
 
     // Create an instance of RulesGenerator
     const generator = new RulesGenerator(
+      '1.0.0',
       successResultArray,
       RulesGrouping.SCOPE
     );

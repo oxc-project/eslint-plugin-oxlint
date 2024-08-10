@@ -1,9 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { getLatestVersionFromClonedRepo } from './oxlint-version.js';
-import { TARGET_DIRECTORY, VERSION_PREFIX } from './constants.js';
 import type { Rule } from './traverse-rules.js';
-import prettier from 'prettier';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
@@ -15,14 +12,17 @@ export enum RulesGrouping {
 export type ResultMap = Map<string, string[]>;
 
 export class RulesGenerator {
+  private oxlintVersion: string;
   private rulesGrouping: RulesGrouping;
   private rulesArray: Rule[];
   constructor(
+    oxlintVersion: string,
     rulesArray: Rule[] = [],
     rulesGrouping: RulesGrouping = RulesGrouping.SCOPE
   ) {
-    this.rulesGrouping = rulesGrouping;
+    this.oxlintVersion = oxlintVersion;
     this.rulesArray = rulesArray;
+    this.rulesGrouping = rulesGrouping;
   }
 
   public setRulesGrouping(rulesGrouping: RulesGrouping) {
@@ -45,19 +45,8 @@ export class RulesGenerator {
   }
 
   public async generateRulesCode() {
-    const oxlintVersion = getLatestVersionFromClonedRepo(
-      TARGET_DIRECTORY,
-      VERSION_PREFIX
-    );
-
-    if (!oxlintVersion) {
-      throw new Error(
-        'Failed to get the latest version of oxlint, did you forget to run `pnpm clone`?'
-      );
-    }
-
     console.log(
-      `Generating rules for ${oxlintVersion}, grouped by ${this.rulesGrouping}`
+      `Generating rules for ${this.oxlintVersion}, grouped by ${this.rulesGrouping}`
     );
 
     const rulesGrouping = this.rulesGrouping;
@@ -93,14 +82,7 @@ export class RulesGenerator {
       .join(',\n');
     code += '\n}';
 
-    const prettierConfig = await prettier.resolveConfig('.', {
-      config: path.resolve(__dirname, '..', 'prettier.config.js'),
-    });
-
-    return await prettier.format(code, {
-      ...prettierConfig,
-      parser: 'typescript',
-    });
+    return code;
   }
 
   public async generateRules() {
