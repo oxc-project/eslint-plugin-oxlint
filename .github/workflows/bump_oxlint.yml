@@ -31,6 +31,7 @@ jobs:
           pnpm run clone
           pnpm run generate # Generate rules from latest oxlint
           pnpm run test -u # Update test snapshots
+          npm version ${{ inputs.version }} --no-git-tag-version
 
       - uses: peter-evans/create-pull-request@v6
         with:
