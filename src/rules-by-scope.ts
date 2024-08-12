@@ -248,7 +248,10 @@ const nextjsRules = {
 const promiseRules = {
   'promise/avoid-new': 'off',
   'promise/no-new-statics': 'off',
+  'promise/no-return-in-finally': 'off',
   'promise/param-names': 'off',
+  'promise/prefer-await-to-then': 'off',
+  'promise/valid-params': 'off',
 };
 
 const reactRules = {
@@ -417,6 +420,8 @@ const unicornRules = {
 
 const vitestRules = {
   'vitest/no-import-node-test': 'off',
+  'vitest/prefer-to-be-falsy': 'off',
+  'vitest/prefer-to-be-truthy': 'off',
 };
 
 export {

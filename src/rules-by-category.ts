@@ -57,6 +57,7 @@ const nurseryRules = {
   'import/export': 'off',
   'import/no-deprecated': 'off',
   'import/no-unused-modules': 'off',
+  'promise/no-return-in-finally': 'off',
   'react/require-render-return': 'off',
   'react/rules-of-hooks': 'off',
   'tree-shaking/no-side-effects-in-initialization': 'off',
@@ -67,7 +68,6 @@ const restrictionRules = {
   'no-bitwise': 'off',
   'no-console': 'off',
   'no-empty-function': 'off',
-  'no-eq-null': 'off',
   'no-eval': 'off',
   'no-iterator': 'off',
   'no-proto': 'off',
@@ -97,7 +97,6 @@ const restrictionRules = {
   'unicorn/no-anonymous-default-export': 'off',
   'unicorn/no-array-for-each': 'off',
   'unicorn/no-array-reduce': 'off',
-  'unicorn/no-length-as-slice-end': 'off',
   'unicorn/no-magic-array-flat-depth': 'off',
   'unicorn/no-process-exit': 'off',
   'unicorn/prefer-number-properties': 'off',
@@ -136,6 +135,7 @@ const styleRules = {
   'jest/require-hook': 'off',
   'jest/require-top-level-describe': 'off',
   'promise/param-names': 'off',
+  'promise/prefer-await-to-then': 'off',
   'react/jsx-curly-brace-presence': 'off',
   'react/no-set-state': 'off',
   'react/prefer-es6-class': 'off',
@@ -193,7 +193,6 @@ const correctnessRules = {
   'no-async-promise-executor': 'off',
   'no-caller': 'off',
   'no-class-assign': 'off',
-  'no-compare-neg-zero': 'off',
   'no-cond-assign': 'off',
   'no-const-assign': 'off',
   'no-constant-binary-expression': 'off',
@@ -264,7 +263,6 @@ const correctnessRules = {
   'jsx-a11y/media-has-caption': 'off',
   'jsx-a11y/mouse-events-have-key-events': 'off',
   'jsx-a11y/no-access-key': 'off',
-  'jsx-a11y/no-aria-hidden-on-focusable': 'off',
   'jsx-a11y/no-distracting-elements': 'off',
   'jsx-a11y/no-redundant-roles': 'off',
   'jsx-a11y/prefer-tag-over-role': 'off',
@@ -292,6 +290,7 @@ const correctnessRules = {
   'nextjs/no-title-in-document-head': 'off',
   'nextjs/no-typos': 'off',
   'nextjs/no-unwanted-polyfillio': 'off',
+  'promise/valid-params': 'off',
   'react/jsx-key': 'off',
   'react/jsx-no-duplicate-props': 'off',
   'react/jsx-no-target-blank': 'off',
@@ -326,6 +325,10 @@ const perfRules = {
   'react-perf/jsx-no-new-object-as-prop': 'off',
 };
 
+const conditionalSuggestionFixRules = {
+  'no-compare-neg-zero': 'off',
+};
+
 const fixRules = {
   'no-debugger': 'off',
   'no-div-regex': 'off',
@@ -348,6 +351,7 @@ const fixRules = {
   'jest/prefer-to-be': 'off',
   'jest/prefer-to-have-length': 'off',
   'jest/prefer-todo': 'off',
+  'jsx-a11y/no-aria-hidden-on-focusable': 'off',
   'jsx-a11y/no-autofocus': 'off',
   'promise/no-new-statics': 'off',
   'react/jsx-boolean-value': 'off',
@@ -363,6 +367,7 @@ const fixRules = {
   'unicorn/no-console-spaces': 'off',
   'unicorn/no-hex-escape': 'off',
   'unicorn/no-instanceof-array': 'off',
+  'unicorn/no-length-as-slice-end': 'off',
   'unicorn/no-null': 'off',
   'unicorn/no-useless-promise-resolve-reject': 'off',
   'unicorn/no-useless-undefined': 'off',
@@ -378,6 +383,8 @@ const fixRules = {
   'unicorn/require-number-to-fixed-digits-argument': 'off',
   'unicorn/switch-case-braces': 'off',
   'vitest/no-import-node-test': 'off',
+  'vitest/prefer-to-be-falsy': 'off',
+  'vitest/prefer-to-be-truthy': 'off',
 };
 
 const pendingRules = {
@@ -398,6 +405,10 @@ const pendingRules = {
   'unicorn/require-array-join-separator': 'off',
   'unicorn/text-encoding-identifier-case': 'off',
   'unicorn/throw-new-error': 'off',
+};
+
+const fixDangerousRules = {
+  'no-eq-null': 'off',
 };
 
 const suspiciousRules = {
@@ -426,7 +437,9 @@ export {
   conditionalFixSuggestionRules,
   correctnessRules,
   perfRules,
+  conditionalSuggestionFixRules,
   fixRules,
   pendingRules,
+  fixDangerousRules,
   suspiciousRules,
 };
