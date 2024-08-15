@@ -45,7 +45,6 @@ const pedanticRules = {
   'unicorn/prefer-dom-node-remove': 'off',
   'unicorn/prefer-event-target': 'off',
   'unicorn/prefer-math-trunc': 'off',
-  'unicorn/prefer-string-replace-all': 'off',
 };
 
 const nurseryRules = {
@@ -53,7 +52,6 @@ const nurseryRules = {
   'getter-return': 'off',
   'no-undef': 'off',
   'no-unreachable': 'off',
-  'no-unused-vars': 'off',
   'import/export': 'off',
   'import/no-deprecated': 'off',
   'import/no-unused-modules': 'off',
@@ -378,6 +376,7 @@ const fixRules = {
   'unicorn/prefer-dom-node-append': 'off',
   'unicorn/prefer-node-protocol': 'off',
   'unicorn/prefer-prototype-methods': 'off',
+  'unicorn/prefer-string-replace-all': 'off',
   'unicorn/prefer-string-starts-ends-with': 'off',
   'unicorn/prefer-string-trim-start-end': 'off',
   'unicorn/require-number-to-fixed-digits-argument': 'off',
@@ -427,6 +426,10 @@ const suspiciousRules = {
   'unicorn/prefer-add-event-listener': 'off',
 };
 
+const dangerousSuggestionRules = {
+  'no-unused-vars': 'off',
+};
+
 export {
   pedanticRules,
   nurseryRules,
@@ -442,4 +445,5 @@ export {
   pendingRules,
   fixDangerousRules,
   suspiciousRules,
+  dangerousSuggestionRules,
 };
