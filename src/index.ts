@@ -10,17 +10,21 @@ const allRules: Record<string, string> = Object.assign(
 export default {
   configs: {
     recommended: {
+      name: 'oxlint ignore rules recommended',
       plugins: ['oxlint'],
       rules: ruleMapsByCategory.correctnessRules,
     },
     all: {
+      name: 'oxlint ignore rules all',
       plugins: ['oxlint'],
       rules: allRules,
     },
     'flat/all': {
+      name: 'oxlint ignore rules all',
       rules: allRules,
     },
     'flat/recommended': {
+      name: 'oxlint ignore rules recommended',
       rules: ruleMapsByCategory.correctnessRules,
     },
     ...createFlatRulesConfig(ruleMapsByScope),
