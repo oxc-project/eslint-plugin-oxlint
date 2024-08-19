@@ -3,7 +3,7 @@
   "version": "0.7.2",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
-  "packageManager": "pnpm@9.7.0",
+  "packageManager": "pnpm@9.7.1",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
