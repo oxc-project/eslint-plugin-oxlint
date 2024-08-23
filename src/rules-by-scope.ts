@@ -265,6 +265,7 @@ const reactRules = {
   'react/jsx-no-target-blank': 'off',
   'react/jsx-no-undef': 'off',
   'react/jsx-no-useless-fragment': 'off',
+  'react/jsx-props-no-spread-multi': 'off',
   'react/no-children-prop': 'off',
   'react/no-danger': 'off',
   'react/no-direct-mutation-state': 'off',
