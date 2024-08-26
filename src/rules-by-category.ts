@@ -16,6 +16,7 @@ const pedanticRules = {
   'require-await': 'off',
   'symbol-description': 'off',
   'import/max-dependencies': 'off',
+  'jest/no-conditional-in-test': 'off',
   'jsdoc/require-param': 'off',
   'jsdoc/require-param-description': 'off',
   'jsdoc/require-param-name': 'off',
@@ -307,6 +308,8 @@ const correctnessRules = {
   'unicorn/no-new-array': 'off',
   'unicorn/no-thenable': 'off',
   'unicorn/no-useless-length-check': 'off',
+  'vitest/no-conditional-tests': 'off',
+  'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
 };
 
 const perfRules = {
@@ -353,6 +356,7 @@ const fixRules = {
   '@typescript-eslint/consistent-type-definitions': 'off',
   '@typescript-eslint/no-import-type-side-effects': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',
+  '@typescript-eslint/no-wrapper-object-types': 'off',
   '@typescript-eslint/prefer-namespace-keyword': 'off',
   '@typescript-eslint/prefer-ts-expect-error': 'off',
   'unicorn/empty-brace-spaces': 'off',
@@ -392,6 +396,7 @@ const pendingRules = {
   'jsx-a11y/scope': 'off',
   'jsx-a11y/tabindex-no-positive': 'off',
   'react/jsx-props-no-spread-multi': 'off',
+  'unicorn/consistent-function-scoping': 'off',
   'unicorn/prefer-array-flat': 'off',
   'unicorn/prefer-array-some': 'off',
   'unicorn/prefer-date-now': 'off',
