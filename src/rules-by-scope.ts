@@ -130,6 +130,7 @@ const jestRules = {
   'jest/no-alias-methods': 'off',
   'jest/no-commented-out-tests': 'off',
   'jest/no-conditional-expect': 'off',
+  'jest/no-conditional-in-test': 'off',
   'jest/no-confusing-set-timeout': 'off',
   'jest/no-deprecated-functions': 'off',
   'jest/no-disabled-tests': 'off',
@@ -322,6 +323,7 @@ const typescriptRules = {
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',
   '@typescript-eslint/no-var-requires': 'off',
+  '@typescript-eslint/no-wrapper-object-types': 'off',
   '@typescript-eslint/prefer-as-const': 'off',
   '@typescript-eslint/prefer-enum-initializers': 'off',
   '@typescript-eslint/prefer-for-of': 'off',
@@ -334,6 +336,7 @@ const typescriptRules = {
 
 const unicornRules = {
   'unicorn/catch-error-name': 'off',
+  'unicorn/consistent-function-scoping': 'off',
   'unicorn/empty-brace-spaces': 'off',
   'unicorn/error-message': 'off',
   'unicorn/escape-case': 'off',
@@ -420,9 +423,11 @@ const unicornRules = {
 };
 
 const vitestRules = {
+  'vitest/no-conditional-tests': 'off',
   'vitest/no-import-node-test': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-truthy': 'off',
+  'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
 };
 
 export {
