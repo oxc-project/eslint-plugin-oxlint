@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-oxlint",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
   "packageManager": "pnpm@9.8.0",
