@@ -414,6 +414,7 @@ const unicornRules = {
   'unicorn/prefer-string-slice': 'off',
   'unicorn/prefer-string-starts-ends-with': 'off',
   'unicorn/prefer-string-trim-start-end': 'off',
+  'unicorn/prefer-structured-clone': 'off',
   'unicorn/prefer-type-error': 'off',
   'unicorn/require-array-join-separator': 'off',
   'unicorn/require-number-to-fixed-digits-argument': 'off',
@@ -425,6 +426,7 @@ const unicornRules = {
 const vitestRules = {
   'vitest/no-conditional-tests': 'off',
   'vitest/no-import-node-test': 'off',
+  'vitest/prefer-each': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-truthy': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
