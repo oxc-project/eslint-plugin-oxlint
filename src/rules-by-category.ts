@@ -161,6 +161,7 @@ const conditionalFixRules = {
   'valid-typeof': 'off',
   'jest/no-jasmine-globals': 'off',
   'jest/no-untyped-mock-factory': 'off',
+  'jest/prefer-jest-mocked': 'off',
   'jest/prefer-mock-promise-shorthand': 'off',
   'jsx-a11y/aria-props': 'off',
   '@typescript-eslint/ban-ts-comment': 'off',
@@ -259,6 +260,7 @@ const correctnessRules = {
   'jsx-a11y/html-has-lang': 'off',
   'jsx-a11y/iframe-has-title': 'off',
   'jsx-a11y/img-redundant-alt': 'off',
+  'jsx-a11y/label-has-associated-control': 'off',
   'jsx-a11y/lang': 'off',
   'jsx-a11y/media-has-caption': 'off',
   'jsx-a11y/mouse-events-have-key-events': 'off',
@@ -335,6 +337,7 @@ const fixRules = {
   'no-unused-labels': 'off',
   'no-useless-constructor': 'off',
   'no-useless-escape': 'off',
+  'no-var': 'off',
   'unicode-bom': 'off',
   'jest/consistent-test-it': 'off',
   'jest/no-alias-methods': 'off',
@@ -343,7 +346,6 @@ const fixRules = {
   'jest/no-test-prefixes': 'off',
   'jest/prefer-comparison-matcher': 'off',
   'jest/prefer-expect-resolves': 'off',
-  'jest/prefer-jest-mocked': 'off',
   'jest/prefer-lowercase-title': 'off',
   'jest/prefer-spy-on': 'off',
   'jest/prefer-strict-equal': 'off',
@@ -354,6 +356,7 @@ const fixRules = {
   'jsx-a11y/no-aria-hidden-on-focusable': 'off',
   'jsx-a11y/no-autofocus': 'off',
   'jsx-a11y/no-redundant-roles': 'off',
+  'jsx-a11y/scope': 'off',
   'promise/no-new-statics': 'off',
   'react/jsx-boolean-value': 'off',
   'react/jsx-props-no-spread-multi': 'off',
@@ -379,6 +382,7 @@ const fixRules = {
   'unicorn/prefer-array-flat-map': 'off',
   'unicorn/prefer-array-some': 'off',
   'unicorn/prefer-code-point': 'off',
+  'unicorn/prefer-date-now': 'off',
   'unicorn/prefer-dom-node-append': 'off',
   'unicorn/prefer-node-protocol': 'off',
   'unicorn/prefer-optional-catch-binding': 'off',
@@ -392,29 +396,29 @@ const fixRules = {
   'unicorn/require-number-to-fixed-digits-argument': 'off',
   'unicorn/switch-case-braces': 'off',
   'unicorn/text-encoding-identifier-case': 'off',
+  'unicorn/throw-new-error': 'off',
   'vitest/no-import-node-test': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-truthy': 'off',
 };
 
-const pendingRules = {
+const suggestionRules = {
   'no-empty': 'off',
-  'no-extra-boolean-cast': 'off',
-  'no-fallthrough': 'off',
-  'no-var': 'off',
-  'jsx-a11y/scope': 'off',
-  'jsx-a11y/tabindex-no-positive': 'off',
-  'unicorn/consistent-function-scoping': 'off',
-  'unicorn/prefer-date-now': 'off',
-  'unicorn/prefer-modern-math-apis': 'off',
-  'unicorn/prefer-native-coercion-functions': 'off',
-  'unicorn/prefer-structured-clone': 'off',
-  'unicorn/prefer-type-error': 'off',
-  'unicorn/throw-new-error': 'off',
 };
 
 const fixDangerousRules = {
   'no-eq-null': 'off',
+};
+
+const pendingRules = {
+  'no-extra-boolean-cast': 'off',
+  'no-fallthrough': 'off',
+  'jsx-a11y/tabindex-no-positive': 'off',
+  'unicorn/consistent-function-scoping': 'off',
+  'unicorn/prefer-modern-math-apis': 'off',
+  'unicorn/prefer-native-coercion-functions': 'off',
+  'unicorn/prefer-structured-clone': 'off',
+  'unicorn/prefer-type-error': 'off',
 };
 
 const suspiciousRules = {
@@ -453,8 +457,9 @@ export {
   perfRules,
   conditionalSuggestionFixRules,
   fixRules,
-  pendingRules,
+  suggestionRules,
   fixDangerousRules,
+  pendingRules,
   suspiciousRules,
   dangerousSuggestionRules,
   conditionalSuggestionRules,

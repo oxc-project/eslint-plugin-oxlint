@@ -208,6 +208,7 @@ const jsxA11yRules = {
   'jsx-a11y/html-has-lang': 'off',
   'jsx-a11y/iframe-has-title': 'off',
   'jsx-a11y/img-redundant-alt': 'off',
+  'jsx-a11y/label-has-associated-control': 'off',
   'jsx-a11y/lang': 'off',
   'jsx-a11y/media-has-caption': 'off',
   'jsx-a11y/mouse-events-have-key-events': 'off',
