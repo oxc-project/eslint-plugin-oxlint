@@ -57,6 +57,7 @@ const eslintRules = {
   'no-loss-of-precision': 'off',
   'no-multi-str': 'off',
   'no-new': 'off',
+  'no-new-func': 'off',
   'no-new-native-nonconstructor': 'off',
   'no-new-wrappers': 'off',
   'no-nonoctal-decimal-escape': 'off',
@@ -115,6 +116,7 @@ const importRules = {
   'import/no-default-export': 'off',
   'import/no-deprecated': 'off',
   'import/no-duplicates': 'off',
+  'import/no-dynamic-require': 'off',
   'import/no-named-as-default': 'off',
   'import/no-named-as-default-member': 'off',
   'import/no-self-import': 'off',
@@ -247,12 +249,18 @@ const nextjsRules = {
   'nextjs/no-unwanted-polyfillio': 'off',
 };
 
+const nodeRules = {
+  'node/no-exports-assign': 'off',
+};
+
 const promiseRules = {
   'promise/avoid-new': 'off',
+  'promise/catch-or-return': 'off',
   'promise/no-new-statics': 'off',
   'promise/no-return-in-finally': 'off',
   'promise/param-names': 'off',
   'promise/prefer-await-to-then': 'off',
+  'promise/spec-only': 'off',
   'promise/valid-params': 'off',
 };
 
@@ -282,6 +290,7 @@ const reactRules = {
   'react/react-in-jsx-scope': 'off',
   'react/require-render-return': 'off',
   'react/rules-of-hooks': 'off',
+  'react/self-closing-comp': 'off',
   'react/void-dom-elements-no-children': 'off',
 };
 
@@ -429,6 +438,7 @@ const vitestRules = {
   'vitest/no-import-node-test': 'off',
   'vitest/prefer-each': 'off',
   'vitest/prefer-to-be-falsy': 'off',
+  'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
 };
@@ -440,6 +450,7 @@ export {
   jsdocRules,
   jsxA11yRules,
   nextjsRules,
+  nodeRules,
   promiseRules,
   reactRules,
   reactPerfRules,
