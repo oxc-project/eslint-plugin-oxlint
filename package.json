@@ -82,5 +82,8 @@
   },
   "dependencies": {
     "scule": "^1.3.0"
+  },
+  "volta": {
+    "node": "20.14.0"
   }
 }
