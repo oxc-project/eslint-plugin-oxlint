@@ -20,7 +20,7 @@ jobs:
 
       - name: Bump oxlint rules
         run: |
-          pnpm update oxlint
+          pnpm update --latest oxlint
           pnpm run clone
           pnpm run generate # Generate rules from latest oxlint
           pnpm run test -u # Update test snapshots
