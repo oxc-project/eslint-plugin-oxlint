@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-oxlint",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
   "packageManager": "pnpm@9.9.0",
@@ -68,7 +68,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
     "memfs": "^4.9.2",
-    "oxlint": "^0.6.1",
+    "oxlint": "^0.9.4",
     "prettier": "^3.3.1",
     "shelljs": "^0.8.5",
     "typescript": "^5.4.5",
