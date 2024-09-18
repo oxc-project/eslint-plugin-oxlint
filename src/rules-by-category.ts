@@ -401,6 +401,7 @@ const pendingRules = {
   'no-fallthrough': 'off',
   'no-magic-numbers': 'off',
   'no-nonoctal-decimal-escape': 'off',
+  'no-plusplus': 'off',
   'sort-keys': 'off',
   'sort-vars': 'off',
   'jsx-a11y/tabindex-no-positive': 'off',
