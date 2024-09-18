@@ -65,6 +65,7 @@ const eslintRules = {
   'no-new-wrappers': 'off',
   'no-nonoctal-decimal-escape': 'off',
   'no-obj-calls': 'off',
+  'no-plusplus': 'off',
   'no-proto': 'off',
   'no-prototype-builtins': 'off',
   'no-redeclare': 'off',
