@@ -46,6 +46,7 @@ const eslintRules = {
   'no-eq-null': 'off',
   'no-eval': 'off',
   'no-ex-assign': 'off',
+  'no-extend-native': 'off',
   'no-extra-boolean-cast': 'off',
   'no-fallthrough': 'off',
   'no-func-assign': 'off',
@@ -82,6 +83,7 @@ const eslintRules = {
   'no-this-before-super': 'off',
   'no-undef': 'off',
   'no-undefined': 'off',
+  'no-unexpected-multiline': 'off',
   'no-unreachable': 'off',
   'no-unsafe-finally': 'off',
   'no-unsafe-negation': 'off',
@@ -284,6 +286,7 @@ const reactRules = {
   'react/jsx-props-no-spread-multi': 'off',
   'react/no-children-prop': 'off',
   'react/no-danger': 'off',
+  'react/no-danger-with-children': 'off',
   'react/no-direct-mutation-state': 'off',
   'react/no-find-dom-node': 'off',
   'react/no-is-mounted': 'off',
@@ -305,6 +308,10 @@ const reactPerfRules = {
   'react-perf/jsx-no-new-array-as-prop': 'off',
   'react-perf/jsx-no-new-function-as-prop': 'off',
   'react-perf/jsx-no-new-object-as-prop': 'off',
+};
+
+const securityRules = {
+  'security/api-keys': 'off',
 };
 
 const treeShakingRules = {
@@ -460,6 +467,7 @@ export {
   promiseRules,
   reactRules,
   reactPerfRules,
+  securityRules,
   treeShakingRules,
   typescriptRules,
   unicornRules,
