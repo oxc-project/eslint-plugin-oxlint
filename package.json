@@ -3,7 +3,7 @@
   "version": "0.9.9",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.11.0",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
@@ -53,7 +53,7 @@
   ],
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
-    "@oxc-node/core": "^0.0.14",
+    "@oxc-node/core": "^0.0.15",
     "@types/eslint": "^9.0.0",
     "@types/node": "^22.0.0",
     "@types/shelljs": "^0.8.15",
