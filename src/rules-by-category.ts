@@ -9,6 +9,7 @@ const pedanticRules = {
   'no-inner-declarations': 'off',
   'no-prototype-builtins': 'off',
   'no-redeclare': 'off',
+  '@typescript-eslint/no-redeclare': 'off',
   'no-self-compare': 'off',
   radix: 'off',
   'require-await': 'off',
@@ -54,6 +55,7 @@ const restrictionRules = {
   'no-bitwise': 'off',
   'no-console': 'off',
   'no-empty-function': 'off',
+  '@typescript-eslint/no-empty-function': 'off',
   'no-eval': 'off',
   'no-restricted-globals': 'off',
   'no-undefined': 'off',
@@ -85,8 +87,10 @@ const restrictionRules = {
 const styleRules = {
   'default-case-last': 'off',
   'default-param-last': 'off',
+  '@typescript-eslint/default-param-last': 'off',
   'guard-for-in': 'off',
   'max-params': 'off',
+  '@typescript-eslint/max-params': 'off',
   'no-continue': 'off',
   'no-label-var': 'off',
   'no-multi-str': 'off',
@@ -116,6 +120,7 @@ const styleRules = {
   'jest/require-top-level-describe': 'off',
   'promise/avoid-new': 'off',
   'promise/param-names': 'off',
+  'promise/prefer-await-to-callbacks': 'off',
   'promise/prefer-await-to-then': 'off',
   'react/jsx-curly-brace-presence': 'off',
   'react/no-set-state': 'off',
@@ -170,16 +175,19 @@ const conditionalFixSuggestionRules = {
 
 const pendingRules = {
   'no-array-constructor': 'off',
+  '@typescript-eslint/no-array-constructor': 'off',
   'no-empty-static-block': 'off',
   'no-extra-boolean-cast': 'off',
   'no-fallthrough': 'off',
   'no-iterator': 'off',
   'no-magic-numbers': 'off',
+  '@typescript-eslint/no-magic-numbers': 'off',
   'no-new-wrappers': 'off',
   'no-nonoctal-decimal-escape': 'off',
   'no-plusplus': 'off',
   'no-proto': 'off',
   'no-regex-spaces': 'off',
+  'no-return-assign': 'off',
   'no-template-curly-in-string': 'off',
   'no-void': 'off',
   'sort-keys': 'off',
@@ -230,6 +238,7 @@ const correctnessRules = {
   'no-control-regex': 'off',
   'no-delete-var': 'off',
   'no-dupe-class-members': 'off',
+  '@typescript-eslint/no-dupe-class-members': 'off',
   'no-dupe-else-if': 'off',
   'no-dupe-keys': 'off',
   'no-duplicate-case': 'off',
@@ -242,6 +251,7 @@ const correctnessRules = {
   'no-invalid-regexp': 'off',
   'no-irregular-whitespace': 'off',
   'no-loss-of-precision': 'off',
+  '@typescript-eslint/no-loss-of-precision': 'off',
   'no-new-native-nonconstructor': 'off',
   'no-obj-calls': 'off',
   'no-self-assign': 'off',
@@ -361,6 +371,7 @@ const fixRules = {
   'no-unsafe-negation': 'off',
   'no-unused-labels': 'off',
   'no-useless-constructor': 'off',
+  '@typescript-eslint/no-useless-constructor': 'off',
   'no-useless-escape': 'off',
   'no-var': 'off',
   'unicode-bom': 'off',
@@ -456,6 +467,7 @@ const suspiciousRules = {
 
 const dangerousSuggestionRules = {
   'no-unused-vars': 'off',
+  '@typescript-eslint/no-unused-vars': 'off',
 };
 
 const conditionalSuggestionRules = {
