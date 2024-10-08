@@ -5,6 +5,7 @@ import {
   prefixScope,
   SPARSE_CLONE_DIRECTORY,
   TARGET_DIRECTORY,
+  typescriptRulesExtendEslintRules,
 } from './constants.js';
 
 // Recursive function to read files in a directory, this currently assumes that the directory
@@ -114,6 +115,18 @@ async function processFile(
         scope: scope,
         category: keywordMatch[1],
       });
+
+      if (scope === 'eslint') {
+        let ruleName = effectiveRuleName.replace(/^.*\//, '');
+
+        if (typescriptRulesExtendEslintRules.includes(ruleName)) {
+          successResultArray.push({
+            value: `@typescript-eslint/${ruleName}`,
+            scope: 'typescript',
+            category: keywordMatch[1],
+          });
+        }
+      }
     } else {
       failureResultArray.push({
         value: effectiveRuleName,
