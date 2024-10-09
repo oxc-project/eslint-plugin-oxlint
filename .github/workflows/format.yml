@@ -1,0 +1,20 @@
+name: Format (prettier)
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+      - 'renovate/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/pnpm
+
+      - name: Run Format (prettier)
+        run: pnpm run format
