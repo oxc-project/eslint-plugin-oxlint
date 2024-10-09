@@ -9,7 +9,7 @@ on:
       - 'renovate/**'
 
 jobs:
-  test:
+  format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
