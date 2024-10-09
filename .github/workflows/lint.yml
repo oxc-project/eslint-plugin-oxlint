@@ -20,4 +20,4 @@ jobs:
         run: npx oxlint
 
       - name: Run eslint
-        run: npx eslint  
+        run: npx eslint
