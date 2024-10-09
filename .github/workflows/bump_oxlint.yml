@@ -23,7 +23,9 @@ jobs:
           pnpm update --latest oxlint
           pnpm run clone
           pnpm run generate # Generate rules from latest oxlint
+          pnpm run format # run prettier over it
           pnpm run test -u # Update test snapshots
+          pnpm run build # build cjs, mjs and d.ts files
           npm version ${{ inputs.version }} --no-git-tag-version
 
       - uses: peter-evans/create-pull-request@v7
