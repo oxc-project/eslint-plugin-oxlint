@@ -14,7 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/pnpm
-
       - name: Run Format (prettier)
         run: npx prettier . --check
