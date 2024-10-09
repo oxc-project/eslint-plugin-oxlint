@@ -17,4 +17,4 @@ jobs:
       - uses: ./.github/actions/pnpm
 
       - name: Run Format (prettier)
-        run: pnpm run format
+        run: npx prettier . --check
