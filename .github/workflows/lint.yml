@@ -1,4 +1,4 @@
-name: Test
+name: Lint
 
 on:
   pull_request:
@@ -16,5 +16,5 @@ jobs:
 
       - uses: ./.github/actions/pnpm
 
-      - name: Run tests
-        run: pnpm run test --coverage
+      - name: Run Linters
+        run: pnpm run lint
