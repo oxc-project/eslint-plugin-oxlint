@@ -117,7 +117,7 @@ async function processFile(
       });
 
       if (scope === 'eslint') {
-        let ruleName = effectiveRuleName.replace(/^.*\//, '');
+        const ruleName = effectiveRuleName.replace(/^.*\//, '');
 
         if (typescriptRulesExtendEslintRules.includes(ruleName)) {
           successResultArray.push({

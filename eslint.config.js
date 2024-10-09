@@ -13,4 +13,7 @@ export default [
   ...compat.extends('plugin:@typescript-eslint/recommended'),
   eslintConfigPrettier,
   oxlint.configs['flat/all'],
+  {
+    ignores: ["lib/"]
+  },
 ];
