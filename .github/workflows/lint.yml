@@ -1,4 +1,4 @@
-name: Test
+name: Lint
 
 on:
   pull_request:
@@ -9,12 +9,15 @@ on:
       - 'renovate/**'
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: ./.github/actions/pnpm
 
-      - name: Run tests
-        run: pnpm run test --coverage
+      - name: Run oxlint
+        run: npx oxlint
+
+      - name: Run eslint
+        run: npx eslint

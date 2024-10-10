@@ -1,4 +1,4 @@
-name: Test
+name: Format (prettier)
 
 on:
   pull_request:
@@ -9,12 +9,10 @@ on:
       - 'renovate/**'
 
 jobs:
-  test:
+  format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/pnpm
-
-      - name: Run tests
-        run: pnpm run test --coverage
+      - name: Run Format (prettier)
+        run: npx prettier . --check
