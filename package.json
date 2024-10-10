@@ -57,8 +57,6 @@
     "@oxc-node/core": "^0.0.15",
     "@types/node": "^22.0.0",
     "@types/shelljs": "^0.8.15",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
     "@vitest/coverage-v8": "^2.0.0",
     "bumpp": "^9.4.1",
     "dedent": "^1.5.3",
@@ -72,6 +70,7 @@
     "prettier": "^3.3.1",
     "shelljs": "^0.8.5",
     "typescript": "^5.4.5",
+    "typescript-eslint": "^8.8.1",
     "vite": "^5.2.13",
     "vite-plugin-dts": "^4.0.0",
     "vitest": "^2.0.0"
