@@ -35,7 +35,19 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/comma-spacing": [
     0,
   ],
+  "@typescript-eslint/consistent-indexed-object-style": [
+    0,
+  ],
   "@typescript-eslint/consistent-type-definitions": [
+    0,
+  ],
+  "@typescript-eslint/consistent-type-imports": [
+    0,
+  ],
+  "@typescript-eslint/default-param-last": [
+    0,
+  ],
+  "@typescript-eslint/explicit-function-return-type": [
     0,
   ],
   "@typescript-eslint/func-call-spacing": [
@@ -53,13 +65,28 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/lines-around-comment": [
     0,
   ],
+  "@typescript-eslint/max-params": [
+    0,
+  ],
   "@typescript-eslint/member-delimiter-style": [
     0,
   ],
   "@typescript-eslint/no-array-constructor": [
     2,
   ],
+  "@typescript-eslint/no-confusing-non-null-assertion": [
+    0,
+  ],
+  "@typescript-eslint/no-dupe-class-members": [
+    0,
+  ],
   "@typescript-eslint/no-duplicate-enum-values": [
+    0,
+  ],
+  "@typescript-eslint/no-dynamic-delete": [
+    0,
+  ],
+  "@typescript-eslint/no-empty-function": [
     0,
   ],
   "@typescript-eslint/no-empty-interface": [
@@ -80,13 +107,34 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-extra-semi": [
     0,
   ],
+  "@typescript-eslint/no-extraneous-class": [
+    0,
+  ],
+  "@typescript-eslint/no-import-type-side-effects": [
+    0,
+  ],
+  "@typescript-eslint/no-loss-of-precision": [
+    0,
+  ],
+  "@typescript-eslint/no-magic-numbers": [
+    0,
+  ],
   "@typescript-eslint/no-misused-new": [
     0,
   ],
   "@typescript-eslint/no-namespace": [
     0,
   ],
+  "@typescript-eslint/no-non-null-asserted-nullish-coalescing": [
+    0,
+  ],
   "@typescript-eslint/no-non-null-asserted-optional-chain": [
+    0,
+  ],
+  "@typescript-eslint/no-non-null-assertion": [
+    0,
+  ],
+  "@typescript-eslint/no-redeclare": [
     0,
   ],
   "@typescript-eslint/no-require-imports": [
@@ -110,6 +158,12 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-unused-vars": [
     2,
   ],
+  "@typescript-eslint/no-useless-constructor": [
+    0,
+  ],
+  "@typescript-eslint/no-useless-empty-export": [
+    0,
+  ],
   "@typescript-eslint/no-var-requires": [
     0,
   ],
@@ -122,10 +176,16 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-as-const": [
     0,
   ],
+  "@typescript-eslint/prefer-enum-initializers": [
+    0,
+  ],
   "@typescript-eslint/prefer-for-of": [
     0,
   ],
   "@typescript-eslint/prefer-function-type": [
+    0,
+  ],
+  "@typescript-eslint/prefer-literal-enum-member": [
     0,
   ],
   "@typescript-eslint/prefer-namespace-keyword": [
@@ -206,6 +266,9 @@ exports[`contains all the oxlint rules 1`] = `
   "curly": [
     0,
   ],
+  "default-case": [
+    0,
+  ],
   "default-case-last": [
     0,
   ],
@@ -260,6 +323,9 @@ exports[`contains all the oxlint rules 1`] = `
   "func-call-spacing": [
     0,
   ],
+  "func-names": [
+    0,
+  ],
   "function-call-argument-newline": [
     0,
   ],
@@ -287,6 +353,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/export": [
     0,
   ],
+  "import/max-dependencies": [
+    0,
+  ],
   "import/named": [
     0,
   ],
@@ -308,6 +377,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-duplicates": [
     0,
   ],
+  "import/no-dynamic-require": [
+    0,
+  ],
   "import/no-named-as-default": [
     0,
   ],
@@ -320,16 +392,25 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-unused-modules": [
     0,
   ],
+  "import/no-webpack-loader-syntax": [
+    0,
+  ],
   "indent": [
     0,
   ],
   "indent-legacy": [
     0,
   ],
+  "jest/consistent-test-it": [
+    0,
+  ],
   "jest/expect-expect": [
     0,
   ],
   "jest/max-expects": [
+    0,
+  ],
+  "jest/max-nested-describe": [
     0,
   ],
   "jest/no-alias-methods": [
@@ -339,6 +420,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/no-conditional-expect": [
+    0,
+  ],
+  "jest/no-conditional-in-test": [
     0,
   ],
   "jest/no-confusing-set-timeout": [
@@ -351,6 +435,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/no-done-callback": [
+    0,
+  ],
+  "jest/no-duplicate-hooks": [
     0,
   ],
   "jest/no-export": [
@@ -369,6 +456,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/no-jasmine-globals": [
+    0,
+  ],
+  "jest/no-large-snapshots": [
     0,
   ],
   "jest/no-mocks-import": [
@@ -404,6 +494,15 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/prefer-expect-resolves": [
     0,
   ],
+  "jest/prefer-hooks-in-order": [
+    0,
+  ],
+  "jest/prefer-hooks-on-top": [
+    0,
+  ],
+  "jest/prefer-jest-mocked": [
+    0,
+  ],
   "jest/prefer-lowercase-title": [
     0,
   ],
@@ -428,7 +527,13 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/prefer-todo": [
     0,
   ],
+  "jest/require-hook": [
+    0,
+  ],
   "jest/require-to-throw-message": [
+    0,
+  ],
+  "jest/require-top-level-describe": [
     0,
   ],
   "jest/valid-describe-callback": [
@@ -446,7 +551,28 @@ exports[`contains all the oxlint rules 1`] = `
   "jsdoc/check-property-names": [
     0,
   ],
+  "jsdoc/check-tag-names": [
+    0,
+  ],
   "jsdoc/empty-tags": [
+    0,
+  ],
+  "jsdoc/implements-on-classes": [
+    0,
+  ],
+  "jsdoc/no-defaults": [
+    0,
+  ],
+  "jsdoc/require-param": [
+    0,
+  ],
+  "jsdoc/require-param-description": [
+    0,
+  ],
+  "jsdoc/require-param-name": [
+    0,
+  ],
+  "jsdoc/require-param-type": [
     0,
   ],
   "jsdoc/require-property": [
@@ -459,6 +585,18 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jsdoc/require-property-type": [
+    0,
+  ],
+  "jsdoc/require-returns": [
+    0,
+  ],
+  "jsdoc/require-returns-description": [
+    0,
+  ],
+  "jsdoc/require-returns-type": [
+    0,
+  ],
+  "jsdoc/require-yields": [
     0,
   ],
   "jsx-a11y/alt-text": [
@@ -498,6 +636,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jsx-a11y/img-redundant-alt": [
+    0,
+  ],
+  "jsx-a11y/label-has-associated-control": [
     0,
   ],
   "jsx-a11y/lang": [
@@ -554,6 +695,9 @@ exports[`contains all the oxlint rules 1`] = `
   "lines-around-comment": [
     0,
   ],
+  "max-classes-per-file": [
+    0,
+  ],
   "max-len": [
     0,
   ],
@@ -602,6 +746,9 @@ exports[`contains all the oxlint rules 1`] = `
   "nextjs/no-document-import-in-page": [
     0,
   ],
+  "nextjs/no-duplicate-head": [
+    0,
+  ],
   "nextjs/no-head-element": [
     0,
   ],
@@ -611,7 +758,13 @@ exports[`contains all the oxlint rules 1`] = `
   "nextjs/no-img-element": [
     0,
   ],
+  "nextjs/no-page-custom-font": [
+    0,
+  ],
   "nextjs/no-script-component-in-head": [
+    0,
+  ],
+  "nextjs/no-styled-jsx-in-document": [
     0,
   ],
   "nextjs/no-sync-scripts": [
@@ -626,6 +779,9 @@ exports[`contains all the oxlint rules 1`] = `
   "nextjs/no-unwanted-polyfillio": [
     0,
   ],
+  "no-alert": [
+    0,
+  ],
   "no-array-constructor": [
     0,
   ],
@@ -633,6 +789,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-async-promise-executor": [
+    0,
+  ],
+  "no-await-in-loop": [
     0,
   ],
   "no-bitwise": [
@@ -671,6 +830,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-constant-condition": [
     0,
   ],
+  "no-constructor-return": [
+    0,
+  ],
   "no-continue": [
     0,
   ],
@@ -681,6 +843,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-delete-var": [
+    0,
+  ],
+  "no-div-regex": [
     0,
   ],
   "no-dupe-args": [
@@ -704,6 +869,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-empty-character-class": [
     0,
   ],
+  "no-empty-function": [
+    0,
+  ],
   "no-empty-pattern": [
     0,
   ],
@@ -717,6 +885,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-ex-assign": [
+    0,
+  ],
+  "no-extend-native": [
     0,
   ],
   "no-extra-boolean-cast": [
@@ -755,7 +926,13 @@ exports[`contains all the oxlint rules 1`] = `
   "no-iterator": [
     0,
   ],
+  "no-label-var": [
+    0,
+  ],
   "no-loss-of-precision": [
+    0,
+  ],
+  "no-magic-numbers": [
     0,
   ],
   "no-misleading-character-class": [
@@ -770,6 +947,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-multi-spaces": [
     0,
   ],
+  "no-multi-str": [
+    0,
+  ],
   "no-multiple-empty-lines": [
     0,
   ],
@@ -777,6 +957,12 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-nested-ternary": [
+    0,
+  ],
+  "no-new": [
+    0,
+  ],
+  "no-new-func": [
     0,
   ],
   "no-new-native-nonconstructor": [
@@ -797,6 +983,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-octal": [
     2,
   ],
+  "no-plusplus": [
+    0,
+  ],
   "no-proto": [
     0,
   ],
@@ -810,6 +999,12 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-reserved-keys": [
+    0,
+  ],
+  "no-restricted-globals": [
+    0,
+  ],
+  "no-return-assign": [
     0,
   ],
   "no-return-await": [
@@ -857,6 +1052,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-undef": [
     0,
   ],
+  "no-undefined": [
+    0,
+  ],
   "no-unexpected-multiline": [
     0,
   ],
@@ -890,6 +1088,12 @@ exports[`contains all the oxlint rules 1`] = `
   "no-useless-catch": [
     0,
   ],
+  "no-useless-concat": [
+    0,
+  ],
+  "no-useless-constructor": [
+    0,
+  ],
   "no-useless-escape": [
     0,
   ],
@@ -909,6 +1113,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-wrap-func": [
+    0,
+  ],
+  "node/no-exports-assign": [
     0,
   ],
   "nonblock-statement-body-position": [
@@ -932,10 +1139,46 @@ exports[`contains all the oxlint rules 1`] = `
   "padded-blocks": [
     0,
   ],
+  "prefer-exponentiation-operator": [
+    0,
+  ],
+  "prefer-numeric-literals": [
+    0,
+  ],
+  "promise/avoid-new": [
+    0,
+  ],
+  "promise/catch-or-return": [
+    0,
+  ],
+  "promise/no-new-statics": [
+    0,
+  ],
+  "promise/no-return-in-finally": [
+    0,
+  ],
+  "promise/param-names": [
+    0,
+  ],
+  "promise/prefer-await-to-callbacks": [
+    0,
+  ],
+  "promise/prefer-await-to-then": [
+    0,
+  ],
+  "promise/spec-only": [
+    0,
+  ],
+  "promise/valid-params": [
+    0,
+  ],
   "quote-props": [
     0,
   ],
   "quotes": [
+    0,
+  ],
+  "radix": [
     0,
   ],
   "react-perf/jsx-no-jsx-as-prop": [
@@ -956,6 +1199,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/checked-requires-onchange-or-readonly": [
     0,
   ],
+  "react/jsx-boolean-value": [
+    0,
+  ],
   "react/jsx-child-element-spacing": [
     0,
   ],
@@ -963,6 +1209,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-closing-tag-location": [
+    0,
+  ],
+  "react/jsx-curly-brace-presence": [
     0,
   ],
   "react/jsx-curly-newline": [
@@ -1013,6 +1262,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-props-no-multi-spaces": [
     0,
   ],
+  "react/jsx-props-no-spread-multi": [
+    0,
+  ],
   "react/jsx-space-before-closing": [
     0,
   ],
@@ -1028,6 +1280,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-danger": [
     0,
   ],
+  "react/no-danger-with-children": [
+    0,
+  ],
   "react/no-direct-mutation-state": [
     0,
   ],
@@ -1040,6 +1295,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-render-return-value": [
     0,
   ],
+  "react/no-set-state": [
+    0,
+  ],
   "react/no-string-refs": [
     0,
   ],
@@ -1049,19 +1307,34 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-unknown-property": [
     0,
   ],
+  "react/prefer-es6-class": [
+    0,
+  ],
   "react/react-in-jsx-scope": [
     0,
   ],
   "react/require-render-return": [
     0,
   ],
+  "react/rules-of-hooks": [
+    0,
+  ],
+  "react/self-closing-comp": [
+    0,
+  ],
   "react/void-dom-elements-no-children": [
+    0,
+  ],
+  "require-await": [
     0,
   ],
   "require-yield": [
     0,
   ],
   "rest-spread-spacing": [
+    0,
+  ],
+  "security/api-keys": [
     0,
   ],
   "semi": [
@@ -1071,6 +1344,15 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "semi-style": [
+    0,
+  ],
+  "sort-imports": [
+    0,
+  ],
+  "sort-keys": [
+    0,
+  ],
+  "sort-vars": [
     0,
   ],
   "space-after-function-name": [
@@ -1121,6 +1403,9 @@ exports[`contains all the oxlint rules 1`] = `
   "switch-colon-spacing": [
     0,
   ],
+  "symbol-description": [
+    0,
+  ],
   "template-curly-spacing": [
     0,
   ],
@@ -1128,6 +1413,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "tree-shaking/no-side-effects-in-initialization": [
+    0,
+  ],
+  "unicode-bom": [
     0,
   ],
   "unicorn/better-regex": [
@@ -1503,6 +1791,27 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "valid-typeof": [
+    0,
+  ],
+  "vitest/no-conditional-tests": [
+    0,
+  ],
+  "vitest/no-import-node-test": [
+    0,
+  ],
+  "vitest/prefer-each": [
+    0,
+  ],
+  "vitest/prefer-to-be-falsy": [
+    0,
+  ],
+  "vitest/prefer-to-be-object": [
+    0,
+  ],
+  "vitest/prefer-to-be-truthy": [
+    0,
+  ],
+  "vitest/require-local-test-context-for-concurrent-snapshots": [
     0,
   ],
   "vue/array-bracket-newline": [
