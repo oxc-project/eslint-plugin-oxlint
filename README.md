@@ -113,12 +113,6 @@ new rules that haven't been released will not be included.
 pnpm generate
 ```
 
-build cjs and esm versions of the library
-
-```shell
-pnpm build
-```
-
 ## License
 
 [MIT](https://github.com/Dunqing/eslint-plugin-oxlint/blob/main/LICENSE)

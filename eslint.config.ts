@@ -11,6 +11,6 @@ export default [
   eslintConfigPrettier,
   oxlint.configs['flat/all'],
   {
-    ignores: ['lib/'],
+    ignores: ['dist/'],
   },
 ];

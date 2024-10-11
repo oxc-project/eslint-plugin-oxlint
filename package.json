@@ -6,26 +6,26 @@
   "packageManager": "pnpm@9.12.0",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.mjs",
-      "require": "./lib/index.cjs",
-      "default": "./lib/index.mjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.mjs"
     },
     "./rules-by-category": {
-      "types": "./lib/rules-by-category.d.ts",
-      "import": "./lib/rules-by-category.mjs",
-      "require": "./lib/rules-by-category.cjs",
-      "default": "./lib/rules-by-category.mjs"
+      "types": "./dist/rules-by-category.d.ts",
+      "import": "./dist/rules-by-category.mjs",
+      "require": "./dist/rules-by-category.cjs",
+      "default": "./dist/rules-by-category.mjs"
     },
     "./rules-by-scope": {
-      "types": "./lib/rules-by-scope.d.ts",
-      "import": "./lib/rules-by-scope.mjs",
-      "require": "./lib/rules-by-scope.cjs",
-      "default": "./lib/rules-by-scope.mjs"
+      "types": "./dist/rules-by-scope.d.ts",
+      "import": "./dist/rules-by-scope.mjs",
+      "require": "./dist/rules-by-scope.cjs",
+      "default": "./dist/rules-by-scope.mjs"
     }
   },
   "files": [
-    "lib",
+    "dist",
     "src"
   ],
   "author": "Dunqing <dengqing0821@gmail.com>",
