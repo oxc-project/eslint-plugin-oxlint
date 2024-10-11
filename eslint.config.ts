@@ -1,4 +1,4 @@
-import oxlint from './lib/index.cjs';
+import oxlint from './src/index.js';
 import unicorn from 'eslint-plugin-unicorn';
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';

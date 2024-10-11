@@ -72,7 +72,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-array-constructor": [
-    2,
+    0,
   ],
   "@typescript-eslint/no-confusing-non-null-assertion": [
     0,
@@ -156,7 +156,7 @@ exports[`contains all the oxlint rules 1`] = `
     2,
   ],
   "@typescript-eslint/no-unused-vars": [
-    2,
+    0,
   ],
   "@typescript-eslint/no-useless-constructor": [
     0,
@@ -168,7 +168,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-wrapper-object-types": [
-    2,
+    0,
   ],
   "@typescript-eslint/object-curly-spacing": [
     0,
@@ -189,7 +189,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/prefer-namespace-keyword": [
-    2,
+    0,
   ],
   "@typescript-eslint/prefer-ts-expect-error": [
     0,
@@ -918,7 +918,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-invalid-regexp": [
-    2,
+    0,
   ],
   "no-irregular-whitespace": [
     0,
@@ -966,9 +966,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-new-native-nonconstructor": [
-    2,
-  ],
-  "no-new-symbol": [
     0,
   ],
   "no-new-wrappers": [
@@ -1005,9 +1002,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-return-assign": [
-    0,
-  ],
-  "no-return-await": [
     0,
   ],
   "no-script-url": [
@@ -1059,7 +1053,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-unreachable": [
-    2,
+    0,
   ],
   "no-unsafe-finally": [
     0,
@@ -1434,7 +1428,7 @@ exports[`contains all the oxlint rules 1`] = `
     2,
   ],
   "unicorn/consistent-function-scoping": [
-    2,
+    0,
   ],
   "unicorn/custom-error-definition": [
     0,
@@ -1467,7 +1461,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-anonymous-default-export": [
-    2,
+    0,
   ],
   "unicorn/no-array-callback-reference": [
     2,
@@ -1518,19 +1512,19 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-length-as-slice-end": [
-    2,
+    0,
   ],
   "unicorn/no-lonely-if": [
     0,
   ],
   "unicorn/no-magic-array-flat-depth": [
-    2,
+    0,
   ],
   "unicorn/no-negated-condition": [
     0,
   ],
   "unicorn/no-negation-in-equality-check": [
-    2,
+    0,
   ],
   "unicorn/no-nested-ternary": [
     0,
@@ -1596,7 +1590,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-useless-undefined": [
-    2,
+    0,
   ],
   "unicorn/no-zero-fractions": [
     0,
@@ -1743,7 +1737,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-structured-clone": [
-    2,
+    0,
   ],
   "unicorn/prefer-switch": [
     2,

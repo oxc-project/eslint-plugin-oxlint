@@ -39,7 +39,7 @@
     "generate": "node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
     "clone": "node --import @oxc-node/core/register ./scripts/sparse-clone.ts",
     "build": "vite build",
-    "lint": "npx oxlint && npx eslint",
+    "lint": "npx oxlint && npx eslint --flag unstable_ts_config",
     "format": "npx prettier --write .",
     "release": "bumpp package.json",
     "prepare": "husky",
@@ -52,7 +52,6 @@
     "rules"
   ],
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.12.0",
     "@oxc-node/core": "^0.0.15",
     "@types/node": "^22.0.0",
@@ -76,7 +75,7 @@
     "vitest": "^2.0.0"
   },
   "lint-staged": {
-    "*.{js,cjs,ts}": "eslint",
+    "*.{js,cjs,ts}": "eslint --flag unstable_ts_config",
     "*": "prettier --ignore-unknown --write"
   },
   "dependencies": {
