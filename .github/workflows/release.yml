@@ -18,6 +18,9 @@ jobs:
 
       - uses: ./.github/actions/pnpm
 
+      - name: Build
+        run: pnpm run build
+
       - name: Extract version from commit message
         run: |
           VERSION=$(echo "${{ github.event.head_commit.message }}" | grep -oP 'release: \Kv[0-9]+\.[0-9]+\.[0-9]+')

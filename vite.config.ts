@@ -23,7 +23,6 @@ export default defineConfig({
         preserveModules: true,
       },
     },
-    outDir: 'lib',
     minify: false,
   },
   plugins: [

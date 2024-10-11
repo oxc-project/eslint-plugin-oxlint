@@ -1,0 +1,20 @@
+name: Build
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+      - 'renovate/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/pnpm
+
+      - name: Build
+        run: pnpm run build
