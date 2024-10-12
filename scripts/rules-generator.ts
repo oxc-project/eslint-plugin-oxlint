@@ -71,7 +71,7 @@ export class RulesGenerator {
           return `  '${rule.replace(/_/g, '-')}': "off"`;
         })
         .join(',\n');
-      code += '\n}\n\n';
+      code += '\n} as const\n\n';
     }
 
     code += 'export {\n';
