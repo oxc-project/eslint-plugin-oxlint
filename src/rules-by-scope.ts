@@ -38,6 +38,7 @@ const eslintRules = {
   'no-dupe-else-if': 'off',
   'no-dupe-keys': 'off',
   'no-duplicate-case': 'off',
+  'no-else-return': 'off',
   'no-empty': 'off',
   'no-empty-character-class': 'off',
   'no-empty-function': 'off',
@@ -82,6 +83,7 @@ const eslintRules = {
   'no-template-curly-in-string': 'off',
   'no-ternary': 'off',
   'no-this-before-super': 'off',
+  'no-throw-literal': 'off',
   'no-undef': 'off',
   'no-undefined': 'off',
   'no-unexpected-multiline': 'off',
@@ -112,7 +114,7 @@ const eslintRules = {
   'unicode-bom': 'off',
   'use-isnan': 'off',
   'valid-typeof': 'off',
-};
+} as const;
 
 const typescriptRules = {
   '@typescript-eslint/default-param-last': 'off',
@@ -161,7 +163,7 @@ const typescriptRules = {
   '@typescript-eslint/prefer-namespace-keyword': 'off',
   '@typescript-eslint/prefer-ts-expect-error': 'off',
   '@typescript-eslint/triple-slash-reference': 'off',
-};
+} as const;
 
 const importRules = {
   'import/default': 'off',
@@ -180,7 +182,7 @@ const importRules = {
   'import/no-self-import': 'off',
   'import/no-unused-modules': 'off',
   'import/no-webpack-loader-syntax': 'off',
-};
+} as const;
 
 const jestRules = {
   'jest/consistent-test-it': 'off',
@@ -231,7 +233,7 @@ const jestRules = {
   'jest/valid-describe-callback': 'off',
   'jest/valid-expect': 'off',
   'jest/valid-title': 'off',
-};
+} as const;
 
 const jsdocRules = {
   'jsdoc/check-access': 'off',
@@ -252,7 +254,7 @@ const jsdocRules = {
   'jsdoc/require-returns-description': 'off',
   'jsdoc/require-returns-type': 'off',
   'jsdoc/require-yields': 'off',
-};
+} as const;
 
 const jsxA11yRules = {
   'jsx-a11y/alt-text': 'off',
@@ -282,7 +284,7 @@ const jsxA11yRules = {
   'jsx-a11y/role-supports-aria-props': 'off',
   'jsx-a11y/scope': 'off',
   'jsx-a11y/tabindex-no-positive': 'off',
-};
+} as const;
 
 const nextjsRules = {
   'nextjs/google-font-display': 'off',
@@ -305,11 +307,11 @@ const nextjsRules = {
   'nextjs/no-title-in-document-head': 'off',
   'nextjs/no-typos': 'off',
   'nextjs/no-unwanted-polyfillio': 'off',
-};
+} as const;
 
 const nodeRules = {
   'node/no-exports-assign': 'off',
-};
+} as const;
 
 const promiseRules = {
   'promise/avoid-new': 'off',
@@ -321,7 +323,7 @@ const promiseRules = {
   'promise/prefer-await-to-then': 'off',
   'promise/spec-only': 'off',
   'promise/valid-params': 'off',
-};
+} as const;
 
 const reactRules = {
   'react/button-has-type': 'off',
@@ -352,22 +354,22 @@ const reactRules = {
   'react/rules-of-hooks': 'off',
   'react/self-closing-comp': 'off',
   'react/void-dom-elements-no-children': 'off',
-};
+} as const;
 
 const reactPerfRules = {
   'react-perf/jsx-no-jsx-as-prop': 'off',
   'react-perf/jsx-no-new-array-as-prop': 'off',
   'react-perf/jsx-no-new-function-as-prop': 'off',
   'react-perf/jsx-no-new-object-as-prop': 'off',
-};
+} as const;
 
 const securityRules = {
   'security/api-keys': 'off',
-};
+} as const;
 
 const treeShakingRules = {
   'tree-shaking/no-side-effects-in-initialization': 'off',
-};
+} as const;
 
 const unicornRules = {
   'unicorn/catch-error-name': 'off',
@@ -456,7 +458,7 @@ const unicornRules = {
   'unicorn/switch-case-braces': 'off',
   'unicorn/text-encoding-identifier-case': 'off',
   'unicorn/throw-new-error': 'off',
-};
+} as const;
 
 const vitestRules = {
   'vitest/no-conditional-tests': 'off',
@@ -466,7 +468,7 @@ const vitestRules = {
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
-};
+} as const;
 
 export {
   eslintRules,

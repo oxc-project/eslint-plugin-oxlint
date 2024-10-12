@@ -33,7 +33,7 @@ const pedanticRules = {
   'unicorn/no-unreadable-iife': 'off',
   'unicorn/prefer-dom-node-remove': 'off',
   'unicorn/prefer-event-target': 'off',
-};
+} as const;
 
 const nurseryRules = {
   'constructor-super': 'off',
@@ -47,7 +47,7 @@ const nurseryRules = {
   'react/require-render-return': 'off',
   'react/rules-of-hooks': 'off',
   'tree-shaking/no-side-effects-in-initialization': 'off',
-};
+} as const;
 
 const restrictionRules = {
   'default-case': 'off',
@@ -82,7 +82,7 @@ const restrictionRules = {
   'unicorn/no-anonymous-default-export': 'off',
   'unicorn/no-array-reduce': 'off',
   'unicorn/no-magic-array-flat-depth': 'off',
-};
+} as const;
 
 const styleRules = {
   'default-case-last': 'off',
@@ -132,10 +132,11 @@ const styleRules = {
   'unicorn/no-unreadable-array-destructuring': 'off',
   'unicorn/prefer-reflect-apply': 'off',
   'vitest/prefer-each': 'off',
-};
+} as const;
 
 const conditionalFixRules = {
   eqeqeq: 'off',
+  'no-else-return': 'off',
   'prefer-numeric-literals': 'off',
   'sort-imports': 'off',
   'use-isnan': 'off',
@@ -163,15 +164,15 @@ const conditionalFixRules = {
   'unicorn/prefer-query-selector': 'off',
   'unicorn/prefer-spread': 'off',
   'unicorn/require-array-join-separator': 'off',
-};
+} as const;
 
 const dangerousFixRules = {
   'for-direction': 'off',
-};
+} as const;
 
 const conditionalFixSuggestionRules = {
   'func-names': 'off',
-};
+} as const;
 
 const pendingRules = {
   'no-array-constructor': 'off',
@@ -225,7 +226,7 @@ const pendingRules = {
   'unicorn/prefer-number-properties': 'off',
   'unicorn/prefer-structured-clone': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
-};
+} as const;
 
 const correctnessRules = {
   'no-async-promise-executor': 'off',
@@ -351,7 +352,7 @@ const correctnessRules = {
   'unicorn/no-invalid-remove-event-listener': 'off',
   'unicorn/no-thenable': 'off',
   'vitest/no-conditional-tests': 'off',
-};
+} as const;
 
 const perfRules = {
   'no-await-in-loop': 'off',
@@ -359,11 +360,11 @@ const perfRules = {
   'react-perf/jsx-no-new-array-as-prop': 'off',
   'react-perf/jsx-no-new-function-as-prop': 'off',
   'react-perf/jsx-no-new-object-as-prop': 'off',
-};
+} as const;
 
 const conditionalSuggestionFixRules = {
   'no-compare-neg-zero': 'off',
-};
+} as const;
 
 const fixRules = {
   'no-debugger': 'off',
@@ -439,16 +440,16 @@ const fixRules = {
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
-};
+} as const;
 
 const suggestionRules = {
   'no-empty': 'off',
-};
+} as const;
 
 const fixDangerousRules = {
   'no-eq-null': 'off',
   'no-unexpected-multiline': 'off',
-};
+} as const;
 
 const suspiciousRules = {
   'no-extend-native': 'off',
@@ -463,16 +464,17 @@ const suspiciousRules = {
   'react/react-in-jsx-scope': 'off',
   '@typescript-eslint/no-extraneous-class': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
-};
+} as const;
+
+const conditionalSuggestionRules = {
+  'no-throw-literal': 'off',
+  'jsx-a11y/anchor-has-content': 'off',
+} as const;
 
 const dangerousSuggestionRules = {
   'no-unused-vars': 'off',
   '@typescript-eslint/no-unused-vars': 'off',
-};
-
-const conditionalSuggestionRules = {
-  'jsx-a11y/anchor-has-content': 'off',
-};
+} as const;
 
 export {
   pedanticRules,
@@ -490,6 +492,6 @@ export {
   suggestionRules,
   fixDangerousRules,
   suspiciousRules,
-  dangerousSuggestionRules,
   conditionalSuggestionRules,
+  dangerousSuggestionRules,
 };
