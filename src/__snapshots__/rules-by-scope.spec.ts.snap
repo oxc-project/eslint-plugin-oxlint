@@ -1334,9 +1334,6 @@ exports[`contains all the oxlint rules 1`] = `
   "rest-spread-spacing": [
     0,
   ],
-  "security/api-keys": [
-    0,
-  ],
   "semi": [
     0,
   ],

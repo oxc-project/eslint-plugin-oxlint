@@ -363,10 +363,6 @@ const reactPerfRules = {
   'react-perf/jsx-no-new-object-as-prop': 'off',
 } as const;
 
-const securityRules = {
-  'security/api-keys': 'off',
-} as const;
-
 const treeShakingRules = {
   'tree-shaking/no-side-effects-in-initialization': 'off',
 } as const;
@@ -482,7 +478,6 @@ export {
   promiseRules,
   reactRules,
   reactPerfRules,
-  securityRules,
   treeShakingRules,
   unicornRules,
   vitestRules,
