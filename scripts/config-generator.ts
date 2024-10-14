@@ -1,7 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import type { Rule } from './traverse-rules.js';
-import { camelCase, kebabCase } from 'scule';
+import { camelCase, kebabCase, pascalCase } from 'scule';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
@@ -54,6 +54,7 @@ export class ConfigGenerator {
     const rulesArray = this.rulesArray;
 
     const rulesMap = this.groupItemsBy(rulesArray, rulesGrouping);
+    const exportName = pascalCase(this.rulesGrouping);
 
     const exportGrouping: string[] = [];
     let code =
@@ -66,18 +67,20 @@ export class ConfigGenerator {
 
       code += `const ${camelCase(grouping)}Config = {\n`;
 
-      code += `\tname: 'oxlint/${kebabCase(grouping)}',\n`;
-      code += `\trules: rules.${camelCase(grouping)}Rules,`;
-      code += '\n} as const;\n\n';
+      code += `  name: 'oxlint/${kebabCase(grouping)}',\n`;
+      code += `  rules: rules.${camelCase(grouping)}Rules,`;
+      code += '\n};\n\n';
     }
 
-    code += 'export {\n';
+    code += `const configBy${exportName} =  {\n`;
     code += exportGrouping
       .map((grouping) => {
-        return `\t${camelCase(grouping)}Config as "flat/${kebabCase(grouping)}"`;
+        return `  'flat/${kebabCase(grouping)}': ${camelCase(grouping)}Config`;
       })
       .join(',\n');
-    code += '\n}';
+    code += '\n}\n\n';
+
+    code += `export default configBy${exportName}`;
 
     return code;
   }

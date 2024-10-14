@@ -9,7 +9,6 @@ export default defineConfig({
     },
   },
   build: {
-    target: 'node20',
     lib: {
       entry: [path.resolve(import.meta.dirname, 'src/index.ts')],
       fileName: (format, entryName) => {
