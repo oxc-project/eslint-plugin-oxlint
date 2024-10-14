@@ -1,6 +1,7 @@
 import * as ruleMapsByScope from './rules-by-scope.js';
 import * as ruleMapsByCategory from './rules-by-category.js';
-import { createFlatRulesConfig } from './utils.js';
+import * as configMapsByScope from './configs-by-scope.js';
+import * as configMapsByCategory from './configs-by-category.js';
 
 type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
   x: infer I
@@ -36,7 +37,7 @@ export default {
       name: 'oxlint ignore rules recommended',
       rules: ruleMapsByCategory.correctnessRules,
     },
-    ...createFlatRulesConfig(ruleMapsByScope),
-    ...createFlatRulesConfig(ruleMapsByCategory),
+    ...configMapsByScope,
+    ...configMapsByCategory,
   },
-};
+} as const;

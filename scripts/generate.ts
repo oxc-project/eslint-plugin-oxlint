@@ -1,5 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { RulesGenerator, RulesGrouping } from './rules-generator.js';
+import { ConfigGenerator } from './config-generator.js';
 import { traverseRules } from './traverse-rules.js';
 import { getLatestVersionFromClonedRepo } from './oxlint-version.js';
 import { TARGET_DIRECTORY, VERSION_PREFIX } from './constants.js';
@@ -24,13 +25,15 @@ if (!oxlintVersion) {
   );
 }
 
-const generator = new RulesGenerator(oxlintVersion, successResultArray);
+const rulesGenerator = new RulesGenerator(oxlintVersion, successResultArray);
+const configGenerator = new ConfigGenerator(oxlintVersion, successResultArray);
 
-generator.setRulesGrouping(RulesGrouping.SCOPE);
-await generator.generateRules();
-generator.setRulesGrouping(RulesGrouping.CATEGORY);
-await generator.generateRules();
-
+[rulesGenerator, configGenerator].forEach(async (generator) => {
+  generator.setRulesGrouping(RulesGrouping.SCOPE);
+  await generator.generateRules();
+  generator.setRulesGrouping(RulesGrouping.CATEGORY);
+  await generator.generateRules();
+});
 // Update package.json version
 writeFileSync(
   '../package.json',
