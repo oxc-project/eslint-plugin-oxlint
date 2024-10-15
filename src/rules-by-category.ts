@@ -338,7 +338,6 @@ const correctnessRules = {
   'react/no-render-return-value': 'off',
   'react/no-string-refs': 'off',
   'react/void-dom-elements-no-children': 'off',
-  'security/api-keys': 'off',
   '@typescript-eslint/no-duplicate-enum-values': 'off',
   '@typescript-eslint/no-extra-non-null-assertion': 'off',
   '@typescript-eslint/no-misused-new': 'off',

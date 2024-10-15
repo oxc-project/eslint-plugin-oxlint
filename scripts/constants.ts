@@ -7,7 +7,7 @@ export const VERSION_PREFIX = 'oxlint_v';
 export const SPARSE_CLONE_DIRECTORY = 'crates/oxc_linter/src';
 
 // these are the rules that don't have a direct equivalent in the eslint rules
-export const ignoreScope = new Set(['oxc', 'deepscan']);
+export const ignoreScope = new Set(['oxc', 'deepscan', 'security']);
 
 // these are the mappings from the scope in the rules.rs to the eslint scope
 // only used for the scopes where the directory structure doesn't reflect the eslint scope
