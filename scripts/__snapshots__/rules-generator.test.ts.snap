@@ -5,11 +5,11 @@ exports[`RulesGenerator > RulesGenerator generates rules correctly > byCategory 
 
 const styleRules = {
   'rulename-with-mod': "off"
-} as const
+} as const;
 
 const correctnessRules = {
   '@typescript-eslint/rulename-without-mod': "off"
-} as const
+} as const;
 
 export {
   styleRules,
@@ -22,11 +22,11 @@ exports[`RulesGenerator > RulesGenerator generates rules correctly > byScope 1`]
 
 const eslintRules = {
   'rulename-with-mod': "off"
-} as const
+} as const;
 
 const typescriptRules = {
   '@typescript-eslint/rulename-without-mod': "off"
-} as const
+} as const;
 
 export {
   eslintRules,
