@@ -5,7 +5,7 @@
     {
       "groupName": "npm packages",
       "matchManagers": ["npm"],
-      "ignoreDeps": ["oxlint", "eslint"]
+      "ignoreDeps": ["oxlint"]
     },
     {
       "groupName": "oxlint",
