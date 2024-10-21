@@ -1151,6 +1151,9 @@ exports[`contains all the oxlint rules 1`] = `
   "promise/catch-or-return": [
     0,
   ],
+  "promise/no-callback-in-promise": [
+    0,
+  ],
   "promise/no-new-statics": [
     0,
   ],
@@ -1197,6 +1200,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/checked-requires-onchange-or-readonly": [
+    0,
+  ],
+  "react/iframe-missing-sandbox": [
     0,
   ],
   "react/jsx-boolean-value": [

@@ -316,6 +316,7 @@ const nodeRules = {
 const promiseRules = {
   'promise/avoid-new': 'off',
   'promise/catch-or-return': 'off',
+  'promise/no-callback-in-promise': 'off',
   'promise/no-new-statics': 'off',
   'promise/no-return-in-finally': 'off',
   'promise/param-names': 'off',
@@ -328,6 +329,7 @@ const promiseRules = {
 const reactRules = {
   'react/button-has-type': 'off',
   'react/checked-requires-onchange-or-readonly': 'off',
+  'react/iframe-missing-sandbox': 'off',
   'react/jsx-boolean-value': 'off',
   'react/jsx-curly-brace-presence': 'off',
   'react/jsx-key': 'off',
