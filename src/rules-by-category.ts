@@ -59,7 +59,6 @@ const restrictionRules = {
   'no-eval': 'off',
   'no-restricted-globals': 'off',
   'no-undefined': 'off',
-  'no-unsafe-optional-chaining': 'off',
   'import/no-amd': 'off',
   'import/no-cycle': 'off',
   'import/no-default-export': 'off',
@@ -166,12 +165,15 @@ const conditionalFixRules = {
   'unicorn/require-array-join-separator': 'off',
 } as const;
 
-const dangerousFixRules = {
+const fixDangerousRules = {
   'for-direction': 'off',
+  'no-eq-null': 'off',
+  'no-unexpected-multiline': 'off',
 } as const;
 
 const conditionalFixSuggestionRules = {
   'func-names': 'off',
+  'no-compare-neg-zero': 'off',
 } as const;
 
 const pendingRules = {
@@ -185,7 +187,6 @@ const pendingRules = {
   '@typescript-eslint/no-magic-numbers': 'off',
   'no-new-wrappers': 'off',
   'no-nonoctal-decimal-escape': 'off',
-  'no-plusplus': 'off',
   'no-proto': 'off',
   'no-regex-spaces': 'off',
   'no-return-assign': 'off',
@@ -195,6 +196,7 @@ const pendingRules = {
   'sort-vars': 'off',
   'jsx-a11y/tabindex-no-positive': 'off',
   'nextjs/no-typos': 'off',
+  'react/iframe-missing-sandbox': 'off',
   'react/no-unknown-property': 'off',
   'react/self-closing-comp': 'off',
   '@typescript-eslint/ban-types': 'off',
@@ -261,6 +263,7 @@ const correctnessRules = {
   'no-sparse-arrays': 'off',
   'no-this-before-super': 'off',
   'no-unsafe-finally': 'off',
+  'no-unsafe-optional-chaining': 'off',
   'no-unused-private-class-members': 'off',
   'no-useless-catch': 'off',
   'no-useless-rename': 'off',
@@ -325,6 +328,7 @@ const correctnessRules = {
   'nextjs/no-sync-scripts': 'off',
   'nextjs/no-title-in-document-head': 'off',
   'nextjs/no-unwanted-polyfillio': 'off',
+  'promise/no-callback-in-promise': 'off',
   'promise/valid-params': 'off',
   'react/jsx-key': 'off',
   'react/jsx-no-duplicate-props': 'off',
@@ -359,10 +363,6 @@ const perfRules = {
   'react-perf/jsx-no-new-array-as-prop': 'off',
   'react-perf/jsx-no-new-function-as-prop': 'off',
   'react-perf/jsx-no-new-object-as-prop': 'off',
-} as const;
-
-const conditionalSuggestionFixRules = {
-  'no-compare-neg-zero': 'off',
 } as const;
 
 const fixRules = {
@@ -445,11 +445,6 @@ const suggestionRules = {
   'no-empty': 'off',
 } as const;
 
-const fixDangerousRules = {
-  'no-eq-null': 'off',
-  'no-unexpected-multiline': 'off',
-} as const;
-
 const suspiciousRules = {
   'no-extend-native': 'off',
   'no-new': 'off',
@@ -466,6 +461,7 @@ const suspiciousRules = {
 } as const;
 
 const conditionalSuggestionRules = {
+  'no-plusplus': 'off',
   'no-throw-literal': 'off',
   'jsx-a11y/anchor-has-content': 'off',
 } as const;
@@ -481,15 +477,13 @@ export {
   restrictionRules,
   styleRules,
   conditionalFixRules,
-  dangerousFixRules,
+  fixDangerousRules,
   conditionalFixSuggestionRules,
   pendingRules,
   correctnessRules,
   perfRules,
-  conditionalSuggestionFixRules,
   fixRules,
   suggestionRules,
-  fixDangerousRules,
   suspiciousRules,
   conditionalSuggestionRules,
   dangerousSuggestionRules,

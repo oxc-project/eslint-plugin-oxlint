@@ -27,9 +27,9 @@ const conditionalFixConfig = {
   rules: rules.conditionalFixRules,
 };
 
-const dangerousFixConfig = {
-  name: 'oxlint/dangerous-fix',
-  rules: rules.dangerousFixRules,
+const fixDangerousConfig = {
+  name: 'oxlint/fix-dangerous',
+  rules: rules.fixDangerousRules,
 };
 
 const conditionalFixSuggestionConfig = {
@@ -52,11 +52,6 @@ const perfConfig = {
   rules: rules.perfRules,
 };
 
-const conditionalSuggestionFixConfig = {
-  name: 'oxlint/conditional-suggestion-fix',
-  rules: rules.conditionalSuggestionFixRules,
-};
-
 const fixConfig = {
   name: 'oxlint/fix',
   rules: rules.fixRules,
@@ -65,11 +60,6 @@ const fixConfig = {
 const suggestionConfig = {
   name: 'oxlint/suggestion',
   rules: rules.suggestionRules,
-};
-
-const fixDangerousConfig = {
-  name: 'oxlint/fix-dangerous',
-  rules: rules.fixDangerousRules,
 };
 
 const suspiciousConfig = {
@@ -93,15 +83,13 @@ const configByCategory = {
   'flat/restriction': restrictionConfig,
   'flat/style': styleConfig,
   'flat/conditional-fix': conditionalFixConfig,
-  'flat/dangerous-fix': dangerousFixConfig,
+  'flat/fix-dangerous': fixDangerousConfig,
   'flat/conditional-fix-suggestion': conditionalFixSuggestionConfig,
   'flat/pending': pendingConfig,
   'flat/correctness': correctnessConfig,
   'flat/perf': perfConfig,
-  'flat/conditional-suggestion-fix': conditionalSuggestionFixConfig,
   'flat/fix': fixConfig,
   'flat/suggestion': suggestionConfig,
-  'flat/fix-dangerous': fixDangerousConfig,
   'flat/suspicious': suspiciousConfig,
   'flat/conditional-suggestion': conditionalSuggestionConfig,
   'flat/dangerous-suggestion': dangerousSuggestionConfig,
