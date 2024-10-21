@@ -63,6 +63,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-unicorn": "^56.0.0",
     "husky": "^9.1.6",
+    "jiti": "^2.3.3",
     "lint-staged": "^15.2.10",
     "memfs": "^4.14.0",
     "oxlint": "^0.10.0",
