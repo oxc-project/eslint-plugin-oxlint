@@ -20,21 +20,19 @@ const allRules: UnionToIntersection<AllRules> = Object.assign(
 export default {
   configs: {
     recommended: {
-      name: 'oxlint ignore rules recommended',
       plugins: ['oxlint'],
       rules: ruleMapsByCategory.correctnessRules,
     },
     all: {
-      name: 'oxlint ignore rules all',
       plugins: ['oxlint'],
       rules: allRules,
     },
     'flat/all': {
-      name: 'oxlint ignore rules all',
+      name: 'oxlint/all',
       rules: allRules,
     },
     'flat/recommended': {
-      name: 'oxlint ignore rules recommended',
+      name: 'oxlint/recommended',
       rules: ruleMapsByCategory.correctnessRules,
     },
     ...configByScope,
