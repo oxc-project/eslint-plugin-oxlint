@@ -142,11 +142,21 @@ suite('readFilesRecursively', () => {
       correctness
     )`);
 
+    const ruleWithFixabilityModuleContent = dedent(`declare_oxc_lint!(
+      /// Some Block Content
+      /// ) extra parenthesis to make sure it doesn't catch
+      DefaultCaseLast,
+      correctness,
+      fix
+    )`);
+
     vol.fromJSON({
       'crates/src/rules/eslint/rulename-with-mod/mod.rs':
         ruleNameWithModuleContent,
       'crates/src/rules/typescript/rulename-without-mod.rs':
         ruleNameWithoutModuleContent,
+      'crates/src/rules/unicorn/rule-with-fixability.rs':
+        ruleWithFixabilityModuleContent,
     });
 
     // Call the function
@@ -162,6 +172,11 @@ suite('readFilesRecursively', () => {
         category: 'correctness',
         scope: 'typescript',
         value: '@typescript-eslint/rulename-without-mod',
+      },
+      {
+        category: 'correctness',
+        scope: 'unicorn',
+        value: 'unicorn/rule-with-fixability',
       },
     ]);
 
