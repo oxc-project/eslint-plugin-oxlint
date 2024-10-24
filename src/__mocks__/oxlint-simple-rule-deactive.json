@@ -1,6 +1,0 @@
-{
-  "plugins": [],
-  "rules": {
-    "eqeqeq": "off"
-  }
-}

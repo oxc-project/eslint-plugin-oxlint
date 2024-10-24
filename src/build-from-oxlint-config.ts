@@ -69,10 +69,9 @@ const appendRulesScope = (
   }
 };
 
-export default function buildFromOxlintConfig(
-  oxlintConfigFile: string
-): Record<string, 'off'> {
-  const config = getConfigContent(oxlintConfigFile);
+export const buildFromObject = (
+  config: Record<string, unknown>
+): Record<string, 'off'> => {
   const rules: Record<string, 'off'> = {};
 
   if (
@@ -101,4 +100,12 @@ export default function buildFromOxlintConfig(
   }
 
   return rules;
+};
+
+export default function buildFromOxlintConfigFile(
+  oxlintConfigFile: string
+): Record<string, 'off'> {
+  const config = getConfigContent(oxlintConfigFile);
+
+  return buildFromObject(config);
 }
