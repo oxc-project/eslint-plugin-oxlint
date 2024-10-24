@@ -62,6 +62,9 @@ const appendRulesScope = (
     // is this rules not turned off
     if (oxlintRules[rule] !== 'off') {
       rules[rule] = 'off';
+    } else {
+      // rules extended by categories or plugins can be disabled manually
+      delete rules[rule];
     }
   }
 };

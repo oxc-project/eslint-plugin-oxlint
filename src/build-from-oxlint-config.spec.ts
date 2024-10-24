@@ -74,3 +74,27 @@ it('detects plugin and append its rules', () => {
   // snapshot because it can change with the next release
   expect(rules).toMatchSnapshot('detectPluginRules');
 });
+
+it('detects manually disabled rules, which are extended by category', () => {
+  const rules = buildFromOxlintConfig(
+    path.resolve(
+      import.meta.dirname,
+      '__mocks__',
+      'oxlint-complex-category-active-rule-deactive.json'
+    )
+  );
+
+  expect('no-invalid-regexp' in rules).toBe(false);
+});
+
+it('detects manually disabled rules, which are extended by plugin', () => {
+  const rules = buildFromOxlintConfig(
+    path.resolve(
+      import.meta.dirname,
+      '__mocks__',
+      'oxlint-complex-plugin-active-rule-deactive.json'
+    )
+  );
+
+  expect('no-invalid-regexp' in rules).toBe(false);
+});

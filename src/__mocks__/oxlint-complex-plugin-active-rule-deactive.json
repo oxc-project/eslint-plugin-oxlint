@@ -1,0 +1,8 @@
+{
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "no-invalid-regexp": "off"
+  }
+}
