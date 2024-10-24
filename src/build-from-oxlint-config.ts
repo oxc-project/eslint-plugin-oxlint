@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import configByCategory from './configs-by-category.js';
+import configByScope from './configs-by-scope.js';
 
 const getConfigContent = (
   oxlintConfigFile: string
@@ -39,6 +40,20 @@ const appendCategoriesScope = (
   }
 };
 
+const appendPluginsScope = (
+  plugins: string[],
+  rules: Record<string, 'off'>
+): void => {
+  for (const plugin of plugins) {
+    const configName = `flat/${plugin}`;
+
+    if (configName in configByScope) {
+      // @ts-ignore -- come on TS, we are checking if the configName exists in the configByCategory
+      Object.assign(rules, configByScope[configName].rules);
+    }
+  }
+};
+
 const appendRulesScope = (
   oxlintRules: Record<string, unknown>,
   rules: Record<string, 'off'>
@@ -63,6 +78,14 @@ export default function buildFromOxlintConfig(
     config.categories !== null
   ) {
     appendCategoriesScope(config.categories as Record<string, unknown>, rules);
+  }
+
+  if ('plugins' in config && Array.isArray(config.plugins)) {
+    appendPluginsScope(config.plugins as string[], rules);
+  } else {
+    // default values, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
+    // oxc is in ignoreScope
+    appendPluginsScope(['react', 'unicorn', 'typescript'], rules);
   }
 
   // is there a rules objects in the json file
