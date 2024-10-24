@@ -1,13 +1,6 @@
 import { expect, it } from 'vitest';
 import buildFromOxlintConfig from './build-from-oxlint-config.js';
-import configByScope from './configs-by-scope.js';
 import path from 'node:path';
-
-const defaultPluginRules = {
-  ...configByScope['flat/react'].rules,
-  ...configByScope['flat/unicorn'].rules,
-  ...configByScope['flat/typescript'].rules,
-};
 
 it('detect active rules inside "rules" scope', () => {
   const rules = buildFromOxlintConfig(
@@ -19,7 +12,6 @@ it('detect active rules inside "rules" scope', () => {
   );
 
   expect(rules).toStrictEqual({
-    ...defaultPluginRules,
     eqeqeq: 'off',
   });
 });
@@ -33,7 +25,7 @@ it('skip deactive rules inside "rules" scope', () => {
     )
   );
 
-  expect(rules).toStrictEqual(defaultPluginRules);
+  expect(rules).toStrictEqual({});
 });
 
 it('detects active categories and append its rules', () => {
@@ -58,7 +50,7 @@ it('skip deactive categories ', () => {
     )
   );
 
-  expect(rules).toStrictEqual(defaultPluginRules);
+  expect(rules).toStrictEqual({});
 });
 
 it('enables default plugin rules (react, unicorn, typescript)', () => {
