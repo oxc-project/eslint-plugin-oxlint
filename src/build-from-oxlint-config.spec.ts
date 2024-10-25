@@ -2,18 +2,20 @@ import { expect, it } from 'vitest';
 import { buildFromObject } from './build-from-oxlint-config.js';
 
 it('detect active rules inside "rules" scope', () => {
-  ['error', ['error']].forEach((ruleSetting) => {
-    expect(
-      buildFromObject({
-        plugins: [],
-        rules: {
-          eqeqeq: ruleSetting,
-        },
-      })
-    ).toStrictEqual({
-      eqeqeq: 'off',
-    });
-  });
+  ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]].forEach(
+    (ruleSetting) => {
+      expect(
+        buildFromObject({
+          plugins: [],
+          rules: {
+            eqeqeq: ruleSetting,
+          },
+        })
+      ).toStrictEqual({
+        eqeqeq: 'off',
+      });
+    }
+  );
 });
 
 it('skip deactive rules inside "rules" scope', () => {
@@ -29,42 +31,53 @@ it('skip deactive rules inside "rules" scope', () => {
   });
 });
 
-it('skip deactive categories ', () => {
-  const rules = buildFromObject({
-    categories: {
-      correctness: 'off',
-    },
-  });
-
-  expect(rules).toStrictEqual({});
+it('skip deactive categories', () => {
+  expect(
+    buildFromObject({
+      categories: {
+        correctness: 'off',
+      },
+    })
+  ).toStrictEqual({});
 });
 
 it('default plugins (react, unicorn, typescript), default categories', () => {
-  const rules = buildFromObject({});
-
   // snapshot because it can change with the next release
-  expect(rules).toMatchSnapshot('defaultPluginDefaultCategories');
+  expect(buildFromObject({})).toMatchSnapshot('defaultPluginDefaultCategories');
 });
 
 it('custom plugins, default categories', () => {
-  const rules = buildFromObject({
-    plugins: ['unicorn'],
-  });
-
   // snapshot because it can change with the next release
-  expect(rules).toMatchSnapshot('customPluginDefaultCategories');
+  expect(
+    buildFromObject({
+      plugins: ['unicorn'],
+    })
+  ).toMatchSnapshot('customPluginDefaultCategories');
 });
 
 it('custom plugins, custom categories', () => {
+  // snapshot because it can change with the next release
+  expect(
+    buildFromObject({
+      plugins: ['eslint'],
+      categories: {
+        perf: 'warn',
+        correctness: 'off',
+      },
+    })
+  ).toMatchSnapshot('customPluginCustomCategories');
+});
+
+it('skip deactive rules, for custom enable category', () => {
   const rules = buildFromObject({
     plugins: ['eslint'],
     categories: {
-      correctness: 'warn',
+      perf: 'warn',
+      correctness: 'off',
     },
     rules: {
-      'no-invalid-regexp': 'off',
+      'no-await-in-loop': 'off',
     },
   });
-
-  expect('no-invalid-regexp' in rules).toBe(false);
+  expect('no-await-in-loop' in rules).toBe(false);
 });

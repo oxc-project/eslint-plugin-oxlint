@@ -1,5 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`custom plugins, custom categories > customPluginCustomCategories 1`] = `
+{
+  "no-await-in-loop": "off",
+}
+`;
+
 exports[`custom plugins, default categories > customPluginDefaultCategories 1`] = `
 {
   "unicorn/no-await-in-promise-methods": "off",
