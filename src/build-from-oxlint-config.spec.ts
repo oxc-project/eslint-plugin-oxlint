@@ -2,27 +2,31 @@ import { expect, it } from 'vitest';
 import { buildFromObject } from './build-from-oxlint-config.js';
 
 it('detect active rules inside "rules" scope', () => {
-  const rules = buildFromObject({
-    plugins: [],
-    rules: {
-      eqeqeq: 'error',
-    },
-  });
-
-  expect(rules).toStrictEqual({
-    eqeqeq: 'off',
+  ['error', ['error']].forEach((ruleSetting) => {
+    expect(
+      buildFromObject({
+        plugins: [],
+        rules: {
+          eqeqeq: ruleSetting,
+        },
+      })
+    ).toStrictEqual({
+      eqeqeq: 'off',
+    });
   });
 });
 
 it('skip deactive rules inside "rules" scope', () => {
-  const rules = buildFromObject({
-    plugins: [],
-    rules: {
-      eqeqeq: 'off',
-    },
+  ['off', ['off'], 0, [0]].forEach((ruleSetting) => {
+    expect(
+      buildFromObject({
+        plugins: [],
+        rules: {
+          eqeqeq: ruleSetting,
+        },
+      })
+    ).toStrictEqual({});
   });
-
-  expect(rules).toStrictEqual({});
 });
 
 it('skip deactive categories ', () => {

@@ -34,28 +34,30 @@ const appendCategoriesScope = (
   for (const category in categories) {
     const configName = `flat/${category}`;
 
-    // category is enabled and valid
-    if (categories[category] !== 'off' && configName in configByCategory) {
-      // @ts-ignore -- come on TS, we are checking if the configName exists in the configByCategory
-      const possibleRules = configByCategory[configName].rules;
-
-      // iterate to each rule to check if the rule can be appended, because the plugin is activated
-      Object.keys(possibleRules).forEach((rule) => {
-        plugins.forEach((plugin) => {
-          // @ts-ignore -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
-          const rulePrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
-
-          // the rule has no prefix, so it is a eslint one
-
-          if (rulePrefix === '' && !rule.includes('/')) {
-            rules[rule] = 'off';
-            // other rules with a prefix like @typescript-eslint/
-          } else if (rule.startsWith(`${rulePrefix}/`)) {
-            rules[rule] = 'off';
-          }
-        });
-      });
+    // category is not enabled or not in found categories
+    if (categories[category] === 'off' || !(configName in configByCategory)) {
+      continue;
     }
+
+    // @ts-ignore -- come on TS, we are checking if the configName exists in the configByCategory
+    const possibleRules = configByCategory[configName].rules;
+
+    // iterate to each rule to check if the rule can be appended, because the plugin is activated
+    Object.keys(possibleRules).forEach((rule) => {
+      plugins.forEach((plugin) => {
+        // @ts-ignore -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
+        const pluginPrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
+
+        // the rule has no prefix, so it is a eslint one
+
+        if (pluginPrefix === '' && !rule.includes('/')) {
+          rules[rule] = 'off';
+          // other rules with a prefix like @typescript-eslint/
+        } else if (rule.startsWith(`${pluginPrefix}/`)) {
+          rules[rule] = 'off';
+        }
+      });
+    });
   }
 };
 
@@ -65,13 +67,19 @@ const appendRulesScope = (
 ): void => {
   for (const rule in oxlintRules) {
     // is this rules not turned off
-    if (oxlintRules[rule] !== 'off') {
+    if (!isDeactiveValue(oxlintRules[rule])) {
       rules[rule] = 'off';
-    } else {
+    } else if (rule in rules) {
       // rules extended by categories or plugins can be disabled manually
       delete rules[rule];
     }
   }
+};
+
+const isDeactiveValue = (value: unknown): boolean => {
+  const isOff = (value: unknown) => value === 'off' || value === 0;
+
+  return isOff(value) || (Array.isArray(value) && isOff(value[0]));
 };
 
 const readPluginsFromConfig = (config: Record<string, unknown>): string[] => {
