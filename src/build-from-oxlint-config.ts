@@ -95,6 +95,9 @@ export const buildFromObject = (
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config);
 
+  // it is not a plugin but it is activated by default
+  plugins.push('eslint');
+
   if (
     'categories' in config &&
     typeof config.categories === 'object' &&

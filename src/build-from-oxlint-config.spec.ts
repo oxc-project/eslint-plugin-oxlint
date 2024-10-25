@@ -4,30 +4,29 @@ import { buildFromObject } from './build-from-oxlint-config.js';
 it('detect active rules inside "rules" scope', () => {
   ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]].forEach(
     (ruleSetting) => {
-      expect(
-        buildFromObject({
-          plugins: [],
-          rules: {
-            eqeqeq: ruleSetting,
-          },
-        })
-      ).toStrictEqual({
-        eqeqeq: 'off',
+      const rules = buildFromObject({
+        plugins: [],
+        rules: {
+          eqeqeq: ruleSetting,
+        },
       });
+
+      expect('eqeqeq' in rules).toBe(true);
+      expect(rules.eqeqeq).toBe('off');
     }
   );
 });
 
 it('skip deactive rules inside "rules" scope', () => {
   ['off', ['off'], 0, [0]].forEach((ruleSetting) => {
-    expect(
-      buildFromObject({
-        plugins: [],
-        rules: {
-          eqeqeq: ruleSetting,
-        },
-      })
-    ).toStrictEqual({});
+    const rules = buildFromObject({
+      plugins: [],
+      rules: {
+        eqeqeq: ruleSetting,
+      },
+    });
+
+    expect('eqeqeq' in rules).toBe(false);
   });
 });
 
