@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import configByCategory from './configs-by-category.js';
-import configByScope from './configs-by-scope.js';
+import { scopeMaps } from '../scripts/constants.js';
 
 const getConfigContent = (
   oxlintConfigFile: string
@@ -27,29 +27,34 @@ const getConfigContent = (
 };
 
 const appendCategoriesScope = (
+  plugins: string[],
   categories: Record<string, unknown>,
   rules: Record<string, 'off'>
 ): void => {
   for (const category in categories) {
     const configName = `flat/${category}`;
 
+    // category is enabled and valid
     if (categories[category] !== 'off' && configName in configByCategory) {
       // @ts-ignore -- come on TS, we are checking if the configName exists in the configByCategory
-      Object.assign(rules, configByCategory[configName].rules);
-    }
-  }
-};
+      const possibleRules = configByCategory[configName].rules;
 
-const appendPluginsScope = (
-  plugins: string[],
-  rules: Record<string, 'off'>
-): void => {
-  for (const plugin of plugins) {
-    const configName = `flat/${plugin}`;
+      // iterate to each rule to check if the rule can be appended, because the plugin is activated
+      Object.keys(possibleRules).forEach((rule) => {
+        plugins.forEach((plugin) => {
+          // @ts-ignore -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
+          const rulePrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
 
-    if (configName in configByScope) {
-      // @ts-ignore -- come on TS, we are checking if the configName exists in the configByCategory
-      Object.assign(rules, configByScope[configName].rules);
+          // the rule has no prefix, so it is a eslint one
+
+          if (rulePrefix === '' && !rule.includes('/')) {
+            rules[rule] = 'off';
+            // other rules with a prefix like @typescript-eslint/
+          } else if (rule.startsWith(`${rulePrefix}/`)) {
+            rules[rule] = 'off';
+          }
+        });
+      });
     }
   }
 };
@@ -69,25 +74,32 @@ const appendRulesScope = (
   }
 };
 
+const readPluginsFromConfig = (config: Record<string, unknown>): string[] => {
+  return 'plugins' in config && Array.isArray(config.plugins)
+    ? (config.plugins as string[])
+    : // default values, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
+      ['react', 'unicorn', 'typescript'];
+};
+
 export const buildFromObject = (
   config: Record<string, unknown>
 ): Record<string, 'off'> => {
   const rules: Record<string, 'off'> = {};
+  const plugins = readPluginsFromConfig(config);
 
   if (
     'categories' in config &&
     typeof config.categories === 'object' &&
     config.categories !== null
   ) {
-    appendCategoriesScope(config.categories as Record<string, unknown>, rules);
-  }
-
-  if ('plugins' in config && Array.isArray(config.plugins)) {
-    appendPluginsScope(config.plugins as string[], rules);
+    appendCategoriesScope(
+      plugins,
+      config.categories as Record<string, unknown>,
+      rules
+    );
   } else {
-    // default values, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
-    // oxc is in ignoreScope
-    appendPluginsScope(['react', 'unicorn', 'typescript'], rules);
+    // default values, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
+    appendCategoriesScope(plugins, { correctness: 'warn' }, rules);
   }
 
   // is there a rules objects in the json file
