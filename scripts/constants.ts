@@ -13,6 +13,8 @@ export const ignoreScope = new Set(['oxc', 'deepscan', 'security']);
 // only used for the scopes where the directory structure doesn't reflect the eslint scope
 // such as `typescript` vs `@typescript-eslint` or others. Eslint as a scope is an exception,
 // as eslint doesn't have a scope.
+// There is a duplicate in src/build-from-oxlint-config.ts, for clean builds we manage it in 2 files.
+// In the future we can generate maybe this constant into src folder
 export const scopeMaps = {
   eslint: '',
   typescript: '@typescript-eslint',

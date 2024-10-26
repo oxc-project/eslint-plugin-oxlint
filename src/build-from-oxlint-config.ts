@@ -1,6 +1,16 @@
 import fs from 'node:fs';
 import configByCategory from './configs-by-category.js';
-import { scopeMaps } from '../scripts/constants.js';
+
+// these are the mappings from the scope in the rules.rs to the eslint scope
+// only used for the scopes where the directory structure doesn't reflect the eslint scope
+// such as `typescript` vs `@typescript-eslint` or others. Eslint as a scope is an exception,
+// as eslint doesn't have a scope.
+// There is a duplicate in scripts/constants.js, for clean builds we manage it in 2 files.
+// In the future we can generate maybe this constant into src folder
+const scopeMaps = {
+  eslint: '',
+  typescript: '@typescript-eslint',
+};
 
 const getConfigContent = (
   oxlintConfigFile: string
@@ -49,7 +59,6 @@ const appendCategoriesScope = (
         const pluginPrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
 
         // the rule has no prefix, so it is a eslint one
-
         if (pluginPrefix === '' && !rule.includes('/')) {
           rules[rule] = 'off';
           // other rules with a prefix like @typescript-eslint/
