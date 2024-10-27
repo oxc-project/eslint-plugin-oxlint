@@ -6,45 +6,44 @@ import {
 import fs from 'node:fs';
 
 describe('buildFromOxlintConfig', () => {
-  it('detect active rules inside "rules" scope', () => {
-    ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]].forEach(
-      (ruleSetting) => {
+  describe('rules values', () => {
+    it('detect active rules inside "rules" scope', () => {
+      ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]].forEach(
+        (ruleSetting) => {
+          const rules = buildFromOxlintConfig({
+            rules: {
+              eqeqeq: ruleSetting,
+            },
+          });
+
+          expect('eqeqeq' in rules).toBe(true);
+          expect(rules.eqeqeq).toBe('off');
+        }
+      );
+    });
+
+    it('skip deactive rules inside "rules" scope', () => {
+      ['off', ['off'], 0, [0]].forEach((ruleSetting) => {
         const rules = buildFromOxlintConfig({
-          plugins: [],
           rules: {
             eqeqeq: ruleSetting,
           },
         });
 
-        expect('eqeqeq' in rules).toBe(true);
-        expect(rules.eqeqeq).toBe('off');
-      }
-    );
-  });
-
-  it('skip deactive rules inside "rules" scope', () => {
-    ['off', ['off'], 0, [0]].forEach((ruleSetting) => {
-      const rules = buildFromOxlintConfig({
-        plugins: [],
-        rules: {
-          eqeqeq: ruleSetting,
-        },
+        expect('eqeqeq' in rules).toBe(false);
       });
-
-      expect('eqeqeq' in rules).toBe(false);
     });
-  });
 
-  it('skip invalid rules inside "rules" scope', () => {
-    ['on', ['on'], 3, [3]].forEach((ruleSetting) => {
-      const rules = buildFromOxlintConfig({
-        plugins: [],
-        rules: {
-          eqeqeq: ruleSetting,
-        },
+    it('skip invalid rules inside "rules" scope', () => {
+      ['on', ['on'], 3, [3]].forEach((ruleSetting) => {
+        const rules = buildFromOxlintConfig({
+          rules: {
+            eqeqeq: ruleSetting,
+          },
+        });
+
+        expect('eqeqeq' in rules).toBe(false);
       });
-
-      expect('eqeqeq' in rules).toBe(false);
     });
   });
 
