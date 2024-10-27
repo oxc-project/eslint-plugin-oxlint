@@ -47,6 +47,38 @@ module.exports = {
 }
 ```
 
+### Detect rules from `oxlint.json`
+
+If you are using flat configuration (eslint >= 9.0), you can use the following config:
+
+```js
+// eslint.config.js
+import { buildFromOxlintConfigFile } from 'eslint-plugin-oxlint';
+export default [
+  ...// other plugins
+  {
+    // oxlint should be the last one
+    name: 'oxc/custom',
+    rules: buildFromOxlintConfigFile('./oxlint.json'),
+  },
+];
+```
+
+If you are using legacy configuration (eslint < 9.0), you can use the following config:
+
+```js
+import { buildFromOxlintConfigFile } from 'eslint-plugin-oxlint';
+
+// .eslintrc.js
+module.exports = {
+  ... // other config
+  rules: {
+    ... // other rules
+    ...buildFromOxlintConfigFile('./oxlint.json'),
+  },
+}
+```
+
 ### Run it before eslint
 
 And then you can add the following script to your `package.json`:
