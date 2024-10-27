@@ -12,9 +12,33 @@ const scopeMaps = {
   typescript: '@typescript-eslint',
 };
 
+type OxlintConfigPlugins = string[];
+
+type OxlintConfigCategories = Record<string, unknown>;
+
+type OxlintConfigRules = Record<string, unknown>;
+
+type OxlintConfig = {
+  [key: string]: unknown;
+  plugins?: OxlintConfigPlugins;
+  categories?: OxlintConfigCategories;
+  rules?: OxlintConfigRules;
+};
+
+// default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
+const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
+
+// default categories, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
+const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
+
+/**
+ * tries to ried the oxlint config file and returning its JSON content.
+ * if the file is not found or could not be parsed, undefined is returned.
+ * And an error message will be emitted to `console.error`
+ */
 const getConfigContent = (
   oxlintConfigFile: string
-): Record<string, unknown> | undefined => {
+): OxlintConfig | undefined => {
   try {
     const buffer = fs.readFileSync(oxlintConfigFile, 'utf8');
 
@@ -40,9 +64,12 @@ const getConfigContent = (
   }
 };
 
-const appendCategoriesScope = (
-  plugins: string[],
-  categories: Record<string, unknown>,
+/**
+ * appends all rules which are enabled by a plugin and falls into a specific category
+ */
+const handleCategoriesScope = (
+  plugins: OxlintConfigPlugins,
+  categories: OxlintConfigCategories,
   rules: Record<string, 'off'>
 ): void => {
   for (const category in categories) {
@@ -74,8 +101,11 @@ const appendCategoriesScope = (
   }
 };
 
-const appendRulesScope = (
-  oxlintRules: Record<string, unknown>,
+/**
+ * checks if the oxlint rule is activated/deactivated and append/remove it.
+ */
+const handleRulesScope = (
+  oxlintRules: OxlintConfigRules,
   rules: Record<string, 'off'>
 ): void => {
   for (const rule in oxlintRules) {
@@ -89,12 +119,18 @@ const appendRulesScope = (
   }
 };
 
+/**
+ * check if the value is "off", 0, ["off", ...], or [0, ...]
+ */
 const isDeactiveValue = (value: unknown): boolean => {
   const isOff = (value: unknown) => value === 'off' || value === 0;
 
   return isOff(value) || (Array.isArray(value) && isOff(value[0]));
 };
 
+/**
+ * check if the value is "error", "warn", 1, 2, ["error", ...], ["warn", ...], [1, ...], or [2, ...]
+ */
 const isActiveValue = (value: unknown): boolean => {
   const isOn = (value: unknown) =>
     value === 'error' || value === 'warn' || value === 1 || value === 2;
@@ -102,49 +138,81 @@ const isActiveValue = (value: unknown): boolean => {
   return isOn(value) || (Array.isArray(value) && isOn(value[0]));
 };
 
-const readPluginsFromConfig = (config: Record<string, unknown>): string[] => {
+/**
+ * tries to return the "plugins" section from the config.
+ * it returns `undefined` when not found or invalid.
+ */
+const readPluginsFromConfig = (
+  config: OxlintConfig
+): OxlintConfigPlugins | undefined => {
   return 'plugins' in config && Array.isArray(config.plugins)
-    ? (config.plugins as string[])
-    : // default values, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
-      ['react', 'unicorn', 'typescript'];
+    ? (config.plugins as OxlintConfigPlugins)
+    : undefined;
 };
 
+/**
+ * tries to return the "categories" section from the config.
+ * it returns `undefined` when not found or invalid.
+ */
+const readCategoriesFromConfig = (
+  config: OxlintConfig
+): OxlintConfigCategories | undefined => {
+  return 'categories' in config &&
+    typeof config.categories === 'object' &&
+    config.categories !== null
+    ? (config.categories as OxlintConfigCategories)
+    : undefined;
+};
+
+/**
+ * tries to return the "rules" section from the config.
+ * it returns `undefined` when not found or invalid.
+ */
+const readRulesFromConfig = (
+  config: OxlintConfig
+): OxlintConfigRules | undefined => {
+  return 'rules' in config &&
+    typeof config.rules === 'object' &&
+    config.rules !== null
+    ? (config.rules as OxlintConfigRules)
+    : undefined;
+};
+
+/**
+ * builds turned off rules, which are supported by oxlint.
+ * It accepts an object similiar to the oxlint.json file.
+ */
 export const buildFromOxlintConfig = (
-  config: Record<string, unknown>
+  config: OxlintConfig
 ): Record<string, 'off'> => {
   const rules: Record<string, 'off'> = {};
-  const plugins = readPluginsFromConfig(config);
+  const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
 
   // it is not a plugin but it is activated by default
   plugins.push('eslint');
 
-  if (
-    'categories' in config &&
-    typeof config.categories === 'object' &&
-    config.categories !== null
-  ) {
-    appendCategoriesScope(
-      plugins,
-      config.categories as Record<string, unknown>,
-      rules
-    );
-  } else {
-    // default values, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
-    appendCategoriesScope(plugins, { correctness: 'warn' }, rules);
-  }
+  handleCategoriesScope(
+    plugins,
+    readCategoriesFromConfig(config) ?? defaultCategories,
+    rules
+  );
 
-  // is there a rules objects in the json file
-  if (
-    'rules' in config &&
-    typeof config.rules === 'object' &&
-    config.rules !== null
-  ) {
-    appendRulesScope(config.rules as Record<string, unknown>, rules);
+  const configRules = readRulesFromConfig(config);
+
+  if (configRules !== undefined) {
+    handleRulesScope(configRules, rules);
   }
 
   return rules;
 };
 
+/**
+ * builds turned off rules, which are supported by oxlint.
+ * It accepts an filepath to the oxlint.json file.
+ *
+ * It the oxlint.json file could not be found or parsed,
+ * no rules will be deactivated and an error to `console.error` will be emitted
+ */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
 ): Record<string, 'off'> => {
