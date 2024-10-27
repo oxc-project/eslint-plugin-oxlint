@@ -5,7 +5,7 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   test: {
     coverage: {
-      exclude: ['lib'],
+      include: ['src', 'scripts'],
     },
   },
   build: {

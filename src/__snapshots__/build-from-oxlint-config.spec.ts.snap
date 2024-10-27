@@ -1,12 +1,18 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`custom plugins, custom categories > customPluginCustomCategories 1`] = `
+exports[`buildFromOxlintConfig > custom plugins, custom categories > customPluginCustomCategories 1`] = `
 {
-  "no-await-in-loop": "off",
+  "constructor-super": "off",
+  "getter-return": "off",
+  "import/export": "off",
+  "import/no-deprecated": "off",
+  "import/no-unused-modules": "off",
+  "no-undef": "off",
+  "no-unreachable": "off",
 }
 `;
 
-exports[`custom plugins, default categories > customPluginDefaultCategories 1`] = `
+exports[`buildFromOxlintConfig > custom plugins, default categories > customPluginDefaultCategories 1`] = `
 {
   "no-async-promise-executor": "off",
   "no-caller": "off",
@@ -52,7 +58,7 @@ exports[`custom plugins, default categories > customPluginDefaultCategories 1`] 
 }
 `;
 
-exports[`default plugins (react, unicorn, typescript), default categories > defaultPluginDefaultCategories 1`] = `
+exports[`buildFromOxlintConfig > default plugins (react, unicorn, typescript), default categories > defaultPluginDefaultCategories 1`] = `
 {
   "@typescript-eslint/no-dupe-class-members": "off",
   "@typescript-eslint/no-duplicate-enum-values": "off",

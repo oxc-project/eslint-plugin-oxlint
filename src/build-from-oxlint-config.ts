@@ -14,25 +14,29 @@ const scopeMaps = {
 
 const getConfigContent = (
   oxlintConfigFile: string
-): Record<string, unknown> => {
+): Record<string, unknown> | undefined => {
   try {
     const buffer = fs.readFileSync(oxlintConfigFile, 'utf8');
 
     try {
       const configContent = JSON.parse(buffer);
 
+      if (typeof configContent !== 'object') {
+        throw new Error('not an valid config file');
+      }
+
       return configContent;
     } catch {
       console.error(
         `eslint-plugin-oxlint: could not parse oxlint config file: ${oxlintConfigFile}`
       );
-      return {};
+      return undefined;
     }
   } catch {
     console.error(
       `eslint-plugin-oxlint: could not find oxlint config file: ${oxlintConfigFile}`
     );
-    return {};
+    return undefined;
   }
 };
 
@@ -98,7 +102,7 @@ const readPluginsFromConfig = (config: Record<string, unknown>): string[] => {
       ['react', 'unicorn', 'typescript'];
 };
 
-export const buildFromObject = (
+export const buildFromOxlintConfig = (
   config: Record<string, unknown>
 ): Record<string, 'off'> => {
   const rules: Record<string, 'off'> = {};
@@ -134,10 +138,16 @@ export const buildFromObject = (
   return rules;
 };
 
-export default function buildFromOxlintConfigFile(
+export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
-): Record<string, 'off'> {
+): Record<string, 'off'> => {
   const config = getConfigContent(oxlintConfigFile);
 
-  return buildFromObject(config);
-}
+  // we could not parse form the file, do not build with default values
+  // we can not be sure if the setup is right
+  if (config === undefined) {
+    return {};
+  }
+
+  return buildFromOxlintConfig(config);
+};
