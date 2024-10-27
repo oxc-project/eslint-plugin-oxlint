@@ -18,14 +18,18 @@ jobs:
 
       - uses: ./.github/actions/pnpm
 
-      - name: Bump oxlint rules
+      - name: Generate from latest version
         run: |
           pnpm update --latest oxlint
           pnpm run clone
           pnpm run generate # Generate rules from latest oxlint
           pnpm run format # run prettier over it
-          pnpm run test -u # Update test snapshots
-          npm version ${{ inputs.version }} --no-git-tag-version
+
+      - name: Test and update
+        run: pnpm run test -u # Update test snapshots
+
+      - name: Bump oxlint rules
+        run: npm version ${{ inputs.version }} --no-git-tag-version
 
       - uses: peter-evans/create-pull-request@v7
         with:
