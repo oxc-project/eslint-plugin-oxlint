@@ -35,10 +35,24 @@ describe('buildFromOxlintConfig', () => {
     });
   });
 
+  it('skip invalid rules inside "rules" scope', () => {
+    ['on', ['on'], 3, [3]].forEach((ruleSetting) => {
+      const rules = buildFromOxlintConfig({
+        plugins: [],
+        rules: {
+          eqeqeq: ruleSetting,
+        },
+      });
+
+      expect('eqeqeq' in rules).toBe(false);
+    });
+  });
+
   it('skip deactive categories', () => {
     expect(
       buildFromOxlintConfig({
         categories: {
+          // correctness is the only category on by default
           correctness: 'off',
         },
       })
@@ -108,7 +122,7 @@ describe('buildFromOxlintConfigFile', () => {
       'success-config.json',
       JSON.stringify({
         rules: {
-          'no-await-loop': 'on',
+          'no-await-loop': 'error',
         },
       })
     );

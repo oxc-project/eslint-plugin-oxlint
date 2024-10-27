@@ -80,9 +80,9 @@ const appendRulesScope = (
 ): void => {
   for (const rule in oxlintRules) {
     // is this rules not turned off
-    if (!isDeactiveValue(oxlintRules[rule])) {
+    if (isActiveValue(oxlintRules[rule])) {
       rules[rule] = 'off';
-    } else if (rule in rules) {
+    } else if (rule in rules && isDeactiveValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
       delete rules[rule];
     }
@@ -93,6 +93,13 @@ const isDeactiveValue = (value: unknown): boolean => {
   const isOff = (value: unknown) => value === 'off' || value === 0;
 
   return isOff(value) || (Array.isArray(value) && isOff(value[0]));
+};
+
+const isActiveValue = (value: unknown): boolean => {
+  const isOn = (value: unknown) =>
+    value === 'error' || value === 'warn' || value === 1 || value === 2;
+
+  return isOn(value) || (Array.isArray(value) && isOn(value[0]));
 };
 
 const readPluginsFromConfig = (config: Record<string, unknown>): string[] => {
