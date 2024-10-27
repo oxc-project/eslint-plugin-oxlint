@@ -91,9 +91,9 @@ describe('buildFromOxlintConfig', () => {
 
 const createConfigFileAndBuildFromIt = (
   filename: string,
-  content: unknown
+  content: string
 ): Record<string, unknown> => {
-  fs.writeFileSync(filename, JSON.stringify(content));
+  fs.writeFileSync(filename, content);
 
   const rules = buildFromOxlintConfigFile(filename);
 
@@ -104,11 +104,14 @@ const createConfigFileAndBuildFromIt = (
 
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint config', () => {
-    const rules = createConfigFileAndBuildFromIt('success-config.json', {
-      rules: {
-        'no-await-loop': 'on',
-      },
-    });
+    const rules = createConfigFileAndBuildFromIt(
+      'success-config.json',
+      JSON.stringify({
+        rules: {
+          'no-await-loop': 'on',
+        },
+      })
+    );
 
     expect('no-await-loop' in rules).toBe(true);
   });
