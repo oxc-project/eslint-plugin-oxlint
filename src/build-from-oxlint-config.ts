@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import configByCategory from './configs-by-category.js';
+import type { Linter } from 'eslint';
 
 // these are the mappings from the scope in the rules.rs to the eslint scope
 // only used for the scopes where the directory structure doesn't reflect the eslint scope
@@ -184,7 +185,7 @@ const readRulesFromConfig = (
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
-): Record<string, 'off'> => {
+): Linter.Config<Record<string, 'off'>>[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
 
@@ -203,7 +204,12 @@ export const buildFromOxlintConfig = (
     handleRulesScope(configRules, rules);
   }
 
-  return rules;
+  return [
+    {
+      name: 'oxlint/from-oxlint-config',
+      rules,
+    },
+  ];
 };
 
 /**
@@ -215,13 +221,17 @@ export const buildFromOxlintConfig = (
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
-): Record<string, 'off'> => {
+): Linter.Config<Record<string, 'off'>>[] => {
   const config = getConfigContent(oxlintConfigFile);
 
   // we could not parse form the file, do not build with default values
   // we can not be sure if the setup is right
   if (config === undefined) {
-    return {};
+    return [
+      {
+        name: 'oxlint/from-oxlint-config',
+      },
+    ];
   }
 
   return buildFromOxlintConfig(config);

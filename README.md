@@ -55,28 +55,17 @@ If you are using flat configuration (eslint >= 9.0), you can use the following c
 // eslint.config.js
 import { buildFromOxlintConfigFile } from 'eslint-plugin-oxlint';
 export default [
-  ...// other plugins
-  {
-    // oxlint should be the last one
-    name: 'oxc/custom',
-    rules: buildFromOxlintConfigFile('./oxlint.json'),
-  },
+  ..., // other plugins
+  ...buildFromOxlintConfigFile('./oxlint.json'),
 ];
 ```
 
 If you are using legacy configuration (eslint < 9.0), you can use the following config:
 
 ```js
-import { buildFromOxlintConfigFile } from 'eslint-plugin-oxlint';
+const { buildFromOxlintConfigFile } = require('eslint-plugin-oxlint');
 
-// .eslintrc.js
-module.exports = {
-  ... // other config
-  rules: {
-    ... // other rules
-    ...buildFromOxlintConfigFile('./oxlint.json'),
-  },
-}
+// TODO
 ```
 
 ### Run it before eslint

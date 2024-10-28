@@ -5,9 +5,10 @@ import {
 } from './build-from-oxlint-config.js';
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
+import type { Linter } from 'eslint';
 
 describe('buildFromOxlintConfig', () => {
-  describe('rules values', () => {
+  describe('rule values', () => {
     it('detect active rules inside "rules" scope', () => {
       ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]].forEach(
         (ruleSetting) => {
@@ -17,8 +18,10 @@ describe('buildFromOxlintConfig', () => {
             },
           });
 
-          expect('eqeqeq' in rules).toBe(true);
-          expect(rules.eqeqeq).toBe('off');
+          expect(rules.length).toBe(1);
+          expect(rules[0].rules).not.toBeUndefined();
+          expect('eqeqeq' in rules[0].rules!).toBe(true);
+          expect(rules[0].rules!.eqeqeq).toBe('off');
         }
       );
     });
@@ -31,7 +34,9 @@ describe('buildFromOxlintConfig', () => {
           },
         });
 
-        expect('eqeqeq' in rules).toBe(false);
+        expect(rules.length).toBe(1);
+        expect(rules[0].rules).not.toBeUndefined();
+        expect('eqeqeq' in rules[0].rules!).toBe(false);
       });
     });
 
@@ -43,7 +48,9 @@ describe('buildFromOxlintConfig', () => {
           },
         });
 
-        expect('eqeqeq' in rules).toBe(false);
+        expect(rules.length).toBe(1);
+        expect(rules[0].rules).not.toBeUndefined();
+        expect('eqeqeq' in rules[0].rules!).toBe(false);
       });
     });
   });
@@ -56,7 +63,12 @@ describe('buildFromOxlintConfig', () => {
           correctness: 'off',
         },
       })
-    ).toStrictEqual({});
+    ).toStrictEqual([
+      {
+        name: 'oxlint/from-oxlint-config',
+        rules: {},
+      },
+    ]);
   });
 
   it('default plugins (react, unicorn, typescript), default categories', () => {
@@ -106,7 +118,7 @@ describe('buildFromOxlintConfig', () => {
 const createConfigFileAndBuildFromIt = (
   filename: string,
   content: string
-): Record<string, unknown> => {
+): Linter.Config<Record<string, 'off'>>[] => {
   fs.writeFileSync(filename, content);
 
   const rules = buildFromOxlintConfigFile(filename);
@@ -127,13 +139,19 @@ describe('buildFromOxlintConfigFile', () => {
       })
     );
 
-    expect('no-await-loop' in rules).toBe(true);
+    expect(rules.length).toBe(1);
+    expect(rules[0].rules).not.toBeUndefined();
+    expect('no-await-loop' in rules[0].rules!).toBe(true);
   });
 
   it('fails to find oxlint config', () => {
     const rules = buildFromOxlintConfigFile('not-found.json');
 
-    expect(rules).toStrictEqual({});
+    expect(rules).toStrictEqual([
+      {
+        name: 'oxlint/from-oxlint-config',
+      },
+    ]);
   });
 
   it('fails to parse invalid json', () => {
@@ -142,7 +160,11 @@ describe('buildFromOxlintConfigFile', () => {
       '["this", is an invalid json format]'
     );
 
-    expect(rules).toStrictEqual({});
+    expect(rules).toStrictEqual([
+      {
+        name: 'oxlint/from-oxlint-config',
+      },
+    ]);
   });
 
   it('fails to parse invalid oxlint config', () => {
@@ -151,7 +173,11 @@ describe('buildFromOxlintConfigFile', () => {
       JSON.stringify(['this is valid json but not an object'])
     );
 
-    expect(rules).toStrictEqual({});
+    expect(rules).toStrictEqual([
+      {
+        name: 'oxlint/from-oxlint-config',
+      },
+    ]);
   });
 });
 
@@ -185,7 +211,7 @@ const executeOxlintWithConfiguration = (filename: string, content: string) => {
 describe('integration test with oxlint', () => {
   [
     // default
-    // {}, can be enabled after oxc-project/oxc#6896
+    // {}, can be add after oxc-project/oxc#6896
     // no plugins
     { plugins: [] },
     // simple plugin override
@@ -219,7 +245,7 @@ describe('integration test with oxlint', () => {
     // all plugins enabled
     {
       plugins: [
-        // can be removed after oxc-project/oxc#6896
+        // can be add after oxc-project/oxc#6896
         // 'typescript',
         // 'unicorn',
         // 'react',
@@ -234,6 +260,33 @@ describe('integration test with oxlint', () => {
         'vitest',
       ],
     },
+    // everything on
+    {
+      plugins: [
+        // can be add after oxc-project/oxc#6896
+        // 'typescript',
+        // 'unicorn',
+        // 'react',
+        'react-perf',
+        'nextjs',
+        'import',
+        'jsdoc',
+        'jsx-a11y',
+        'n',
+        'promise',
+        'jest',
+        'vitest',
+      ],
+      categories: {
+        correctness: 'warn',
+        nursery: 'warn',
+        pedantic: 'warn',
+        perf: 'warn',
+        restriction: 'warn',
+        style: 'warn',
+        suspicious: 'warn',
+      },
+    },
   ].forEach((json, index) => {
     const fileContent = JSON.stringify(json);
 
@@ -243,12 +296,11 @@ describe('integration test with oxlint', () => {
         fileContent
       );
 
-      const eslintRules = createConfigFileAndBuildFromIt(
-        `integration-test-${index}-eslint.json`,
-        fileContent
-      );
+      const eslintRules = buildFromOxlintConfig(json);
 
-      expect(Object.keys(eslintRules).length).toBe(oxlintRulesCount);
+      expect(eslintRules.length).toBe(1);
+      expect(eslintRules[0].rules).not.toBeUndefined();
+      expect(Object.keys(eslintRules[0].rules!).length).toBe(oxlintRulesCount);
     });
   });
 });
