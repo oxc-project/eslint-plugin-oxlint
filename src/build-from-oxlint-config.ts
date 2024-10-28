@@ -45,8 +45,8 @@ const getConfigContent = (
     try {
       const configContent = JSON.parse(buffer);
 
-      if (typeof configContent !== 'object') {
-        throw new Error('not an valid config file');
+      if (typeof configContent !== 'object' || Array.isArray(configContent)) {
+        throw new TypeError('not an valid config file');
       }
 
       return configContent;
