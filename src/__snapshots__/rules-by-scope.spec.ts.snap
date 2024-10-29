@@ -1118,6 +1118,9 @@ exports[`contains all the oxlint rules 1`] = `
   "node/no-exports-assign": [
     0,
   ],
+  "node/no-new-require": [
+    0,
+  ],
   "nonblock-statement-body-position": [
     0,
   ],
@@ -1431,7 +1434,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/consistent-empty-array-spread": [
-    2,
+    0,
   ],
   "unicorn/consistent-existence-index-check": [
     2,
@@ -1677,7 +1680,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-math-min-max": [
-    2,
+    0,
   ],
   "unicorn/prefer-math-trunc": [
     0,
