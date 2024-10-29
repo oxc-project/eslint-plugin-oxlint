@@ -311,6 +311,7 @@ const nextjsRules = {
 
 const nodeRules = {
   'node/no-exports-assign': 'off',
+  'node/no-new-require': 'off',
 } as const;
 
 const promiseRules = {
@@ -371,6 +372,7 @@ const treeShakingRules = {
 
 const unicornRules = {
   'unicorn/catch-error-name': 'off',
+  'unicorn/consistent-empty-array-spread': 'off',
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/empty-brace-spaces': 'off',
   'unicorn/error-message': 'off',
@@ -432,6 +434,7 @@ const unicornRules = {
   'unicorn/prefer-event-target': 'off',
   'unicorn/prefer-includes': 'off',
   'unicorn/prefer-logical-operator-over-ternary': 'off',
+  'unicorn/prefer-math-min-max': 'off',
   'unicorn/prefer-math-trunc': 'off',
   'unicorn/prefer-modern-dom-apis': 'off',
   'unicorn/prefer-modern-math-apis': 'off',
