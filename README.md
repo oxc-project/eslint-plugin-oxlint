@@ -60,13 +60,7 @@ export default [
 ];
 ```
 
-If you are using legacy configuration (eslint < 9.0), you can use the following config:
-
-```js
-const { buildFromOxlintConfigFile } = require('eslint-plugin-oxlint');
-
-// TODO
-```
+`buildFromOxlintConfigFile` is not supported for legacy configuration (eslint < 9.0).
 
 ### Run it before eslint
 
