@@ -311,6 +311,7 @@ const nextjsRules = {
 
 const nodeRules = {
   'node/no-exports-assign': 'off',
+  'node/no-new-require': 'off',
 } as const;
 
 const promiseRules = {

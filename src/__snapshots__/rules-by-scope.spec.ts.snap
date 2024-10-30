@@ -1118,6 +1118,9 @@ exports[`contains all the oxlint rules 1`] = `
   "node/no-exports-assign": [
     0,
   ],
+  "node/no-new-require": [
+    0,
+  ],
   "nonblock-statement-body-position": [
     0,
   ],
