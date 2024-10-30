@@ -201,7 +201,7 @@ const executeOxlintWithConfiguration = (
     '--silent',
   ];
 
-  // --disabled-<foo>-plugin can be disabled after oxc-project/oxc#6896
+  // --disabled-<foo>-plugin can be removed after oxc-project/oxc#6896
   if (config.plugins !== undefined) {
     ['typescript', 'unicorn', 'react'].forEach((plugin) => {
       if (!config.plugins!.includes(plugin)) {
@@ -257,7 +257,7 @@ describe('integration test with oxlint', () => {
     {
       categories: {
         correctness: 'warn',
-        nursery: 'warn',
+        nursery: 'off', // enable ofter oxc-project/oxc#7073
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
@@ -280,6 +280,7 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
+        'tree_shaking',
       ],
     },
     // everything on
@@ -297,10 +298,11 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
+        'tree_shaking',
       ],
       categories: {
         correctness: 'warn',
-        nursery: 'warn',
+        nursery: 'off', // enable ofter oxc-project/oxc#7073
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
