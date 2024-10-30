@@ -213,6 +213,7 @@ const executeOxlintWithConfiguration = (
   try {
     oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
       encoding: 'utf-8',
+      stdio: 'pipe',
     });
   } catch {
     oxlintOutput = '';
@@ -243,6 +244,9 @@ describe('integration test with oxlint', () => {
     },
     // combination plugin + rule
     { plugins: ['vite'], rules: { eqeqeq: 'off' } },
+
+    // categorie change
+    { categories: { correctness: 'off', nusery: 'warn' } },
     // combination plugin + categires + rules
     {
       plugins: ['vite'],
