@@ -25,7 +25,8 @@ jobs:
           pnpm run generate # Generate rules from latest oxlint
           pnpm run format # run prettier over it
 
-      - name: Test and update
+      - name: Test and update snapshot
+        continue-on-error: true # we check in PR why it fails
         run: pnpm run test -u # Update test snapshots
 
       - name: Bump oxlint rules
