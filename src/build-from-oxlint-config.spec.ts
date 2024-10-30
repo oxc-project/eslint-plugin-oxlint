@@ -130,14 +130,15 @@ const createConfigFileAndBuildFromIt = (
 };
 
 describe('buildFromOxlintConfigFile', () => {
-  it('successfully parse oxlint config', () => {
+  it('successfully parse oxlint json config', () => {
     const rules = createConfigFileAndBuildFromIt(
       'success-config.json',
-      JSON.stringify({
-        rules: {
-          'no-await-loop': 'error',
+      `{
+        "rules": {
+          // hello world
+          "no-await-loop": "error",
         },
-      })
+      }`
     );
 
     expect(rules.length).toBe(1);
@@ -316,8 +317,6 @@ describe('integration test with oxlint', () => {
 
       expect(eslintRules.length).toBe(1);
       expect(eslintRules[0].rules).not.toBeUndefined();
-
-      console.log(eslintRules[0].rules!);
 
       let expectedCount = oxlintRulesCount ?? 0;
 

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import configByCategory from './configs-by-category.js';
 import type { Linter } from 'eslint';
+import JSONCParser from 'jsonc-parser';
 
 // these are the mappings from the scope in the rules.rs to the eslint scope
 // only used for the scopes where the directory structure doesn't reflect the eslint scope
@@ -41,10 +42,10 @@ const getConfigContent = (
   oxlintConfigFile: string
 ): OxlintConfig | undefined => {
   try {
-    const buffer = fs.readFileSync(oxlintConfigFile, 'utf8');
+    const content = fs.readFileSync(oxlintConfigFile, 'utf8');
 
     try {
-      const configContent = JSON.parse(buffer);
+      const configContent = JSONCParser.parse(content);
 
       if (typeof configContent !== 'object' || Array.isArray(configContent)) {
         throw new TypeError('not an valid config file');
