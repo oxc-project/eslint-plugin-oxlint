@@ -56,7 +56,7 @@ describe('buildFromOxlintConfig', () => {
     });
   });
 
-  it('skip deactive categories', () => {
+  it('skip deactivate categories', () => {
     expect(
       buildFromOxlintConfig({
         categories: {
@@ -101,7 +101,7 @@ describe('buildFromOxlintConfig', () => {
     ).toMatchSnapshot('customPluginCustomCategories');
   });
 
-  it('skip deactive rules, for custom enable category', () => {
+  it('skip deactivate rules, for custom enable category', () => {
     const rules = buildFromOxlintConfig({
       plugins: ['import'],
       categories: {
@@ -245,7 +245,7 @@ describe('integration test with oxlint', () => {
     // combination plugin + rule
     { plugins: ['vite'], rules: { eqeqeq: 'off' } },
 
-    // categorie change
+    // categories change
     { categories: { correctness: 'off', nusery: 'warn' } },
     // combination plugin + categires + rules
     {
@@ -257,7 +257,7 @@ describe('integration test with oxlint', () => {
     {
       categories: {
         correctness: 'warn',
-        nursery: 'off', // enable ofter oxc-project/oxc#7073
+        nursery: 'off', // enable after oxc-project/oxc#7073
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
@@ -302,7 +302,7 @@ describe('integration test with oxlint', () => {
       ],
       categories: {
         correctness: 'warn',
-        nursery: 'off', // enable ofter oxc-project/oxc#7073
+        nursery: 'off', // enable after oxc-project/oxc#7073
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',

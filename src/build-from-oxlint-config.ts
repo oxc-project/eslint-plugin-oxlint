@@ -34,7 +34,7 @@ const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
 const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
 
 /**
- * tries to ried the oxlint config file and returning its JSON content.
+ * tries to read the oxlint config file and returning its JSON content.
  * if the file is not found or could not be parsed, undefined is returned.
  * And an error message will be emitted to `console.error`
  */
@@ -114,7 +114,7 @@ const handleRulesScope = (
     // is this rules not turned off
     if (isActiveValue(oxlintRules[rule])) {
       rules[rule] = 'off';
-    } else if (rule in rules && isDeactiveValue(oxlintRules[rule])) {
+    } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
       delete rules[rule];
     }
@@ -124,7 +124,7 @@ const handleRulesScope = (
 /**
  * check if the value is "off", 0, ["off", ...], or [0, ...]
  */
-const isDeactiveValue = (value: unknown): boolean => {
+const isDeactivateValue = (value: unknown): boolean => {
   const isOff = (value: unknown) => value === 'off' || value === 0;
 
   return isOff(value) || (Array.isArray(value) && isOff(value[0]));
@@ -182,7 +182,7 @@ const readRulesFromConfig = (
 
 /**
  * builds turned off rules, which are supported by oxlint.
- * It accepts an object similiar to the oxlint.json file.
+ * It accepts an object similar to the oxlint.json file.
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
