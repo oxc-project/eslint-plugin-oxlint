@@ -6,6 +6,7 @@ import {
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
+import { typescriptRulesExtendEslintRules } from '../scripts/constants.js';
 
 describe('buildFromOxlintConfig', () => {
   describe('rule values', () => {
@@ -181,18 +182,37 @@ describe('buildFromOxlintConfigFile', () => {
   });
 });
 
-const executeOxlintWithConfiguration = (filename: string, content: string) => {
-  fs.writeFileSync(filename, content);
+const executeOxlintWithConfiguration = (
+  filename: string,
+  config: {
+    [key: string]: unknown;
+    plugins?: string[];
+    categories?: Record<string, unknown>;
+    rules?: Record<string, unknown>;
+  }
+) => {
+  fs.writeFileSync(filename, JSON.stringify(config));
   let oxlintOutput: string;
 
-  try {
-    // --disabled-<foo>-plugin can be disabled after oxc-project/oxc#6896
-    oxlintOutput = execSync(
-      `npx oxlint -c ${filename} --disable-oxc-plugin --disable-typescript-plugin --disable-unicorn-plugin --disable-react-plugin`,
-      {
-        encoding: 'utf-8',
+  const cliArguments = [
+    `--config=${filename}`,
+    '--disable-oxc-plugin',
+    '--silent',
+  ];
+
+  // --disabled-<foo>-plugin can be disabled after oxc-project/oxc#6896
+  if (config.plugins !== undefined) {
+    ['typescript', 'unicorn', 'react'].forEach((plugin) => {
+      if (!config.plugins!.includes(plugin)) {
+        cliArguments.push(`--disable-${plugin}-plugin`);
       }
-    );
+    });
+  }
+
+  try {
+    oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
+      encoding: 'utf-8',
+    });
   } catch {
     oxlintOutput = '';
   }
@@ -211,14 +231,13 @@ const executeOxlintWithConfiguration = (filename: string, content: string) => {
 describe('integration test with oxlint', () => {
   [
     // default
-    // {}, can be add after oxc-project/oxc#6896
+    {},
     // no plugins
     { plugins: [] },
     // simple plugin override
-    { plugins: ['vite'] },
+    { plugins: ['typescript'] },
     // custom rule off
     {
-      plugins: [] /** can be removed after oxc-project/oxc#6896 */,
       rules: { eqeqeq: 'off' },
     },
     // combination plugin + rule
@@ -231,7 +250,6 @@ describe('integration test with oxlint', () => {
     },
     // all categories enabled
     {
-      plugins: [] /** can be removed after oxc-project/oxc#6896 */,
       categories: {
         correctness: 'warn',
         nursery: 'warn',
@@ -245,10 +263,9 @@ describe('integration test with oxlint', () => {
     // all plugins enabled
     {
       plugins: [
-        // can be add after oxc-project/oxc#6896
-        // 'typescript',
-        // 'unicorn',
-        // 'react',
+        'typescript',
+        'unicorn',
+        'react',
         'react-perf',
         'nextjs',
         'import',
@@ -263,10 +280,9 @@ describe('integration test with oxlint', () => {
     // everything on
     {
       plugins: [
-        // can be add after oxc-project/oxc#6896
-        // 'typescript',
-        // 'unicorn',
-        // 'react',
+        'typescript',
+        'unicorn',
+        'react',
         'react-perf',
         'nextjs',
         'import',
@@ -287,20 +303,35 @@ describe('integration test with oxlint', () => {
         suspicious: 'warn',
       },
     },
-  ].forEach((json, index) => {
-    const fileContent = JSON.stringify(json);
+  ].forEach((config, index) => {
+    const fileContent = JSON.stringify(config);
 
     it(`should output same rule count for: ${fileContent}`, () => {
       const oxlintRulesCount = executeOxlintWithConfiguration(
         `integration-test-${index}-oxlint.json`,
-        fileContent
+        config
       );
 
-      const eslintRules = buildFromOxlintConfig(json);
+      const eslintRules = buildFromOxlintConfig(config);
 
       expect(eslintRules.length).toBe(1);
       expect(eslintRules[0].rules).not.toBeUndefined();
-      expect(Object.keys(eslintRules[0].rules!).length).toBe(oxlintRulesCount);
+
+      console.log(eslintRules[0].rules!);
+
+      let expectedCount = oxlintRulesCount ?? 0;
+
+      // special mapping for ts alias rules
+      if (
+        config.plugins === undefined ||
+        config.plugins.includes('typescript')
+      ) {
+        expectedCount += typescriptRulesExtendEslintRules.filter(
+          (aliasRule) => aliasRule in eslintRules[0].rules!
+        ).length;
+      }
+
+      expect(Object.keys(eslintRules[0].rules!).length).toBe(expectedCount);
     });
   });
 });
