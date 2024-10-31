@@ -13,15 +13,12 @@ export enum RulesGrouping {
 export type ResultMap = Map<string, string[]>;
 
 export class ConfigGenerator {
-  private oxlintVersion: string;
   private rulesGrouping: RulesGrouping;
   private rulesArray: Rule[];
   constructor(
-    oxlintVersion: string,
     rulesArray: Rule[] = [],
     rulesGrouping: RulesGrouping = RulesGrouping.SCOPE
   ) {
-    this.oxlintVersion = oxlintVersion;
     this.rulesArray = rulesArray;
     this.rulesGrouping = rulesGrouping;
   }
@@ -46,9 +43,7 @@ export class ConfigGenerator {
   }
 
   public async generateRulesCode() {
-    console.log(
-      `Generating config for ${this.oxlintVersion}, grouped by ${this.rulesGrouping}`
-    );
+    console.log(`Generating config, grouped by ${this.rulesGrouping}`);
 
     const rulesGrouping = this.rulesGrouping;
     const rulesArray = this.rulesArray;
