@@ -18,11 +18,11 @@ jobs:
 
       - uses: ./.github/actions/pnpm
 
-      - name: Generate from latest version
+      - name: Generate version ${{ inputs.version }}
         run: |
-          pnpm update --latest oxlint
-          pnpm run clone
-          pnpm run generate # Generate rules from latest oxlint
+          pnpm install oxlint@${{ inputs.version }}
+          pnpm run clone ${{ inputs.version }}
+          pnpm run generate # Generate rules from source code
           pnpm run format # run prettier over it
 
       - name: Test and update snapshot
