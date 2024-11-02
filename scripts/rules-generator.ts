@@ -62,7 +62,7 @@ export class RulesGenerator {
 
       code += rules
         ?.map((rule) => {
-          return `  '${rule.replace(/_/g, '-')}': "off"`;
+          return `  '${rule.replaceAll('_', '-')}': "off"`;
         })
         .join(',\n');
       code += '\n} as const;\n\n';
@@ -71,7 +71,7 @@ export class RulesGenerator {
     code += 'export {\n';
     code += exportGrouping
       .map((grouping) => {
-        return `  ${grouping.replace(/_(\w)/g, (_, c) => c.toUpperCase())}Rules`;
+        return `  ${grouping.replaceAll(/_(\w)/g, (_, c) => c.toUpperCase())}Rules`;
       })
       .join(',\n');
     code += '\n}';
