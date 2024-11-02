@@ -1,18 +1,8 @@
-import { vi, test, suite, vitest, beforeEach, afterEach, expect } from 'vitest';
+import { test, suite, expect } from 'vitest';
 import { RulesGenerator, RulesGrouping } from './rules-generator.js';
 import type { Rule } from './traverse-rules.js';
 
 suite('RulesGenerator', () => {
-  beforeEach(() => {
-    vi.mock('./oxlint-version.ts', () => ({
-      getLatestVersionFromClonedRepo: vitest.fn().mockReturnValue('1.0.0'),
-    }));
-  });
-
-  afterEach(() => {
-    vi.resetAllMocks();
-  });
-
   test('RulesGenerator generates rules correctly', async () => {
     const successResultArray: Rule[] = [
       {
