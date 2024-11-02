@@ -212,7 +212,7 @@ const executeOxlintWithConfiguration = (
 
   try {
     oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
-      encoding: 'utf-8',
+      encoding: 'utf8',
       stdio: 'pipe',
     });
   } catch {
@@ -227,7 +227,7 @@ const executeOxlintWithConfiguration = (
     return;
   }
 
-  return parseInt(result[1], 10);
+  return Number.parseInt(result[1], 10) ?? undefined;
 };
 
 describe('integration test with oxlint', () => {
