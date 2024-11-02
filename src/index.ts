@@ -8,9 +8,9 @@ export {
   buildFromOxlintConfigFile,
 } from './build-from-oxlint-config.js';
 
-type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
-  x: infer I
-) => void
+type UnionToIntersection<U> = (
+  U extends unknown ? (x: U) => void : never
+) extends (x: infer I) => void
   ? I
   : never;
 
