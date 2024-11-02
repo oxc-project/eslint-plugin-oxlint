@@ -224,7 +224,7 @@ const executeOxlintWithConfiguration = (
   const result = /with\s(\d+)\srules/.exec(oxlintOutput);
 
   if (result === null) {
-    return undefined;
+    return;
   }
 
   return Number.parseInt(result[1], 10) ?? undefined;
