@@ -7,12 +7,16 @@ import {
 } from './constants.js';
 import { version } from '../package.json';
 
-// returns the first argument (`pnpm clone 0.10.0`)
-//                                         ------
-// if no first argument is provided, the current package.json version is used.
-const getRequestedVersion = () => {
-  return process.argv[2] ?? version;
-};
+/**
+ * Run this file in CLI like `pnpm run clone`
+ * It clones the oxc_linter git project into your local file.
+ *
+ * You can run it with a version argument like `pnpm run clone 0.10.0`.
+ * When no argument is provided, the current package.json version is used.
+ *
+ */
+
+const checkoutVersion = process.argv[2] ?? version;
 
 // Function to initialize or reconfigure sparse-checkout
 function configureSparseCheckout(cloneDirectory: string) {
@@ -33,8 +37,8 @@ function configureSparseCheckout(cloneDirectory: string) {
   }
 }
 
-function checkoutVersionTag(targetDirectory: string, cloneDirectory: string) {
-  const tag = `${VERSION_PREFIX}${getRequestedVersion()}`;
+function checkoutVersionTag(version: string) {
+  const tag = `${VERSION_PREFIX}${version}`;
 
   // Checkout the specified directory
   if (shell.exec(`git checkout ${tag}`, { silent: true }).code !== 0) {
@@ -42,16 +46,15 @@ function checkoutVersionTag(targetDirectory: string, cloneDirectory: string) {
     shell.exit(1);
   }
 
-  console.log(
-    `Successfully cloned ${cloneDirectory} into ${targetDirectory}/${cloneDirectory} at ${tag}`
-  );
+  console.log(`Successfully checkout git tag ${tag}`);
 }
 
 // Function to clone or update a repository
 function cloneOrUpdateRepo(
   repositoryUrl: string,
   targetDirectory: string,
-  cloneDirectory: string
+  cloneDirectory: string,
+  version: string
 ) {
   // Check if the target directory exists and is a Git repository
   if (
@@ -63,7 +66,7 @@ function cloneOrUpdateRepo(
     shell.cd(targetDirectory);
 
     configureSparseCheckout(cloneDirectory);
-    checkoutVersionTag(targetDirectory, cloneDirectory);
+    checkoutVersionTag(version);
   } else {
     console.log(`Cloning new repository into ${targetDirectory}...`);
 
@@ -80,12 +83,13 @@ function cloneOrUpdateRepo(
     shell.cd(targetDirectory);
 
     configureSparseCheckout(cloneDirectory);
-    checkoutVersionTag(targetDirectory, cloneDirectory);
+    checkoutVersionTag(version);
   }
 }
 
 cloneOrUpdateRepo(
   'https://github.com/oxc-project/oxc.git',
   TARGET_DIRECTORY,
-  SPARSE_CLONE_DIRECTORY
+  SPARSE_CLONE_DIRECTORY,
+  checkoutVersion
 );
