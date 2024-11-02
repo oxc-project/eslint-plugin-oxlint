@@ -121,23 +121,23 @@ const handleRulesScope = (
   }
 };
 
+const isOffValue = (value: unknown) => value === 'off' || value === 0;
+
 /**
  * check if the value is "off", 0, ["off", ...], or [0, ...]
  */
 const isDeactivateValue = (value: unknown): boolean => {
-  const isOff = (value: unknown) => value === 'off' || value === 0;
-
-  return isOff(value) || (Array.isArray(value) && isOff(value[0]));
+  return isOffValue(value) || (Array.isArray(value) && isOffValue(value[0]));
 };
+
+const isOnValue = (value: unknown) =>
+  value === 'error' || value === 'warn' || value === 1 || value === 2;
 
 /**
  * check if the value is "error", "warn", 1, 2, ["error", ...], ["warn", ...], [1, ...], or [2, ...]
  */
 const isActiveValue = (value: unknown): boolean => {
-  const isOn = (value: unknown) =>
-    value === 'error' || value === 'warn' || value === 1 || value === 2;
-
-  return isOn(value) || (Array.isArray(value) && isOn(value[0]));
+  return isOnValue(value) || (Array.isArray(value) && isOnValue(value[0]));
 };
 
 /**
