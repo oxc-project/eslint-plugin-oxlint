@@ -224,10 +224,10 @@ const executeOxlintWithConfiguration = (
   const result = /with\s(\d+)\srules/.exec(oxlintOutput);
 
   if (result === null) {
-    return undefined;
+    return;
   }
 
-  return parseInt(result[1], 10) ?? undefined;
+  return parseInt(result[1], 10);
 };
 
 describe('integration test with oxlint', () => {
