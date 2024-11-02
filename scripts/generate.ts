@@ -13,9 +13,9 @@ if (failureResultArray.length > 0) {
 const rulesGenerator = new RulesGenerator(successResultArray);
 const configGenerator = new ConfigGenerator(successResultArray);
 
-[rulesGenerator, configGenerator].forEach(async (generator) => {
+for (const generator of [rulesGenerator, configGenerator]) {
   generator.setRulesGrouping(RulesGrouping.SCOPE);
   await generator.generateRules();
   generator.setRulesGrouping(RulesGrouping.CATEGORY);
   await generator.generateRules();
-});
+}

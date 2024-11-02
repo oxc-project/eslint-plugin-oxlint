@@ -11,24 +11,31 @@ import { typescriptRulesExtendEslintRules } from '../scripts/constants.js';
 describe('buildFromOxlintConfig', () => {
   describe('rule values', () => {
     it('detect active rules inside "rules" scope', () => {
-      ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]].forEach(
-        (ruleSetting) => {
-          const rules = buildFromOxlintConfig({
-            rules: {
-              eqeqeq: ruleSetting,
-            },
-          });
+      for (const ruleSetting of [
+        'error',
+        ['error'],
+        'warn',
+        ['warn'],
+        1,
+        [1],
+        2,
+        [2],
+      ]) {
+        const rules = buildFromOxlintConfig({
+          rules: {
+            eqeqeq: ruleSetting,
+          },
+        });
 
-          expect(rules.length).toBe(1);
-          expect(rules[0].rules).not.toBeUndefined();
-          expect('eqeqeq' in rules[0].rules!).toBe(true);
-          expect(rules[0].rules!.eqeqeq).toBe('off');
-        }
-      );
+        expect(rules.length).toBe(1);
+        expect(rules[0].rules).not.toBeUndefined();
+        expect('eqeqeq' in rules[0].rules!).toBe(true);
+        expect(rules[0].rules!.eqeqeq).toBe('off');
+      }
     });
 
     it('skip deactive rules inside "rules" scope', () => {
-      ['off', ['off'], 0, [0]].forEach((ruleSetting) => {
+      for (const ruleSetting of ['off', ['off'], 0, [0]]) {
         const rules = buildFromOxlintConfig({
           rules: {
             eqeqeq: ruleSetting,
@@ -38,11 +45,11 @@ describe('buildFromOxlintConfig', () => {
         expect(rules.length).toBe(1);
         expect(rules[0].rules).not.toBeUndefined();
         expect('eqeqeq' in rules[0].rules!).toBe(false);
-      });
+      }
     });
 
     it('skip invalid rules inside "rules" scope', () => {
-      ['on', ['on'], 3, [3]].forEach((ruleSetting) => {
+      for (const ruleSetting of ['on', ['on'], 3, [3]]) {
         const rules = buildFromOxlintConfig({
           rules: {
             eqeqeq: ruleSetting,
@@ -52,7 +59,7 @@ describe('buildFromOxlintConfig', () => {
         expect(rules.length).toBe(1);
         expect(rules[0].rules).not.toBeUndefined();
         expect('eqeqeq' in rules[0].rules!).toBe(false);
-      });
+      }
     });
   });
 
@@ -203,11 +210,11 @@ const executeOxlintWithConfiguration = (
 
   // --disabled-<foo>-plugin can be removed after oxc-project/oxc#6896
   if (config.plugins !== undefined) {
-    ['typescript', 'unicorn', 'react'].forEach((plugin) => {
+    for (const plugin of ['typescript', 'unicorn', 'react']) {
       if (!config.plugins!.includes(plugin)) {
         cliArguments.push(`--disable-${plugin}-plugin`);
       }
-    });
+    }
   }
 
   try {
@@ -224,14 +231,14 @@ const executeOxlintWithConfiguration = (
   const result = /with\s(\d+)\srules/.exec(oxlintOutput);
 
   if (result === null) {
-    return undefined;
+    return;
   }
 
   return Number.parseInt(result[1], 10) ?? undefined;
 };
 
 describe('integration test with oxlint', () => {
-  [
+  for (const [index, config] of [
     // default
     {},
     // no plugins
@@ -310,7 +317,7 @@ describe('integration test with oxlint', () => {
         suspicious: 'warn',
       },
     },
-  ].forEach((config, index) => {
+  ].entries()) {
     const fileContent = JSON.stringify(config);
 
     it(`should output same rule count for: ${fileContent}`, () => {
@@ -338,5 +345,5 @@ describe('integration test with oxlint', () => {
 
       expect(Object.keys(eslintRules[0].rules!).length).toBe(expectedCount);
     });
-  });
+  }
 });
