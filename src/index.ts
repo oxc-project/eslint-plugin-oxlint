@@ -3,6 +3,11 @@ import * as ruleMapsByCategory from './rules-by-category.js';
 import configByScope from './configs-by-scope.js';
 import configByCategory from './configs-by-category.js';
 
+export {
+  buildFromOxlintConfig,
+  buildFromOxlintConfigFile,
+} from './build-from-oxlint-config.js';
+
 type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
   x: infer I
 ) => void

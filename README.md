@@ -47,6 +47,39 @@ module.exports = {
 }
 ```
 
+### Detect rules from `oxlint.json`
+
+If you are using flat configuration (eslint >= 9.0), you can use the following config:
+
+```js
+// eslint.config.js
+import { buildFromOxlintConfigFile } from 'eslint-plugin-oxlint';
+export default [
+  ..., // other plugins
+  ...buildFromOxlintConfigFile('./oxlint.json'),
+];
+```
+
+Or build it by an `oxlint.json`-like object:
+
+```js
+// eslint.config.js
+import { buildFromOxlintConfig } from 'eslint-plugin-oxlint';
+export default [
+  ..., // other plugins
+  ...buildFromOxlintConfig({
+    categories: {
+      correctness: 'warn'
+    },
+    rules: {
+      eqeqeq: 'warn'
+    }
+  }),
+];
+```
+
+`buildFromOxlintConfigFile` is not supported for legacy configuration (eslint < 9.0).
+
 ### Run it before eslint
 
 And then you can add the following script to your `package.json`:
