@@ -86,8 +86,8 @@ const handleCategoriesScope = (
     const possibleRules = configByCategory[configName].rules;
 
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
-    Object.keys(possibleRules).forEach((rule) => {
-      plugins.forEach((plugin) => {
+    for (const rule of Object.keys(possibleRules)) {
+      for (const plugin of plugins) {
         // @ts-ignore -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
         const pluginPrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
 
@@ -98,8 +98,8 @@ const handleCategoriesScope = (
         } else if (rule.startsWith(`${pluginPrefix}/`)) {
           rules[rule] = 'off';
         }
-      });
-    });
+      }
+    }
   }
 };
 
