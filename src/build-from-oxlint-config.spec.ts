@@ -212,7 +212,7 @@ const executeOxlintWithConfiguration = (
 
   try {
     oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
-      encoding: 'utf-8',
+      encoding: 'utf8',
       stdio: 'pipe',
     });
   } catch {
