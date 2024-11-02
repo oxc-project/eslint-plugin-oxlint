@@ -2,12 +2,6 @@
 
 exports[`contains all the oxlint rules 1`] = `
 {
-  "@babel/object-curly-spacing": [
-    0,
-  ],
-  "@babel/semi": [
-    0,
-  ],
   "@typescript-eslint/adjacent-overload-signatures": [
     0,
   ],
@@ -21,18 +15,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/ban-types": [
-    0,
-  ],
-  "@typescript-eslint/block-spacing": [
-    0,
-  ],
-  "@typescript-eslint/brace-style": [
-    0,
-  ],
-  "@typescript-eslint/comma-dangle": [
-    0,
-  ],
-  "@typescript-eslint/comma-spacing": [
     0,
   ],
   "@typescript-eslint/consistent-indexed-object-style": [
@@ -50,25 +32,7 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/explicit-function-return-type": [
     0,
   ],
-  "@typescript-eslint/func-call-spacing": [
-    0,
-  ],
-  "@typescript-eslint/indent": [
-    0,
-  ],
-  "@typescript-eslint/key-spacing": [
-    0,
-  ],
-  "@typescript-eslint/keyword-spacing": [
-    0,
-  ],
-  "@typescript-eslint/lines-around-comment": [
-    0,
-  ],
   "@typescript-eslint/max-params": [
-    0,
-  ],
-  "@typescript-eslint/member-delimiter-style": [
     0,
   ],
   "@typescript-eslint/no-array-constructor": [
@@ -92,19 +56,10 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-empty-interface": [
     0,
   ],
-  "@typescript-eslint/no-empty-object-type": [
-    2,
-  ],
   "@typescript-eslint/no-explicit-any": [
     0,
   ],
   "@typescript-eslint/no-extra-non-null-assertion": [
-    0,
-  ],
-  "@typescript-eslint/no-extra-parens": [
-    0,
-  ],
-  "@typescript-eslint/no-extra-semi": [
     0,
   ],
   "@typescript-eslint/no-extraneous-class": [
@@ -137,9 +92,6 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-redeclare": [
     0,
   ],
-  "@typescript-eslint/no-require-imports": [
-    2,
-  ],
   "@typescript-eslint/no-this-alias": [
     0,
   ],
@@ -148,12 +100,6 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "@typescript-eslint/no-unsafe-declaration-merging": [
     0,
-  ],
-  "@typescript-eslint/no-unsafe-function-type": [
-    2,
-  ],
-  "@typescript-eslint/no-unused-expressions": [
-    2,
   ],
   "@typescript-eslint/no-unused-vars": [
     0,
@@ -168,9 +114,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-wrapper-object-types": [
-    0,
-  ],
-  "@typescript-eslint/object-curly-spacing": [
     0,
   ],
   "@typescript-eslint/prefer-as-const": [
@@ -194,76 +137,13 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-ts-expect-error": [
     0,
   ],
-  "@typescript-eslint/quotes": [
-    0,
-  ],
-  "@typescript-eslint/semi": [
-    0,
-  ],
-  "@typescript-eslint/space-before-blocks": [
-    0,
-  ],
-  "@typescript-eslint/space-before-function-paren": [
-    0,
-  ],
-  "@typescript-eslint/space-infix-ops": [
-    0,
-  ],
   "@typescript-eslint/triple-slash-reference": [
-    0,
-  ],
-  "@typescript-eslint/type-annotation-spacing": [
-    0,
-  ],
-  "array-bracket-newline": [
-    0,
-  ],
-  "array-bracket-spacing": [
     0,
   ],
   "array-callback-return": [
     0,
   ],
-  "array-element-newline": [
-    0,
-  ],
-  "arrow-parens": [
-    0,
-  ],
-  "arrow-spacing": [
-    0,
-  ],
-  "babel/object-curly-spacing": [
-    0,
-  ],
-  "babel/quotes": [
-    0,
-  ],
-  "babel/semi": [
-    0,
-  ],
-  "block-spacing": [
-    0,
-  ],
-  "brace-style": [
-    0,
-  ],
-  "comma-dangle": [
-    0,
-  ],
-  "comma-spacing": [
-    0,
-  ],
-  "comma-style": [
-    0,
-  ],
-  "computed-property-spacing": [
-    0,
-  ],
   "constructor-super": [
-    0,
-  ],
-  "curly": [
     0,
   ],
   "default-case": [
@@ -275,76 +155,19 @@ exports[`contains all the oxlint rules 1`] = `
   "default-param-last": [
     0,
   ],
-  "dot-location": [
-    0,
-  ],
-  "eol-last": [
-    0,
-  ],
   "eqeqeq": [
-    0,
-  ],
-  "flowtype/boolean-style": [
-    0,
-  ],
-  "flowtype/delimiter-dangle": [
-    0,
-  ],
-  "flowtype/generic-spacing": [
-    0,
-  ],
-  "flowtype/object-type-curly-spacing": [
-    0,
-  ],
-  "flowtype/object-type-delimiter": [
-    0,
-  ],
-  "flowtype/quotes": [
-    0,
-  ],
-  "flowtype/semi": [
-    0,
-  ],
-  "flowtype/space-after-type-colon": [
-    0,
-  ],
-  "flowtype/space-before-generic-bracket": [
-    0,
-  ],
-  "flowtype/space-before-type-colon": [
-    0,
-  ],
-  "flowtype/union-intersection-spacing": [
     0,
   ],
   "for-direction": [
     0,
   ],
-  "func-call-spacing": [
-    0,
-  ],
   "func-names": [
-    0,
-  ],
-  "function-call-argument-newline": [
-    0,
-  ],
-  "function-paren-newline": [
-    0,
-  ],
-  "generator-star": [
-    0,
-  ],
-  "generator-star-spacing": [
     0,
   ],
   "getter-return": [
     0,
   ],
   "guard-for-in": [
-    0,
-  ],
-  "implicit-arrow-linebreak": [
     0,
   ],
   "import/default": [
@@ -393,12 +216,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-webpack-loader-syntax": [
-    0,
-  ],
-  "indent": [
-    0,
-  ],
-  "indent-legacy": [
     0,
   ],
   "jest/consistent-test-it": [
@@ -680,43 +497,13 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/tabindex-no-positive": [
     0,
   ],
-  "jsx-quotes": [
-    0,
-  ],
-  "key-spacing": [
-    0,
-  ],
-  "keyword-spacing": [
-    0,
-  ],
-  "linebreak-style": [
-    0,
-  ],
-  "lines-around-comment": [
-    0,
-  ],
   "max-classes-per-file": [
-    0,
-  ],
-  "max-len": [
     0,
   ],
   "max-lines": [
     0,
   ],
   "max-params": [
-    0,
-  ],
-  "max-statements-per-line": [
-    0,
-  ],
-  "multiline-ternary": [
-    0,
-  ],
-  "new-parens": [
-    0,
-  ],
-  "newline-per-chained-call": [
     0,
   ],
   "nextjs/google-font-display": [
@@ -785,9 +572,6 @@ exports[`contains all the oxlint rules 1`] = `
   "no-array-constructor": [
     0,
   ],
-  "no-arrow-condition": [
-    0,
-  ],
   "no-async-promise-executor": [
     0,
   ],
@@ -806,16 +590,10 @@ exports[`contains all the oxlint rules 1`] = `
   "no-class-assign": [
     0,
   ],
-  "no-comma-dangle": [
-    0,
-  ],
   "no-compare-neg-zero": [
     0,
   ],
   "no-cond-assign": [
-    0,
-  ],
-  "no-confusing-arrow": [
     0,
   ],
   "no-console": [
@@ -847,9 +625,6 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-div-regex": [
     0,
-  ],
-  "no-dupe-args": [
-    2,
   ],
   "no-dupe-class-members": [
     0,
@@ -896,16 +671,7 @@ exports[`contains all the oxlint rules 1`] = `
   "no-extra-boolean-cast": [
     0,
   ],
-  "no-extra-parens": [
-    0,
-  ],
-  "no-extra-semi": [
-    0,
-  ],
   "no-fallthrough": [
-    0,
-  ],
-  "no-floating-decimal": [
     0,
   ],
   "no-func-assign": [
@@ -938,28 +704,7 @@ exports[`contains all the oxlint rules 1`] = `
   "no-magic-numbers": [
     0,
   ],
-  "no-misleading-character-class": [
-    2,
-  ],
-  "no-mixed-operators": [
-    0,
-  ],
-  "no-mixed-spaces-and-tabs": [
-    0,
-  ],
-  "no-multi-spaces": [
-    0,
-  ],
   "no-multi-str": [
-    0,
-  ],
-  "no-multiple-empty-lines": [
-    0,
-  ],
-  "no-negated-condition": [
-    0,
-  ],
-  "no-nested-ternary": [
     0,
   ],
   "no-new": [
@@ -980,9 +725,6 @@ exports[`contains all the oxlint rules 1`] = `
   "no-obj-calls": [
     0,
   ],
-  "no-octal": [
-    2,
-  ],
   "no-plusplus": [
     0,
   ],
@@ -996,9 +738,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-regex-spaces": [
-    0,
-  ],
-  "no-reserved-keys": [
     0,
   ],
   "no-restricted-globals": [
@@ -1022,16 +761,7 @@ exports[`contains all the oxlint rules 1`] = `
   "no-shadow-restricted-names": [
     0,
   ],
-  "no-space-before-semi": [
-    0,
-  ],
-  "no-spaced-func": [
-    0,
-  ],
   "no-sparse-arrays": [
-    0,
-  ],
-  "no-tabs": [
     0,
   ],
   "no-template-curly-in-string": [
@@ -1044,9 +774,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-throw-literal": [
-    0,
-  ],
-  "no-trailing-spaces": [
     0,
   ],
   "no-undef": [
@@ -1070,9 +797,6 @@ exports[`contains all the oxlint rules 1`] = `
   "no-unsafe-optional-chaining": [
     0,
   ],
-  "no-unused-expressions": [
-    0,
-  ],
   "no-unused-labels": [
     0,
   ],
@@ -1081,9 +805,6 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-unused-vars": [
     0,
-  ],
-  "no-useless-backreference": [
-    2,
   ],
   "no-useless-catch": [
     0,
@@ -1106,37 +827,10 @@ exports[`contains all the oxlint rules 1`] = `
   "no-void": [
     0,
   ],
-  "no-whitespace-before-property": [
-    0,
-  ],
   "no-with": [
     0,
   ],
-  "no-wrap-func": [
-    0,
-  ],
   "node/no-exports-assign": [
-    0,
-  ],
-  "nonblock-statement-body-position": [
-    0,
-  ],
-  "object-curly-newline": [
-    0,
-  ],
-  "object-curly-spacing": [
-    0,
-  ],
-  "object-property-newline": [
-    0,
-  ],
-  "one-var-declaration-per-line": [
-    0,
-  ],
-  "operator-linebreak": [
-    0,
-  ],
-  "padded-blocks": [
     0,
   ],
   "prefer-exponentiation-operator": [
@@ -1175,12 +869,6 @@ exports[`contains all the oxlint rules 1`] = `
   "promise/valid-params": [
     0,
   ],
-  "quote-props": [
-    0,
-  ],
-  "quotes": [
-    0,
-  ],
   "radix": [
     0,
   ],
@@ -1208,43 +896,10 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-boolean-value": [
     0,
   ],
-  "react/jsx-child-element-spacing": [
-    0,
-  ],
-  "react/jsx-closing-bracket-location": [
-    0,
-  ],
-  "react/jsx-closing-tag-location": [
-    0,
-  ],
   "react/jsx-curly-brace-presence": [
     0,
   ],
-  "react/jsx-curly-newline": [
-    0,
-  ],
-  "react/jsx-curly-spacing": [
-    0,
-  ],
-  "react/jsx-equals-spacing": [
-    0,
-  ],
-  "react/jsx-first-prop-new-line": [
-    0,
-  ],
-  "react/jsx-indent": [
-    0,
-  ],
-  "react/jsx-indent-props": [
-    0,
-  ],
   "react/jsx-key": [
-    0,
-  ],
-  "react/jsx-max-props-per-line": [
-    0,
-  ],
-  "react/jsx-newline": [
     0,
   ],
   "react/jsx-no-comment-textnodes": [
@@ -1262,22 +917,7 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-no-useless-fragment": [
     0,
   ],
-  "react/jsx-one-expression-per-line": [
-    0,
-  ],
-  "react/jsx-props-no-multi-spaces": [
-    0,
-  ],
   "react/jsx-props-no-spread-multi": [
-    0,
-  ],
-  "react/jsx-space-before-closing": [
-    0,
-  ],
-  "react/jsx-tag-spacing": [
-    0,
-  ],
-  "react/jsx-wrap-multilines": [
     0,
   ],
   "react/no-children-prop": [
@@ -1337,18 +977,6 @@ exports[`contains all the oxlint rules 1`] = `
   "require-yield": [
     0,
   ],
-  "rest-spread-spacing": [
-    0,
-  ],
-  "semi": [
-    0,
-  ],
-  "semi-spacing": [
-    0,
-  ],
-  "semi-style": [
-    0,
-  ],
   "sort-imports": [
     0,
   ],
@@ -1358,61 +986,7 @@ exports[`contains all the oxlint rules 1`] = `
   "sort-vars": [
     0,
   ],
-  "space-after-function-name": [
-    0,
-  ],
-  "space-after-keywords": [
-    0,
-  ],
-  "space-before-blocks": [
-    0,
-  ],
-  "space-before-function-paren": [
-    0,
-  ],
-  "space-before-function-parentheses": [
-    0,
-  ],
-  "space-before-keywords": [
-    0,
-  ],
-  "space-in-brackets": [
-    0,
-  ],
-  "space-in-parens": [
-    0,
-  ],
-  "space-infix-ops": [
-    0,
-  ],
-  "space-return-throw-case": [
-    0,
-  ],
-  "space-unary-ops": [
-    0,
-  ],
-  "space-unary-word-ops": [
-    0,
-  ],
-  "standard/array-bracket-even-spacing": [
-    0,
-  ],
-  "standard/computed-property-even-spacing": [
-    0,
-  ],
-  "standard/object-curly-even-spacing": [
-    0,
-  ],
-  "switch-colon-spacing": [
-    0,
-  ],
   "symbol-description": [
-    0,
-  ],
-  "template-curly-spacing": [
-    0,
-  ],
-  "template-tag-spacing": [
     0,
   ],
   "tree-shaking/no-side-effects-in-initialization": [
@@ -1421,25 +995,13 @@ exports[`contains all the oxlint rules 1`] = `
   "unicode-bom": [
     0,
   ],
-  "unicorn/better-regex": [
-    0,
-  ],
   "unicorn/catch-error-name": [
-    0,
-  ],
-  "unicorn/consistent-destructuring": [
     0,
   ],
   "unicorn/consistent-empty-array-spread": [
     0,
   ],
-  "unicorn/consistent-existence-index-check": [
-    2,
-  ],
   "unicorn/consistent-function-scoping": [
-    0,
-  ],
-  "unicorn/custom-error-definition": [
     0,
   ],
   "unicorn/empty-brace-spaces": [
@@ -1451,17 +1013,11 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/escape-case": [
     0,
   ],
-  "unicorn/expiring-todo-comments": [
-    2,
-  ],
   "unicorn/explicit-length-check": [
     0,
   ],
   "unicorn/filename-case": [
     0,
-  ],
-  "unicorn/import-style": [
-    2,
   ],
   "unicorn/new-for-builtins": [
     0,
@@ -1472,17 +1028,8 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-anonymous-default-export": [
     0,
   ],
-  "unicorn/no-array-callback-reference": [
-    2,
-  ],
   "unicorn/no-array-for-each": [
     0,
-  ],
-  "unicorn/no-array-method-this-argument": [
-    2,
-  ],
-  "unicorn/no-array-push-push": [
-    2,
   ],
   "unicorn/no-array-reduce": [
     0,
@@ -1502,22 +1049,13 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-empty-file": [
     0,
   ],
-  "unicorn/no-for-loop": [
-    2,
-  ],
   "unicorn/no-hex-escape": [
     0,
   ],
   "unicorn/no-instanceof-array": [
     0,
   ],
-  "unicorn/no-invalid-fetch-options": [
-    2,
-  ],
   "unicorn/no-invalid-remove-event-listener": [
-    0,
-  ],
-  "unicorn/no-keyword-prefix": [
     0,
   ],
   "unicorn/no-length-as-slice-end": [
@@ -1571,16 +1109,10 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-unnecessary-await": [
     0,
   ],
-  "unicorn/no-unnecessary-polyfills": [
-    2,
-  ],
   "unicorn/no-unreadable-array-destructuring": [
     0,
   ],
   "unicorn/no-unreadable-iife": [
-    0,
-  ],
-  "unicorn/no-unused-properties": [
     0,
   ],
   "unicorn/no-useless-fallback-in-spread": [
@@ -1613,23 +1145,14 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-add-event-listener": [
     0,
   ],
-  "unicorn/prefer-array-find": [
-    2,
-  ],
   "unicorn/prefer-array-flat": [
     0,
   ],
   "unicorn/prefer-array-flat-map": [
     0,
   ],
-  "unicorn/prefer-array-index-of": [
-    2,
-  ],
   "unicorn/prefer-array-some": [
     0,
-  ],
-  "unicorn/prefer-at": [
-    2,
   ],
   "unicorn/prefer-blob-reading-methods": [
     0,
@@ -1639,9 +1162,6 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "unicorn/prefer-date-now": [
     0,
-  ],
-  "unicorn/prefer-default-parameters": [
-    2,
   ],
   "unicorn/prefer-dom-node-append": [
     0,
@@ -1658,20 +1178,8 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-event-target": [
     0,
   ],
-  "unicorn/prefer-export-from": [
-    2,
-  ],
-  "unicorn/prefer-global-this": [
-    2,
-  ],
   "unicorn/prefer-includes": [
     0,
-  ],
-  "unicorn/prefer-json-parse-buffer": [
-    0,
-  ],
-  "unicorn/prefer-keyboard-event-key": [
-    2,
   ],
   "unicorn/prefer-logical-operator-over-ternary": [
     0,
@@ -1688,23 +1196,14 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-modern-math-apis": [
     0,
   ],
-  "unicorn/prefer-module": [
-    2,
-  ],
   "unicorn/prefer-native-coercion-functions": [
     0,
-  ],
-  "unicorn/prefer-negative-index": [
-    2,
   ],
   "unicorn/prefer-node-protocol": [
     0,
   ],
   "unicorn/prefer-number-properties": [
     0,
-  ],
-  "unicorn/prefer-object-from-entries": [
-    2,
   ],
   "unicorn/prefer-optional-catch-binding": [
     0,
@@ -1721,17 +1220,11 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-regexp-test": [
     0,
   ],
-  "unicorn/prefer-set-has": [
-    2,
-  ],
   "unicorn/prefer-set-size": [
     0,
   ],
   "unicorn/prefer-spread": [
     0,
-  ],
-  "unicorn/prefer-string-raw": [
-    2,
   ],
   "unicorn/prefer-string-replace-all": [
     0,
@@ -1748,23 +1241,8 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-structured-clone": [
     0,
   ],
-  "unicorn/prefer-switch": [
-    2,
-  ],
-  "unicorn/prefer-ternary": [
-    2,
-  ],
-  "unicorn/prefer-top-level-await": [
-    2,
-  ],
   "unicorn/prefer-type-error": [
     0,
-  ],
-  "unicorn/prevent-abbreviations": [
-    2,
-  ],
-  "unicorn/relative-url-style": [
-    2,
   ],
   "unicorn/require-array-join-separator": [
     0,
@@ -1772,16 +1250,7 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/require-number-to-fixed-digits-argument": [
     0,
   ],
-  "unicorn/require-post-message-target-origin": [
-    0,
-  ],
-  "unicorn/string-content": [
-    0,
-  ],
   "unicorn/switch-case-braces": [
-    0,
-  ],
-  "unicorn/template-indent": [
     0,
   ],
   "unicorn/text-encoding-identifier-case": [
@@ -1815,132 +1284,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/require-local-test-context-for-concurrent-snapshots": [
-    0,
-  ],
-  "vue/array-bracket-newline": [
-    0,
-  ],
-  "vue/array-bracket-spacing": [
-    0,
-  ],
-  "vue/array-element-newline": [
-    0,
-  ],
-  "vue/arrow-spacing": [
-    0,
-  ],
-  "vue/block-spacing": [
-    0,
-  ],
-  "vue/block-tag-newline": [
-    0,
-  ],
-  "vue/brace-style": [
-    0,
-  ],
-  "vue/comma-dangle": [
-    0,
-  ],
-  "vue/comma-spacing": [
-    0,
-  ],
-  "vue/comma-style": [
-    0,
-  ],
-  "vue/dot-location": [
-    0,
-  ],
-  "vue/func-call-spacing": [
-    0,
-  ],
-  "vue/html-closing-bracket-newline": [
-    0,
-  ],
-  "vue/html-closing-bracket-spacing": [
-    0,
-  ],
-  "vue/html-end-tags": [
-    0,
-  ],
-  "vue/html-indent": [
-    0,
-  ],
-  "vue/html-quotes": [
-    0,
-  ],
-  "vue/html-self-closing": [
-    0,
-  ],
-  "vue/key-spacing": [
-    0,
-  ],
-  "vue/keyword-spacing": [
-    0,
-  ],
-  "vue/max-attributes-per-line": [
-    0,
-  ],
-  "vue/max-len": [
-    0,
-  ],
-  "vue/multiline-html-element-content-newline": [
-    0,
-  ],
-  "vue/multiline-ternary": [
-    0,
-  ],
-  "vue/mustache-interpolation-spacing": [
-    0,
-  ],
-  "vue/no-extra-parens": [
-    0,
-  ],
-  "vue/no-multi-spaces": [
-    0,
-  ],
-  "vue/no-spaces-around-equal-signs-in-attribute": [
-    0,
-  ],
-  "vue/object-curly-newline": [
-    0,
-  ],
-  "vue/object-curly-spacing": [
-    0,
-  ],
-  "vue/object-property-newline": [
-    0,
-  ],
-  "vue/operator-linebreak": [
-    0,
-  ],
-  "vue/quote-props": [
-    0,
-  ],
-  "vue/script-indent": [
-    0,
-  ],
-  "vue/singleline-html-element-content-newline": [
-    0,
-  ],
-  "vue/space-in-parens": [
-    0,
-  ],
-  "vue/space-infix-ops": [
-    0,
-  ],
-  "vue/space-unary-ops": [
-    0,
-  ],
-  "vue/template-curly-spacing": [
-    0,
-  ],
-  "wrap-iife": [
-    0,
-  ],
-  "wrap-regex": [
-    0,
-  ],
-  "yield-star-spacing": [
     0,
   ],
 }
