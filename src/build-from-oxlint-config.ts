@@ -82,13 +82,13 @@ const handleCategoriesScope = (
       continue;
     }
 
-    // @ts-ignore -- come on TS, we are checking if the configName exists in the configByCategory
+    // @ts-expect-error -- come on TS, we are checking if the configName exists in the configByCategory
     const possibleRules = configByCategory[configName].rules;
 
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of Object.keys(possibleRules)) {
       for (const plugin of plugins) {
-        // @ts-ignore -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
+        // @ts-expect-error -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
         const pluginPrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
 
         // the rule has no prefix, so it is a eslint one

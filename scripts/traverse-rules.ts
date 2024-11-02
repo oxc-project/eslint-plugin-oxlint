@@ -76,7 +76,7 @@ async function processFile(
   // when the file is called `mod.rs` we want to use the parent directory name as the rule name
   // Note that this is fairly brittle, as relying on the directory structure can be risky
   let effectiveRuleName = `${prefixScope(scope)}${getFileNameWithoutExtension(filePath, currentDirectory)}`;
-  effectiveRuleName = effectiveRuleName.replace(/_/g, '-');
+  effectiveRuleName = effectiveRuleName.replaceAll('_', '-');
 
   // add the rule to the skipped array and continue to see if there's a match regardless
   if (shouldIgnoreRule) {
@@ -102,7 +102,9 @@ async function processFile(
     const block = match[2] ?? match[3];
 
     // Remove comments to prevent them from affecting the regex
-    const cleanBlock = block.replace(/\/\/.*$|\/\*[\S\s]*?\*\//gm, '').trim();
+    const cleanBlock = block
+      .replaceAll(/\/\/.*$|\/\*[\S\s]*?\*\//gm, '')
+      .trim();
 
     // Extract the keyword, skipping the optional fixability metadata,
     // and correctly handling optional trailing characters
