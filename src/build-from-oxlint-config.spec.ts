@@ -227,7 +227,7 @@ const executeOxlintWithConfiguration = (
     return undefined;
   }
 
-  return parseInt(result[1], 10) ?? undefined;
+  return Number.parseInt(result[1], 10) ?? undefined;
 };
 
 describe('integration test with oxlint', () => {
