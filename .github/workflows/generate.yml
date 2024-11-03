@@ -24,3 +24,9 @@ jobs:
 
       - name: Format generated code
         run: pnpm run format
+
+      - name: Check for git diff
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+              echo "changes=true" >> "$GITHUB_OUTPUT"; 
+          fi
