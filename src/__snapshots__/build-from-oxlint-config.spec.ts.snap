@@ -151,7 +151,6 @@ exports[`buildFromOxlintConfig > default plugins (react, unicorn, typescript), d
       "no-useless-escape": "off",
       "no-useless-rename": "off",
       "no-with": "off",
-      "react/iframe-missing-sandbox": "off",
       "react/jsx-key": "off",
       "react/jsx-no-duplicate-props": "off",
       "react/jsx-no-target-blank": "off",

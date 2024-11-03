@@ -188,6 +188,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-amd": [
     0,
   ],
+  "import/no-commonjs": [
+    0,
+  ],
   "import/no-cycle": [
     0,
   ],
@@ -833,10 +836,16 @@ exports[`contains all the oxlint rules 1`] = `
   "node/no-exports-assign": [
     0,
   ],
+  "node/no-new-require": [
+    0,
+  ],
   "prefer-exponentiation-operator": [
     0,
   ],
   "prefer-numeric-literals": [
+    0,
+  ],
+  "prefer-object-has-own": [
     0,
   ],
   "promise/avoid-new": [
@@ -966,6 +975,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/self-closing-comp": [
+    0,
+  ],
+  "react/style-prop-object": [
     0,
   ],
   "react/void-dom-elements-no-children": [
