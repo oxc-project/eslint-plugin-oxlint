@@ -14,6 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: ./.github/actions/pnpm
+
       - name: Clone oxc_linter project
         run: pnpm run clone
 
