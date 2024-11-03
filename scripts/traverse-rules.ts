@@ -24,25 +24,30 @@ export async function readFilesRecursively(
     (entry) => entry.isFile() && entry.name === 'mod.rs'
   );
 
-  for (const entry of entries) {
-    const entryPath = path.join(directory, entry.name);
-    if (entry.isDirectory()) {
-      await readFilesRecursively(
-        entryPath,
-        successResultArray,
-        skippedResultArray,
-        failureResultArray
-      ); // Recursive call for directories
-    } else if (entry.isFile() && (!containsModRs || entry.name === 'mod.rs')) {
-      await processFile(
-        entryPath,
-        directory,
-        successResultArray,
-        skippedResultArray,
-        failureResultArray
-      ); // Process each file
-    }
-  }
+  await Promise.allSettled(
+    entries.map((entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        return readFilesRecursively(
+          entryPath,
+          successResultArray,
+          skippedResultArray,
+          failureResultArray
+        ); // Recursive call for directories
+      } else if (
+        entry.isFile() &&
+        (!containsModRs || entry.name === 'mod.rs')
+      ) {
+        return processFile(
+          entryPath,
+          directory,
+          successResultArray,
+          skippedResultArray,
+          failureResultArray
+        ); // Process each file
+      }
+    })
+  );
 }
 
 export interface Rule {

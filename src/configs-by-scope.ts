@@ -17,14 +17,14 @@ const importConfig = {
   rules: rules.importRules,
 };
 
-const jestConfig = {
-  name: 'oxlint/jest',
-  rules: rules.jestRules,
-};
-
 const jsdocConfig = {
   name: 'oxlint/jsdoc',
   rules: rules.jsdocRules,
+};
+
+const jestConfig = {
+  name: 'oxlint/jest',
+  rules: rules.jestRules,
 };
 
 const jsxA11yConfig = {
@@ -57,11 +57,6 @@ const reactPerfConfig = {
   rules: rules.reactPerfRules,
 };
 
-const treeShakingConfig = {
-  name: 'oxlint/tree-shaking',
-  rules: rules.treeShakingRules,
-};
-
 const unicornConfig = {
   name: 'oxlint/unicorn',
   rules: rules.unicornRules,
@@ -72,21 +67,26 @@ const vitestConfig = {
   rules: rules.vitestRules,
 };
 
+const treeShakingConfig = {
+  name: 'oxlint/tree-shaking',
+  rules: rules.treeShakingRules,
+};
+
 const configByScope = {
   'flat/eslint': eslintConfig,
   'flat/typescript': typescriptConfig,
   'flat/import': importConfig,
-  'flat/jest': jestConfig,
   'flat/jsdoc': jsdocConfig,
+  'flat/jest': jestConfig,
   'flat/jsx-a11y': jsxA11yConfig,
   'flat/nextjs': nextjsConfig,
   'flat/node': nodeConfig,
   'flat/promise': promiseConfig,
   'flat/react': reactConfig,
   'flat/react-perf': reactPerfConfig,
-  'flat/tree-shaking': treeShakingConfig,
   'flat/unicorn': unicornConfig,
   'flat/vitest': vitestConfig,
+  'flat/tree-shaking': treeShakingConfig,
 };
 
 export default configByScope;
