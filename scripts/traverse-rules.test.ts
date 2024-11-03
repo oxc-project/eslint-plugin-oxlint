@@ -110,14 +110,14 @@ suite('readFilesRecursively', () => {
       {
         category: 'unknown',
         error: 'No match block for `declare_oxc_lint`',
-        scope: 'eslint',
-        value: 'rulename-with-mod',
+        scope: 'typescript',
+        value: '@typescript-eslint/rulename-without-mod',
       },
       {
         category: 'unknown',
         error: 'No match block for `declare_oxc_lint`',
-        scope: 'typescript',
-        value: '@typescript-eslint/rulename-without-mod',
+        scope: 'eslint',
+        value: 'rulename-with-mod',
       },
     ]);
   });
@@ -164,11 +164,6 @@ suite('readFilesRecursively', () => {
 
     expect(successResultArray).toEqual([
       {
-        category: 'style',
-        scope: 'eslint',
-        value: 'rulename-with-mod',
-      },
-      {
         category: 'correctness',
         scope: 'typescript',
         value: '@typescript-eslint/rulename-without-mod',
@@ -177,6 +172,11 @@ suite('readFilesRecursively', () => {
         category: 'correctness',
         scope: 'unicorn',
         value: 'unicorn/rule-with-fixability',
+      },
+      {
+        category: 'style',
+        scope: 'eslint',
+        value: 'rulename-with-mod',
       },
     ]);
 
