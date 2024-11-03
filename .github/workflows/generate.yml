@@ -1,0 +1,24 @@
+name: Code generation
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+      - 'renovate/**'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clone oxc_linter project
+        run: pnpm run clone
+
+      - name: Generate from source code
+        run: pnpm run generate
+
+      - name: Format generated code
+        run: pnpm run format
