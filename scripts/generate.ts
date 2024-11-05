@@ -19,7 +19,10 @@ const configGenerator = new ConfigGenerator(successResultArray);
 
 const generateFolder = path.resolve(__dirname, '..', `src/generated`);
 
-fs.mkdirSync(generateFolder);
+if (!fs.existsSync(generateFolder)) {
+  fs.mkdirSync(generateFolder);
+}
+
 for (const generator of [rulesGenerator, configGenerator]) {
   generator.setRulesGrouping(RulesGrouping.SCOPE);
   await generator.generateRules(generateFolder);
