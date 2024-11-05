@@ -104,7 +104,6 @@ const eslintRules = {
   'no-with': 'off',
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
-  'prefer-object-has-own': 'off',
   radix: 'off',
   'require-await': 'off',
   'require-yield': 'off',
@@ -173,7 +172,6 @@ const importRules = {
   'import/named': 'off',
   'import/namespace': 'off',
   'import/no-amd': 'off',
-  'import/no-commonjs': 'off',
   'import/no-cycle': 'off',
   'import/no-default-export': 'off',
   'import/no-deprecated': 'off',
@@ -313,7 +311,6 @@ const nextjsRules = {
 
 const nodeRules = {
   'node/no-exports-assign': 'off',
-  'node/no-new-require': 'off',
 } as const;
 
 const promiseRules = {
@@ -358,7 +355,6 @@ const reactRules = {
   'react/require-render-return': 'off',
   'react/rules-of-hooks': 'off',
   'react/self-closing-comp': 'off',
-  'react/style-prop-object': 'off',
   'react/void-dom-elements-no-children': 'off',
 } as const;
 

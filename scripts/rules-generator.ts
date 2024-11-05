@@ -3,8 +3,6 @@ import path from 'node:path';
 import type { Rule } from './traverse-rules.js';
 import { camelCase } from 'scule';
 
-const __dirname = new URL('.', import.meta.url).pathname;
-
 export enum RulesGrouping {
   CATEGORY = 'category',
   SCOPE = 'scope',
@@ -79,10 +77,10 @@ export class RulesGenerator {
     return code;
   }
 
-  public async generateRules() {
+  public async generateRules(folderPath: string) {
     const output = await this.generateRulesCode();
     writeFileSync(
-      path.resolve(__dirname, '..', `src/rules-by-${this.rulesGrouping}.ts`),
+      path.resolve(folderPath, `rules-by-${this.rulesGrouping}.ts`),
       output
     );
   }

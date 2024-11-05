@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import configByCategory from './configs-by-category.js';
+import configByCategory from './generated/configs-by-category.js';
 import type { Linter } from 'eslint';
 import JSONCParser from 'jsonc-parser';
 
