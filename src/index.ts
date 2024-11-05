@@ -3,7 +3,7 @@ import * as ruleMapsByCategory from './rules-by-category.js';
 import configByScope from './configs-by-scope.js';
 import configByCategory from './configs-by-category.js';
 
-export {
+import {
   buildFromOxlintConfig,
   buildFromOxlintConfigFile,
 } from './build-from-oxlint-config.js';
@@ -43,4 +43,6 @@ export default {
     ...configByScope,
     ...configByCategory,
   },
+  buildFromOxlintConfig,
+  buildFromOxlintConfigFile,
 };

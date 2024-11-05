@@ -1,4 +1,4 @@
-import { buildFromOxlintConfigFile } from './src/index.js';
+import oxlint from './src/index.js';
 import unicorn from 'eslint-plugin-unicorn';
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
@@ -12,5 +12,5 @@ export default [
   unicorn.configs['flat/recommended'],
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
-  ...buildFromOxlintConfigFile('oxlint.json'),
+  ...oxlint.buildFromOxlintConfigFile('oxlint.json'),
 ];

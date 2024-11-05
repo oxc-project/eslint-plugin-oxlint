@@ -53,10 +53,10 @@ If you are using flat configuration (eslint >= 9.0), you can use the following c
 
 ```js
 // eslint.config.js
-import { buildFromOxlintConfigFile } from 'eslint-plugin-oxlint';
+import oxlint from 'eslint-plugin-oxlint';
 export default [
   ..., // other plugins
-  ...buildFromOxlintConfigFile('./oxlint.json'),
+  ...oxlint.buildFromOxlintConfigFile('./oxlint.json'),
 ];
 ```
 
@@ -64,10 +64,10 @@ Or build it by an `oxlint.json`-like object:
 
 ```js
 // eslint.config.js
-import { buildFromOxlintConfig } from 'eslint-plugin-oxlint';
+import oxlint from 'eslint-plugin-oxlint';
 export default [
   ..., // other plugins
-  ...buildFromOxlintConfig({
+  ...oxlint.buildFromOxlintConfig({
     categories: {
       correctness: 'warn'
     },
