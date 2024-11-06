@@ -2,6 +2,66 @@
 
 exports[`contains all the oxlint rules 1`] = `
 {
+  "@next/next/google-font-display": [
+    0,
+  ],
+  "@next/next/google-font-preconnect": [
+    0,
+  ],
+  "@next/next/inline-script-id": [
+    0,
+  ],
+  "@next/next/next-script-for-ga": [
+    0,
+  ],
+  "@next/next/no-assign-module-variable": [
+    0,
+  ],
+  "@next/next/no-async-client-component": [
+    0,
+  ],
+  "@next/next/no-before-interactive-script-outside-document": [
+    0,
+  ],
+  "@next/next/no-css-tags": [
+    0,
+  ],
+  "@next/next/no-document-import-in-page": [
+    0,
+  ],
+  "@next/next/no-duplicate-head": [
+    0,
+  ],
+  "@next/next/no-head-element": [
+    0,
+  ],
+  "@next/next/no-head-import-in-document": [
+    0,
+  ],
+  "@next/next/no-img-element": [
+    0,
+  ],
+  "@next/next/no-page-custom-font": [
+    0,
+  ],
+  "@next/next/no-script-component-in-head": [
+    0,
+  ],
+  "@next/next/no-styled-jsx-in-document": [
+    0,
+  ],
+  "@next/next/no-sync-scripts": [
+    0,
+  ],
+  "@next/next/no-title-in-document-head": [
+    0,
+  ],
+  "@next/next/no-typos": [
+    0,
+  ],
+  "@next/next/no-unwanted-polyfillio": [
+    0,
+  ],
   "@typescript-eslint/adjacent-overload-signatures": [
     0,
   ],
@@ -507,66 +567,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "max-params": [
-    0,
-  ],
-  "nextjs/google-font-display": [
-    0,
-  ],
-  "nextjs/google-font-preconnect": [
-    0,
-  ],
-  "nextjs/inline-script-id": [
-    0,
-  ],
-  "nextjs/next-script-for-ga": [
-    0,
-  ],
-  "nextjs/no-assign-module-variable": [
-    0,
-  ],
-  "nextjs/no-async-client-component": [
-    0,
-  ],
-  "nextjs/no-before-interactive-script-outside-document": [
-    0,
-  ],
-  "nextjs/no-css-tags": [
-    0,
-  ],
-  "nextjs/no-document-import-in-page": [
-    0,
-  ],
-  "nextjs/no-duplicate-head": [
-    0,
-  ],
-  "nextjs/no-head-element": [
-    0,
-  ],
-  "nextjs/no-head-import-in-document": [
-    0,
-  ],
-  "nextjs/no-img-element": [
-    0,
-  ],
-  "nextjs/no-page-custom-font": [
-    0,
-  ],
-  "nextjs/no-script-component-in-head": [
-    0,
-  ],
-  "nextjs/no-styled-jsx-in-document": [
-    0,
-  ],
-  "nextjs/no-sync-scripts": [
-    0,
-  ],
-  "nextjs/no-title-in-document-head": [
-    0,
-  ],
-  "nextjs/no-typos": [
-    0,
-  ],
-  "nextjs/no-unwanted-polyfillio": [
     0,
   ],
   "no-alert": [
