@@ -18,6 +18,7 @@ export const ignoreScope = new Set(['oxc', 'deepscan', 'security']);
 export const scopeMaps = {
   eslint: '',
   typescript: '@typescript-eslint',
+  nextjs: '@next/next',
 };
 
 // Some typescript-eslint rules are re-implemented version of eslint rules.

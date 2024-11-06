@@ -12,6 +12,7 @@ import JSONCParser from 'jsonc-parser';
 const scopeMaps = {
   eslint: '',
   typescript: '@typescript-eslint',
+  nextjs: '@next/next',
 };
 
 const allRulesObjects = Object.values(configByCategory).map(
