@@ -13,16 +13,16 @@
       "default": "./dist/index.mjs"
     },
     "./rules-by-category": {
-      "types": "./dist/rules-by-category.d.ts",
-      "import": "./dist/rules-by-category.mjs",
-      "require": "./dist/rules-by-category.cjs",
-      "default": "./dist/rules-by-category.mjs"
+      "types": "./dist/generated/rules-by-category.d.ts",
+      "import": "./dist/generated/rules-by-category.mjs",
+      "require": "./dist/generated/rules-by-category.cjs",
+      "default": "./dist/generated/rules-by-category.mjs"
     },
     "./rules-by-scope": {
-      "types": "./dist/rules-by-scope.d.ts",
-      "import": "./dist/rules-by-scope.mjs",
-      "require": "./dist/rules-by-scope.cjs",
-      "default": "./dist/rules-by-scope.mjs"
+      "types": "./dist/generated/rules-by-scope.d.ts",
+      "import": "./dist/generated/rules-by-scope.mjs",
+      "require": "./dist/generated/rules-by-scope.cjs",
+      "default": "./dist/generated/rules-by-scope.mjs"
     }
   },
   "files": [

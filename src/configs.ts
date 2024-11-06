@@ -1,7 +1,7 @@
-import * as ruleMapsByScope from './rules-by-scope.js';
-import * as ruleMapsByCategory from './rules-by-category.js';
-import configByScope from './configs-by-scope.js';
-import configByCategory from './configs-by-category.js';
+import * as ruleMapsByScope from './generated/rules-by-scope.js';
+import * as ruleMapsByCategory from './generated/rules-by-category.js';
+import configByScope from './generated/configs-by-scope.js';
+import configByCategory from './generated/configs-by-category.js';
 
 type UnionToIntersection<U> = (
   U extends unknown ? (x: U) => void : never
