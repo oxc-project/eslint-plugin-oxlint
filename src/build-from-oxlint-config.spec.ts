@@ -121,6 +121,30 @@ describe('buildFromOxlintConfig', () => {
     });
     expect('import/no-unused-modules' in rules).toBe(false);
   });
+
+  // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
+  it('detect oxlint plugin alias inside rules block', () => {
+    const rules = buildFromOxlintConfig({
+      rules: {
+        'eslint/eqeqeq': 'warn',
+        'typescript/no-unused-vars': 'warn',
+        'react_perf/jsx-no-new-array-as-prop': 'warn',
+        'nextjs/no-img-element': 'warn',
+        'no-array-reduce': 'warn',
+        // 'react/xxx': 'warn', -- ToDo
+        // 'deepscan/xxx': 'warn',
+      },
+    });
+
+    expect(rules.length).toBe(1);
+    expect(rules[0].rules).not.toBeUndefined();
+    expect('eqeqeq' in rules[0].rules!).toBe(true);
+    expect('@typescript-eslint/no-unused-vars' in rules[0].rules!).toBe(true);
+    expect('react-perf/jsx-no-new-array-as-prop' in rules[0].rules!).toBe(true);
+    expect('@next/no-img-element' in rules[0].rules!).toBe(true);
+    expect('unicorn/no-array-reduce' in rules[0].rules!).toBe(true);
+    // expect('react-hooks/xxx' in rules[0].rules!).toBe(true); -- ToDo
+  });
 });
 
 const createConfigFileAndBuildFromIt = (
