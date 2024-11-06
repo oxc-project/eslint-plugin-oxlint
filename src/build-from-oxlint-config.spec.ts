@@ -141,7 +141,7 @@ describe('buildFromOxlintConfig', () => {
     expect('eqeqeq' in rules[0].rules!).toBe(true);
     expect('@typescript-eslint/no-unused-vars' in rules[0].rules!).toBe(true);
     expect('react-perf/jsx-no-new-array-as-prop' in rules[0].rules!).toBe(true);
-    expect('@next/no-img-element' in rules[0].rules!).toBe(true);
+    expect('@next/next/no-img-element' in rules[0].rules!).toBe(true);
     expect('unicorn/no-array-reduce' in rules[0].rules!).toBe(true);
     // expect('react-hooks/xxx' in rules[0].rules!).toBe(true); -- ToDo
   });
@@ -167,14 +167,14 @@ describe('buildFromOxlintConfigFile', () => {
       `{
         "rules": {
           // hello world
-          "no-await-loop": "error",
+          "no-await-in-loop": "error",
         },
       }`
     );
 
     expect(rules.length).toBe(1);
     expect(rules[0].rules).not.toBeUndefined();
-    expect('no-await-loop' in rules[0].rules!).toBe(true);
+    expect('no-await-in-loop' in rules[0].rules!).toBe(true);
   });
 
   it('fails to find oxlint config', () => {
