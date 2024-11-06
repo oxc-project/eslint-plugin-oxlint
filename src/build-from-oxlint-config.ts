@@ -14,6 +14,13 @@ const scopeMaps = {
   typescript: '@typescript-eslint',
 };
 
+const allRulesObjects = Object.values(configByCategory).map(
+  (config) => config.rules
+);
+const allRules: string[] = allRulesObjects.flatMap((rulesObject) =>
+  Object.keys(rulesObject)
+);
+
 type OxlintConfigPlugins = string[];
 
 type OxlintConfigCategories = Record<string, unknown>;
@@ -109,6 +116,15 @@ const handleCategoriesScope = (
   }
 };
 
+const getEsLintRuleName = (rule: string): string | undefined => {
+  // strip <plugin-name>/ from rule
+  const ruleWithoutPlugin = rule.includes('/')
+    ? rule.replace(/^.*\//, '')
+    : rule;
+
+  return allRules.find((rule) => rule.endsWith(ruleWithoutPlugin));
+};
+
 /**
  * checks if the oxlint rule is activated/deactivated and append/remove it.
  */
@@ -117,12 +133,19 @@ const handleRulesScope = (
   rules: Record<string, 'off'>
 ): void => {
   for (const rule in oxlintRules) {
+    const eslintName = getEsLintRuleName(rule);
+
+    if (eslintName === undefined) {
+      // ToDo: output?
+      continue;
+    }
+
     // is this rules not turned off
     if (isActiveValue(oxlintRules[rule])) {
-      rules[rule] = 'off';
+      rules[eslintName] = 'off';
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
-      delete rules[rule];
+      delete rules[eslintName];
     }
   }
 };
