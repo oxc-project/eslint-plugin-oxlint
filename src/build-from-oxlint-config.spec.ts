@@ -123,7 +123,7 @@ describe('buildFromOxlintConfig', () => {
   });
 
   // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
-  it.only('detect oxlint rules with plugin alias inside rules block', () => {
+  it('detect oxlint rules with plugin alias inside rules block', () => {
     const rules = buildFromOxlintConfig({
       rules: {
         'eslint/eqeqeq': 'warn',

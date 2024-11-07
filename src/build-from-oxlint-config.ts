@@ -7,8 +7,7 @@ import JSONCParser from 'jsonc-parser';
 // only used for the scopes where the directory structure doesn't reflect the eslint scope
 // such as `typescript` vs `@typescript-eslint` or others. Eslint as a scope is an exception,
 // as eslint doesn't have a scope.
-// There is a duplicate in scripts/constants.js, for clean builds we manage it in 2 files.
-// In the future we can generate maybe this constant into src folder
+// look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
 const aliasPluginNames: Record<string, string> = {
   eslint: '',
   typescript: '@typescript-eslint',
@@ -16,6 +15,7 @@ const aliasPluginNames: Record<string, string> = {
 
   // only in build-config
   react_perf: 'react-perf',
+  jsx_a11y: 'jsx-a11y',
 };
 
 const allRulesObjects = Object.values(configByCategory).map(
