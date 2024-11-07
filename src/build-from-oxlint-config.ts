@@ -35,6 +35,12 @@ const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
 const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
 
 /**
+ * Detects it the value is an object
+ */
+const isObject = (value: unknown): boolean =>
+  typeof value === 'object' && value !== null && !Array.isArray(value);
+
+/**
  * tries to read the oxlint config file and returning its JSON content.
  * if the file is not found or could not be parsed, undefined is returned.
  * And an error message will be emitted to `console.error`
@@ -48,7 +54,7 @@ const getConfigContent = (
     try {
       const configContent = JSONCParser.parse(content);
 
-      if (typeof configContent !== 'object' || Array.isArray(configContent)) {
+      if (!isObject(configContent)) {
         throw new TypeError('not an valid config file');
       }
 
@@ -122,24 +128,23 @@ const handleRulesScope = (
   }
 };
 
-const isOffValue = (value: unknown) => value === 'off' || value === 0;
+/**
+ * checks if value is validSet, or if validSet is an array, check if value is first value of it
+ */
+const isValueInSet = (value: unknown, validSet: unknown[]) =>
+  validSet.includes(value) ||
+  (Array.isArray(value) && validSet.includes(value[0]));
 
 /**
  * check if the value is "off", 0, ["off", ...], or [0, ...]
  */
-const isDeactivateValue = (value: unknown): boolean => {
-  return isOffValue(value) || (Array.isArray(value) && isOffValue(value[0]));
-};
-
-const isOnValue = (value: unknown) =>
-  value === 'error' || value === 'warn' || value === 1 || value === 2;
+const isDeactivateValue = (value: unknown) => isValueInSet(value, ['off', 0]);
 
 /**
  * check if the value is "error", "warn", 1, 2, ["error", ...], ["warn", ...], [1, ...], or [2, ...]
  */
-const isActiveValue = (value: unknown): boolean => {
-  return isOnValue(value) || (Array.isArray(value) && isOnValue(value[0]));
-};
+const isActiveValue = (value: unknown) =>
+  isValueInSet(value, ['error', 'warn', 1, 2]);
 
 /**
  * tries to return the "plugins" section from the config.
@@ -160,9 +165,7 @@ const readPluginsFromConfig = (
 const readCategoriesFromConfig = (
   config: OxlintConfig
 ): OxlintConfigCategories | undefined => {
-  return 'categories' in config &&
-    typeof config.categories === 'object' &&
-    config.categories !== null
+  return 'categories' in config && isObject(config.categories)
     ? (config.categories as OxlintConfigCategories)
     : undefined;
 };
@@ -174,9 +177,7 @@ const readCategoriesFromConfig = (
 const readRulesFromConfig = (
   config: OxlintConfig
 ): OxlintConfigRules | undefined => {
-  return 'rules' in config &&
-    typeof config.rules === 'object' &&
-    config.rules !== null
+  return 'rules' in config && isObject(config.rules)
     ? (config.rules as OxlintConfigRules)
     : undefined;
 };
