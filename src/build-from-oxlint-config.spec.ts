@@ -130,6 +130,7 @@ describe('buildFromOxlintConfig', () => {
         'typescript/no-unused-vars': 'warn',
         'react_perf/jsx-no-new-array-as-prop': 'warn',
         'nextjs/no-img-element': 'warn',
+        'jsx_a11y/alt-text': 'warn',
         // 'react/rules-of-hooks': 'warn', -- ToDo oxc-project/eslint-plugin-oxlint#233
         // 'deepscan/xxx': 'warn',
       },
@@ -143,6 +144,7 @@ describe('buildFromOxlintConfig', () => {
       true
     );
     expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
+    expect('jsx-a11y/alt-text' in configs[0].rules!).toBe(true);
     // expect('react-hooks/rules-of-hooks' in rules[0].rules!).toBe(true);
   });
 
