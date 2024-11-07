@@ -123,27 +123,47 @@ describe('buildFromOxlintConfig', () => {
   });
 
   // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
-  it('detect oxlint rules with plugin alias inside rules block', () => {
-    const rules = buildFromOxlintConfig({
+  it('detects oxlint rules with plugin alias inside rules block', () => {
+    const configs = buildFromOxlintConfig({
       rules: {
         'eslint/eqeqeq': 'warn',
         'typescript/no-unused-vars': 'warn',
         'react_perf/jsx-no-new-array-as-prop': 'warn',
         'nextjs/no-img-element': 'warn',
-        'no-array-reduce': 'warn',
         // 'react/xxx': 'warn', -- ToDo
         // 'deepscan/xxx': 'warn',
       },
     });
 
-    expect(rules.length).toBe(1);
-    expect(rules[0].rules).not.toBeUndefined();
-    expect('eqeqeq' in rules[0].rules!).toBe(true);
-    expect('@typescript-eslint/no-unused-vars' in rules[0].rules!).toBe(true);
-    expect('react-perf/jsx-no-new-array-as-prop' in rules[0].rules!).toBe(true);
-    expect('@next/next/no-img-element' in rules[0].rules!).toBe(true);
-    expect('unicorn/no-array-reduce' in rules[0].rules!).toBe(true);
+    expect(configs.length).toBe(1);
+    expect(configs[0].rules).not.toBeUndefined();
+    expect('eqeqeq' in configs[0].rules!).toBe(true);
+    expect('@typescript-eslint/no-unused-vars' in configs[0].rules!).toBe(true);
+    expect('react-perf/jsx-no-new-array-as-prop' in configs[0].rules!).toBe(
+      true
+    );
+    expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
     // expect('react-hooks/xxx' in rules[0].rules!).toBe(true); -- ToDo
+  });
+
+  it('detects rules without plugin name', () => {
+    const configs = buildFromOxlintConfig({
+      rules: {
+        'no-unused-vars': 'warn',
+        'jsx-no-new-array-as-prop': 'warn',
+        'no-img-element': 'warn',
+        'no-array-reduce': 'warn',
+      },
+    });
+
+    expect(configs.length).toBe(1);
+    expect(configs[0].rules).not.toBeUndefined();
+    expect('@typescript-eslint/no-unused-vars' in configs[0].rules!).toBe(true);
+    expect('react-perf/jsx-no-new-array-as-prop' in configs[0].rules!).toBe(
+      true
+    );
+    expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
+    expect('unicorn/no-array-reduce' in configs[0].rules!).toBe(true);
   });
 
   it('skips unknown oxlint rules', () => {
