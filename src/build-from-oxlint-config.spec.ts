@@ -119,7 +119,10 @@ describe('buildFromOxlintConfig', () => {
         'import/no-unused-modules': 'off',
       },
     });
-    expect('import/no-unused-modules' in rules).toBe(false);
+
+    expect(rules.length).toBe(1);
+    expect(rules[0].rules).not.toBeUndefined();
+    expect('import/no-unused-modules' in rules[0].rules!).toBe(false);
   });
 
   // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
