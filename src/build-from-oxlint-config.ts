@@ -9,10 +9,13 @@ import JSONCParser from 'jsonc-parser';
 // as eslint doesn't have a scope.
 // There is a duplicate in scripts/constants.js, for clean builds we manage it in 2 files.
 // In the future we can generate maybe this constant into src folder
-const scopeMaps = {
+const aliasPluginNames: Record<string, string> = {
   eslint: '',
   typescript: '@typescript-eslint',
   nextjs: '@next/next',
+
+  // only in build-config
+  react_perf: 'react-perf',
 };
 
 const allRulesObjects = Object.values(configByCategory).map(
@@ -102,8 +105,8 @@ const handleCategoriesScope = (
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of Object.keys(possibleRules)) {
       for (const plugin of plugins) {
-        // @ts-expect-error -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
-        const pluginPrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
+        const pluginPrefix =
+          plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
 
         // the rule has no prefix, so it is a eslint one
         if (pluginPrefix === '' && !rule.includes('/')) {
@@ -118,12 +121,32 @@ const handleCategoriesScope = (
 };
 
 const getEsLintRuleName = (rule: string): string | undefined => {
-  // strip <plugin-name>/ from rule
-  const ruleWithoutPlugin = rule.includes('/')
-    ? rule.replace(/^.*\//, '')
-    : rule;
+  // there is no plugin prefix, it can be all plugin
+  if (!rule.includes('/')) {
+    return allRules.find(
+      (search) => search.endsWith(`/${rule}`) || search === rule
+    );
+  }
 
-  return allRules.find((rule) => rule.endsWith(ruleWithoutPlugin));
+  // greedy works with `@next/next/no-img-element` as an example
+  const match = rule.match(/(^.*)\/(.*)/);
+
+  if (match === null) {
+    return undefined;
+  }
+
+  const pluginName = match[1];
+  const ruleName = match[2];
+
+  // map to the right eslint plugin
+  const esPluginName =
+    pluginName in aliasPluginNames ? aliasPluginNames[pluginName] : pluginName;
+
+  // extra check for eslint
+  const expectedRule =
+    esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
+
+  return allRules.find((rule) => rule == expectedRule);
 };
 
 /**

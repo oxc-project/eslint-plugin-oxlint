@@ -123,7 +123,7 @@ describe('buildFromOxlintConfig', () => {
   });
 
   // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
-  it('detect oxlint plugin alias inside rules block', () => {
+  it.only('detect oxlint rules with plugin alias inside rules block', () => {
     const rules = buildFromOxlintConfig({
       rules: {
         'eslint/eqeqeq': 'warn',
@@ -144,6 +144,20 @@ describe('buildFromOxlintConfig', () => {
     expect('@next/next/no-img-element' in rules[0].rules!).toBe(true);
     expect('unicorn/no-array-reduce' in rules[0].rules!).toBe(true);
     // expect('react-hooks/xxx' in rules[0].rules!).toBe(true); -- ToDo
+  });
+
+  it('skips unknown oxlint rules', () => {
+    const rules = buildFromOxlintConfig({
+      rules: {
+        unknown: 'warn',
+        'typescript/no-img-element': 'warn', // valid rule, but wrong plugin-name
+      },
+    });
+
+    expect(rules.length).toBe(1);
+    expect(rules[0].rules).not.toBeUndefined();
+    expect('unknown' in rules[0].rules!).toBe(false);
+    expect('@next/next/no-img-element' in rules[0].rules!).toBe(false);
   });
 });
 
