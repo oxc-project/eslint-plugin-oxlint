@@ -119,7 +119,10 @@ describe('buildFromOxlintConfig', () => {
         'import/no-unused-modules': 'off',
       },
     });
-    expect('import/no-unused-modules' in rules).toBe(false);
+
+    expect(rules.length).toBe(1);
+    expect(rules[0].rules).not.toBeUndefined();
+    expect('import/no-unused-modules' in rules[0].rules!).toBe(false);
   });
 });
 
