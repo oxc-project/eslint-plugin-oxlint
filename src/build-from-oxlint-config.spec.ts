@@ -124,6 +124,66 @@ describe('buildFromOxlintConfig', () => {
     expect(rules[0].rules).not.toBeUndefined();
     expect('import/no-unused-modules' in rules[0].rules!).toBe(false);
   });
+
+  // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
+  it('detects oxlint rules with plugin alias inside rules block', () => {
+    const configs = buildFromOxlintConfig({
+      rules: {
+        'eslint/eqeqeq': 'warn',
+        'typescript/no-unused-vars': 'warn',
+        'react_perf/jsx-no-new-array-as-prop': 'warn',
+        'nextjs/no-img-element': 'warn',
+        'jsx_a11y/alt-text': 'warn',
+        // 'react/rules-of-hooks': 'warn', -- ToDo oxc-project/eslint-plugin-oxlint#233
+        // 'deepscan/xxx': 'warn',
+      },
+    });
+
+    expect(configs.length).toBe(1);
+    expect(configs[0].rules).not.toBeUndefined();
+    expect('eqeqeq' in configs[0].rules!).toBe(true);
+    expect('@typescript-eslint/no-unused-vars' in configs[0].rules!).toBe(true);
+    expect('react-perf/jsx-no-new-array-as-prop' in configs[0].rules!).toBe(
+      true
+    );
+    expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
+    expect('jsx-a11y/alt-text' in configs[0].rules!).toBe(true);
+    // expect('react-hooks/rules-of-hooks' in rules[0].rules!).toBe(true);
+  });
+
+  it('detects rules without plugin name', () => {
+    const configs = buildFromOxlintConfig({
+      rules: {
+        'no-unused-vars': 'warn',
+        'jsx-no-new-array-as-prop': 'warn',
+        'no-img-element': 'warn',
+        'no-array-reduce': 'warn',
+      },
+    });
+
+    expect(configs.length).toBe(1);
+    expect(configs[0].rules).not.toBeUndefined();
+    expect('@typescript-eslint/no-unused-vars' in configs[0].rules!).toBe(true);
+    expect('react-perf/jsx-no-new-array-as-prop' in configs[0].rules!).toBe(
+      true
+    );
+    expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
+    expect('unicorn/no-array-reduce' in configs[0].rules!).toBe(true);
+  });
+
+  it('skips unknown oxlint rules', () => {
+    const rules = buildFromOxlintConfig({
+      rules: {
+        unknown: 'warn',
+        'typescript/no-img-element': 'warn', // valid rule, but wrong plugin-name
+      },
+    });
+
+    expect(rules.length).toBe(1);
+    expect(rules[0].rules).not.toBeUndefined();
+    expect('unknown' in rules[0].rules!).toBe(false);
+    expect('@next/next/no-img-element' in rules[0].rules!).toBe(false);
+  });
 });
 
 const createConfigFileAndBuildFromIt = (
@@ -146,14 +206,14 @@ describe('buildFromOxlintConfigFile', () => {
       `{
         "rules": {
           // hello world
-          "no-await-loop": "error",
+          "no-await-in-loop": "error",
         },
       }`
     );
 
     expect(rules.length).toBe(1);
     expect(rules[0].rules).not.toBeUndefined();
-    expect('no-await-loop' in rules[0].rules!).toBe(true);
+    expect('no-await-in-loop' in rules[0].rules!).toBe(true);
   });
 
   it('fails to find oxlint config', () => {

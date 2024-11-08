@@ -7,13 +7,23 @@ import JSONCParser from 'jsonc-parser';
 // only used for the scopes where the directory structure doesn't reflect the eslint scope
 // such as `typescript` vs `@typescript-eslint` or others. Eslint as a scope is an exception,
 // as eslint doesn't have a scope.
-// There is a duplicate in scripts/constants.js, for clean builds we manage it in 2 files.
-// In the future we can generate maybe this constant into src folder
-const scopeMaps = {
+// look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
+const aliasPluginNames: Record<string, string> = {
   eslint: '',
   typescript: '@typescript-eslint',
   nextjs: '@next/next',
+
+  // only in build-config
+  react_perf: 'react-perf',
+  jsx_a11y: 'jsx-a11y',
 };
+
+const allRulesObjects = Object.values(configByCategory).map(
+  (config) => config.rules
+);
+const allRules: string[] = allRulesObjects.flatMap((rulesObject) =>
+  Object.keys(rulesObject)
+);
 
 type OxlintConfigPlugins = string[];
 
@@ -95,8 +105,8 @@ const handleCategoriesScope = (
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of Object.keys(possibleRules)) {
       for (const plugin of plugins) {
-        // @ts-expect-error -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
-        const pluginPrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
+        const pluginPrefix =
+          plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
 
         // the rule has no prefix, so it is a eslint one
         if (pluginPrefix === '' && !rule.includes('/')) {
@@ -110,6 +120,35 @@ const handleCategoriesScope = (
   }
 };
 
+const getEsLintRuleName = (rule: string): string | undefined => {
+  // there is no plugin prefix, it can be all plugin
+  if (!rule.includes('/')) {
+    return allRules.find(
+      (search) => search.endsWith(`/${rule}`) || search === rule
+    );
+  }
+
+  // greedy works with `@next/next/no-img-element` as an example
+  const match = rule.match(/(^.*)\/(.*)/);
+
+  if (match === null) {
+    return undefined;
+  }
+
+  const pluginName = match[1];
+  const ruleName = match[2];
+
+  // map to the right eslint plugin
+  const esPluginName =
+    pluginName in aliasPluginNames ? aliasPluginNames[pluginName] : pluginName;
+
+  // extra check for eslint
+  const expectedRule =
+    esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
+
+  return allRules.find((rule) => rule == expectedRule);
+};
+
 /**
  * checks if the oxlint rule is activated/deactivated and append/remove it.
  */
@@ -118,12 +157,21 @@ const handleRulesScope = (
   rules: Record<string, 'off'>
 ): void => {
   for (const rule in oxlintRules) {
+    const eslintName = getEsLintRuleName(rule);
+
+    if (eslintName === undefined) {
+      console.warn(
+        `eslint-plugin-oxlint: could not find matching eslint rule for "${rule}"`
+      );
+      continue;
+    }
+
     // is this rules not turned off
     if (isActiveValue(oxlintRules[rule])) {
-      rules[rule] = 'off';
+      rules[eslintName] = 'off';
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
-      delete rules[rule];
+      delete rules[eslintName];
     }
   }
 };
