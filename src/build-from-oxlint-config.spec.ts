@@ -184,6 +184,23 @@ describe('buildFromOxlintConfig', () => {
     expect('unknown' in rules[0].rules!).toBe(false);
     expect('@next/next/no-img-element' in rules[0].rules!).toBe(false);
   });
+
+  for (const alias of typescriptRulesExtendEslintRules) {
+    it(`disables matching typescript and eslint rules for ${alias}`, () => {
+      for (const rule in [alias, `@typescript-eslint/${alias}`]) {
+        const rules = buildFromOxlintConfig({
+          rules: {
+            [rule]: 'warn',
+          },
+        });
+
+        expect(rules.length).toBe(1);
+        expect(rules[0].rules).not.toBeUndefined();
+        expect(alias in rules[0].rules!).toBe(true);
+        expect(`@typescript-eslint/${alias}` in rules[0].rules!).toBe(true);
+      }
+    });
+  }
 });
 
 const createConfigFileAndBuildFromIt = (
