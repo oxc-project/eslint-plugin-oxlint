@@ -18,6 +18,13 @@ const aliasPluginNames: Record<string, string> = {
   jsx_a11y: 'jsx-a11y',
 };
 
+// All rules from `eslint-plugin-react-hooks`
+// Since oxlint supports these rules under react/*, we need to remap them.
+export const reactHookRulesInsideReactScope = [
+  'rules-of-hooks',
+  'exhaustive-deps',
+];
+
 const allRulesObjects = Object.values(configByCategory).map(
   (config) => config.rules
 );
@@ -139,8 +146,16 @@ const getEsLintRuleName = (rule: string): string | undefined => {
   const ruleName = match[2];
 
   // map to the right eslint plugin
-  const esPluginName =
+  let esPluginName =
     pluginName in aliasPluginNames ? aliasPluginNames[pluginName] : pluginName;
+
+  // special case for eslint-plugin-react-hooks
+  if (
+    esPluginName === 'react' &&
+    reactHookRulesInsideReactScope.includes(ruleName)
+  ) {
+    esPluginName = 'react-hooks';
+  }
 
   // extra check for eslint
   const expectedRule =
