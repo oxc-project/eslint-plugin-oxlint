@@ -65,6 +65,13 @@ export const typescriptRulesExtendEslintRules = [
   'space-infix-ops',
 ];
 
+// All rules from `eslint-plugin-react-hooks`
+// Since oxlint supports these rules under react/*, we need to remap them.
+export const reactHookRulesInsideReactScope = [
+  'rules-of-hooks',
+  'exhaustive-deps',
+];
+
 export function convertScope(scope: string) {
   return Reflect.has(scopeMaps, scope)
     ? scopeMaps[scope as 'eslint']
