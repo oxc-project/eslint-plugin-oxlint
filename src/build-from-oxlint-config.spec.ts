@@ -6,7 +6,7 @@ import {
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
-import { typescriptRulesExtendEslintRules } from '../scripts/constants.js';
+import { typescriptRulesExtendEslintRules } from './constants.js';
 
 describe('buildFromOxlintConfig', () => {
   describe('rule values', () => {

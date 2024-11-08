@@ -2,28 +2,10 @@ import fs from 'node:fs';
 import configByCategory from './generated/configs-by-category.js';
 import type { Linter } from 'eslint';
 import JSONCParser from 'jsonc-parser';
-
-// these are the mappings from the scope in the rules.rs to the eslint scope
-// only used for the scopes where the directory structure doesn't reflect the eslint scope
-// such as `typescript` vs `@typescript-eslint` or others. Eslint as a scope is an exception,
-// as eslint doesn't have a scope.
-// look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
-const aliasPluginNames: Record<string, string> = {
-  eslint: '',
-  typescript: '@typescript-eslint',
-  nextjs: '@next/next',
-
-  // only in build-config
-  react_perf: 'react-perf',
-  jsx_a11y: 'jsx-a11y',
-};
-
-// All rules from `eslint-plugin-react-hooks`
-// Since oxlint supports these rules under react/*, we need to remap them.
-export const reactHookRulesInsideReactScope = [
-  'rules-of-hooks',
-  'exhaustive-deps',
-];
+import {
+  aliasPluginNames,
+  reactHookRulesInsideReactScope,
+} from './constants.js';
 
 const allRulesObjects = Object.values(configByCategory).map(
   (config) => config.rules
