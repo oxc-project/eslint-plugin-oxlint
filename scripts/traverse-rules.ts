@@ -3,11 +3,13 @@ import path from 'node:path';
 import {
   ignoreScope,
   prefixScope,
-  reactHookRulesInsideReactScope,
   SPARSE_CLONE_DIRECTORY,
   TARGET_DIRECTORY,
-  typescriptRulesExtendEslintRules,
 } from './constants.js';
+import {
+  reactHookRulesInsideReactScope,
+  typescriptRulesExtendEslintRules,
+} from '../src/constants.js';
 
 // Recursive function to read files in a directory, this currently assumes that the directory
 // structure is semi-consistent within the oxc_linter crate
