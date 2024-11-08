@@ -160,7 +160,9 @@ const handleRulesScope = (
     const eslintName = getEsLintRuleName(rule);
 
     if (eslintName === undefined) {
-      // ToDo: output?
+      console.warn(
+        `eslint-plugin-oxlint: could not find matching eslint rule for "${rule}"`
+      );
       continue;
     }
 
