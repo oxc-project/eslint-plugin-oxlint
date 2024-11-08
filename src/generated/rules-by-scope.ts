@@ -356,10 +356,13 @@ const reactRules = {
   'react/prefer-es6-class': 'off',
   'react/react-in-jsx-scope': 'off',
   'react/require-render-return': 'off',
-  'react/rules-of-hooks': 'off',
   'react/self-closing-comp': 'off',
   'react/style-prop-object': 'off',
   'react/void-dom-elements-no-children': 'off',
+} as const;
+
+const reactHooksRules = {
+  'react-hooks/rules-of-hooks': 'off',
 } as const;
 
 const reactPerfRules = {
@@ -485,6 +488,7 @@ export {
   nodeRules,
   promiseRules,
   reactRules,
+  reactHooksRules,
   reactPerfRules,
   treeShakingRules,
   unicornRules,

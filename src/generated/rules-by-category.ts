@@ -87,7 +87,7 @@ const nurseryRules = {
   'import/no-unused-modules': 'off',
   'promise/no-return-in-finally': 'off',
   'react/require-render-return': 'off',
-  'react/rules-of-hooks': 'off',
+  'react-hooks/rules-of-hooks': 'off',
   'tree-shaking/no-side-effects-in-initialization': 'off',
   '@typescript-eslint/consistent-type-imports': 'off',
 } as const;
