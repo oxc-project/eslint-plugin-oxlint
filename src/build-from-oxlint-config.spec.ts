@@ -187,7 +187,7 @@ describe('buildFromOxlintConfig', () => {
 
   for (const alias of typescriptRulesExtendEslintRules) {
     it(`disables matching typescript and eslint rules for ${alias}`, () => {
-      for (const rule in [alias, `@typescript-eslint/${alias}`]) {
+      for (const rule of [alias, `@typescript-eslint/${alias}`]) {
         const rules = buildFromOxlintConfig({
           rules: {
             [rule]: 'warn',
