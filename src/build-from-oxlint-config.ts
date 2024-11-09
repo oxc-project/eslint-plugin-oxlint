@@ -114,28 +114,22 @@ const handleCategoriesScope = (
  * oxlint rules are deactivating one or more eslint rules.
  *
  * Oxlint rules do not need a plugin-scope.
- * When no eslint rules are found, undefined is returned.
+ * When no eslint rules are found, an empty array is returned.
  *
  */
-const getEsLintRuleNames = (rule: string): string[] | undefined => {
+const getEsLintRuleNames = (rule: string): string[] => {
   // there is no plugin prefix, it can be all plugin
   if (!rule.includes('/')) {
-    const founds = allRules.filter(
+    return allRules.filter(
       (search) => search.endsWith(`/${rule}`) || search === rule
     );
-
-    if (founds.length === 0) {
-      return undefined;
-    }
-
-    return founds;
   }
 
   // greedy works with `@next/next/no-img-element` as an example
   const match = rule.match(/(^.*)\/(.*)/);
 
   if (match === null) {
-    return undefined;
+    return [];
   }
 
   const pluginName = match[1];
@@ -159,24 +153,14 @@ const getEsLintRuleNames = (rule: string): string[] | undefined => {
 
   // Some typescript-eslint rules are re-implemented version of eslint rules.
   if (esPluginName === '@typescript-eslint') {
-    const founds = allRules.filter(
+    return allRules.filter(
       (rule) => rule === expectedRule || rule === ruleName
     );
-
-    if (founds.length === 0) {
-      return undefined;
-    }
-
-    return founds;
   }
 
   const found = allRules.find((rule) => rule === expectedRule);
 
-  if (found === undefined) {
-    return undefined;
-  }
-
-  return [found];
+  return found === undefined ? [] : [found];
 };
 
 /**
@@ -189,7 +173,7 @@ const handleRulesScope = (
   for (const rule in oxlintRules) {
     const eslintNames = getEsLintRuleNames(rule);
 
-    if (eslintNames === undefined) {
+    if (eslintNames.length === 0) {
       console.warn(
         `eslint-plugin-oxlint: could not find matching eslint rule for "${rule}"`
       );
