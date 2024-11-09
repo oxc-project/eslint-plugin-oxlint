@@ -23,13 +23,11 @@ if (!fs.existsSync(generateFolder)) {
   fs.mkdirSync(generateFolder);
 }
 
-const promises = [rulesGenerator, configGenerator].map(
-  (generator) => async () => {
-    generator.setRulesGrouping(RulesGrouping.SCOPE);
-    await generator.generateRules(generateFolder);
-    generator.setRulesGrouping(RulesGrouping.CATEGORY);
-    await generator.generateRules(generateFolder);
-  }
-);
+const promises = [rulesGenerator, configGenerator].map(async (generator) => {
+  generator.setRulesGrouping(RulesGrouping.SCOPE);
+  await generator.generateRules(generateFolder);
+  generator.setRulesGrouping(RulesGrouping.CATEGORY);
+  await generator.generateRules(generateFolder);
+});
 
 await Promise.all(promises);
