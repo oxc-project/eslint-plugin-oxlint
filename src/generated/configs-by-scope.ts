@@ -22,6 +22,11 @@ const jestConfig = {
   rules: rules.jestRules,
 };
 
+const vitestConfig = {
+  name: 'oxlint/vitest',
+  rules: rules.vitestRules,
+};
+
 const jsdocConfig = {
   name: 'oxlint/jsdoc',
   rules: rules.jsdocRules,
@@ -72,16 +77,12 @@ const unicornConfig = {
   rules: rules.unicornRules,
 };
 
-const vitestConfig = {
-  name: 'oxlint/vitest',
-  rules: rules.vitestRules,
-};
-
 const configByScope = {
   'flat/eslint': eslintConfig,
   'flat/typescript': typescriptConfig,
   'flat/import': importConfig,
   'flat/jest': jestConfig,
+  'flat/vitest': vitestConfig,
   'flat/jsdoc': jsdocConfig,
   'flat/jsx-a11y': jsxA11yConfig,
   'flat/nextjs': nextjsConfig,
@@ -92,7 +93,6 @@ const configByScope = {
   'flat/react-perf': reactPerfConfig,
   'flat/tree-shaking': treeShakingConfig,
   'flat/unicorn': unicornConfig,
-  'flat/vitest': vitestConfig,
 };
 
 export default configByScope;

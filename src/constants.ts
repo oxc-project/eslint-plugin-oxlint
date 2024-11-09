@@ -15,7 +15,6 @@ export const aliasPluginNames: Record<string, string> = {
 };
 
 // Some typescript-eslint rules are re-implemented version of eslint rules.
-// e.g. no-array-constructor, max-params, etc...
 // Since oxlint supports these rules under eslint/* and it also supports TS,
 // we should override these to make implementation status up-to-date.
 export const typescriptRulesExtendEslintRules = [
@@ -56,6 +55,25 @@ export const typescriptRulesExtendEslintRules = [
   'space-before-blocks',
   'space-before-function-paren',
   'space-infix-ops',
+];
+
+// Some vitest rules are re-implemented version of jest rules.
+// Since oxlint supports these rules under jest/*, we need to remap them.
+export const viteTestCompatibleRules = [
+  'consistent-test-it',
+  'expect-expect',
+  'no-alias-methods',
+  'no-conditional-expect',
+  'no-conditional-in-test',
+  'no-commented-out-tests',
+  'no-disabled-tests',
+  'no-focused-tests',
+  'no-identical-title',
+  'no-restricted-jest-methods',
+  'no-test-prefixes',
+  'prefer-hooks-in-order',
+  'valid-describe-callback',
+  'valid-expect',
 ];
 
 // All rules from `eslint-plugin-react-hooks`
