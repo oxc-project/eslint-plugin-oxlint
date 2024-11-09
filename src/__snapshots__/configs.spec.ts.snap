@@ -1286,13 +1286,49 @@ exports[`contains all the oxlint rules 1`] = `
   "valid-typeof": [
     0,
   ],
+  "vitest/consistent-test-it": [
+    0,
+  ],
+  "vitest/expect-expect": [
+    0,
+  ],
+  "vitest/no-alias-methods": [
+    0,
+  ],
+  "vitest/no-commented-out-tests": [
+    0,
+  ],
+  "vitest/no-conditional-expect": [
+    0,
+  ],
+  "vitest/no-conditional-in-test": [
+    0,
+  ],
   "vitest/no-conditional-tests": [
+    0,
+  ],
+  "vitest/no-disabled-tests": [
+    0,
+  ],
+  "vitest/no-focused-tests": [
+    0,
+  ],
+  "vitest/no-identical-title": [
     0,
   ],
   "vitest/no-import-node-test": [
     0,
   ],
+  "vitest/no-restricted-jest-methods": [
+    0,
+  ],
+  "vitest/no-test-prefixes": [
+    0,
+  ],
   "vitest/prefer-each": [
+    0,
+  ],
+  "vitest/prefer-hooks-in-order": [
     0,
   ],
   "vitest/prefer-to-be-falsy": [
@@ -1305,6 +1341,12 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/require-local-test-context-for-concurrent-snapshots": [
+    0,
+  ],
+  "vitest/valid-describe-callback": [
+    0,
+  ],
+  "vitest/valid-expect": [
     0,
   ],
 }

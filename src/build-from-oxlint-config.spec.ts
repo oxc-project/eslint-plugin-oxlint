@@ -6,7 +6,10 @@ import {
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
-import { typescriptRulesExtendEslintRules } from './constants.js';
+import {
+  typescriptRulesExtendEslintRules,
+  viteTestCompatibleRules,
+} from './constants.js';
 
 describe('buildFromOxlintConfig', () => {
   describe('rule values', () => {
@@ -184,6 +187,23 @@ describe('buildFromOxlintConfig', () => {
     expect('unknown' in configs[0].rules!).toBe(false);
     expect('@next/next/no-img-element' in configs[0].rules!).toBe(false);
   });
+
+  for (const alias of viteTestCompatibleRules) {
+    it(`disables matching vitest and jest rules for ${alias}`, () => {
+      for (const rule of [alias, `jest/${alias}`, `vitest/${alias}`]) {
+        const rules = buildFromOxlintConfig({
+          rules: {
+            [rule]: 'warn',
+          },
+        });
+
+        expect(rules.length).toBe(1);
+        expect(rules[0].rules).not.toBeUndefined();
+        expect(`vitest/${alias}` in rules[0].rules!).toBe(true);
+        expect(`jest/${alias}` in rules[0].rules!).toBe(true);
+      }
+    });
+  }
 });
 
 const createConfigFileAndBuildFromIt = (
