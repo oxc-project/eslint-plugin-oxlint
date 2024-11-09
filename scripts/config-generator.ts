@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { Rule } from './traverse-rules.js';
 import { camelCase, kebabCase, pascalCase } from 'scule';
@@ -40,7 +40,7 @@ export class ConfigGenerator {
     return map;
   }
 
-  public async generateRulesCode() {
+  public generateRulesCode() {
     console.log(`Generating config, grouped by ${this.rulesGrouping}`);
 
     const rulesGrouping = this.rulesGrouping;
@@ -78,9 +78,10 @@ export class ConfigGenerator {
     return code;
   }
 
-  public async generateRules(folderPath: string) {
-    const output = await this.generateRulesCode();
-    writeFileSync(
+  public async generateRules(folderPath: string): Promise<void> {
+    const output = this.generateRulesCode();
+
+    return writeFile(
       path.resolve(folderPath, `configs-by-${this.rulesGrouping}.ts`),
       output
     );
