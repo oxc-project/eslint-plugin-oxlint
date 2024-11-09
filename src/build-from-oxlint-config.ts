@@ -163,7 +163,7 @@ const getEsLintRuleNames = (rule: string): string[] | undefined => {
       (rule) => rule === expectedRule || rule === ruleName
     );
 
-    if (founds === undefined) {
+    if (founds.length === 0) {
       return undefined;
     }
 
