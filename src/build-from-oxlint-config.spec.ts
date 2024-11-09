@@ -10,57 +10,57 @@ import { typescriptRulesExtendEslintRules } from './constants.js';
 
 describe('buildFromOxlintConfig', () => {
   describe('rule values', () => {
-    it('detect active rules inside "rules" scope', () => {
-      for (const ruleSetting of [
-        'error',
-        ['error'],
-        'warn',
-        ['warn'],
-        1,
-        [1],
-        2,
-        [2],
-      ]) {
-        const rules = buildFromOxlintConfig({
+    for (const ruleSetting of [
+      'error',
+      ['error'],
+      'warn',
+      ['warn'],
+      1,
+      [1],
+      2,
+      [2],
+    ]) {
+      it(`detect active rule ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
+        const configs = buildFromOxlintConfig({
           rules: {
             eqeqeq: ruleSetting,
           },
         });
 
-        expect(rules.length).toBe(1);
-        expect(rules[0].rules).not.toBeUndefined();
-        expect('eqeqeq' in rules[0].rules!).toBe(true);
-        expect(rules[0].rules!.eqeqeq).toBe('off');
-      }
-    });
+        expect(configs.length).toBe(1);
+        expect(configs[0].rules).not.toBeUndefined();
+        expect('eqeqeq' in configs[0].rules!).toBe(true);
+        expect(configs[0].rules!.eqeqeq).toBe('off');
+      });
+    }
 
-    it('skip deactive rules inside "rules" scope', () => {
-      for (const ruleSetting of ['off', ['off'], 0, [0]]) {
-        const rules = buildFromOxlintConfig({
+    for (const ruleSetting of ['off', ['off'], 0, [0]]) {
+      it(`skip deactive rule ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
+        const configs = buildFromOxlintConfig({
           rules: {
             eqeqeq: ruleSetting,
           },
         });
 
-        expect(rules.length).toBe(1);
-        expect(rules[0].rules).not.toBeUndefined();
-        expect('eqeqeq' in rules[0].rules!).toBe(false);
-      }
-    });
+        expect(configs.length).toBe(1);
+        expect(configs[0].rules).not.toBeUndefined();
+        expect('eqeqeq' in configs[0].rules!).toBe(false);
+      });
+    }
 
-    it('skip invalid rules inside "rules" scope', () => {
-      for (const ruleSetting of ['on', ['on'], 3, [3]]) {
-        const rules = buildFromOxlintConfig({
+    for (const ruleSetting of ['on', ['on'], 3, [3]]) {
+      it(`skip invalid ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
+        const configs = buildFromOxlintConfig({
           rules: {
             eqeqeq: ruleSetting,
           },
         });
 
-        expect(rules.length).toBe(1);
-        expect(rules[0].rules).not.toBeUndefined();
-        expect('eqeqeq' in rules[0].rules!).toBe(false);
-      }
-    });
+        expect(configs.length).toBe(1);
+        expect(configs[0].rules).not.toBeUndefined();
+        expect('eqeqeq' in configs[0].rules!).toBe(false);
+      });
+    }
   });
 
   it('skip deactivate categories', () => {
@@ -109,7 +109,7 @@ describe('buildFromOxlintConfig', () => {
   });
 
   it('skip deactivate rules, for custom enable category', () => {
-    const rules = buildFromOxlintConfig({
+    const configs = buildFromOxlintConfig({
       plugins: ['import'],
       categories: {
         nursery: 'warn',
@@ -120,9 +120,9 @@ describe('buildFromOxlintConfig', () => {
       },
     });
 
-    expect(rules.length).toBe(1);
-    expect(rules[0].rules).not.toBeUndefined();
-    expect('import/no-unused-modules' in rules[0].rules!).toBe(false);
+    expect(configs.length).toBe(1);
+    expect(configs[0].rules).not.toBeUndefined();
+    expect('import/no-unused-modules' in configs[0].rules!).toBe(false);
   });
 
   // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
@@ -172,17 +172,17 @@ describe('buildFromOxlintConfig', () => {
   });
 
   it('skips unknown oxlint rules', () => {
-    const rules = buildFromOxlintConfig({
+    const configs = buildFromOxlintConfig({
       rules: {
         unknown: 'warn',
         'typescript/no-img-element': 'warn', // valid rule, but wrong plugin-name
       },
     });
 
-    expect(rules.length).toBe(1);
-    expect(rules[0].rules).not.toBeUndefined();
-    expect('unknown' in rules[0].rules!).toBe(false);
-    expect('@next/next/no-img-element' in rules[0].rules!).toBe(false);
+    expect(configs.length).toBe(1);
+    expect(configs[0].rules).not.toBeUndefined();
+    expect('unknown' in configs[0].rules!).toBe(false);
+    expect('@next/next/no-img-element' in configs[0].rules!).toBe(false);
   });
 });
 
@@ -201,7 +201,7 @@ const createConfigFileAndBuildFromIt = (
 
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint json config', () => {
-    const rules = createConfigFileAndBuildFromIt(
+    const configs = createConfigFileAndBuildFromIt(
       'success-config.json',
       `{
         "rules": {
@@ -211,15 +211,15 @@ describe('buildFromOxlintConfigFile', () => {
       }`
     );
 
-    expect(rules.length).toBe(1);
-    expect(rules[0].rules).not.toBeUndefined();
-    expect('no-await-in-loop' in rules[0].rules!).toBe(true);
+    expect(configs.length).toBe(1);
+    expect(configs[0].rules).not.toBeUndefined();
+    expect('no-await-in-loop' in configs[0].rules!).toBe(true);
   });
 
   it('fails to find oxlint config', () => {
-    const rules = buildFromOxlintConfigFile('not-found.json');
+    const configs = buildFromOxlintConfigFile('not-found.json');
 
-    expect(rules).toStrictEqual([
+    expect(configs).toStrictEqual([
       {
         name: 'oxlint/from-oxlint-config',
       },
@@ -227,12 +227,12 @@ describe('buildFromOxlintConfigFile', () => {
   });
 
   it('fails to parse invalid json', () => {
-    const rules = createConfigFileAndBuildFromIt(
+    const configs = createConfigFileAndBuildFromIt(
       'invalid-json.json',
       '["this", is an invalid json format]'
     );
 
-    expect(rules).toStrictEqual([
+    expect(configs).toStrictEqual([
       {
         name: 'oxlint/from-oxlint-config',
       },
@@ -240,12 +240,12 @@ describe('buildFromOxlintConfigFile', () => {
   });
 
   it('fails to parse invalid oxlint config', () => {
-    const rules = createConfigFileAndBuildFromIt(
+    const configs = createConfigFileAndBuildFromIt(
       'invalid-config.json',
       JSON.stringify(['this is valid json but not an object'])
     );
 
-    expect(rules).toStrictEqual([
+    expect(configs).toStrictEqual([
       {
         name: 'oxlint/from-oxlint-config',
       },
@@ -389,10 +389,10 @@ describe('integration test with oxlint', () => {
         config
       );
 
-      const eslintRules = buildFromOxlintConfig(config);
+      const configs = buildFromOxlintConfig(config);
 
-      expect(eslintRules.length).toBe(1);
-      expect(eslintRules[0].rules).not.toBeUndefined();
+      expect(configs.length).toBe(1);
+      expect(configs[0].rules).not.toBeUndefined();
 
       let expectedCount = oxlintRulesCount ?? 0;
 
@@ -402,11 +402,11 @@ describe('integration test with oxlint', () => {
         config.plugins.includes('typescript')
       ) {
         expectedCount += typescriptRulesExtendEslintRules.filter(
-          (aliasRule) => aliasRule in eslintRules[0].rules!
+          (aliasRule) => aliasRule in configs[0].rules!
         ).length;
       }
 
-      expect(Object.keys(eslintRules[0].rules!).length).toBe(expectedCount);
+      expect(Object.keys(configs[0].rules!).length).toBe(expectedCount);
     });
   }
 });
