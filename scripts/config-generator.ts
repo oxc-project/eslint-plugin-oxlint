@@ -28,16 +28,13 @@ export class ConfigGenerator {
   private groupItemsBy(
     rules: Rule[],
     rulesGrouping: RulesGrouping
-  ): Map<string, string[]> {
-    const map = new Map<string, string[]>();
+  ): Set<string> {
+    const set = new Set<string>();
     for (const item of rules) {
-      const key = item[rulesGrouping];
-      const group = map.get(key) || [];
-      group.push(item.value);
-      map.set(key, group);
+      set.add(item[rulesGrouping]);
     }
 
-    return map;
+    return set;
   }
 
   public generateRulesCode() {
@@ -55,7 +52,7 @@ export class ConfigGenerator {
 
     code += `import * as rules from "./rules-by-${this.rulesGrouping}.js";\n\n`;
 
-    for (const grouping of rulesMap.keys()) {
+    for (const grouping of rulesMap) {
       exportGrouping.push(grouping);
 
       code += `const ${camelCase(grouping)}Config = {\n`;
