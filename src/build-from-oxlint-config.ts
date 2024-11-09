@@ -152,9 +152,12 @@ const getEsLintRuleNames = (rule: string): string[] => {
     esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
 
   // Some typescript-eslint rules are re-implemented version of eslint rules.
-  if (esPluginName === '@typescript-eslint') {
+  if (esPluginName === '@typescript-eslint' || esPluginName === '') {
     return allRules.filter(
-      (rule) => rule === expectedRule || rule === ruleName
+      (rule) =>
+        rule === expectedRule ||
+        (esPluginName === '@typescript-eslint' && rule === ruleName) ||
+        (esPluginName === '' && rule === `@typescript-eslint/${ruleName}`)
     );
   }
 
