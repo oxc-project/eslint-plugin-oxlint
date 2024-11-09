@@ -161,6 +161,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-unsafe-declaration-merging": [
     0,
   ],
+  "@typescript-eslint/no-unsafe-function-type": [
+    0,
+  ],
   "@typescript-eslint/no-unused-vars": [
     0,
   ],
@@ -236,6 +239,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/export": [
     0,
   ],
+  "import/first": [
+    0,
+  ],
   "import/max-dependencies": [
     0,
   ],
@@ -279,6 +285,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-webpack-loader-syntax": [
+    0,
+  ],
+  "import/unambiguous": [
     0,
   ],
   "jest/consistent-test-it": [

@@ -153,6 +153,7 @@ const typescriptRules = {
   '@typescript-eslint/no-this-alias': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
+  '@typescript-eslint/no-unsafe-function-type': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',
   '@typescript-eslint/no-var-requires': 'off',
   '@typescript-eslint/no-wrapper-object-types': 'off',
@@ -169,6 +170,7 @@ const typescriptRules = {
 const importRules = {
   'import/default': 'off',
   'import/export': 'off',
+  'import/first': 'off',
   'import/max-dependencies': 'off',
   'import/named': 'off',
   'import/namespace': 'off',
@@ -184,6 +186,7 @@ const importRules = {
   'import/no-self-import': 'off',
   'import/no-unused-modules': 'off',
   'import/no-webpack-loader-syntax': 'off',
+  'import/unambiguous': 'off',
 } as const;
 
 const jestRules = {
