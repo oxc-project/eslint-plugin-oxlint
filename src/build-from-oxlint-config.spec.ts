@@ -7,6 +7,18 @@ import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
 import { typescriptRulesExtendEslintRules } from './constants.js';
+import configByCategory from './generated/configs-by-category.js';
+
+const allRulesObjects = Object.values(configByCategory).map(
+  (config) => config.rules
+);
+const allRules: string[] = allRulesObjects.flatMap((rulesObject) =>
+  Object.keys(rulesObject)
+);
+
+const supportedTypescriptRulesExtendEslintRules = allRules.filter((rule) =>
+  typescriptRulesExtendEslintRules.includes(rule)
+);
 
 describe('buildFromOxlintConfig', () => {
   describe('rule values', () => {
@@ -185,7 +197,7 @@ describe('buildFromOxlintConfig', () => {
     expect('@next/next/no-img-element' in rules[0].rules!).toBe(false);
   });
 
-  for (const alias of typescriptRulesExtendEslintRules) {
+  for (const alias of supportedTypescriptRulesExtendEslintRules) {
     it(`disables matching typescript and eslint rules for ${alias}`, () => {
       for (const rule of [alias, `@typescript-eslint/${alias}`]) {
         const rules = buildFromOxlintConfig({

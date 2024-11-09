@@ -109,12 +109,26 @@ const handleCategoriesScope = (
   }
 };
 
-const getEsLintRuleName = (rule: string): string | undefined => {
+/**
+ * returns all eslint rules names for a oxlint rule.
+ * oxlint rules are deactivating one or more eslint rules.
+ *
+ * Oxlint rules do not need a plugin-scope.
+ * When no eslint rules are found, undefined is returned.
+ *
+ */
+const getEsLintRuleNames = (rule: string): string[] | undefined => {
   // there is no plugin prefix, it can be all plugin
   if (!rule.includes('/')) {
-    return allRules.find(
+    const founds = allRules.filter(
       (search) => search.endsWith(`/${rule}`) || search === rule
     );
+
+    if (founds.length === 0) {
+      return undefined;
+    }
+
+    return founds;
   }
 
   // greedy works with `@next/next/no-img-element` as an example
@@ -143,7 +157,26 @@ const getEsLintRuleName = (rule: string): string | undefined => {
   const expectedRule =
     esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
 
-  return allRules.find((rule) => rule == expectedRule);
+  // Some typescript-eslint rules are re-implemented version of eslint rules.
+  if (esPluginName === '@typescript-eslint') {
+    const founds = allRules.filter(
+      (rule) => rule === expectedRule || rule === ruleName
+    );
+
+    if (founds === undefined) {
+      return undefined;
+    }
+
+    return founds;
+  }
+
+  const found = allRules.find((rule) => rule === expectedRule);
+
+  if (found === undefined) {
+    return undefined;
+  }
+
+  return [found];
 };
 
 /**
@@ -154,21 +187,23 @@ const handleRulesScope = (
   rules: Record<string, 'off'>
 ): void => {
   for (const rule in oxlintRules) {
-    const eslintName = getEsLintRuleName(rule);
+    const eslintNames = getEsLintRuleNames(rule);
 
-    if (eslintName === undefined) {
+    if (eslintNames === undefined) {
       console.warn(
         `eslint-plugin-oxlint: could not find matching eslint rule for "${rule}"`
       );
       continue;
     }
 
-    // is this rules not turned off
-    if (isActiveValue(oxlintRules[rule])) {
-      rules[eslintName] = 'off';
-    } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
-      // rules extended by categories or plugins can be disabled manually
-      delete rules[eslintName];
+    for (const eslintName of eslintNames) {
+      // is this rules not turned off
+      if (isActiveValue(oxlintRules[rule])) {
+        rules[eslintName] = 'off';
+      } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
+        // rules extended by categories or plugins can be disabled manually
+        delete rules[eslintName];
+      }
     }
   }
 };
