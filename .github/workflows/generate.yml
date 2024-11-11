@@ -26,4 +26,4 @@ jobs:
         run: pnpm run format
 
       - name: Check for git diff
-        run: git diff --exit-code --quiet
+        run: git diff --exit-code
