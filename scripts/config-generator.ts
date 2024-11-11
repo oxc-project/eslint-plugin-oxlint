@@ -38,7 +38,7 @@ export class ConfigGenerator {
   }
 
   public generateRulesCode() {
-    console.log(`Generating config, grouped by ${this.rulesGrouping}`);
+    console.log(`Generating config2, grouped by ${this.rulesGrouping}`);
 
     const rulesGrouping = this.rulesGrouping;
     const rulesArray = this.rulesArray;
