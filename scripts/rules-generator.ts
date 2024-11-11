@@ -1,9 +1,7 @@
-import { writeFileSync } from 'node:fs';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { Rule } from './traverse-rules.js';
 import { camelCase } from 'scule';
-
-const __dirname = new URL('.', import.meta.url).pathname;
 
 export enum RulesGrouping {
   CATEGORY = 'category',
@@ -42,7 +40,7 @@ export class RulesGenerator {
     return map;
   }
 
-  public async generateRulesCode() {
+  public generateRulesCode() {
     console.log(`Generating rules, grouped by ${this.rulesGrouping}`);
 
     const rulesGrouping = this.rulesGrouping;
@@ -79,10 +77,11 @@ export class RulesGenerator {
     return code;
   }
 
-  public async generateRules() {
-    const output = await this.generateRulesCode();
-    writeFileSync(
-      path.resolve(__dirname, '..', `src/rules-by-${this.rulesGrouping}.ts`),
+  public generateRules(folderPath: string): Promise<void> {
+    const output = this.generateRulesCode();
+
+    return writeFile(
+      path.resolve(folderPath, `rules-by-${this.rulesGrouping}.ts`),
       output
     );
   }

@@ -104,6 +104,7 @@ const eslintRules = {
   'no-with': 'off',
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
+  'prefer-object-has-own': 'off',
   radix: 'off',
   'require-await': 'off',
   'require-yield': 'off',
@@ -152,6 +153,7 @@ const typescriptRules = {
   '@typescript-eslint/no-this-alias': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
+  '@typescript-eslint/no-unsafe-function-type': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',
   '@typescript-eslint/no-var-requires': 'off',
   '@typescript-eslint/no-wrapper-object-types': 'off',
@@ -168,10 +170,12 @@ const typescriptRules = {
 const importRules = {
   'import/default': 'off',
   'import/export': 'off',
+  'import/first': 'off',
   'import/max-dependencies': 'off',
   'import/named': 'off',
   'import/namespace': 'off',
   'import/no-amd': 'off',
+  'import/no-commonjs': 'off',
   'import/no-cycle': 'off',
   'import/no-default-export': 'off',
   'import/no-deprecated': 'off',
@@ -182,6 +186,7 @@ const importRules = {
   'import/no-self-import': 'off',
   'import/no-unused-modules': 'off',
   'import/no-webpack-loader-syntax': 'off',
+  'import/unambiguous': 'off',
 } as const;
 
 const jestRules = {
@@ -287,30 +292,31 @@ const jsxA11yRules = {
 } as const;
 
 const nextjsRules = {
-  'nextjs/google-font-display': 'off',
-  'nextjs/google-font-preconnect': 'off',
-  'nextjs/inline-script-id': 'off',
-  'nextjs/next-script-for-ga': 'off',
-  'nextjs/no-assign-module-variable': 'off',
-  'nextjs/no-async-client-component': 'off',
-  'nextjs/no-before-interactive-script-outside-document': 'off',
-  'nextjs/no-css-tags': 'off',
-  'nextjs/no-document-import-in-page': 'off',
-  'nextjs/no-duplicate-head': 'off',
-  'nextjs/no-head-element': 'off',
-  'nextjs/no-head-import-in-document': 'off',
-  'nextjs/no-img-element': 'off',
-  'nextjs/no-page-custom-font': 'off',
-  'nextjs/no-script-component-in-head': 'off',
-  'nextjs/no-styled-jsx-in-document': 'off',
-  'nextjs/no-sync-scripts': 'off',
-  'nextjs/no-title-in-document-head': 'off',
-  'nextjs/no-typos': 'off',
-  'nextjs/no-unwanted-polyfillio': 'off',
+  '@next/next/google-font-display': 'off',
+  '@next/next/google-font-preconnect': 'off',
+  '@next/next/inline-script-id': 'off',
+  '@next/next/next-script-for-ga': 'off',
+  '@next/next/no-assign-module-variable': 'off',
+  '@next/next/no-async-client-component': 'off',
+  '@next/next/no-before-interactive-script-outside-document': 'off',
+  '@next/next/no-css-tags': 'off',
+  '@next/next/no-document-import-in-page': 'off',
+  '@next/next/no-duplicate-head': 'off',
+  '@next/next/no-head-element': 'off',
+  '@next/next/no-head-import-in-document': 'off',
+  '@next/next/no-img-element': 'off',
+  '@next/next/no-page-custom-font': 'off',
+  '@next/next/no-script-component-in-head': 'off',
+  '@next/next/no-styled-jsx-in-document': 'off',
+  '@next/next/no-sync-scripts': 'off',
+  '@next/next/no-title-in-document-head': 'off',
+  '@next/next/no-typos': 'off',
+  '@next/next/no-unwanted-polyfillio': 'off',
 } as const;
 
 const nodeRules = {
   'node/no-exports-assign': 'off',
+  'node/no-new-require': 'off',
 } as const;
 
 const promiseRules = {
@@ -353,9 +359,13 @@ const reactRules = {
   'react/prefer-es6-class': 'off',
   'react/react-in-jsx-scope': 'off',
   'react/require-render-return': 'off',
-  'react/rules-of-hooks': 'off',
   'react/self-closing-comp': 'off',
+  'react/style-prop-object': 'off',
   'react/void-dom-elements-no-children': 'off',
+} as const;
+
+const reactHooksRules = {
+  'react-hooks/rules-of-hooks': 'off',
 } as const;
 
 const reactPerfRules = {
@@ -481,6 +491,7 @@ export {
   nodeRules,
   promiseRules,
   reactRules,
+  reactHooksRules,
   reactPerfRules,
   treeShakingRules,
   unicornRules,

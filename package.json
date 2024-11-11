@@ -1,9 +1,10 @@
 {
   "name": "eslint-plugin-oxlint",
-  "version": "0.10.1",
+  "version": "0.11.1",
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
-  "packageManager": "pnpm@9.12.2",
+  "types": "./dist/index.d.ts",
+  "packageManager": "pnpm@9.12.3",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -12,16 +13,16 @@
       "default": "./dist/index.mjs"
     },
     "./rules-by-category": {
-      "types": "./dist/rules-by-category.d.ts",
-      "import": "./dist/rules-by-category.mjs",
-      "require": "./dist/rules-by-category.cjs",
-      "default": "./dist/rules-by-category.mjs"
+      "types": "./dist/generated/rules-by-category.d.ts",
+      "import": "./dist/generated/rules-by-category.mjs",
+      "require": "./dist/generated/rules-by-category.cjs",
+      "default": "./dist/generated/rules-by-category.mjs"
     },
     "./rules-by-scope": {
-      "types": "./dist/rules-by-scope.d.ts",
-      "import": "./dist/rules-by-scope.mjs",
-      "require": "./dist/rules-by-scope.cjs",
-      "default": "./dist/rules-by-scope.mjs"
+      "types": "./dist/generated/rules-by-scope.d.ts",
+      "import": "./dist/generated/rules-by-scope.mjs",
+      "require": "./dist/generated/rules-by-scope.cjs",
+      "default": "./dist/generated/rules-by-scope.mjs"
     }
   },
   "files": [
@@ -63,7 +64,7 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "memfs": "^4.14.0",
-    "oxlint": "^0.10.1",
+    "oxlint": "^0.11.1",
     "prettier": "^3.3.3",
     "scule": "^1.3.0",
     "shelljs": "^0.8.5",

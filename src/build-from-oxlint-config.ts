@@ -1,18 +1,18 @@
 import fs from 'node:fs';
-import configByCategory from './configs-by-category.js';
+import configByCategory from './generated/configs-by-category.js';
 import type { Linter } from 'eslint';
 import JSONCParser from 'jsonc-parser';
+import {
+  aliasPluginNames,
+  reactHookRulesInsideReactScope,
+} from './constants.js';
 
-// these are the mappings from the scope in the rules.rs to the eslint scope
-// only used for the scopes where the directory structure doesn't reflect the eslint scope
-// such as `typescript` vs `@typescript-eslint` or others. Eslint as a scope is an exception,
-// as eslint doesn't have a scope.
-// There is a duplicate in scripts/constants.js, for clean builds we manage it in 2 files.
-// In the future we can generate maybe this constant into src folder
-const scopeMaps = {
-  eslint: '',
-  typescript: '@typescript-eslint',
-};
+const allRulesObjects = Object.values(configByCategory).map(
+  (config) => config.rules
+);
+const allRules: string[] = allRulesObjects.flatMap((rulesObject) =>
+  Object.keys(rulesObject)
+);
 
 type OxlintConfigPlugins = string[];
 
@@ -34,6 +34,12 @@ const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
 const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
 
 /**
+ * Detects it the value is an object
+ */
+const isObject = (value: unknown): boolean =>
+  typeof value === 'object' && value !== null && !Array.isArray(value);
+
+/**
  * tries to read the oxlint config file and returning its JSON content.
  * if the file is not found or could not be parsed, undefined is returned.
  * And an error message will be emitted to `console.error`
@@ -47,7 +53,7 @@ const getConfigContent = (
     try {
       const configContent = JSONCParser.parse(content);
 
-      if (typeof configContent !== 'object' || Array.isArray(configContent)) {
+      if (!isObject(configContent)) {
         throw new TypeError('not an valid config file');
       }
 
@@ -88,8 +94,8 @@ const handleCategoriesScope = (
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of Object.keys(possibleRules)) {
       for (const plugin of plugins) {
-        // @ts-expect-error -- come on TS, we are checking if the plugin exists in the configByscopeMapsCategory
-        const pluginPrefix = plugin in scopeMaps ? scopeMaps[plugin] : plugin;
+        const pluginPrefix =
+          plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
 
         // the rule has no prefix, so it is a eslint one
         if (pluginPrefix === '' && !rule.includes('/')) {
@@ -103,6 +109,43 @@ const handleCategoriesScope = (
   }
 };
 
+const getEsLintRuleName = (rule: string): string | undefined => {
+  // there is no plugin prefix, it can be all plugin
+  if (!rule.includes('/')) {
+    return allRules.find(
+      (search) => search.endsWith(`/${rule}`) || search === rule
+    );
+  }
+
+  // greedy works with `@next/next/no-img-element` as an example
+  const match = rule.match(/(^.*)\/(.*)/);
+
+  if (match === null) {
+    return undefined;
+  }
+
+  const pluginName = match[1];
+  const ruleName = match[2];
+
+  // map to the right eslint plugin
+  let esPluginName =
+    pluginName in aliasPluginNames ? aliasPluginNames[pluginName] : pluginName;
+
+  // special case for eslint-plugin-react-hooks
+  if (
+    esPluginName === 'react' &&
+    reactHookRulesInsideReactScope.includes(ruleName)
+  ) {
+    esPluginName = 'react-hooks';
+  }
+
+  // extra check for eslint
+  const expectedRule =
+    esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
+
+  return allRules.find((rule) => rule == expectedRule);
+};
+
 /**
  * checks if the oxlint rule is activated/deactivated and append/remove it.
  */
@@ -111,34 +154,42 @@ const handleRulesScope = (
   rules: Record<string, 'off'>
 ): void => {
   for (const rule in oxlintRules) {
+    const eslintName = getEsLintRuleName(rule);
+
+    if (eslintName === undefined) {
+      console.warn(
+        `eslint-plugin-oxlint: could not find matching eslint rule for "${rule}"`
+      );
+      continue;
+    }
+
     // is this rules not turned off
     if (isActiveValue(oxlintRules[rule])) {
-      rules[rule] = 'off';
+      rules[eslintName] = 'off';
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
-      delete rules[rule];
+      delete rules[eslintName];
     }
   }
 };
 
-const isOffValue = (value: unknown) => value === 'off' || value === 0;
+/**
+ * checks if value is validSet, or if validSet is an array, check if value is first value of it
+ */
+const isValueInSet = (value: unknown, validSet: unknown[]) =>
+  validSet.includes(value) ||
+  (Array.isArray(value) && validSet.includes(value[0]));
 
 /**
  * check if the value is "off", 0, ["off", ...], or [0, ...]
  */
-const isDeactivateValue = (value: unknown): boolean => {
-  return isOffValue(value) || (Array.isArray(value) && isOffValue(value[0]));
-};
-
-const isOnValue = (value: unknown) =>
-  value === 'error' || value === 'warn' || value === 1 || value === 2;
+const isDeactivateValue = (value: unknown) => isValueInSet(value, ['off', 0]);
 
 /**
  * check if the value is "error", "warn", 1, 2, ["error", ...], ["warn", ...], [1, ...], or [2, ...]
  */
-const isActiveValue = (value: unknown): boolean => {
-  return isOnValue(value) || (Array.isArray(value) && isOnValue(value[0]));
-};
+const isActiveValue = (value: unknown) =>
+  isValueInSet(value, ['error', 'warn', 1, 2]);
 
 /**
  * tries to return the "plugins" section from the config.
@@ -159,9 +210,7 @@ const readPluginsFromConfig = (
 const readCategoriesFromConfig = (
   config: OxlintConfig
 ): OxlintConfigCategories | undefined => {
-  return 'categories' in config &&
-    typeof config.categories === 'object' &&
-    config.categories !== null
+  return 'categories' in config && isObject(config.categories)
     ? (config.categories as OxlintConfigCategories)
     : undefined;
 };
@@ -173,9 +222,7 @@ const readCategoriesFromConfig = (
 const readRulesFromConfig = (
   config: OxlintConfig
 ): OxlintConfigRules | undefined => {
-  return 'rules' in config &&
-    typeof config.rules === 'object' &&
-    config.rules !== null
+  return 'rules' in config && isObject(config.rules)
     ? (config.rules as OxlintConfigRules)
     : undefined;
 };
