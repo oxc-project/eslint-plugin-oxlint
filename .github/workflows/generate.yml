@@ -19,6 +19,9 @@ jobs:
       - name: Clone oxc_linter project
         run: pnpm run clone
 
+      - name: Remove current generated code
+        run: rm -r ./src/generated/
+
       - name: Generate from source code
         run: pnpm run generate
 
