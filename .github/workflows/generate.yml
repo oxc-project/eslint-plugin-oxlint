@@ -1,12 +1,21 @@
 name: Code generation
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize]
+    paths:
+      - 'pnpm-lock.yaml'
+      - 'scripts/**'
+      - '.github/worfkflows/generate.yml'
   push:
     branches:
       - main
       - 'renovate/**'
+    paths:
+      - 'pnpm-lock.yaml'
+      - 'scripts/**'
+      - '.github/worfkflows/generate.yml'
 
 jobs:
   generate:
