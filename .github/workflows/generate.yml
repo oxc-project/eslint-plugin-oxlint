@@ -7,7 +7,7 @@ on:
     paths:
       - 'pnpm-lock.yaml'
       - 'scripts/**'
-      - '.github/worfkflows/generate.yml'
+      - '.github/workflows/generate.yml'
   push:
     branches:
       - main
@@ -15,7 +15,7 @@ on:
     paths:
       - 'pnpm-lock.yaml'
       - 'scripts/**'
-      - '.github/worfkflows/generate.yml'
+      - '.github/workflows/generate.yml'
 
 jobs:
   generate:
