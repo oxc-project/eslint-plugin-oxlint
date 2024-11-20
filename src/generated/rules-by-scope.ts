@@ -141,6 +141,7 @@ const typescriptRules = {
   '@typescript-eslint/no-duplicate-enum-values': 'off',
   '@typescript-eslint/no-dynamic-delete': 'off',
   '@typescript-eslint/no-empty-interface': 'off',
+  '@typescript-eslint/no-empty-object-type': 'off',
   '@typescript-eslint/no-explicit-any': 'off',
   '@typescript-eslint/no-extra-non-null-assertion': 'off',
   '@typescript-eslint/no-extraneous-class': 'off',
@@ -171,6 +172,7 @@ const importRules = {
   'import/default': 'off',
   'import/export': 'off',
   'import/first': 'off',
+  'import/import-no-namespace': 'off',
   'import/max-dependencies': 'off',
   'import/named': 'off',
   'import/namespace': 'off',
@@ -365,6 +367,7 @@ const reactRules = {
 } as const;
 
 const reactHooksRules = {
+  'react-hooks/exhaustive-deps': 'off',
   'react-hooks/rules-of-hooks': 'off',
 } as const;
 
@@ -382,6 +385,7 @@ const treeShakingRules = {
 const unicornRules = {
   'unicorn/catch-error-name': 'off',
   'unicorn/consistent-empty-array-spread': 'off',
+  'unicorn/consistent-existence-index-check': 'off',
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/empty-brace-spaces': 'off',
   'unicorn/error-message': 'off',
@@ -457,6 +461,7 @@ const unicornRules = {
   'unicorn/prefer-regexp-test': 'off',
   'unicorn/prefer-set-size': 'off',
   'unicorn/prefer-spread': 'off',
+  'unicorn/prefer-string-raw': 'off',
   'unicorn/prefer-string-replace-all': 'off',
   'unicorn/prefer-string-slice': 'off',
   'unicorn/prefer-string-starts-ends-with': 'off',

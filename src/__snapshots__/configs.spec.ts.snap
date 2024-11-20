@@ -116,6 +116,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-empty-interface": [
     0,
   ],
+  "@typescript-eslint/no-empty-object-type": [
+    0,
+  ],
   "@typescript-eslint/no-explicit-any": [
     0,
   ],
@@ -249,6 +252,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/first": [
+    0,
+  ],
+  "import/import-no-namespace": [
     0,
   ],
   "import/max-dependencies": [
@@ -952,6 +958,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
     "always",
   ],
+  "react-hooks/exhaustive-deps": [
+    0,
+  ],
   "react-hooks/rules-of-hooks": [
     0,
   ],
@@ -1103,6 +1112,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/consistent-empty-array-spread": [
+    0,
+  ],
+  "unicorn/consistent-existence-index-check": [
     0,
   ],
   "unicorn/consistent-function-scoping": [
@@ -1328,6 +1340,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-spread": [
+    0,
+  ],
+  "unicorn/prefer-string-raw": [
     0,
   ],
   "unicorn/prefer-string-replace-all": [
