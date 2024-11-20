@@ -271,15 +271,6 @@ const executeOxlintWithConfiguration = (
     '--silent',
   ];
 
-  // --disabled-<foo>-plugin can be removed after oxc-project/oxc#6896
-  if (config.plugins !== undefined) {
-    for (const plugin of ['typescript', 'unicorn', 'react']) {
-      if (!config.plugins!.includes(plugin)) {
-        cliArguments.push(`--disable-${plugin}-plugin`);
-      }
-    }
-  }
-
   try {
     oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
       encoding: 'utf8',
