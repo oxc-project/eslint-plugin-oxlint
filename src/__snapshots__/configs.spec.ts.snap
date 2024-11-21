@@ -281,9 +281,6 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-default-export": [
     0,
   ],
-  "import/no-deprecated": [
-    0,
-  ],
   "import/no-duplicates": [
     0,
   ],
@@ -297,9 +294,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-self-import": [
-    0,
-  ],
-  "import/no-unused-modules": [
     0,
   ],
   "import/no-webpack-loader-syntax": [

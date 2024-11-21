@@ -1,6 +1,7 @@
 import { promises } from 'node:fs';
 import path from 'node:path';
 import {
+  ignoreRules,
   ignoreScope,
   prefixScope,
   SPARSE_CLONE_DIRECTORY,
@@ -79,7 +80,7 @@ async function processFile(
 
   // 'ok' way to get the scope, depends on the directory structure
   let scope = getFolderNameUnderRules(filePath);
-  const shouldIgnoreRule = ignoreScope.has(scope);
+  let shouldIgnoreRule = ignoreScope.has(scope);
 
   // when the file is called `mod.rs` we want to use the parent directory name as the rule name
   // Note that this is fairly brittle, as relying on the directory structure can be risky
@@ -99,6 +100,10 @@ async function processFile(
 
   const effectiveRuleName =
     `${prefixScope(scope)}${ruleNameWithoutScope}`.replaceAll('_', '-');
+
+  if (!shouldIgnoreRule) {
+    shouldIgnoreRule = ignoreRules.has(effectiveRuleName);
+  }
 
   // add the rule to the skipped array and continue to see if there's a match regardless
   if (shouldIgnoreRule) {

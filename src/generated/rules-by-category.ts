@@ -84,8 +84,6 @@ const nurseryRules = {
   'no-undef': 'off',
   'no-unreachable': 'off',
   'import/export': 'off',
-  'import/no-deprecated': 'off',
-  'import/no-unused-modules': 'off',
   'promise/no-return-in-finally': 'off',
   'react/require-render-return': 'off',
   'react-hooks/exhaustive-deps': 'off',

@@ -8,8 +8,6 @@ exports[`buildFromOxlintConfig > custom plugins, custom categories > customPlugi
       "constructor-super": "off",
       "getter-return": "off",
       "import/export": "off",
-      "import/no-deprecated": "off",
-      "import/no-unused-modules": "off",
       "no-undef": "off",
       "no-unreachable": "off",
     },

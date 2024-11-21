@@ -129,13 +129,11 @@ const importRules = {
   'import/no-commonjs': 'off',
   'import/no-cycle': 'off',
   'import/no-default-export': 'off',
-  'import/no-deprecated': 'off',
   'import/no-duplicates': 'off',
   'import/no-dynamic-require': 'off',
   'import/no-named-as-default': 'off',
   'import/no-named-as-default-member': 'off',
   'import/no-self-import': 'off',
-  'import/no-unused-modules': 'off',
   'import/no-webpack-loader-syntax': 'off',
   'import/unambiguous': 'off',
 } as const;

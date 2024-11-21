@@ -361,7 +361,7 @@ describe('integration test with oxlint', () => {
       ],
       categories: {
         correctness: 'warn',
-        nursery: 'off', // ToDo: something with the import plugin
+        nursery: 'warn',
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
