@@ -240,6 +240,12 @@ export const buildFromOxlintConfig = (
   // it is not a plugin but it is activated by default
   plugins.push('eslint');
 
+  // oxc handles "react-hooks" rules inside "react" plugin
+  // our generator split them into own plugins
+  if (plugins.includes('react')) {
+    plugins.push('react-hooks');
+  }
+
   handleCategoriesScope(
     plugins,
     readCategoriesFromConfig(config) ?? defaultCategories,
