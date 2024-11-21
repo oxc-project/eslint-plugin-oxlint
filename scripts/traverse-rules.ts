@@ -27,25 +27,30 @@ export async function readFilesRecursively(
     (entry) => entry.isFile() && entry.name === 'mod.rs'
   );
 
-  for (const entry of entries) {
-    const entryPath = path.join(directory, entry.name);
-    if (entry.isDirectory()) {
-      await readFilesRecursively(
-        entryPath,
-        successResultArray,
-        skippedResultArray,
-        failureResultArray
-      ); // Recursive call for directories
-    } else if (entry.isFile() && (!containsModRs || entry.name === 'mod.rs')) {
-      await processFile(
-        entryPath,
-        directory,
-        successResultArray,
-        skippedResultArray,
-        failureResultArray
-      ); // Process each file
-    }
-  }
+  await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        await readFilesRecursively(
+          entryPath,
+          successResultArray,
+          skippedResultArray,
+          failureResultArray
+        ); // Recursive call for directories
+      } else if (
+        entry.isFile() &&
+        (!containsModRs || entry.name === 'mod.rs')
+      ) {
+        await processFile(
+          entryPath,
+          directory,
+          successResultArray,
+          skippedResultArray,
+          failureResultArray
+        ); // Process each file
+      }
+    })
+  );
 }
 
 export interface Rule {
@@ -208,6 +213,16 @@ export async function traverseRules(): Promise<{
     skippedResultArray,
     failureResultArray
   );
+
+  successResultArray.sort((aRule, bRule) => {
+    const scopeCompare = aRule.scope.localeCompare(bRule.scope);
+
+    if (scopeCompare !== 0) {
+      return scopeCompare;
+    }
+
+    return aRule.value.localeCompare(bRule.value);
+  });
 
   console.log(
     `>> Parsed ${successResultArray.length} rules, skipped ${skippedResultArray.length} and encountered ${failureResultArray.length} failures\n`

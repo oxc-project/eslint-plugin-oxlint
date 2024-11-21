@@ -106,20 +106,18 @@ suite('readFilesRecursively', () => {
         value: 'oxc/rulename-which-will-be-skipped',
       },
     ]);
-    expect(failureResultArray).toEqual([
-      {
-        category: 'unknown',
-        error: 'No match block for `declare_oxc_lint`',
-        scope: 'eslint',
-        value: 'rulename-with-mod',
-      },
-      {
-        category: 'unknown',
-        error: 'No match block for `declare_oxc_lint`',
-        scope: 'typescript',
-        value: '@typescript-eslint/rulename-without-mod',
-      },
-    ]);
+    expect(failureResultArray).toContainEqual({
+      category: 'unknown',
+      error: 'No match block for `declare_oxc_lint`',
+      scope: 'eslint',
+      value: 'rulename-with-mod',
+    });
+    expect(failureResultArray).toContainEqual({
+      category: 'unknown',
+      error: 'No match block for `declare_oxc_lint`',
+      scope: 'typescript',
+      value: '@typescript-eslint/rulename-without-mod',
+    });
   });
 
   test('readFilesRecursively returns parsed rules correctly', async () => {
@@ -161,24 +159,21 @@ suite('readFilesRecursively', () => {
 
     // Call the function
     await readFilesRecursively('.', successResultArray, [], []);
-
-    expect(successResultArray).toEqual([
-      {
-        category: 'style',
-        scope: 'eslint',
-        value: 'rulename-with-mod',
-      },
-      {
-        category: 'correctness',
-        scope: 'typescript',
-        value: '@typescript-eslint/rulename-without-mod',
-      },
-      {
-        category: 'correctness',
-        scope: 'unicorn',
-        value: 'unicorn/rule-with-fixability',
-      },
-    ]);
+    expect(successResultArray).toContainEqual({
+      category: 'style',
+      scope: 'eslint',
+      value: 'rulename-with-mod',
+    });
+    expect(successResultArray).toContainEqual({
+      category: 'correctness',
+      scope: 'typescript',
+      value: '@typescript-eslint/rulename-without-mod',
+    });
+    expect(successResultArray).toContainEqual({
+      category: 'correctness',
+      scope: 'unicorn',
+      value: 'unicorn/rule-with-fixability',
+    });
 
     expect(skippedResultArray).toEqual([]);
     expect(failureResultArray).toEqual([]);

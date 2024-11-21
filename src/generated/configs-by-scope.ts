@@ -7,11 +7,6 @@ const eslintConfig = {
   rules: rules.eslintRules,
 };
 
-const typescriptConfig = {
-  name: 'oxlint/typescript',
-  rules: rules.typescriptRules,
-};
-
 const importConfig = {
   name: 'oxlint/import',
   rules: rules.importRules,
@@ -62,6 +57,11 @@ const reactPerfConfig = {
   rules: rules.reactPerfRules,
 };
 
+const typescriptConfig = {
+  name: 'oxlint/typescript',
+  rules: rules.typescriptRules,
+};
+
 const unicornConfig = {
   name: 'oxlint/unicorn',
   rules: rules.unicornRules,
@@ -74,7 +74,6 @@ const vitestConfig = {
 
 const configByScope = {
   'flat/eslint': eslintConfig,
-  'flat/typescript': typescriptConfig,
   'flat/import': importConfig,
   'flat/jest': jestConfig,
   'flat/jsdoc': jsdocConfig,
@@ -85,6 +84,7 @@ const configByScope = {
   'flat/react': reactConfig,
   'flat/react-hooks': reactHooksConfig,
   'flat/react-perf': reactPerfConfig,
+  'flat/typescript': typescriptConfig,
   'flat/unicorn': unicornConfig,
   'flat/vitest': vitestConfig,
 };
