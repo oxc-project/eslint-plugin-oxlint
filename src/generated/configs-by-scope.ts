@@ -62,11 +62,6 @@ const reactPerfConfig = {
   rules: rules.reactPerfRules,
 };
 
-const treeShakingConfig = {
-  name: 'oxlint/tree-shaking',
-  rules: rules.treeShakingRules,
-};
-
 const unicornConfig = {
   name: 'oxlint/unicorn',
   rules: rules.unicornRules,
@@ -90,7 +85,6 @@ const configByScope = {
   'flat/react': reactConfig,
   'flat/react-hooks': reactHooksConfig,
   'flat/react-perf': reactPerfConfig,
-  'flat/tree-shaking': treeShakingConfig,
   'flat/unicorn': unicornConfig,
   'flat/vitest': vitestConfig,
 };

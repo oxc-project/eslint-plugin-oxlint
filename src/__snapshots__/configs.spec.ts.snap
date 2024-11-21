@@ -155,6 +155,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-redeclare": [
     0,
   ],
+  "@typescript-eslint/no-require-imports": [
+    0,
+  ],
   "@typescript-eslint/no-this-alias": [
     0,
   ],
@@ -1012,6 +1015,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-props-no-spread-multi": [
     0,
   ],
+  "react/no-array-index-key": [
+    0,
+  ],
   "react/no-children-prop": [
     0,
   ],
@@ -1099,9 +1105,6 @@ exports[`contains all the oxlint rules 1`] = `
     {},
   ],
   "symbol-description": [
-    0,
-  ],
-  "tree-shaking/no-side-effects-in-initialization": [
     0,
   ],
   "unicode-bom": [
