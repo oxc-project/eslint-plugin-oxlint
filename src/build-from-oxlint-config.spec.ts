@@ -318,7 +318,7 @@ describe('integration test with oxlint', () => {
     {
       categories: {
         correctness: 'warn',
-        nursery: 'off', // enable after oxc-project/oxc#7073
+        nursery: 'warn',
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
@@ -341,7 +341,6 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
-        'tree_shaking',
       ],
     },
     // everything on
@@ -359,11 +358,10 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
-        'tree_shaking',
       ],
       categories: {
         correctness: 'warn',
-        nursery: 'off', // enable after oxc-project/oxc#7073
+        nursery: 'off', // ToDo: something with the import plugin
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
