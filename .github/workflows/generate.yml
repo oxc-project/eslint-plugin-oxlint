@@ -1,0 +1,41 @@
+name: Code generation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'pnpm-lock.yaml'
+      - 'scripts/**'
+      - '.github/workflows/generate.yml'
+  push:
+    branches:
+      - main
+      - 'renovate/**'
+    paths:
+      - 'pnpm-lock.yaml'
+      - 'scripts/**'
+      - '.github/workflows/generate.yml'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/pnpm
+
+      - name: Clone oxc_linter project
+        run: pnpm run clone
+
+      - name: Remove current generated code
+        run: rm -r ./src/generated/
+
+      - name: Generate from source code
+        run: pnpm run generate
+
+      - name: Format generated code
+        run: pnpm run format
+
+      - name: Check for git diff
+        run: git diff --exit-code
