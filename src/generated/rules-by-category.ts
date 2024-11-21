@@ -90,7 +90,6 @@ const nurseryRules = {
   'react-hooks/exhaustive-deps': 'off',
   'react/require-render-return': 'off',
   'react-hooks/rules-of-hooks': 'off',
-  'tree-shaking/no-side-effects-in-initialization': 'off',
   '@typescript-eslint/consistent-type-imports': 'off',
 } as const;
 
@@ -137,6 +136,7 @@ const restrictionRules = {
   '@typescript-eslint/no-namespace': 'off',
   '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'off',
   '@typescript-eslint/no-non-null-assertion': 'off',
+  '@typescript-eslint/no-require-imports': 'off',
   '@typescript-eslint/no-var-requires': 'off',
   '@typescript-eslint/prefer-literal-enum-member': 'off',
   'unicorn/no-abusive-eslint-disable': 'off',
@@ -432,6 +432,7 @@ const correctnessRules = {
 
 const perfRules = {
   'no-await-in-loop': 'off',
+  'react/no-array-index-key': 'off',
   'react-perf/jsx-no-jsx-as-prop': 'off',
   'react-perf/jsx-no-new-array-as-prop': 'off',
   'react-perf/jsx-no-new-function-as-prop': 'off',

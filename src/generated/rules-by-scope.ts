@@ -151,6 +151,7 @@ const typescriptRules = {
   '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'off',
   '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
   '@typescript-eslint/no-non-null-assertion': 'off',
+  '@typescript-eslint/no-require-imports': 'off',
   '@typescript-eslint/no-this-alias': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
@@ -347,6 +348,7 @@ const reactRules = {
   'react/jsx-no-undef': 'off',
   'react/jsx-no-useless-fragment': 'off',
   'react/jsx-props-no-spread-multi': 'off',
+  'react/no-array-index-key': 'off',
   'react/no-children-prop': 'off',
   'react/no-danger': 'off',
   'react/no-danger-with-children': 'off',
@@ -376,10 +378,6 @@ const reactPerfRules = {
   'react-perf/jsx-no-new-array-as-prop': 'off',
   'react-perf/jsx-no-new-function-as-prop': 'off',
   'react-perf/jsx-no-new-object-as-prop': 'off',
-} as const;
-
-const treeShakingRules = {
-  'tree-shaking/no-side-effects-in-initialization': 'off',
 } as const;
 
 const unicornRules = {
@@ -498,7 +496,6 @@ export {
   reactRules,
   reactHooksRules,
   reactPerfRules,
-  treeShakingRules,
   unicornRules,
   vitestRules,
 };
