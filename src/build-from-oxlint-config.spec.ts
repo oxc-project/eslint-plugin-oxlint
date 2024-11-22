@@ -101,7 +101,7 @@ describe('buildFromOxlintConfig', () => {
       buildFromOxlintConfig({
         plugins: ['import'],
         categories: {
-          nursery: 'warn',
+          suspicious: 'warn',
           correctness: 'off',
         },
       })
@@ -112,7 +112,7 @@ describe('buildFromOxlintConfig', () => {
     const configs = buildFromOxlintConfig({
       plugins: ['import'],
       categories: {
-        nursery: 'warn',
+        suspicious: 'warn',
         correctness: 'off',
       },
       rules: {
@@ -307,7 +307,7 @@ describe('integration test with oxlint', () => {
     { plugins: ['vite'], rules: { eqeqeq: 'off' } },
 
     // categories change
-    { categories: { correctness: 'off', nusery: 'warn' } },
+    { categories: { correctness: 'off', suspicious: 'warn' } },
     // combination plugin + categires + rules
     {
       plugins: ['vite'],

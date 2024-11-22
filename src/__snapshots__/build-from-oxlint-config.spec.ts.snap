@@ -4,7 +4,17 @@ exports[`buildFromOxlintConfig > custom plugins, custom categories > customPlugi
 [
   {
     "name": "oxlint/from-oxlint-config",
-    "rules": {},
+    "rules": {
+      "import/no-duplicates": "off",
+      "import/no-named-as-default": "off",
+      "import/no-named-as-default-member": "off",
+      "import/no-self-import": "off",
+      "no-extend-native": "off",
+      "no-new": "off",
+      "no-unexpected-multiline": "off",
+      "no-useless-concat": "off",
+      "no-useless-constructor": "off",
+    },
   },
 ]
 `;
