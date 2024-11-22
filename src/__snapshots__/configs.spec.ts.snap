@@ -83,9 +83,6 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/consistent-type-definitions": [
     0,
   ],
-  "@typescript-eslint/consistent-type-imports": [
-    0,
-  ],
   "@typescript-eslint/default-param-last": [
     0,
   ],
@@ -217,9 +214,6 @@ exports[`contains all the oxlint rules 1`] = `
       "checkForEach": false,
     },
   ],
-  "constructor-super": [
-    0,
-  ],
   "default-case": [
     0,
     {},
@@ -241,17 +235,10 @@ exports[`contains all the oxlint rules 1`] = `
     "always",
     {},
   ],
-  "getter-return": [
-    0,
-    {},
-  ],
   "guard-for-in": [
     0,
   ],
   "import/default": [
-    0,
-  ],
-  "import/export": [
     0,
   ],
   "import/first": [
@@ -281,9 +268,6 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-default-export": [
     0,
   ],
-  "import/no-deprecated": [
-    0,
-  ],
   "import/no-duplicates": [
     0,
   ],
@@ -297,9 +281,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-self-import": [
-    0,
-  ],
-  "import/no-unused-modules": [
     0,
   ],
   "import/no-webpack-loader-syntax": [
@@ -853,17 +834,10 @@ exports[`contains all the oxlint rules 1`] = `
   "no-throw-literal": [
     0,
   ],
-  "no-undef": [
-    0,
-    {},
-  ],
   "no-undefined": [
     0,
   ],
   "no-unexpected-multiline": [
-    0,
-  ],
-  "no-unreachable": [
     0,
   ],
   "no-unsafe-finally": [
@@ -939,9 +913,6 @@ exports[`contains all the oxlint rules 1`] = `
   "promise/no-new-statics": [
     0,
   ],
-  "promise/no-return-in-finally": [
-    0,
-  ],
   "promise/param-names": [
     0,
   ],
@@ -960,12 +931,6 @@ exports[`contains all the oxlint rules 1`] = `
   "radix": [
     0,
     "always",
-  ],
-  "react-hooks/exhaustive-deps": [
-    0,
-  ],
-  "react-hooks/rules-of-hooks": [
-    0,
   ],
   "react-perf/jsx-no-jsx-as-prop": [
     0,
@@ -1055,9 +1020,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/react-in-jsx-scope": [
-    0,
-  ],
-  "react/require-render-return": [
     0,
   ],
   "react/self-closing-comp": [

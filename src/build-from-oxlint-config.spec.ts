@@ -134,7 +134,7 @@ describe('buildFromOxlintConfig', () => {
         'react_perf/jsx-no-new-array-as-prop': 'warn',
         'nextjs/no-img-element': 'warn',
         'jsx_a11y/alt-text': 'warn',
-        'react/rules-of-hooks': 'warn',
+        // 'react/rules-of-hooks': 'warn', -- rules are currently in nursery
         // 'deepscan/xxx': 'warn',
       },
     });
@@ -148,7 +148,7 @@ describe('buildFromOxlintConfig', () => {
     );
     expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
     expect('jsx-a11y/alt-text' in configs[0].rules!).toBe(true);
-    expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);
+    // expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);  -- rules are currently in nursery
   });
 
   it('detects rules without plugin name', () => {
@@ -317,8 +317,8 @@ describe('integration test with oxlint', () => {
     // all categories enabled
     {
       categories: {
+        nursery: 'off', // we not support this category
         correctness: 'warn',
-        nursery: 'warn',
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
@@ -360,8 +360,8 @@ describe('integration test with oxlint', () => {
         'vitest',
       ],
       categories: {
+        nursery: 'off', // we not support this category
         correctness: 'warn',
-        nursery: 'off', // ToDo: something with the import plugin
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',

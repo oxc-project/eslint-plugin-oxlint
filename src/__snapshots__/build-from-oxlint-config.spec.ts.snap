@@ -4,15 +4,7 @@ exports[`buildFromOxlintConfig > custom plugins, custom categories > customPlugi
 [
   {
     "name": "oxlint/from-oxlint-config",
-    "rules": {
-      "constructor-super": "off",
-      "getter-return": "off",
-      "import/export": "off",
-      "import/no-deprecated": "off",
-      "import/no-unused-modules": "off",
-      "no-undef": "off",
-      "no-unreachable": "off",
-    },
+    "rules": {},
   },
 ]
 `;
