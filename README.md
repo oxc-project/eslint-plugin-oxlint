@@ -119,7 +119,6 @@ And then you can add the following script to your `package.json`:
 
     // turn eslint rules off by oxlint category
     'flat/pedantic': { rules: [Object] },
-    'flat/nursery': { rules: [Object] },
     'flat/style': { rules: [Object] },
     'flat/correctness': { rules: [Object] },
     'flat/restriction': { rules: [Object] },

@@ -101,7 +101,7 @@ describe('buildFromOxlintConfig', () => {
       buildFromOxlintConfig({
         plugins: ['import'],
         categories: {
-          nursery: 'warn',
+          suspicious: 'warn',
           correctness: 'off',
         },
       })
@@ -112,17 +112,17 @@ describe('buildFromOxlintConfig', () => {
     const configs = buildFromOxlintConfig({
       plugins: ['import'],
       categories: {
-        nursery: 'warn',
+        suspicious: 'warn',
         correctness: 'off',
       },
       rules: {
-        'import/no-unused-modules': 'off',
+        'import/no-self-import': 'off',
       },
     });
 
     expect(configs.length).toBe(1);
     expect(configs[0].rules).not.toBeUndefined();
-    expect('import/no-unused-modules' in configs[0].rules!).toBe(false);
+    expect('import/no-self-import' in configs[0].rules!).toBe(false);
   });
 
   // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
@@ -134,7 +134,7 @@ describe('buildFromOxlintConfig', () => {
         'react_perf/jsx-no-new-array-as-prop': 'warn',
         'nextjs/no-img-element': 'warn',
         'jsx_a11y/alt-text': 'warn',
-        'react/rules-of-hooks': 'warn',
+        // 'react/rules-of-hooks': 'warn', -- rules are currently in nursery
         // 'deepscan/xxx': 'warn',
       },
     });
@@ -148,7 +148,7 @@ describe('buildFromOxlintConfig', () => {
     );
     expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
     expect('jsx-a11y/alt-text' in configs[0].rules!).toBe(true);
-    expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);
+    // expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);  -- rules are currently in nursery
   });
 
   it('detects rules without plugin name', () => {
@@ -307,7 +307,7 @@ describe('integration test with oxlint', () => {
     { plugins: ['vite'], rules: { eqeqeq: 'off' } },
 
     // categories change
-    { categories: { correctness: 'off', nusery: 'warn' } },
+    { categories: { correctness: 'off', suspicious: 'warn' } },
     // combination plugin + categires + rules
     {
       plugins: ['vite'],
@@ -317,8 +317,8 @@ describe('integration test with oxlint', () => {
     // all categories enabled
     {
       categories: {
+        nursery: 'off', // we not support this category
         correctness: 'warn',
-        nursery: 'warn',
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
@@ -360,8 +360,8 @@ describe('integration test with oxlint', () => {
         'vitest',
       ],
       categories: {
+        nursery: 'off', // we not support this category
         correctness: 'warn',
-        nursery: 'off', // ToDo: something with the import plugin
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',

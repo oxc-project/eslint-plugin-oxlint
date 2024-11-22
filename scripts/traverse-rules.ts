@@ -1,6 +1,7 @@
 import { promises } from 'node:fs';
 import path from 'node:path';
 import {
+  ignoreCategories,
   ignoreScope,
   prefixScope,
   SPARSE_CLONE_DIRECTORY,
@@ -70,13 +71,6 @@ async function processFile(
 ): Promise<void> {
   const content = await promises.readFile(filePath, 'utf8');
 
-  // find the correct macro block where `);` or `}` is the end of the block
-  // ensure that the `);` or `}` is on its own line, with no characters before it
-  const blockRegex =
-    /declare_oxc_lint!\s*(\(([\S\s]*?)^\s*\)\s*;?|\s*{([\S\s]*?)^\s*}\s)/gm;
-
-  let match = blockRegex.exec(content);
-
   // 'ok' way to get the scope, depends on the directory structure
   let scope = getFolderNameUnderRules(filePath);
   const shouldIgnoreRule = ignoreScope.has(scope);
@@ -111,6 +105,13 @@ async function processFile(
     return;
   }
 
+  // find the correct macro block where `);` or `}` is the end of the block
+  // ensure that the `);` or `}` is on its own line, with no characters before it
+  const blockRegex =
+    /declare_oxc_lint!\s*(\(([\S\s]*?)^\s*\)\s*;?|\s*{([\S\s]*?)^\s*}\s)/gm;
+
+  let match = blockRegex.exec(content);
+
   if (match === null) {
     failureResultArray.push({
       value: effectiveRuleName,
@@ -118,9 +119,10 @@ async function processFile(
       category: 'unknown',
       error: 'No match block for `declare_oxc_lint`',
     });
+    return;
   }
 
-  while (match !== null) {
+  do {
     const block = match[2] ?? match[3];
 
     // Remove comments to prevent them from affecting the regex
@@ -134,35 +136,43 @@ async function processFile(
     const keywordRegex = /,\s*(\w+)\s*,?\s*(?:(\w+)\s*,?\s*)?$/;
     const keywordMatch = keywordRegex.exec(cleanBlock);
 
-    if (keywordMatch) {
-      successResultArray.push({
-        value: effectiveRuleName,
-        scope: scope,
-        category: keywordMatch[1],
-      });
-
-      if (scope === 'eslint') {
-        const ruleName = effectiveRuleName.replace(/^.*\//, '');
-
-        if (typescriptRulesExtendEslintRules.includes(ruleName)) {
-          successResultArray.push({
-            value: `@typescript-eslint/${ruleName}`,
-            scope: 'typescript',
-            category: keywordMatch[1],
-          });
-        }
-      }
-    } else {
+    if (!keywordMatch) {
       failureResultArray.push({
         value: effectiveRuleName,
         scope: `unknown: ${scope}`,
         category: 'unknown',
         error: 'Could not extract keyword from macro block',
       });
+      continue;
     }
 
-    match = blockRegex.exec(content); // Update match for the next iteration
-  }
+    if (ignoreCategories.has(keywordMatch[1])) {
+      skippedResultArray.push({
+        value: effectiveRuleName,
+        scope: scope,
+        category: keywordMatch[1],
+      });
+      continue;
+    }
+
+    successResultArray.push({
+      value: effectiveRuleName,
+      scope: scope,
+      category: keywordMatch[1],
+    });
+
+    if (scope === 'eslint') {
+      const ruleName = effectiveRuleName.replace(/^.*\//, '');
+
+      if (typescriptRulesExtendEslintRules.includes(ruleName)) {
+        successResultArray.push({
+          value: `@typescript-eslint/${ruleName}`,
+          scope: 'typescript',
+          category: keywordMatch[1],
+        });
+      }
+    }
+  } while ((match = blockRegex.exec(content)));
 }
 
 export function getFolderNameUnderRules(filePath: string) {

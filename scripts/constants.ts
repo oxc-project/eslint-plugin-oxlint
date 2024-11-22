@@ -10,6 +10,9 @@ export const SPARSE_CLONE_DIRECTORY = 'crates/oxc_linter/src';
 // these are the rules that don't have a direct equivalent in the eslint rules
 export const ignoreScope = new Set(['oxc', 'deepscan', 'security']);
 
+// these are the rules that are not fully implemented in oxc
+export const ignoreCategories = new Set(['nursery']);
+
 export function convertScope(scope: string) {
   return Reflect.has(aliasPluginNames, scope)
     ? aliasPluginNames[scope as 'eslint']
