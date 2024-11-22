@@ -1,6 +1,7 @@
 import { promises } from 'node:fs';
 import path from 'node:path';
 import {
+  ignoreCategories,
   ignoreScope,
   prefixScope,
   SPARSE_CLONE_DIRECTORY,
@@ -135,21 +136,29 @@ async function processFile(
     const keywordMatch = keywordRegex.exec(cleanBlock);
 
     if (keywordMatch) {
-      successResultArray.push({
-        value: effectiveRuleName,
-        scope: scope,
-        category: keywordMatch[1],
-      });
+      if (ignoreCategories.has(keywordMatch[1])) {
+        skippedResultArray.push({
+          value: effectiveRuleName,
+          scope: scope,
+          category: keywordMatch[1],
+        });
+      } else {
+        successResultArray.push({
+          value: effectiveRuleName,
+          scope: scope,
+          category: keywordMatch[1],
+        });
 
-      if (scope === 'eslint') {
-        const ruleName = effectiveRuleName.replace(/^.*\//, '');
+        if (scope === 'eslint') {
+          const ruleName = effectiveRuleName.replace(/^.*\//, '');
 
-        if (typescriptRulesExtendEslintRules.includes(ruleName)) {
-          successResultArray.push({
-            value: `@typescript-eslint/${ruleName}`,
-            scope: 'typescript',
-            category: keywordMatch[1],
-          });
+          if (typescriptRulesExtendEslintRules.includes(ruleName)) {
+            successResultArray.push({
+              value: `@typescript-eslint/${ruleName}`,
+              scope: 'typescript',
+              category: keywordMatch[1],
+            });
+          }
         }
       }
     } else {

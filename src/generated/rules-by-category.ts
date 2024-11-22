@@ -78,21 +78,6 @@ const pedanticRules = {
   'unicorn/require-number-to-fixed-digits-argument': 'off',
 } as const;
 
-const nurseryRules = {
-  'constructor-super': 'off',
-  'getter-return': 'off',
-  'no-undef': 'off',
-  'no-unreachable': 'off',
-  'import/export': 'off',
-  'import/no-deprecated': 'off',
-  'import/no-unused-modules': 'off',
-  'promise/no-return-in-finally': 'off',
-  'react/require-render-return': 'off',
-  'react-hooks/exhaustive-deps': 'off',
-  'react-hooks/rules-of-hooks': 'off',
-  '@typescript-eslint/consistent-type-imports': 'off',
-} as const;
-
 const restrictionRules = {
   'default-case': 'off',
   'no-alert': 'off',
@@ -464,7 +449,6 @@ const suspiciousRules = {
 
 export {
   pedanticRules,
-  nurseryRules,
   restrictionRules,
   styleRules,
   correctnessRules,

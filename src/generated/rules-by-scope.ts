@@ -2,14 +2,12 @@
 
 const eslintRules = {
   'array-callback-return': 'off',
-  'constructor-super': 'off',
   'default-case': 'off',
   'default-case-last': 'off',
   'default-param-last': 'off',
   eqeqeq: 'off',
   'for-direction': 'off',
   'func-names': 'off',
-  'getter-return': 'off',
   'guard-for-in': 'off',
   'max-classes-per-file': 'off',
   'max-lines': 'off',
@@ -84,10 +82,8 @@ const eslintRules = {
   'no-ternary': 'off',
   'no-this-before-super': 'off',
   'no-throw-literal': 'off',
-  'no-undef': 'off',
   'no-undefined': 'off',
   'no-unexpected-multiline': 'off',
-  'no-unreachable': 'off',
   'no-unsafe-finally': 'off',
   'no-unsafe-negation': 'off',
   'no-unsafe-optional-chaining': 'off',
@@ -119,7 +115,6 @@ const eslintRules = {
 
 const importRules = {
   'import/default': 'off',
-  'import/export': 'off',
   'import/first': 'off',
   'import/import-no-namespace': 'off',
   'import/max-dependencies': 'off',
@@ -129,13 +124,11 @@ const importRules = {
   'import/no-commonjs': 'off',
   'import/no-cycle': 'off',
   'import/no-default-export': 'off',
-  'import/no-deprecated': 'off',
   'import/no-duplicates': 'off',
   'import/no-dynamic-require': 'off',
   'import/no-named-as-default': 'off',
   'import/no-named-as-default-member': 'off',
   'import/no-self-import': 'off',
-  'import/no-unused-modules': 'off',
   'import/no-webpack-loader-syntax': 'off',
   'import/unambiguous': 'off',
 } as const;
@@ -275,7 +268,6 @@ const promiseRules = {
   'promise/catch-or-return': 'off',
   'promise/no-callback-in-promise': 'off',
   'promise/no-new-statics': 'off',
-  'promise/no-return-in-finally': 'off',
   'promise/param-names': 'off',
   'promise/prefer-await-to-callbacks': 'off',
   'promise/prefer-await-to-then': 'off',
@@ -310,15 +302,9 @@ const reactRules = {
   'react/no-unknown-property': 'off',
   'react/prefer-es6-class': 'off',
   'react/react-in-jsx-scope': 'off',
-  'react/require-render-return': 'off',
   'react/self-closing-comp': 'off',
   'react/style-prop-object': 'off',
   'react/void-dom-elements-no-children': 'off',
-} as const;
-
-const reactHooksRules = {
-  'react-hooks/exhaustive-deps': 'off',
-  'react-hooks/rules-of-hooks': 'off',
 } as const;
 
 const reactPerfRules = {
@@ -336,7 +322,6 @@ const typescriptRules = {
   '@typescript-eslint/ban-types': 'off',
   '@typescript-eslint/consistent-indexed-object-style': 'off',
   '@typescript-eslint/consistent-type-definitions': 'off',
-  '@typescript-eslint/consistent-type-imports': 'off',
   '@typescript-eslint/default-param-last': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/max-params': 'off',
@@ -493,7 +478,6 @@ export {
   nodeRules,
   promiseRules,
   reactRules,
-  reactHooksRules,
   reactPerfRules,
   typescriptRules,
   unicornRules,
