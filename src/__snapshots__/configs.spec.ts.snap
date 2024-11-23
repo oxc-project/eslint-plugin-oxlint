@@ -913,6 +913,9 @@ exports[`contains all the oxlint rules 1`] = `
   "promise/no-new-statics": [
     0,
   ],
+  "promise/no-promise-in-callback": [
+    0,
+  ],
   "promise/param-names": [
     0,
   ],
