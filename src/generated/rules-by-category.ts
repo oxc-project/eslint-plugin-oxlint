@@ -435,6 +435,7 @@ const suspiciousRules = {
   'import/no-named-as-default-member': 'off',
   'import/no-self-import': 'off',
   'jest/no-commented-out-tests': 'off',
+  'promise/no-promise-in-callback': 'off',
   'react/iframe-missing-sandbox': 'off',
   'react/jsx-no-comment-textnodes': 'off',
   'react/react-in-jsx-scope': 'off',

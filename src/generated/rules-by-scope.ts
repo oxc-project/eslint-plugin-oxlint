@@ -268,6 +268,7 @@ const promiseRules = {
   'promise/catch-or-return': 'off',
   'promise/no-callback-in-promise': 'off',
   'promise/no-new-statics': 'off',
+  'promise/no-promise-in-callback': 'off',
   'promise/param-names': 'off',
   'promise/prefer-await-to-callbacks': 'off',
   'promise/prefer-await-to-then': 'off',
