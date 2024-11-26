@@ -105,12 +105,14 @@ async function processFile(
     return;
   }
 
+  // Remove comments to prevent them from affecting the regex
+  const cleanContent = content.replaceAll(/^\s*\/\/.*$/gm, '');
+
   // find the correct macro block where `);` or `}` is the end of the block
   // ensure that the `);` or `}` is on its own line, with no characters before it
-  const blockRegex =
-    /declare_oxc_lint!\s*(\(([\S\s]*?)^\s*\)\s*;?|\s*{([\S\s]*?)^\s*}\s)/gm;
+  const blockRegex = /declare_oxc_lint!\s*([({]([\S\s]*?)\s*[)}]\s*;?)/gm;
 
-  let match = blockRegex.exec(content);
+  const match = blockRegex.exec(cleanContent);
 
   if (match === null) {
     failureResultArray.push({
@@ -122,57 +124,53 @@ async function processFile(
     return;
   }
 
-  do {
-    const block = match[2] ?? match[3];
+  const block = match[2];
 
-    // Remove comments to prevent them from affecting the regex
-    const cleanBlock = block
-      .replaceAll(/\/\/.*$|\/\*[\S\s]*?\*\//gm, '')
-      .trim();
+  // Remove comments to prevent them from affecting the regex
+  const cleanBlock = block.replaceAll(/\/\/.*$|\/\*[\S\s]*?\*\//gm, '').trim();
 
-    // Extract the keyword, skipping the optional fixability metadata,
-    // and correctly handling optional trailing characters
-    // since trailing commas are optional in Rust and the last keyword may not have one
-    const keywordRegex = /,\s*(\w+)\s*,?\s*(?:(\w+)\s*,?\s*)?$/;
-    const keywordMatch = keywordRegex.exec(cleanBlock);
+  // Extract the keyword, skipping the optional fixability metadata,
+  // and correctly handling optional trailing characters
+  // since trailing commas are optional in Rust and the last keyword may not have one
+  const keywordRegex = /,\s*(\w+)\s*,?\s*(?:(\w+)\s*,?\s*)?$/;
+  const keywordMatch = keywordRegex.exec(cleanBlock);
 
-    if (!keywordMatch) {
-      failureResultArray.push({
-        value: effectiveRuleName,
-        scope: `unknown: ${scope}`,
-        category: 'unknown',
-        error: 'Could not extract keyword from macro block',
-      });
-      continue;
-    }
+  if (keywordMatch === null) {
+    failureResultArray.push({
+      value: effectiveRuleName,
+      scope: `unknown: ${scope}`,
+      category: 'unknown',
+      error: 'Could not extract keyword from macro block',
+    });
+    return;
+  }
 
-    if (ignoreCategories.has(keywordMatch[1])) {
-      skippedResultArray.push({
-        value: effectiveRuleName,
-        scope: scope,
-        category: keywordMatch[1],
-      });
-      continue;
-    }
-
-    successResultArray.push({
+  if (ignoreCategories.has(keywordMatch[1])) {
+    skippedResultArray.push({
       value: effectiveRuleName,
       scope: scope,
       category: keywordMatch[1],
     });
+    return;
+  }
 
-    if (scope === 'eslint') {
-      const ruleName = effectiveRuleName.replace(/^.*\//, '');
+  successResultArray.push({
+    value: effectiveRuleName,
+    scope: scope,
+    category: keywordMatch[1],
+  });
 
-      if (typescriptRulesExtendEslintRules.includes(ruleName)) {
-        successResultArray.push({
-          value: `@typescript-eslint/${ruleName}`,
-          scope: 'typescript',
-          category: keywordMatch[1],
-        });
-      }
+  if (scope === 'eslint') {
+    const ruleName = effectiveRuleName.replace(/^.*\//, '');
+
+    if (typescriptRulesExtendEslintRules.includes(ruleName)) {
+      successResultArray.push({
+        value: `@typescript-eslint/${ruleName}`,
+        scope: 'typescript',
+        category: keywordMatch[1],
+      });
     }
-  } while ((match = blockRegex.exec(content)));
+  }
 }
 
 export function getFolderNameUnderRules(filePath: string) {
