@@ -146,6 +146,7 @@ const styleRules = {
   'guard-for-in': 'off',
   'max-params': 'off',
   'no-continue': 'off',
+  'no-duplicate-imports': 'off',
   'no-label-var': 'off',
   'no-magic-numbers': 'off',
   'no-multi-str': 'off',

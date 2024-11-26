@@ -660,6 +660,10 @@ exports[`contains all the oxlint rules 1`] = `
   "no-duplicate-case": [
     0,
   ],
+  "no-duplicate-imports": [
+    0,
+    {},
+  ],
   "no-else-return": [
     0,
     {

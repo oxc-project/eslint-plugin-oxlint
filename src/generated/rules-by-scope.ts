@@ -36,6 +36,7 @@ const eslintRules = {
   'no-dupe-else-if': 'off',
   'no-dupe-keys': 'off',
   'no-duplicate-case': 'off',
+  'no-duplicate-imports': 'off',
   'no-else-return': 'off',
   'no-empty': 'off',
   'no-empty-character-class': 'off',
