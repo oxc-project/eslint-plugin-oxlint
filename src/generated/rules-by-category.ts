@@ -12,6 +12,7 @@ const pedanticRules = {
   'no-fallthrough': 'off',
   'no-inner-declarations': 'off',
   'no-new-wrappers': 'off',
+  'no-object-constructor': 'off',
   'no-prototype-builtins': 'off',
   'no-redeclare': 'off',
   'no-self-compare': 'off',
@@ -106,6 +107,7 @@ const restrictionRules = {
   'import/unambiguous': 'off',
   'jsdoc/check-access': 'off',
   'jsdoc/empty-tags': 'off',
+  'jsx-a11y/anchor-ambiguous-text': 'off',
   'node/no-new-require': 'off',
   'promise/catch-or-return': 'off',
   'promise/spec-only': 'off',
@@ -234,6 +236,7 @@ const styleRules = {
   'unicorn/prefer-includes': 'off',
   'unicorn/prefer-logical-operator-over-ternary': 'off',
   'unicorn/prefer-modern-dom-apis': 'off',
+  'unicorn/prefer-negative-index': 'off',
   'unicorn/prefer-optional-catch-binding': 'off',
   'unicorn/prefer-reflect-apply': 'off',
   'unicorn/prefer-spread': 'off',
@@ -422,6 +425,7 @@ const perfRules = {
   'react-perf/jsx-no-new-array-as-prop': 'off',
   'react-perf/jsx-no-new-function-as-prop': 'off',
   'react-perf/jsx-no-new-object-as-prop': 'off',
+  'unicorn/prefer-set-has': 'off',
 } as const;
 
 const suspiciousRules = {
@@ -438,6 +442,7 @@ const suspiciousRules = {
   'promise/no-promise-in-callback': 'off',
   'react/iframe-missing-sandbox': 'off',
   'react/jsx-no-comment-textnodes': 'off',
+  'react/jsx-no-script-url': 'off',
   'react/react-in-jsx-scope': 'off',
   'react/style-prop-object': 'off',
   '@typescript-eslint/no-confusing-non-null-assertion': 'off',

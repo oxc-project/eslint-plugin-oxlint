@@ -490,6 +490,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/alt-text": [
     0,
   ],
+  "jsx-a11y/anchor-ambiguous-text": [
+    0,
+  ],
   "jsx-a11y/anchor-has-content": [
     0,
   ],
@@ -775,6 +778,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-obj-calls": [
     0,
   ],
+  "no-object-constructor": [
+    0,
+  ],
   "no-plusplus": [
     0,
     {},
@@ -969,6 +975,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-no-duplicate-props": [
+    0,
+  ],
+  "react/jsx-no-script-url": [
     0,
   ],
   "react/jsx-no-target-blank": [
@@ -1283,6 +1292,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-native-coercion-functions": [
     0,
   ],
+  "unicorn/prefer-negative-index": [
+    0,
+  ],
   "unicorn/prefer-node-protocol": [
     0,
   ],
@@ -1302,6 +1314,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-regexp-test": [
+    0,
+  ],
+  "unicorn/prefer-set-has": [
     0,
   ],
   "unicorn/prefer-set-size": [
