@@ -18,6 +18,8 @@ import { version } from '../package.json';
 
 const checkoutVersion = process.argv[2] ?? version;
 
+const NON_VERSION_TAGS = ['main'];
+
 // Function to initialize or reconfigure sparse-checkout
 function configureSparseCheckout(cloneDirectory: string) {
   console.log('Configuring sparse-checkout...');
@@ -38,7 +40,9 @@ function configureSparseCheckout(cloneDirectory: string) {
 }
 
 function checkoutVersionTag(version: string) {
-  const tag = `${VERSION_PREFIX}${version}`;
+  const tag = NON_VERSION_TAGS.includes(version)
+    ? version
+    : `${VERSION_PREFIX}${version}`;
 
   // Checkout the specified directory
   if (shell.exec(`git checkout ${tag}`, { silent: true }).code !== 0) {
@@ -56,6 +60,9 @@ function cloneOrUpdateRepo(
   cloneDirectory: string,
   version: string
 ) {
+  if (NON_VERSION_TAGS.includes(version)) {
+    shell.exec(`rm -f ${targetDirectory}`);
+  }
   // Check if the target directory exists and is a Git repository
   if (
     fs.existsSync(targetDirectory) &&
