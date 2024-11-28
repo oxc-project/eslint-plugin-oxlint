@@ -20,12 +20,20 @@ type OxlintConfigCategories = Record<string, unknown>;
 
 type OxlintConfigRules = Record<string, unknown>;
 
+type OxlintConfigOverride = {
+  files: string[];
+  rules: OxlintConfigRules;
+};
+
 type OxlintConfig = {
   [key: string]: unknown;
   plugins?: OxlintConfigPlugins;
   categories?: OxlintConfigCategories;
   rules?: OxlintConfigRules;
+  overrides: OxlintConfigOverride[];
 };
+
+type EslintPluginOxLintConfig = Linter.Config<Record<string, 'off'>>;
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
@@ -173,6 +181,12 @@ const handleRulesScope = (
   }
 };
 
+const handleOverridesScope = (
+  overrides: OxlintConfigOverride[]
+): Linter.Config<Record<string, 'off'>>[] => {
+  return [];
+};
+
 /**
  * checks if value is validSet, or if validSet is an array, check if value is first value of it
  */
@@ -227,13 +241,21 @@ const readRulesFromConfig = (
     : undefined;
 };
 
+const readOverridesFromConfig = (
+  config: OxlintConfig
+): OxlintConfigOverride[] | undefined => {
+  return 'overrides' in config && Array.isArray(config.overrides)
+    ? (config.overrides as OxlintConfigOverride[])
+    : undefined;
+};
+
 /**
  * builds turned off rules, which are supported by oxlint.
  * It accepts an object similar to the oxlint.json file.
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
-): Linter.Config<Record<string, 'off'>>[] => {
+): EslintPluginOxLintConfig[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
 
@@ -258,11 +280,19 @@ export const buildFromOxlintConfig = (
     handleRulesScope(configRules, rules);
   }
 
+  const overrides = readOverridesFromConfig(config);
+  let subConfigs: EslintPluginOxLintConfig[] = [];
+
+  if (overrides !== undefined) {
+    subConfigs = handleOverridesScope(config.overrides);
+  }
+
   return [
     {
       name: 'oxlint/from-oxlint-config',
       rules,
     },
+    ...subConfigs,
   ];
 };
 
@@ -275,7 +305,7 @@ export const buildFromOxlintConfig = (
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
-): Linter.Config<Record<string, 'off'>>[] => {
+): EslintPluginOxLintConfig[] => {
   const config = getConfigContent(oxlintConfigFile);
 
   // we could not parse form the file, do not build with default values
