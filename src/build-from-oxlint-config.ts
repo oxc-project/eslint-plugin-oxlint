@@ -204,6 +204,7 @@ const handleOverridesScope = (
 
     const rules = readRulesFromConfig(override);
     if (rules !== undefined) {
+      // ToDo -- when off, we should enable the default settings
       handleRulesScope(rules, eslintRules);
     }
 
