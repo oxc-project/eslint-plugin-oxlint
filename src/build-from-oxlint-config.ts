@@ -21,8 +21,8 @@ type OxlintConfigCategories = Record<string, unknown>;
 type OxlintConfigRules = Record<string, unknown>;
 
 type OxlintConfigOverride = {
-  files: string[];
-  rules: OxlintConfigRules;
+  files?: string[];
+  rules?: OxlintConfigRules;
 };
 
 type OxlintConfig = {
@@ -30,7 +30,7 @@ type OxlintConfig = {
   plugins?: OxlintConfigPlugins;
   categories?: OxlintConfigCategories;
   rules?: OxlintConfigRules;
-  overrides: OxlintConfigOverride[];
+  overrides?: OxlintConfigOverride[];
 };
 
 type EslintPluginOxLintConfig = Linter.Config<Record<string, 'off'>>;
@@ -182,9 +182,28 @@ const handleRulesScope = (
 };
 
 const handleOverridesScope = (
-  overrides: OxlintConfigOverride[]
-): Linter.Config<Record<string, 'off'>>[] => {
-  return [];
+  overrides: OxlintConfigOverride[],
+  configs: EslintPluginOxLintConfig[]
+): void => {
+  for (const overrideIndex in overrides) {
+    const override = overrides[overrideIndex];
+    const eslintConfig: EslintPluginOxLintConfig = {
+      name: `oxlint/from-oxlint-config-override-${overrideIndex}`,
+    };
+
+    // expect that oxlint `files` syntax is the same as eslint
+    if ('files' in override) {
+      eslintConfig.files = override.files;
+    }
+
+    if (isObject(override.rules)) {
+      const rules: Record<string, 'off'> = {};
+      handleRulesScope(override.rules!, rules);
+      eslintConfig.rules = rules;
+    }
+
+    configs.push(eslintConfig);
+  }
 };
 
 /**
@@ -281,19 +300,18 @@ export const buildFromOxlintConfig = (
   }
 
   const overrides = readOverridesFromConfig(config);
-  let subConfigs: EslintPluginOxLintConfig[] = [];
-
-  if (overrides !== undefined) {
-    subConfigs = handleOverridesScope(config.overrides);
-  }
-
-  return [
+  const configs: EslintPluginOxLintConfig[] = [
     {
       name: 'oxlint/from-oxlint-config',
       rules,
     },
-    ...subConfigs,
   ];
+
+  if (overrides !== undefined) {
+    handleOverridesScope(overrides, configs);
+  }
+
+  return configs;
 };
 
 /**
