@@ -21,7 +21,8 @@ type OxlintConfigCategories = Record<string, unknown>;
 type OxlintConfigRules = Record<string, unknown>;
 
 type OxlintConfigOverride = {
-  files?: string[];
+  files: string[];
+  plugins?: OxlintConfigPlugins;
   rules?: OxlintConfigRules;
 };
 
@@ -183,25 +184,30 @@ const handleRulesScope = (
 
 const handleOverridesScope = (
   overrides: OxlintConfigOverride[],
-  configs: EslintPluginOxLintConfig[]
+  configs: EslintPluginOxLintConfig[],
+  baseCategories?: OxlintConfigCategories
 ): void => {
   for (const overrideIndex in overrides) {
     const override = overrides[overrideIndex];
+    const eslintRules: Record<string, 'off'> = {};
     const eslintConfig: EslintPluginOxLintConfig = {
       name: `oxlint/from-oxlint-config-override-${overrideIndex}`,
     };
 
     // expect that oxlint `files` syntax is the same as eslint
-    if ('files' in override) {
-      eslintConfig.files = override.files;
+    eslintConfig.files = override.files;
+
+    const plugins = readPluginsFromConfig(override);
+    if (baseCategories !== undefined && plugins !== undefined) {
+      handleCategoriesScope(plugins, baseCategories, eslintRules);
     }
 
-    if (isObject(override.rules)) {
-      const rules: Record<string, 'off'> = {};
-      handleRulesScope(override.rules!, rules);
-      eslintConfig.rules = rules;
+    const rules = readRulesFromConfig(override);
+    if (rules !== undefined) {
+      handleRulesScope(rules, eslintRules);
     }
 
+    eslintConfig.rules = eslintRules;
     configs.push(eslintConfig);
   }
 };
@@ -229,7 +235,7 @@ const isActiveValue = (value: unknown) =>
  * it returns `undefined` when not found or invalid.
  */
 const readPluginsFromConfig = (
-  config: OxlintConfig
+  config: OxlintConfig | OxlintConfigOverride
 ): OxlintConfigPlugins | undefined => {
   return 'plugins' in config && Array.isArray(config.plugins)
     ? (config.plugins as OxlintConfigPlugins)
@@ -253,7 +259,7 @@ const readCategoriesFromConfig = (
  * it returns `undefined` when not found or invalid.
  */
 const readRulesFromConfig = (
-  config: OxlintConfig
+  config: OxlintConfig | OxlintConfigOverride
 ): OxlintConfigRules | undefined => {
   return 'rules' in config && isObject(config.rules)
     ? (config.rules as OxlintConfigRules)
@@ -277,6 +283,7 @@ export const buildFromOxlintConfig = (
 ): EslintPluginOxLintConfig[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
+  const categories = readCategoriesFromConfig(config) ?? defaultCategories;
 
   // it is not a plugin but it is activated by default
   plugins.push('eslint');
@@ -287,11 +294,7 @@ export const buildFromOxlintConfig = (
     plugins.push('react-hooks');
   }
 
-  handleCategoriesScope(
-    plugins,
-    readCategoriesFromConfig(config) ?? defaultCategories,
-    rules
-  );
+  handleCategoriesScope(plugins, categories, rules);
 
   const configRules = readRulesFromConfig(config);
 
@@ -308,7 +311,7 @@ export const buildFromOxlintConfig = (
   ];
 
   if (overrides !== undefined) {
-    handleOverridesScope(overrides, configs);
+    handleOverridesScope(overrides, configs, categories);
   }
 
   return configs;
