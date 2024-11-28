@@ -17,7 +17,7 @@ jobs:
       - uses: ./.github/actions/pnpm
 
       - name: Run oxlint
-        run: npx oxlint --config=oxlint.json --tsconfig=tsconfig.json
+        run: npx oxlint --tsconfig=tsconfig.json
 
       - name: Run eslint
         run: npx eslint --flag unstable_ts_config
