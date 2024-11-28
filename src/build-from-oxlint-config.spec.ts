@@ -234,6 +234,30 @@ describe('buildFromOxlintConfig', () => {
       expect('eqeqeq' in configs[1].rules).toBe(false);
       expect('vitest/no-conditional-tests' in configs[1].rules).toBe(true);
     });
+
+    it('reenable rule in overrides', () => {
+      const configs = buildFromOxlintConfig({
+        rules: {
+          'no-debugger': 'warn',
+        },
+        overrides: [
+          {
+            files: ['./*.test.ts'],
+            rules: {
+              'no-debugger': 'off',
+            },
+          },
+        ],
+      });
+
+      expect(configs.length).toBe(2);
+      assert(configs[0].rules !== undefined);
+      expect(configs[0].rules['no-debugger']).toBe('off');
+
+      console.log(configs[1].rules);
+      assert(configs[1].rules !== undefined);
+      expect(configs[1].rules['no-debugger']).toBe('warn');
+    });
   });
 });
 const createConfigFileAndBuildFromIt = (

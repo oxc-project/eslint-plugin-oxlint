@@ -34,7 +34,7 @@ type OxlintConfig = {
   overrides?: OxlintConfigOverride[];
 };
 
-type EslintPluginOxLintConfig = Linter.Config<Record<string, 'off'>>;
+type EslintPluginOxLintConfig = Linter.Config<Record<string, 'off' | 'warn'>>;
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
@@ -160,7 +160,8 @@ const getEsLintRuleName = (rule: string): string | undefined => {
  */
 const handleRulesScope = (
   oxlintRules: OxlintConfigRules,
-  rules: Record<string, 'off'>
+  rules: Record<string, 'off' | 'warn'>,
+  disablesRule: boolean
 ): void => {
   for (const rule in oxlintRules) {
     const eslintName = getEsLintRuleName(rule);
@@ -177,7 +178,13 @@ const handleRulesScope = (
       rules[eslintName] = 'off';
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
-      delete rules[eslintName];
+      if (disablesRule) {
+        delete rules[eslintName];
+      }
+      // inside overrides we need to enable the rule again
+      else {
+        rules[eslintName] = 'warn';
+      }
     }
   }
 };
@@ -205,7 +212,7 @@ const handleOverridesScope = (
     const rules = readRulesFromConfig(override);
     if (rules !== undefined) {
       // ToDo -- when off, we should enable the default settings
-      handleRulesScope(rules, eslintRules);
+      handleRulesScope(rules, eslintRules, false);
     }
 
     eslintConfig.rules = eslintRules;
@@ -300,7 +307,7 @@ export const buildFromOxlintConfig = (
   const configRules = readRulesFromConfig(config);
 
   if (configRules !== undefined) {
-    handleRulesScope(configRules, rules);
+    handleRulesScope(configRules, rules, true);
   }
 
   const overrides = readOverridesFromConfig(config);
