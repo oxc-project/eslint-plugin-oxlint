@@ -16,5 +16,5 @@ jobs:
 
       - uses: ./.github/actions/pnpm
 
-      - name: Run eslint
+      - name: Type Check
         run: npx tsc --noEmit
