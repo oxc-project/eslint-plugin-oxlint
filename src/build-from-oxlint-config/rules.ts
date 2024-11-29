@@ -2,7 +2,11 @@ import {
   aliasPluginNames,
   reactHookRulesInsideReactScope,
 } from '../constants.js';
-import { OxlintConfig, OxlintConfigRules } from './types.js';
+import {
+  OxlintConfig,
+  OxlintConfigOverride,
+  OxlintConfigRules,
+} from './types.js';
 import configByCategory from '../generated/configs-by-category.js';
 import { isObject } from './utils.js';
 
@@ -73,7 +77,8 @@ const isActiveValue = (value: unknown) =>
  */
 export const handleRulesScope = (
   oxlintRules: OxlintConfigRules,
-  rules: Record<string, 'off'>
+  rules: Record<string, 'off' | 'warn'>,
+  disableRule: boolean
 ): void => {
   for (const rule in oxlintRules) {
     const eslintName = getEsLintRuleName(rule);
@@ -90,7 +95,13 @@ export const handleRulesScope = (
       rules[eslintName] = 'off';
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
-      delete rules[eslintName];
+      if (disableRule) {
+        delete rules[eslintName];
+      }
+      // inside overrides we need to enable the rule again
+      else {
+        rules[eslintName] = 'warn';
+      }
     }
   }
 };
@@ -100,7 +111,7 @@ export const handleRulesScope = (
  * it returns `undefined` when not found or invalid.
  */
 export const readRulesFromConfig = (
-  config: OxlintConfig
+  config: OxlintConfig | OxlintConfigOverride
 ): OxlintConfigRules | undefined => {
   return 'rules' in config && isObject(config.rules)
     ? (config.rules as OxlintConfigRules)

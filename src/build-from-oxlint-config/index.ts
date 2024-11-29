@@ -1,7 +1,7 @@
 import fs from 'node:fs';
-import type { Linter } from 'eslint';
 import JSONCParser from 'jsonc-parser';
-import {
+import type {
+  EslintPluginOxLintConfig,
   OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigPlugins,
@@ -13,6 +13,7 @@ import {
   readCategoriesFromConfig,
 } from './categories.js';
 import { readPluginsFromConfig } from './plugins.js';
+import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
@@ -59,9 +60,10 @@ const getConfigContent = (
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
-): Linter.Config<Record<string, 'off'>>[] => {
+): EslintPluginOxLintConfig[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
+  const categories = readCategoriesFromConfig(config) ?? defaultCategories;
 
   // it is not a plugin but it is activated by default
   plugins.push('eslint');
@@ -81,15 +83,22 @@ export const buildFromOxlintConfig = (
   const configRules = readRulesFromConfig(config);
 
   if (configRules !== undefined) {
-    handleRulesScope(configRules, rules);
+    handleRulesScope(configRules, rules, true);
   }
 
-  return [
+  const overrides = readOverridesFromConfig(config);
+  const configs: EslintPluginOxLintConfig[] = [
     {
       name: 'oxlint/from-oxlint-config',
       rules,
     },
   ];
+
+  if (overrides !== undefined) {
+    handleOverridesScope(overrides, configs, categories);
+  }
+
+  return configs;
 };
 
 /**
@@ -101,7 +110,7 @@ export const buildFromOxlintConfig = (
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
-): Linter.Config<Record<string, 'off'>>[] => {
+): EslintPluginOxLintConfig[] => {
   const config = getConfigContent(oxlintConfigFile);
 
   // we could not parse form the file, do not build with default values
