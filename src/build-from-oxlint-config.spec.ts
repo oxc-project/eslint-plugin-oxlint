@@ -2,7 +2,7 @@ import { assert, describe, expect, it } from 'vitest';
 import {
   buildFromOxlintConfig,
   buildFromOxlintConfigFile,
-} from './build-from-oxlint-config.js';
+} from './build-from-oxlint-config/index.js';
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';

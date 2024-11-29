@@ -1,0 +1,118 @@
+import fs from 'node:fs';
+import type { Linter } from 'eslint';
+import JSONCParser from 'jsonc-parser';
+import {
+  OxlintConfig,
+  OxlintConfigCategories,
+  OxlintConfigPlugins,
+} from './types.js';
+import { isObject } from './utils.js';
+import { handleRulesScope, readRulesFromConfig } from './rules.js';
+import {
+  handleCategoriesScope,
+  readCategoriesFromConfig,
+} from './categories.js';
+import { readPluginsFromConfig } from './plugins.js';
+
+// default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
+const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
+
+// default categories, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
+const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
+
+/**
+ * tries to read the oxlint config file and returning its JSON content.
+ * if the file is not found or could not be parsed, undefined is returned.
+ * And an error message will be emitted to `console.error`
+ */
+const getConfigContent = (
+  oxlintConfigFile: string
+): OxlintConfig | undefined => {
+  try {
+    const content = fs.readFileSync(oxlintConfigFile, 'utf8');
+
+    try {
+      const configContent = JSONCParser.parse(content);
+
+      if (!isObject(configContent)) {
+        throw new TypeError('not an valid config file');
+      }
+
+      return configContent;
+    } catch {
+      console.error(
+        `eslint-plugin-oxlint: could not parse oxlint config file: ${oxlintConfigFile}`
+      );
+      return undefined;
+    }
+  } catch {
+    console.error(
+      `eslint-plugin-oxlint: could not find oxlint config file: ${oxlintConfigFile}`
+    );
+    return undefined;
+  }
+};
+
+/**
+ * builds turned off rules, which are supported by oxlint.
+ * It accepts an object similar to the oxlint.json file.
+ */
+export const buildFromOxlintConfig = (
+  config: OxlintConfig
+): Linter.Config<Record<string, 'off'>>[] => {
+  const rules: Record<string, 'off'> = {};
+  const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
+
+  // it is not a plugin but it is activated by default
+  plugins.push('eslint');
+
+  // oxc handles "react-hooks" rules inside "react" plugin
+  // our generator split them into own plugins
+  if (plugins.includes('react')) {
+    plugins.push('react-hooks');
+  }
+
+  handleCategoriesScope(
+    plugins,
+    readCategoriesFromConfig(config) ?? defaultCategories,
+    rules
+  );
+
+  const configRules = readRulesFromConfig(config);
+
+  if (configRules !== undefined) {
+    handleRulesScope(configRules, rules);
+  }
+
+  return [
+    {
+      name: 'oxlint/from-oxlint-config',
+      rules,
+    },
+  ];
+};
+
+/**
+ * builds turned off rules, which are supported by oxlint.
+ * It accepts an filepath to the oxlint.json file.
+ *
+ * It the oxlint.json file could not be found or parsed,
+ * no rules will be deactivated and an error to `console.error` will be emitted
+ */
+export const buildFromOxlintConfigFile = (
+  oxlintConfigFile: string
+): Linter.Config<Record<string, 'off'>>[] => {
+  const config = getConfigContent(oxlintConfigFile);
+
+  // we could not parse form the file, do not build with default values
+  // we can not be sure if the setup is right
+  if (config === undefined) {
+    return [
+      {
+        name: 'oxlint/from-oxlint-config',
+      },
+    ];
+  }
+
+  return buildFromOxlintConfig(config);
+};
