@@ -1,5 +1,5 @@
 import {
-  EslintPluginOxLintConfig,
+  EslintPluginOxlintConfig,
   OxlintConfig,
   OxlintConfigIgnorePatterns,
 } from './types.js';
@@ -9,7 +9,7 @@ import {
  */
 export const handleIgnorePatternsScope = (
   ignorePatterns: OxlintConfigIgnorePatterns,
-  config: EslintPluginOxLintConfig
+  config: EslintPluginOxlintConfig
 ): void => {
   config.ignores = ignorePatterns;
 };

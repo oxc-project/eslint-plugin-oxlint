@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import JSONCParser from 'jsonc-parser';
 import {
-  EslintPluginOxLintConfig,
+  EslintPluginOxlintConfig,
   OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigPlugins,
@@ -63,7 +63,7 @@ const getConfigContent = (
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
-): EslintPluginOxLintConfig[] => {
+): EslintPluginOxlintConfig[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
 
@@ -111,7 +111,7 @@ export const buildFromOxlintConfig = (
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
-): EslintPluginOxLintConfig[] => {
+): EslintPluginOxlintConfig[] => {
   const config = getConfigContent(oxlintConfigFile);
 
   // we could not parse form the file, do not build with default values

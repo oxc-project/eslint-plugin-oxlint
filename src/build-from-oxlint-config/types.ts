@@ -8,7 +8,7 @@ export type OxlintConfigRules = Record<string, unknown>;
 
 export type OxlintConfigIgnorePatterns = string[];
 
-export type EslintPluginOxLintConfig = Linter.Config<Record<string, 'off'>>;
+export type EslintPluginOxlintConfig = Linter.Config<Record<string, 'off'>>;
 
 export type OxlintConfig = {
   [key: string]: unknown;
