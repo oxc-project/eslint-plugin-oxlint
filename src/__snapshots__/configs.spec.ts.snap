@@ -77,6 +77,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/ban-types": [
     0,
   ],
+  "@typescript-eslint/consistent-generic-constructors": [
+    0,
+  ],
   "@typescript-eslint/consistent-indexed-object-style": [
     0,
   ],
@@ -128,6 +131,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-import-type-side-effects": [
     0,
   ],
+  "@typescript-eslint/no-inferrable-types": [
+    0,
+  ],
   "@typescript-eslint/no-loss-of-precision": [
     0,
   ],
@@ -165,6 +171,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-unsafe-function-type": [
+    0,
+  ],
+  "@typescript-eslint/no-unused-expressions": [
     0,
   ],
   "@typescript-eslint/no-unused-vars": [
@@ -244,9 +253,6 @@ exports[`contains all the oxlint rules 1`] = `
   "import/first": [
     0,
   ],
-  "import/import-no-namespace": [
-    0,
-  ],
   "import/max-dependencies": [
     0,
   ],
@@ -278,6 +284,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-named-as-default-member": [
+    0,
+  ],
+  "import/no-namespace": [
     0,
   ],
   "import/no-self-import": [
@@ -911,6 +920,9 @@ exports[`contains all the oxlint rules 1`] = `
   "prefer-object-has-own": [
     0,
   ],
+  "prefer-spread": [
+    0,
+  ],
   "promise/avoid-new": [
     0,
   ],
@@ -1324,9 +1336,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-set-size": [
-    0,
-  ],
-  "unicorn/prefer-spread": [
     0,
   ],
   "unicorn/prefer-string-raw": [
