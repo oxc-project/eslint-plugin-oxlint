@@ -605,6 +605,7 @@ exports[`contains all the oxlint rules 1`] = `
     0,
     {
       "allow": [],
+      "int32Hint": false,
     },
   ],
   "no-caller": [
@@ -671,7 +672,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-duplicate-imports": [
     0,
-    {},
+    {
+      "includeExports": false,
+    },
   ],
   "no-else-return": [
     0,
@@ -696,7 +699,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-empty-pattern": [
     0,
-    {},
+    {
+      "allowObjectPatternsAsParameters": false,
+    },
   ],
   "no-empty-static-block": [
     0,
@@ -706,7 +711,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-eval": [
     0,
-    {},
+    {
+      "allowIndirect": false,
+    },
   ],
   "no-ex-assign": [
     0,
@@ -743,6 +750,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-inner-declarations": [
     0,
     "functions",
+    {
+      "blockScopedFunctions": "allow",
+    },
   ],
   "no-invalid-regexp": [
     0,
@@ -796,7 +806,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-plusplus": [
     0,
-    {},
+    {
+      "allowForLoopAfterthoughts": false,
+    },
   ],
   "no-proto": [
     0,
@@ -864,11 +876,15 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-unsafe-negation": [
     0,
-    {},
+    {
+      "enforceForOrderingRelations": false,
+    },
   ],
   "no-unsafe-optional-chaining": [
     0,
-    {},
+    {
+      "disallowArithmeticOperators": false,
+    },
   ],
   "no-unused-labels": [
     0,
@@ -893,14 +909,20 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-useless-rename": [
     0,
-    {},
+    {
+      "ignoreDestructuring": false,
+      "ignoreExport": false,
+      "ignoreImport": false,
+    },
   ],
   "no-var": [
     0,
   ],
   "no-void": [
     0,
-    {},
+    {
+      "allowAsStatement": false,
+    },
   ],
   "no-with": [
     0,
@@ -1086,13 +1108,16 @@ exports[`contains all the oxlint rules 1`] = `
     {
       "allowLineSeparatedGroups": false,
       "caseSensitive": true,
+      "ignoreComputedKeys": false,
       "minKeys": 2,
       "natural": false,
     },
   ],
   "sort-vars": [
     0,
-    {},
+    {
+      "ignoreCase": false,
+    },
   ],
   "symbol-description": [
     0,
@@ -1383,7 +1408,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "valid-typeof": [
     0,
-    {},
+    {
+      "requireStringLiterals": false,
+    },
   ],
   "vitest/no-conditional-tests": [
     0,
