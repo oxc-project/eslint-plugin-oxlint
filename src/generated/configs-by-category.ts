@@ -7,11 +7,6 @@ const pedanticConfig = {
   rules: rules.pedanticRules,
 };
 
-const nurseryConfig = {
-  name: 'oxlint/nursery',
-  rules: rules.nurseryRules,
-};
-
 const restrictionConfig = {
   name: 'oxlint/restriction',
   rules: rules.restrictionRules,
@@ -39,7 +34,6 @@ const suspiciousConfig = {
 
 const configByCategory = {
   'flat/pedantic': pedanticConfig,
-  'flat/nursery': nurseryConfig,
   'flat/restriction': restrictionConfig,
   'flat/style': styleConfig,
   'flat/correctness': correctnessConfig,

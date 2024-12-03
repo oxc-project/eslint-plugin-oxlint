@@ -77,13 +77,13 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/ban-types": [
     0,
   ],
+  "@typescript-eslint/consistent-generic-constructors": [
+    0,
+  ],
   "@typescript-eslint/consistent-indexed-object-style": [
     0,
   ],
   "@typescript-eslint/consistent-type-definitions": [
-    0,
-  ],
-  "@typescript-eslint/consistent-type-imports": [
     0,
   ],
   "@typescript-eslint/default-param-last": [
@@ -116,6 +116,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-empty-interface": [
     0,
   ],
+  "@typescript-eslint/no-empty-object-type": [
+    0,
+  ],
   "@typescript-eslint/no-explicit-any": [
     0,
   ],
@@ -126,6 +129,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-import-type-side-effects": [
+    0,
+  ],
+  "@typescript-eslint/no-inferrable-types": [
     0,
   ],
   "@typescript-eslint/no-loss-of-precision": [
@@ -152,6 +158,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-redeclare": [
     0,
   ],
+  "@typescript-eslint/no-require-imports": [
+    0,
+  ],
   "@typescript-eslint/no-this-alias": [
     0,
   ],
@@ -162,6 +171,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-unsafe-function-type": [
+    0,
+  ],
+  "@typescript-eslint/no-unused-expressions": [
     0,
   ],
   "@typescript-eslint/no-unused-vars": [
@@ -205,12 +217,15 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "array-callback-return": [
     0,
-  ],
-  "constructor-super": [
-    0,
+    {
+      "allowImplicit": false,
+      "allowVoid": false,
+      "checkForEach": false,
+    },
   ],
   "default-case": [
     0,
+    {},
   ],
   "default-case-last": [
     0,
@@ -226,17 +241,13 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "func-names": [
     0,
-  ],
-  "getter-return": [
-    0,
+    "always",
+    {},
   ],
   "guard-for-in": [
     0,
   ],
   "import/default": [
-    0,
-  ],
-  "import/export": [
     0,
   ],
   "import/first": [
@@ -263,9 +274,6 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-default-export": [
     0,
   ],
-  "import/no-deprecated": [
-    0,
-  ],
   "import/no-duplicates": [
     0,
   ],
@@ -278,10 +286,10 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-named-as-default-member": [
     0,
   ],
-  "import/no-self-import": [
+  "import/no-namespace": [
     0,
   ],
-  "import/no-unused-modules": [
+  "import/no-self-import": [
     0,
   ],
   "import/no-webpack-loader-syntax": [
@@ -491,6 +499,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/alt-text": [
     0,
   ],
+  "jsx-a11y/anchor-ambiguous-text": [
+    0,
+  ],
   "jsx-a11y/anchor-has-content": [
     0,
   ],
@@ -592,6 +603,10 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-bitwise": [
     0,
+    {
+      "allow": [],
+      "int32Hint": false,
+    },
   ],
   "no-caller": [
     0,
@@ -607,9 +622,11 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-cond-assign": [
     0,
+    "except-parens",
   ],
   "no-console": [
     0,
+    {},
   ],
   "no-const-assign": [
     0,
@@ -619,6 +636,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-constant-condition": [
     0,
+    {
+      "checkLoops": "allExceptWhileTrue",
+    },
   ],
   "no-constructor-return": [
     0,
@@ -650,20 +670,38 @@ exports[`contains all the oxlint rules 1`] = `
   "no-duplicate-case": [
     0,
   ],
+  "no-duplicate-imports": [
+    0,
+    {
+      "includeExports": false,
+    },
+  ],
   "no-else-return": [
     0,
+    {
+      "allowElseIf": true,
+    },
   ],
   "no-empty": [
     0,
+    {
+      "allowEmptyCatch": false,
+    },
   ],
   "no-empty-character-class": [
     0,
   ],
   "no-empty-function": [
     0,
+    {
+      "allow": [],
+    },
   ],
   "no-empty-pattern": [
     0,
+    {
+      "allowObjectPatternsAsParameters": false,
+    },
   ],
   "no-empty-static-block": [
     0,
@@ -673,36 +711,62 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-eval": [
     0,
+    {
+      "allowIndirect": false,
+    },
   ],
   "no-ex-assign": [
     0,
   ],
   "no-extend-native": [
     0,
+    {
+      "exceptions": [],
+    },
   ],
   "no-extra-boolean-cast": [
     0,
+    {},
   ],
   "no-fallthrough": [
     0,
+    {
+      "allowEmptyCase": false,
+      "reportUnusedFallthroughComment": false,
+    },
   ],
   "no-func-assign": [
     0,
   ],
   "no-global-assign": [
     0,
+    {
+      "exceptions": [],
+    },
   ],
   "no-import-assign": [
     0,
   ],
   "no-inner-declarations": [
     0,
+    "functions",
+    {
+      "blockScopedFunctions": "allow",
+    },
   ],
   "no-invalid-regexp": [
     0,
+    {},
   ],
   "no-irregular-whitespace": [
     0,
+    {
+      "skipComments": false,
+      "skipJSXText": false,
+      "skipRegExps": false,
+      "skipStrings": true,
+      "skipTemplates": false,
+    },
   ],
   "no-iterator": [
     0,
@@ -737,8 +801,14 @@ exports[`contains all the oxlint rules 1`] = `
   "no-obj-calls": [
     0,
   ],
+  "no-object-constructor": [
+    0,
+  ],
   "no-plusplus": [
     0,
+    {
+      "allowForLoopAfterthoughts": false,
+    },
   ],
   "no-proto": [
     0,
@@ -748,6 +818,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-redeclare": [
     0,
+    {
+      "builtinGlobals": true,
+    },
   ],
   "no-regex-spaces": [
     0,
@@ -757,12 +830,16 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-return-assign": [
     0,
+    "except-parens",
   ],
   "no-script-url": [
     0,
   ],
   "no-self-assign": [
     0,
+    {
+      "props": true,
+    },
   ],
   "no-self-compare": [
     0,
@@ -788,16 +865,10 @@ exports[`contains all the oxlint rules 1`] = `
   "no-throw-literal": [
     0,
   ],
-  "no-undef": [
-    0,
-  ],
   "no-undefined": [
     0,
   ],
   "no-unexpected-multiline": [
-    0,
-  ],
-  "no-unreachable": [
     0,
   ],
   "no-unsafe-finally": [
@@ -805,9 +876,15 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-unsafe-negation": [
     0,
+    {
+      "enforceForOrderingRelations": false,
+    },
   ],
   "no-unsafe-optional-chaining": [
     0,
+    {
+      "disallowArithmeticOperators": false,
+    },
   ],
   "no-unused-labels": [
     0,
@@ -832,12 +909,20 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-useless-rename": [
     0,
+    {
+      "ignoreDestructuring": false,
+      "ignoreExport": false,
+      "ignoreImport": false,
+    },
   ],
   "no-var": [
     0,
   ],
   "no-void": [
     0,
+    {
+      "allowAsStatement": false,
+    },
   ],
   "no-with": [
     0,
@@ -857,6 +942,9 @@ exports[`contains all the oxlint rules 1`] = `
   "prefer-object-has-own": [
     0,
   ],
+  "prefer-spread": [
+    0,
+  ],
   "promise/avoid-new": [
     0,
   ],
@@ -869,7 +957,7 @@ exports[`contains all the oxlint rules 1`] = `
   "promise/no-new-statics": [
     0,
   ],
-  "promise/no-return-in-finally": [
+  "promise/no-promise-in-callback": [
     0,
   ],
   "promise/param-names": [
@@ -889,9 +977,7 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "radix": [
     0,
-  ],
-  "react-hooks/rules-of-hooks": [
-    0,
+    "always",
   ],
   "react-perf/jsx-no-jsx-as-prop": [
     0,
@@ -929,6 +1015,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-no-duplicate-props": [
     0,
   ],
+  "react/jsx-no-script-url": [
+    0,
+  ],
   "react/jsx-no-target-blank": [
     0,
   ],
@@ -939,6 +1028,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-props-no-spread-multi": [
+    0,
+  ],
+  "react/no-array-index-key": [
     0,
   ],
   "react/no-children-prop": [
@@ -980,9 +1072,6 @@ exports[`contains all the oxlint rules 1`] = `
   "react/react-in-jsx-scope": [
     0,
   ],
-  "react/require-render-return": [
-    0,
-  ],
   "react/self-closing-comp": [
     0,
   ],
@@ -1000,26 +1089,50 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "sort-imports": [
     0,
+    {
+      "allowSeparatedGroups": false,
+      "ignoreCase": false,
+      "ignoreDeclarationSort": false,
+      "ignoreMemberSort": false,
+      "memberSyntaxSortOrder": [
+        "none",
+        "all",
+        "multiple",
+        "single",
+      ],
+    },
   ],
   "sort-keys": [
     0,
+    "asc",
+    {
+      "allowLineSeparatedGroups": false,
+      "caseSensitive": true,
+      "ignoreComputedKeys": false,
+      "minKeys": 2,
+      "natural": false,
+    },
   ],
   "sort-vars": [
     0,
+    {
+      "ignoreCase": false,
+    },
   ],
   "symbol-description": [
     0,
   ],
-  "tree-shaking/no-side-effects-in-initialization": [
-    0,
-  ],
   "unicode-bom": [
     0,
+    "never",
   ],
   "unicorn/catch-error-name": [
     0,
   ],
   "unicorn/consistent-empty-array-spread": [
+    0,
+  ],
+  "unicorn/consistent-existence-index-check": [
     0,
   ],
   "unicorn/consistent-function-scoping": [
@@ -1220,6 +1333,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-native-coercion-functions": [
     0,
   ],
+  "unicorn/prefer-negative-index": [
+    0,
+  ],
   "unicorn/prefer-node-protocol": [
     0,
   ],
@@ -1241,10 +1357,13 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-regexp-test": [
     0,
   ],
+  "unicorn/prefer-set-has": [
+    0,
+  ],
   "unicorn/prefer-set-size": [
     0,
   ],
-  "unicorn/prefer-spread": [
+  "unicorn/prefer-string-raw": [
     0,
   ],
   "unicorn/prefer-string-replace-all": [
@@ -1282,9 +1401,16 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "use-isnan": [
     0,
+    {
+      "enforceForIndexOf": false,
+      "enforceForSwitchCase": true,
+    },
   ],
   "valid-typeof": [
     0,
+    {
+      "requireStringLiterals": false,
+    },
   ],
   "vitest/consistent-test-it": [
     0,

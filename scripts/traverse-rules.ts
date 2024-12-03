@@ -1,6 +1,7 @@
 import { promises } from 'node:fs';
 import path from 'node:path';
 import {
+  ignoreCategories,
   ignoreScope,
   prefixScope,
   SPARSE_CLONE_DIRECTORY,
@@ -28,25 +29,30 @@ export async function readFilesRecursively(
     (entry) => entry.isFile() && entry.name === 'mod.rs'
   );
 
-  for (const entry of entries) {
-    const entryPath = path.join(directory, entry.name);
-    if (entry.isDirectory()) {
-      await readFilesRecursively(
-        entryPath,
-        successResultArray,
-        skippedResultArray,
-        failureResultArray
-      ); // Recursive call for directories
-    } else if (entry.isFile() && (!containsModRs || entry.name === 'mod.rs')) {
-      await processFile(
-        entryPath,
-        directory,
-        successResultArray,
-        skippedResultArray,
-        failureResultArray
-      ); // Process each file
-    }
-  }
+  await Promise.all(
+    entries.map(async (entry) => {
+      const entryPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        await readFilesRecursively(
+          entryPath,
+          successResultArray,
+          skippedResultArray,
+          failureResultArray
+        ); // Recursive call for directories
+      } else if (
+        entry.isFile() &&
+        (!containsModRs || entry.name === 'mod.rs')
+      ) {
+        await processFile(
+          entryPath,
+          directory,
+          successResultArray,
+          skippedResultArray,
+          failureResultArray
+        ); // Process each file
+      }
+    })
+  );
 }
 
 export interface Rule {
@@ -65,13 +71,6 @@ async function processFile(
   failureResultArray: Rule[]
 ): Promise<void> {
   const content = await promises.readFile(filePath, 'utf8');
-
-  // find the correct macro block where `);` or `}` is the end of the block
-  // ensure that the `);` or `}` is on its own line, with no characters before it
-  const blockRegex =
-    /declare_oxc_lint!\s*(\(([\S\s]*?)^\s*\)\s*;?|\s*{([\S\s]*?)^\s*}\s)/gm;
-
-  let match = blockRegex.exec(content);
 
   // 'ok' way to get the scope, depends on the directory structure
   let scope = getFolderNameUnderRules(filePath);
@@ -107,6 +106,15 @@ async function processFile(
     return;
   }
 
+  // Remove comments to prevent them from affecting the regex
+  const cleanContent = content.replaceAll(/^\s*\/\/.*$/gm, '');
+
+  // find the correct macro block where `);` or `}` is the end of the block
+  // ensure that the `);` or `}` is on its own line, with no characters before it
+  const blockRegex = /declare_oxc_lint!\s*([({]([\S\s]*?)\s*[)}]\s*;?)/gm;
+
+  const match = blockRegex.exec(cleanContent);
+
   if (match === null) {
     failureResultArray.push({
       value: effectiveRuleName,
@@ -114,62 +122,68 @@ async function processFile(
       category: 'unknown',
       error: 'No match block for `declare_oxc_lint`',
     });
+    return;
   }
 
-  while (match !== null) {
-    const block = match[2] ?? match[3];
+  const block = match[2];
 
-    // Remove comments to prevent them from affecting the regex
-    const cleanBlock = block
-      .replaceAll(/\/\/.*$|\/\*[\S\s]*?\*\//gm, '')
-      .trim();
+  // Remove comments to prevent them from affecting the regex
+  const cleanBlock = block.replaceAll(/\/\/.*$|\/\*[\S\s]*?\*\//gm, '').trim();
 
-    // Extract the keyword, skipping the optional fixability metadata,
-    // and correctly handling optional trailing characters
-    // since trailing commas are optional in Rust and the last keyword may not have one
-    const keywordRegex = /,\s*(\w+)\s*,?\s*(?:(\w+)\s*,?\s*)?$/;
-    const keywordMatch = keywordRegex.exec(cleanBlock);
+  // Extract the keyword, skipping the optional fixability metadata,
+  // and correctly handling optional trailing characters
+  // since trailing commas are optional in Rust and the last keyword may not have one
+  const keywordRegex = /,\s*(\w+)\s*,?\s*(?:(\w+)\s*,?\s*)?$/;
+  const keywordMatch = keywordRegex.exec(cleanBlock);
 
-    if (keywordMatch) {
+  if (keywordMatch === null) {
+    failureResultArray.push({
+      value: effectiveRuleName,
+      scope: `unknown: ${scope}`,
+      category: 'unknown',
+      error: 'Could not extract keyword from macro block',
+    });
+    return;
+  }
+
+  if (ignoreCategories.has(keywordMatch[1])) {
+    skippedResultArray.push({
+      value: effectiveRuleName,
+      scope: scope,
+      category: keywordMatch[1],
+    });
+    return;
+  }
+
+  successResultArray.push({
+    value: effectiveRuleName,
+    scope: scope,
+    category: keywordMatch[1],
+  });
+
+  // special case for eslint and typescript alias rules
+  if (scope === 'eslint') {
+    const ruleName = effectiveRuleName.replace(/^.*\//, '');
+
+    if (typescriptRulesExtendEslintRules.includes(ruleName)) {
       successResultArray.push({
-        value: effectiveRuleName,
-        scope: scope,
+        value: `@typescript-eslint/${ruleName}`,
+        scope: 'typescript',
         category: keywordMatch[1],
-      });
-
-      // special case for eslint and typescript alias rules
-      if (scope === 'eslint') {
-        const ruleName = effectiveRuleName.replace(/^.*\//, '');
-
-        if (typescriptRulesExtendEslintRules.includes(ruleName)) {
-          successResultArray.push({
-            value: `@typescript-eslint/${ruleName}`,
-            scope: 'typescript',
-            category: keywordMatch[1],
-          });
-        }
-        // special case for jest and vitest alias rules
-      } else if (scope === 'jest') {
-        const ruleName = effectiveRuleName.replace(/^.*\//, '');
-
-        if (viteTestCompatibleRules.includes(ruleName)) {
-          successResultArray.push({
-            value: `vitest/${ruleName}`,
-            scope: 'vitest',
-            category: keywordMatch[1],
-          });
-        }
-      }
-    } else {
-      failureResultArray.push({
-        value: effectiveRuleName,
-        scope: `unknown: ${scope}`,
-        category: 'unknown',
-        error: 'Could not extract keyword from macro block',
       });
     }
 
-    match = blockRegex.exec(content); // Update match for the next iteration
+    // special case for jest and vitest alias rules
+  } else if (scope === 'jest') {
+    const ruleName = effectiveRuleName.replace(/^.*\//, '');
+
+    if (viteTestCompatibleRules.includes(ruleName)) {
+      successResultArray.push({
+        value: `vitest/${ruleName}`,
+        scope: 'vitest',
+        category: keywordMatch[1],
+      });
+    }
   }
 }
 
@@ -221,6 +235,16 @@ export async function traverseRules(): Promise<{
     skippedResultArray,
     failureResultArray
   );
+
+  successResultArray.sort((aRule, bRule) => {
+    const scopeCompare = aRule.scope.localeCompare(bRule.scope);
+
+    if (scopeCompare !== 0) {
+      return scopeCompare;
+    }
+
+    return aRule.value.localeCompare(bRule.value);
+  });
 
   console.log(
     `>> Parsed ${successResultArray.length} rules, skipped ${skippedResultArray.length} and encountered ${failureResultArray.length} failures\n`

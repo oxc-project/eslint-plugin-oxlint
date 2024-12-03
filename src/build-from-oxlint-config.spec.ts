@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   buildFromOxlintConfig,
   buildFromOxlintConfigFile,
-} from './build-from-oxlint-config.js';
+} from './build-from-oxlint-config/index.js';
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
@@ -104,7 +104,7 @@ describe('buildFromOxlintConfig', () => {
       buildFromOxlintConfig({
         plugins: ['import'],
         categories: {
-          nursery: 'warn',
+          suspicious: 'warn',
           correctness: 'off',
         },
       })
@@ -115,17 +115,17 @@ describe('buildFromOxlintConfig', () => {
     const configs = buildFromOxlintConfig({
       plugins: ['import'],
       categories: {
-        nursery: 'warn',
+        suspicious: 'warn',
         correctness: 'off',
       },
       rules: {
-        'import/no-unused-modules': 'off',
+        'import/no-self-import': 'off',
       },
     });
 
     expect(configs.length).toBe(1);
     expect(configs[0].rules).not.toBeUndefined();
-    expect('import/no-unused-modules' in configs[0].rules!).toBe(false);
+    expect('import/no-self-import' in configs[0].rules!).toBe(false);
   });
 
   // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
@@ -137,7 +137,7 @@ describe('buildFromOxlintConfig', () => {
         'react_perf/jsx-no-new-array-as-prop': 'warn',
         'nextjs/no-img-element': 'warn',
         'jsx_a11y/alt-text': 'warn',
-        'react/rules-of-hooks': 'warn',
+        // 'react/rules-of-hooks': 'warn', -- rules are currently in nursery
         // 'deepscan/xxx': 'warn',
       },
     });
@@ -151,7 +151,7 @@ describe('buildFromOxlintConfig', () => {
     );
     expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
     expect('jsx-a11y/alt-text' in configs[0].rules!).toBe(true);
-    expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);
+    // expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);  -- rules are currently in nursery
   });
 
   it('detects rules without plugin name', () => {
@@ -291,15 +291,6 @@ const executeOxlintWithConfiguration = (
     '--silent',
   ];
 
-  // --disabled-<foo>-plugin can be removed after oxc-project/oxc#6896
-  if (config.plugins !== undefined) {
-    for (const plugin of ['typescript', 'unicorn', 'react']) {
-      if (!config.plugins!.includes(plugin)) {
-        cliArguments.push(`--disable-${plugin}-plugin`);
-      }
-    }
-  }
-
   try {
     oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
       encoding: 'utf8',
@@ -336,7 +327,7 @@ describe('integration test with oxlint', () => {
     { plugins: ['vite'], rules: { eqeqeq: 'off' } },
 
     // categories change
-    { categories: { correctness: 'off', nusery: 'warn' } },
+    { categories: { correctness: 'off', suspicious: 'warn' } },
     // combination plugin + categires + rules
     {
       plugins: ['vite'],
@@ -346,8 +337,8 @@ describe('integration test with oxlint', () => {
     // all categories enabled
     {
       categories: {
+        nursery: 'off', // we not support this category
         correctness: 'warn',
-        nursery: 'off', // enable after oxc-project/oxc#7073
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
@@ -370,7 +361,6 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
-        'tree_shaking',
       ],
     },
     // everything on
@@ -388,11 +378,10 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
-        'tree_shaking',
       ],
       categories: {
+        nursery: 'off', // we not support this category
         correctness: 'warn',
-        nursery: 'off', // enable after oxc-project/oxc#7073
         pedantic: 'warn',
         perf: 'warn',
         restriction: 'warn',
