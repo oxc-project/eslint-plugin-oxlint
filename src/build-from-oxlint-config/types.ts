@@ -12,9 +12,7 @@ export type OxlintConfigOverride = {
   rules?: OxlintConfigRules;
 };
 
-export type EslintPluginOxLintConfig = Linter.Config<
-  Record<string, 'off' | 'warn'>
->;
+export type EslintPluginOxLintConfig = Linter.Config<Record<string, 'off'>>;
 
 export type OxlintConfig = {
   [key: string]: unknown;

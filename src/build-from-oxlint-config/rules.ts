@@ -77,8 +77,7 @@ const isActiveValue = (value: unknown) =>
  */
 export const handleRulesScope = (
   oxlintRules: OxlintConfigRules,
-  rules: Record<string, 'off' | 'warn'>,
-  disableRule: boolean
+  rules: Record<string, 'off'>
 ): void => {
   for (const rule in oxlintRules) {
     const eslintName = getEsLintRuleName(rule);
@@ -95,13 +94,7 @@ export const handleRulesScope = (
       rules[eslintName] = 'off';
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
-      if (disableRule) {
-        delete rules[eslintName];
-      }
-      // inside overrides we need to enable the rule again
-      else {
-        rules[eslintName] = 'warn';
-      }
+      delete rules[eslintName];
     }
   }
 };

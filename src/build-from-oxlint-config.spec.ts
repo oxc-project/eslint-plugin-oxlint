@@ -235,7 +235,7 @@ describe('buildFromOxlintConfig', () => {
       expect('vitest/no-conditional-tests' in configs[1].rules).toBe(true);
     });
 
-    it('reenable rule in overrides', () => {
+    it(' rule in overrides', () => {
       const configs = buildFromOxlintConfig({
         rules: {
           'no-debugger': 'warn',
@@ -252,11 +252,11 @@ describe('buildFromOxlintConfig', () => {
 
       expect(configs.length).toBe(2);
       assert(configs[0].rules !== undefined);
-      expect(configs[0].rules['no-debugger']).toBe('off');
+      expect('no-debugger' in configs[0].rules).toBe(true);
 
       console.log(configs[1].rules);
       assert(configs[1].rules !== undefined);
-      expect(configs[1].rules['no-debugger']).toBe('warn');
+      expect('no-debugger' in configs[1].rules).toBe(false);
     });
   });
 });

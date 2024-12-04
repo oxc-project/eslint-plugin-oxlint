@@ -83,7 +83,7 @@ export const buildFromOxlintConfig = (
   const configRules = readRulesFromConfig(config);
 
   if (configRules !== undefined) {
-    handleRulesScope(configRules, rules, true);
+    handleRulesScope(configRules, rules);
   }
 
   const overrides = readOverridesFromConfig(config);
