@@ -475,13 +475,27 @@ const unicornRules = {
 } as const;
 
 const vitestRules = {
+  'vitest/consistent-test-it': 'off',
+  'vitest/expect-expect': 'off',
+  'vitest/no-alias-methods': 'off',
+  'vitest/no-commented-out-tests': 'off',
+  'vitest/no-conditional-expect': 'off',
+  'vitest/no-conditional-in-test': 'off',
   'vitest/no-conditional-tests': 'off',
+  'vitest/no-disabled-tests': 'off',
+  'vitest/no-focused-tests': 'off',
+  'vitest/no-identical-title': 'off',
   'vitest/no-import-node-test': 'off',
+  'vitest/no-restricted-jest-methods': 'off',
+  'vitest/no-test-prefixes': 'off',
   'vitest/prefer-each': 'off',
+  'vitest/prefer-hooks-in-order': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
+  'vitest/valid-describe-callback': 'off',
+  'vitest/valid-expect': 'off',
 } as const;
 
 export {

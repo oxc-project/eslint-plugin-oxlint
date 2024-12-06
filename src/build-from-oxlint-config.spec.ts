@@ -6,7 +6,10 @@ import {
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
-import { typescriptRulesExtendEslintRules } from './constants.js';
+import {
+  typescriptRulesExtendEslintRules,
+  viteTestCompatibleRules,
+} from './constants.js';
 
 describe('buildFromOxlintConfig', () => {
   describe('rule values', () => {
@@ -184,6 +187,22 @@ describe('buildFromOxlintConfig', () => {
     expect('unknown' in configs[0].rules!).toBe(false);
     expect('@next/next/no-img-element' in configs[0].rules!).toBe(false);
   });
+
+  for (const alias of viteTestCompatibleRules) {
+    it(`disables vitest jest alias rules for ${alias}`, () => {
+      for (const rule of [`jest/${alias}`, `vitest/${alias}`]) {
+        const configs = buildFromOxlintConfig({
+          rules: {
+            [rule]: 'warn',
+          },
+        });
+
+        expect(configs.length).toBe(1);
+        expect(configs[0].rules).not.toBeUndefined();
+        expect(rule in configs[0].rules!).toBe(true);
+      }
+    });
+  }
 
   describe('ignorePattern Property', () => {
     it('should append ignorePatterns to eslint v9 ignore property', () => {
@@ -403,6 +422,13 @@ describe('integration test with oxlint', () => {
       ) {
         expectedCount += typescriptRulesExtendEslintRules.filter(
           (aliasRule) => aliasRule in configs[0].rules!
+        ).length;
+      }
+
+      // special case for vitest / jest alias rules
+      if (config.plugins?.includes('vitest')) {
+        expectedCount += viteTestCompatibleRules.filter(
+          (aliasRule) => `vitest/${aliasRule}` in configs[0].rules!
         ).length;
       }
 

@@ -78,6 +78,7 @@ const pedanticRules = {
   'unicorn/prefer-string-slice': 'off',
   'unicorn/prefer-type-error': 'off',
   'unicorn/require-number-to-fixed-digits-argument': 'off',
+  'vitest/no-conditional-in-test': 'off',
 } as const;
 
 const restrictionRules = {
@@ -254,8 +255,14 @@ const styleRules = {
   'unicorn/switch-case-braces': 'off',
   'unicorn/text-encoding-identifier-case': 'off',
   'unicorn/throw-new-error': 'off',
+  'vitest/consistent-test-it': 'off',
+  'vitest/no-alias-methods': 'off',
+  'vitest/no-identical-title': 'off',
   'vitest/no-import-node-test': 'off',
+  'vitest/no-restricted-jest-methods': 'off',
+  'vitest/no-test-prefixes': 'off',
   'vitest/prefer-each': 'off',
+  'vitest/prefer-hooks-in-order': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
@@ -421,8 +428,14 @@ const correctnessRules = {
   'unicorn/no-useless-spread': 'off',
   'unicorn/prefer-set-size': 'off',
   'unicorn/prefer-string-starts-ends-with': 'off',
+  'vitest/expect-expect': 'off',
+  'vitest/no-conditional-expect': 'off',
   'vitest/no-conditional-tests': 'off',
+  'vitest/no-disabled-tests': 'off',
+  'vitest/no-focused-tests': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
+  'vitest/valid-describe-callback': 'off',
+  'vitest/valid-expect': 'off',
 } as const;
 
 const perfRules = {
@@ -458,6 +471,7 @@ const suspiciousRules = {
   '@typescript-eslint/no-useless-constructor': 'off',
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/prefer-add-event-listener': 'off',
+  'vitest/no-commented-out-tests': 'off',
 } as const;
 
 export {
