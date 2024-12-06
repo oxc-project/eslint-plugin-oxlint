@@ -240,7 +240,6 @@ describe('buildFromOxlintConfig', () => {
       expect('eqeqeq' in configs[0].rules).toBe(true);
       expect('vitest/no-conditional-tests' in configs[0].rules).toBe(false);
 
-      console.log(configs[1].rules);
       assert(configs[1].rules !== undefined);
       expect('eqeqeq' in configs[1].rules).toBe(false);
       expect('vitest/no-conditional-tests' in configs[1].rules).toBe(true);
