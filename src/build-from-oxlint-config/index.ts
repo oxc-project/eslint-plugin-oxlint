@@ -95,14 +95,14 @@ export const buildFromOxlintConfig = (
     rules,
   };
 
-  const ignorePatterns = readIgnorePatternsFromConfig(baseConfig);
+  const ignorePatterns = readIgnorePatternsFromConfig(config);
 
   if (ignorePatterns !== undefined) {
     handleIgnorePatternsScope(ignorePatterns, baseConfig);
   }
 
+  const overrides = readOverridesFromConfig(config);
   const configs = [baseConfig];
-  const overrides = readOverridesFromConfig(baseConfig);
 
   if (overrides !== undefined) {
     handleOverridesScope(overrides, configs, categories);
