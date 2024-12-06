@@ -89,6 +89,7 @@ const eslintRules = {
   'no-unsafe-finally': 'off',
   'no-unsafe-negation': 'off',
   'no-unsafe-optional-chaining': 'off',
+  'no-unused-expressions': 'off',
   'no-unused-labels': 'off',
   'no-unused-private-class-members': 'off',
   'no-unused-vars': 'off',
@@ -103,6 +104,7 @@ const eslintRules = {
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
   'prefer-object-has-own': 'off',
+  'prefer-spread': 'off',
   radix: 'off',
   'require-await': 'off',
   'require-yield': 'off',
@@ -113,12 +115,12 @@ const eslintRules = {
   'unicode-bom': 'off',
   'use-isnan': 'off',
   'valid-typeof': 'off',
+  yoda: 'off',
 } as const;
 
 const importRules = {
   'import/default': 'off',
   'import/first': 'off',
-  'import/import-no-namespace': 'off',
   'import/max-dependencies': 'off',
   'import/named': 'off',
   'import/namespace': 'off',
@@ -130,6 +132,7 @@ const importRules = {
   'import/no-dynamic-require': 'off',
   'import/no-named-as-default': 'off',
   'import/no-named-as-default-member': 'off',
+  'import/no-namespace': 'off',
   'import/no-self-import': 'off',
   'import/no-webpack-loader-syntax': 'off',
   'import/unambiguous': 'off',
@@ -312,6 +315,10 @@ const reactRules = {
   'react/void-dom-elements-no-children': 'off',
 } as const;
 
+const reactHooksRules = {
+  'react-hooks/rules-of-hooks': 'off',
+} as const;
+
 const reactPerfRules = {
   'react-perf/jsx-no-jsx-as-prop': 'off',
   'react-perf/jsx-no-new-array-as-prop': 'off',
@@ -325,6 +332,7 @@ const typescriptRules = {
   '@typescript-eslint/ban-ts-comment': 'off',
   '@typescript-eslint/ban-tslint-comment': 'off',
   '@typescript-eslint/ban-types': 'off',
+  '@typescript-eslint/consistent-generic-constructors': 'off',
   '@typescript-eslint/consistent-indexed-object-style': 'off',
   '@typescript-eslint/consistent-type-definitions': 'off',
   '@typescript-eslint/default-param-last': 'off',
@@ -342,6 +350,7 @@ const typescriptRules = {
   '@typescript-eslint/no-extra-non-null-assertion': 'off',
   '@typescript-eslint/no-extraneous-class': 'off',
   '@typescript-eslint/no-import-type-side-effects': 'off',
+  '@typescript-eslint/no-inferrable-types': 'off',
   '@typescript-eslint/no-loss-of-precision': 'off',
   '@typescript-eslint/no-magic-numbers': 'off',
   '@typescript-eslint/no-misused-new': 'off',
@@ -355,6 +364,7 @@ const typescriptRules = {
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
   '@typescript-eslint/no-unsafe-function-type': 'off',
+  '@typescript-eslint/no-unused-expressions': 'off',
   '@typescript-eslint/no-unused-vars': 'off',
   '@typescript-eslint/no-useless-constructor': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',
@@ -450,7 +460,6 @@ const unicornRules = {
   'unicorn/prefer-regexp-test': 'off',
   'unicorn/prefer-set-has': 'off',
   'unicorn/prefer-set-size': 'off',
-  'unicorn/prefer-spread': 'off',
   'unicorn/prefer-string-raw': 'off',
   'unicorn/prefer-string-replace-all': 'off',
   'unicorn/prefer-string-slice': 'off',
@@ -485,6 +494,7 @@ export {
   nodeRules,
   promiseRules,
   reactRules,
+  reactHooksRules,
   reactPerfRules,
   typescriptRules,
   unicornRules,
