@@ -189,18 +189,17 @@ describe('buildFromOxlintConfig', () => {
   });
 
   for (const alias of viteTestCompatibleRules) {
-    it(`disables matching vitest and jest rules for ${alias}`, () => {
-      for (const rule of [alias, `jest/${alias}`, `vitest/${alias}`]) {
-        const rules = buildFromOxlintConfig({
+    it(`disables vitest jest alias rules for ${alias}`, () => {
+      for (const rule of [`jest/${alias}`, `vitest/${alias}`]) {
+        const configs = buildFromOxlintConfig({
           rules: {
             [rule]: 'warn',
           },
         });
 
-        expect(rules.length).toBe(1);
-        expect(rules[0].rules).not.toBeUndefined();
-        expect(`vitest/${alias}` in rules[0].rules!).toBe(true);
-        expect(`jest/${alias}` in rules[0].rules!).toBe(true);
+        expect(configs.length).toBe(1);
+        expect(configs[0].rules).not.toBeUndefined();
+        expect(rule in configs[0].rules!).toBe(true);
       }
     });
   }
@@ -423,6 +422,13 @@ describe('integration test with oxlint', () => {
       ) {
         expectedCount += typescriptRulesExtendEslintRules.filter(
           (aliasRule) => aliasRule in configs[0].rules!
+        ).length;
+      }
+
+      // special case for vitest / jest alias rules
+      if (config.plugins?.includes('vitest')) {
+        expectedCount += viteTestCompatibleRules.filter(
+          (aliasRule) => `vitest/${aliasRule}` in configs[0].rules!
         ).length;
       }
 
