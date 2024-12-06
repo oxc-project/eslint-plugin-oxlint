@@ -47,6 +47,11 @@ const reactConfig = {
   rules: rules.reactRules,
 };
 
+const reactHooksConfig = {
+  name: 'oxlint/react-hooks',
+  rules: rules.reactHooksRules,
+};
+
 const reactPerfConfig = {
   name: 'oxlint/react-perf',
   rules: rules.reactPerfRules,
@@ -77,6 +82,7 @@ const configByScope = {
   'flat/node': nodeConfig,
   'flat/promise': promiseConfig,
   'flat/react': reactConfig,
+  'flat/react-hooks': reactHooksConfig,
   'flat/react-perf': reactPerfConfig,
   'flat/typescript': typescriptConfig,
   'flat/unicorn': unicornConfig,
