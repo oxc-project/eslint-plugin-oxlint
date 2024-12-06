@@ -78,11 +78,7 @@ export const buildFromOxlintConfig = (
     plugins.push('react-hooks');
   }
 
-  handleCategoriesScope(
-    plugins,
-    readCategoriesFromConfig(config) ?? defaultCategories,
-    rules
-  );
+  handleCategoriesScope(plugins, categories, rules);
 
   const configRules = readRulesFromConfig(config);
 
