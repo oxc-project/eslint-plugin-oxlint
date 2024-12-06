@@ -886,6 +886,15 @@ exports[`contains all the oxlint rules 1`] = `
       "disallowArithmeticOperators": false,
     },
   ],
+  "no-unused-expressions": [
+    0,
+    {
+      "allowShortCircuit": false,
+      "allowTaggedTemplates": false,
+      "allowTernary": false,
+      "enforceForJSX": false,
+    },
+  ],
   "no-unused-labels": [
     0,
   ],
@@ -978,6 +987,9 @@ exports[`contains all the oxlint rules 1`] = `
   "radix": [
     0,
     "always",
+  ],
+  "react-hooks/rules-of-hooks": [
+    0,
   ],
   "react-perf/jsx-no-jsx-as-prop": [
     0,
@@ -1474,6 +1486,14 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "vitest/valid-expect": [
     0,
+  ],
+  "yoda": [
+    0,
+    "never",
+    {
+      "exceptRange": false,
+      "onlyEquality": false,
+    },
   ],
 }
 `;

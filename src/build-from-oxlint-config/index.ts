@@ -1,7 +1,7 @@
 import fs from 'node:fs';
-import type { Linter } from 'eslint';
 import JSONCParser from 'jsonc-parser';
 import {
+  EslintPluginOxlintConfig,
   OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigPlugins,
@@ -13,6 +13,10 @@ import {
   readCategoriesFromConfig,
 } from './categories.js';
 import { readPluginsFromConfig } from './plugins.js';
+import {
+  handleIgnorePatternsScope,
+  readIgnorePatternsFromConfig,
+} from './ignore-patterns.js';
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
@@ -59,7 +63,7 @@ const getConfigContent = (
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
-): Linter.Config<Record<string, 'off'>>[] => {
+): EslintPluginOxlintConfig[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
 
@@ -84,12 +88,18 @@ export const buildFromOxlintConfig = (
     handleRulesScope(configRules, rules);
   }
 
-  return [
-    {
-      name: 'oxlint/from-oxlint-config',
-      rules,
-    },
-  ];
+  const baseConfig = {
+    name: 'oxlint/from-oxlint-config',
+    rules,
+  };
+
+  const ignorePatterns = readIgnorePatternsFromConfig(config);
+
+  if (ignorePatterns !== undefined) {
+    handleIgnorePatternsScope(ignorePatterns, baseConfig);
+  }
+
+  return [baseConfig];
 };
 
 /**
@@ -101,7 +111,7 @@ export const buildFromOxlintConfig = (
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
-): Linter.Config<Record<string, 'off'>>[] => {
+): EslintPluginOxlintConfig[] => {
   const config = getConfigContent(oxlintConfigFile);
 
   // we could not parse form the file, do not build with default values

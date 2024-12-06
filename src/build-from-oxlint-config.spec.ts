@@ -204,6 +204,17 @@ describe('buildFromOxlintConfig', () => {
       }
     });
   }
+
+  describe('ignorePattern Property', () => {
+    it('should append ignorePatterns to eslint v9 ignore property', () => {
+      const configs = buildFromOxlintConfig({
+        ignorePatterns: ['./tests/.*ts'],
+      });
+
+      expect(configs.length).toBe(1);
+      expect(configs[0].ignores).toStrictEqual(['./tests/.*ts']);
+    });
+  });
 });
 
 const createConfigFileAndBuildFromIt = (
