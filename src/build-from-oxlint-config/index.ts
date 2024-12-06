@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import JSONCParser from 'jsonc-parser';
-import type {
-  EslintPluginOxLintConfig,
+import {
+  EslintPluginOxlintConfig,
   OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigPlugins,
@@ -13,6 +13,10 @@ import {
   readCategoriesFromConfig,
 } from './categories.js';
 import { readPluginsFromConfig } from './plugins.js';
+import {
+  handleIgnorePatternsScope,
+  readIgnorePatternsFromConfig,
+} from './ignore-patterns.js';
 import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
@@ -60,7 +64,7 @@ const getConfigContent = (
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
-): EslintPluginOxLintConfig[] => {
+): EslintPluginOxlintConfig[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
   const categories = readCategoriesFromConfig(config) ?? defaultCategories;
@@ -86,13 +90,19 @@ export const buildFromOxlintConfig = (
     handleRulesScope(configRules, rules);
   }
 
-  const overrides = readOverridesFromConfig(config);
-  const configs: EslintPluginOxLintConfig[] = [
-    {
-      name: 'oxlint/from-oxlint-config',
-      rules,
-    },
-  ];
+  const baseConfig = {
+    name: 'oxlint/from-oxlint-config',
+    rules,
+  };
+
+  const ignorePatterns = readIgnorePatternsFromConfig(baseConfig);
+
+  if (ignorePatterns !== undefined) {
+    handleIgnorePatternsScope(ignorePatterns, baseConfig);
+  }
+
+  const configs = [baseConfig];
+  const overrides = readOverridesFromConfig(baseConfig);
 
   if (overrides !== undefined) {
     handleOverridesScope(overrides, configs, categories);
@@ -110,7 +120,7 @@ export const buildFromOxlintConfig = (
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string
-): EslintPluginOxLintConfig[] => {
+): EslintPluginOxlintConfig[] => {
   const config = getConfigContent(oxlintConfigFile);
 
   // we could not parse form the file, do not build with default values

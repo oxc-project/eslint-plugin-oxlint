@@ -89,6 +89,7 @@ const eslintRules = {
   'no-unsafe-finally': 'off',
   'no-unsafe-negation': 'off',
   'no-unsafe-optional-chaining': 'off',
+  'no-unused-expressions': 'off',
   'no-unused-labels': 'off',
   'no-unused-private-class-members': 'off',
   'no-unused-vars': 'off',
@@ -114,6 +115,7 @@ const eslintRules = {
   'unicode-bom': 'off',
   'use-isnan': 'off',
   'valid-typeof': 'off',
+  yoda: 'off',
 } as const;
 
 const importRules = {
@@ -313,6 +315,10 @@ const reactRules = {
   'react/void-dom-elements-no-children': 'off',
 } as const;
 
+const reactHooksRules = {
+  'react-hooks/rules-of-hooks': 'off',
+} as const;
+
 const reactPerfRules = {
   'react-perf/jsx-no-jsx-as-prop': 'off',
   'react-perf/jsx-no-new-array-as-prop': 'off',
@@ -488,6 +494,7 @@ export {
   nodeRules,
   promiseRules,
   reactRules,
+  reactHooksRules,
   reactPerfRules,
   typescriptRules,
   unicornRules,

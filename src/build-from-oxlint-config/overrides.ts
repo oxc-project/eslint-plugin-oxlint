@@ -2,7 +2,7 @@ import { handleCategoriesScope } from './categories.js';
 import { readPluginsFromConfig } from './plugins.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
-  EslintPluginOxLintConfig,
+  EslintPluginOxlintConfig,
   OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigOverride,
@@ -10,13 +10,13 @@ import {
 
 export const handleOverridesScope = (
   overrides: OxlintConfigOverride[],
-  configs: EslintPluginOxLintConfig[],
+  configs: EslintPluginOxlintConfig[],
   baseCategories?: OxlintConfigCategories
 ): void => {
   for (const overrideIndex in overrides) {
     const override = overrides[overrideIndex];
     const eslintRules: Record<string, 'off'> = {};
-    const eslintConfig: EslintPluginOxLintConfig = {
+    const eslintConfig: EslintPluginOxlintConfig = {
       name: `oxlint/from-oxlint-config-override-${overrideIndex}`,
     };
 
