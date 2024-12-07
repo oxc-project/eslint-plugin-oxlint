@@ -8,5 +8,8 @@
     "source.organizeImports": "never"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": ["javascript", "typescript"]
+  "eslint.validate": ["javascript", "typescript"],
+  "eslint.options": {
+    "flags": ["unstable_ts_config"]
+  }
 }
