@@ -10,6 +10,12 @@ export type OxlintConfigIgnorePatterns = string[];
 
 export type EslintPluginOxlintConfig = Linter.Config<Record<string, 'off'>>;
 
+export type OxlintConfigOverride = {
+  files: string[];
+  plugins?: OxlintConfigPlugins;
+  rules?: OxlintConfigRules;
+};
+
 export type OxlintConfig = {
   [key: string]: unknown;
   plugins?: OxlintConfigPlugins;
