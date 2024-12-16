@@ -19,9 +19,11 @@ jobs:
       - uses: ./.github/actions/pnpm
 
       - name: Generate version ${{ inputs.version }}
+        env:
+          OXLINT_VERSION: ${{ inputs.version }}
         run: |
-          pnpm install oxlint@${{ inputs.version }}
-          pnpm run clone ${{ inputs.version }}
+          pnpm install oxlint@${OXLINT_VERSION}
+          pnpm run clone ${OXLINT_VERSION}
           pnpm run generate # Generate rules from source code
           pnpm run format # run prettier over it
 
