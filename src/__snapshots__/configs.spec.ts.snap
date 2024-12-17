@@ -161,9 +161,6 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-require-imports": [
     0,
   ],
-  "@typescript-eslint/no-restricted-imports": [
-    0,
-  ],
   "@typescript-eslint/no-this-alias": [
     0,
   ],
@@ -287,6 +284,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-named-as-default-member": [
+    0,
+  ],
+  "import/no-named-default": [
     0,
   ],
   "import/no-namespace": [
@@ -829,9 +829,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-restricted-globals": [
-    0,
-  ],
-  "no-restricted-imports": [
     0,
   ],
   "no-return-assign": [
