@@ -14,14 +14,18 @@ jobs:
   bump:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          persist-credentials: false # should be fine, we give another token for PR creation
 
       - uses: ./.github/actions/pnpm
 
       - name: Generate version ${{ inputs.version }}
+        env:
+          OXLINT_VERSION: ${{ inputs.version }}
         run: |
-          pnpm install oxlint@${{ inputs.version }}
-          pnpm run clone ${{ inputs.version }}
+          pnpm install oxlint@${OXLINT_VERSION}
+          pnpm run clone ${OXLINT_VERSION}
           pnpm run generate # Generate rules from source code
           pnpm run format # run prettier over it
 
@@ -30,7 +34,9 @@ jobs:
         run: pnpm run test -u # Update test snapshots
 
       - name: Bump oxlint rules
-        run: npm version ${{ inputs.version }} --no-git-tag-version
+        env:
+          OXLINT_VERSION: ${{ inputs.version }}
+        run: npm version ${OXLINT_VERSION} --no-git-tag-version
 
       - uses: peter-evans/create-pull-request@v7
         with:
