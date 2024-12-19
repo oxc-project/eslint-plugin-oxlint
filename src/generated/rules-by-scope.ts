@@ -12,7 +12,6 @@ const eslintRules = {
   'max-classes-per-file': 'off',
   'max-lines': 'off',
   'max-params': 'off',
-  'no-restricted-imports': 'off',
   'no-object-constructor': 'off',
   'no-duplicate-imports': 'off',
   'no-alert': 'off',
@@ -122,6 +121,7 @@ const eslintRules = {
 const importRules = {
   'import/default': 'off',
   'import/first': 'off',
+  'import/no-named-default': 'off',
   'import/no-namespace': 'off',
   'import/max-dependencies': 'off',
   'import/named': 'off',

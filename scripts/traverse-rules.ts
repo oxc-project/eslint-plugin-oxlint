@@ -32,14 +32,14 @@ function fixScopeOfRule(rule: Rule): void {
 }
 
 function fixValueOfRule(rule: Rule): void {
-  if (rule.scope !== 'eslint') {
-    const scope =
-      rule.scope in aliasPluginNames
-        ? aliasPluginNames[rule.scope]
-        : rule.scope;
-
-    rule.value = `${scope}/${rule.value}`;
+  if (rule.scope === 'eslint') {
+    return;
   }
+
+  const scope =
+    rule.scope in aliasPluginNames ? aliasPluginNames[rule.scope] : rule.scope;
+
+  rule.value = `${scope}/${rule.value}`;
 }
 
 export function traverseRules(): Rule[] {
