@@ -7,13 +7,16 @@ import {
   viteTestCompatibleRules,
 } from '../src/constants.js';
 
-export interface Rule {
+export type Rule = {
   value: string;
   scope: string;
   category: string;
-}
+};
 
-function readFilesFromCommand(): Rule[] {
+/**
+ * Read the rules from oxlint command and returns an array of Rule-Objects
+ */
+function readRulesFromCommand(): Rule[] {
   // do not handle the exception
   const oxlintOutput = execSync(`npx oxlint --rules --format=json`, {
     encoding: 'utf8',
@@ -24,6 +27,9 @@ function readFilesFromCommand(): Rule[] {
   return JSON.parse(oxlintOutput);
 }
 
+/**
+ * Some rules are in a different scope then in eslint
+ */
 function fixScopeOfRule(rule: Rule): void {
   if (
     rule.scope === 'react' &&
@@ -33,6 +39,9 @@ function fixScopeOfRule(rule: Rule): void {
   }
 }
 
+/**
+ * oxlint returns the value without a scope name
+ */
 function fixValueOfRule(rule: Rule): void {
   if (rule.scope === 'eslint') {
     return;
@@ -44,6 +53,10 @@ function fixValueOfRule(rule: Rule): void {
   rule.value = `${scope}/${rule.value}`;
 }
 
+/**
+ * some rules are reimplemented in another scope
+ * remap them so we can disable all the reimplemented too
+ */
 function getAliasRules(rule: Rule): Rule | undefined {
   if (
     rule.scope === 'eslint' &&
@@ -67,14 +80,13 @@ function getAliasRules(rule: Rule): Rule | undefined {
 
 export function traverseRules(): Rule[] {
   // get all rules and filter the ignored one
-  const rules = readFilesFromCommand().filter(
+  const rules = readRulesFromCommand().filter(
     (rule) =>
       !ignoreCategories.has(rule.category) && !ignoreScope.has(rule.scope)
   );
 
   const aliasRules: Rule[] = [];
 
-  // fix value mapping
   for (const rule of rules) {
     const aliasRule = getAliasRules(rule);
     if (aliasRule) {
