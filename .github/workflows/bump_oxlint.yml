@@ -25,8 +25,7 @@ jobs:
           OXLINT_VERSION: ${{ inputs.version }}
         run: |
           pnpm install oxlint@${OXLINT_VERSION}
-          pnpm run clone ${OXLINT_VERSION}
-          pnpm run generate # Generate rules from source code
+          pnpm run generate # Generate rules
           pnpm run format # run prettier over it
 
       - name: Test and update snapshot
