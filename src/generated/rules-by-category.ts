@@ -76,6 +76,9 @@ const pedanticRules = {
   'unicorn/prefer-string-slice': 'off',
   'unicorn/prefer-type-error': 'off',
   'unicorn/require-number-to-fixed-digits-argument': 'off',
+  '@typescript-eslint/no-array-constructor': 'off',
+  '@typescript-eslint/no-redeclare': 'off',
+  'vitest/no-conditional-in-test': 'off',
 } as const;
 
 const restrictionRules = {
@@ -136,6 +139,8 @@ const restrictionRules = {
   'unicorn/prefer-modern-math-apis': 'off',
   'unicorn/prefer-node-protocol': 'off',
   'unicorn/prefer-number-properties': 'off',
+  '@typescript-eslint/no-empty-function': 'off',
+  '@typescript-eslint/no-unused-expressions': 'off',
 } as const;
 
 const styleRules = {
@@ -253,6 +258,15 @@ const styleRules = {
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
+  '@typescript-eslint/default-param-last': 'off',
+  '@typescript-eslint/max-params': 'off',
+  '@typescript-eslint/no-magic-numbers': 'off',
+  'vitest/consistent-test-it': 'off',
+  'vitest/no-alias-methods': 'off',
+  'vitest/no-identical-title': 'off',
+  'vitest/no-restricted-jest-methods': 'off',
+  'vitest/no-test-prefixes': 'off',
+  'vitest/prefer-hooks-in-order': 'off',
 } as const;
 
 const correctnessRules = {
@@ -414,6 +428,15 @@ const correctnessRules = {
   'unicorn/prefer-string-starts-ends-with': 'off',
   'vitest/no-conditional-tests': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
+  '@typescript-eslint/no-dupe-class-members': 'off',
+  '@typescript-eslint/no-loss-of-precision': 'off',
+  '@typescript-eslint/no-unused-vars': 'off',
+  'vitest/expect-expect': 'off',
+  'vitest/no-conditional-expect': 'off',
+  'vitest/no-disabled-tests': 'off',
+  'vitest/no-focused-tests': 'off',
+  'vitest/valid-describe-callback': 'off',
+  'vitest/valid-expect': 'off',
 } as const;
 
 const perfRules = {
@@ -448,6 +471,8 @@ const suspiciousRules = {
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/prefer-add-event-listener': 'off',
+  '@typescript-eslint/no-useless-constructor': 'off',
+  'vitest/no-commented-out-tests': 'off',
 } as const;
 
 export {

@@ -368,6 +368,17 @@ const typescriptRules = {
   '@typescript-eslint/prefer-namespace-keyword': 'off',
   '@typescript-eslint/prefer-ts-expect-error': 'off',
   '@typescript-eslint/triple-slash-reference': 'off',
+  '@typescript-eslint/default-param-last': 'off',
+  '@typescript-eslint/max-params': 'off',
+  '@typescript-eslint/no-array-constructor': 'off',
+  '@typescript-eslint/no-dupe-class-members': 'off',
+  '@typescript-eslint/no-empty-function': 'off',
+  '@typescript-eslint/no-loss-of-precision': 'off',
+  '@typescript-eslint/no-magic-numbers': 'off',
+  '@typescript-eslint/no-redeclare': 'off',
+  '@typescript-eslint/no-unused-expressions': 'off',
+  '@typescript-eslint/no-unused-vars': 'off',
+  '@typescript-eslint/no-useless-constructor': 'off',
 } as const;
 
 const unicornRules = {
@@ -472,6 +483,20 @@ const vitestRules = {
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
+  'vitest/consistent-test-it': 'off',
+  'vitest/expect-expect': 'off',
+  'vitest/no-alias-methods': 'off',
+  'vitest/no-commented-out-tests': 'off',
+  'vitest/no-conditional-expect': 'off',
+  'vitest/no-conditional-in-test': 'off',
+  'vitest/no-disabled-tests': 'off',
+  'vitest/no-focused-tests': 'off',
+  'vitest/no-identical-title': 'off',
+  'vitest/no-restricted-jest-methods': 'off',
+  'vitest/no-test-prefixes': 'off',
+  'vitest/prefer-hooks-in-order': 'off',
+  'vitest/valid-describe-callback': 'off',
+  'vitest/valid-expect': 'off',
 } as const;
 
 export {
