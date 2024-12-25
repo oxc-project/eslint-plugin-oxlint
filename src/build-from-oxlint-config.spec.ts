@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { assert, describe, expect, it } from 'vitest';
 import {
   buildFromOxlintConfig,
   buildFromOxlintConfigFile,
@@ -212,6 +212,80 @@ describe('buildFromOxlintConfig', () => {
 
       expect(configs.length).toBe(1);
       expect(configs[0].ignores).toStrictEqual(['./tests/.*ts']);
+    });
+  });
+
+  describe('overrides', () => {
+    it('supports simple files + rules overrides', () => {
+      const configs = buildFromOxlintConfig({
+        rules: {
+          eqeqeq: 'warn',
+        },
+        overrides: [
+          {
+            files: ['./*.ts'],
+            rules: {
+              'no-alert': 'error',
+            },
+          },
+        ],
+      });
+
+      expect(configs.length).toBe(2);
+      assert(configs[0].rules !== undefined);
+      expect('eqeqeq' in configs[0].rules).toBe(true);
+      expect('no-alert' in configs[0].rules).toBe(false);
+
+      assert(configs[1].rules !== undefined);
+      expect('eqeqeq' in configs[1].rules).toBe(false);
+      expect('no-alert' in configs[1].rules).toBe(true);
+    });
+
+    it('supports simple files + plugins overrides', () => {
+      const configs = buildFromOxlintConfig({
+        rules: {
+          eqeqeq: 'warn',
+        },
+        overrides: [
+          {
+            files: ['./*.test.ts'],
+            plugins: ['vitest'],
+          },
+        ],
+      });
+
+      expect(configs.length).toBe(2);
+      assert(configs[0].rules !== undefined);
+      expect('eqeqeq' in configs[0].rules).toBe(true);
+      expect('vitest/no-conditional-tests' in configs[0].rules).toBe(false);
+
+      assert(configs[1].rules !== undefined);
+      expect('eqeqeq' in configs[1].rules).toBe(false);
+      expect('vitest/no-conditional-tests' in configs[1].rules).toBe(true);
+    });
+
+    it(' rule in overrides', () => {
+      const configs = buildFromOxlintConfig({
+        rules: {
+          'no-debugger': 'warn',
+        },
+        overrides: [
+          {
+            files: ['./*.test.ts'],
+            rules: {
+              'no-debugger': 'off',
+            },
+          },
+        ],
+      });
+
+      expect(configs.length).toBe(2);
+      assert(configs[0].rules !== undefined);
+      expect('no-debugger' in configs[0].rules).toBe(true);
+
+      console.log(configs[1].rules);
+      assert(configs[1].rules !== undefined);
+      expect('no-debugger' in configs[1].rules).toBe(false);
     });
   });
 });
