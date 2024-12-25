@@ -39,7 +39,6 @@
   "scripts": {
     "prepare": "husky",
     "generate": "node --import @oxc-node/core/register ./scripts/generate.ts",
-    "clone": "node --import @oxc-node/core/register ./scripts/sparse-clone.ts",
     "build": "vite build",
     "lint": "npx oxlint --tsconfig=tsconfig.json && npx eslint --flag unstable_ts_config",
     "format": "npx prettier --write .",
