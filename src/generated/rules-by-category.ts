@@ -149,6 +149,7 @@ const styleRules = {
   'func-names': 'off',
   'guard-for-in': 'off',
   'max-params': 'off',
+  'new-cap': 'off',
   'no-continue': 'off',
   'no-duplicate-imports': 'off',
   'no-extra-label': 'off',

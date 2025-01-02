@@ -592,6 +592,28 @@ exports[`contains all the oxlint rules 1`] = `
   "max-params": [
     0,
   ],
+  "new-cap": [
+    0,
+    {
+      "capIsNew": true,
+      "capIsNewExceptions": [
+        "Array",
+        "Boolean",
+        "Date",
+        "Error",
+        "Function",
+        "Number",
+        "Object",
+        "RegExp",
+        "String",
+        "Symbol",
+        "BigInt",
+      ],
+      "newIsCap": true,
+      "newIsCapExceptions": [],
+      "properties": true,
+    },
+  ],
   "no-alert": [
     0,
   ],

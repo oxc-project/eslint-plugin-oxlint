@@ -12,6 +12,7 @@ const eslintRules = {
   'max-classes-per-file': 'off',
   'max-lines': 'off',
   'max-params': 'off',
+  'new-cap': 'off',
   'no-alert': 'off',
   'no-array-constructor': 'off',
   'no-async-promise-executor': 'off',
