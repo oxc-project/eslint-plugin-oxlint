@@ -256,9 +256,6 @@ exports[`contains all the oxlint rules 1`] = `
   "import/max-dependencies": [
     0,
   ],
-  "import/named": [
-    0,
-  ],
   "import/namespace": [
     0,
   ],
@@ -565,6 +562,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/no-distracting-elements": [
     0,
   ],
+  "jsx-a11y/no-noninteractive-tabindex": [
+    0,
+  ],
   "jsx-a11y/no-redundant-roles": [
     0,
   ],
@@ -591,6 +591,28 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "max-params": [
     0,
+  ],
+  "new-cap": [
+    0,
+    {
+      "capIsNew": true,
+      "capIsNewExceptions": [
+        "Array",
+        "Boolean",
+        "Date",
+        "Error",
+        "Function",
+        "Number",
+        "Object",
+        "RegExp",
+        "String",
+        "Symbol",
+        "BigInt",
+      ],
+      "newIsCap": true,
+      "newIsCapExceptions": [],
+      "properties": true,
+    },
   ],
   "no-alert": [
     0,
@@ -731,6 +753,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
     {},
   ],
+  "no-extra-label": [
+    0,
+  ],
   "no-fallthrough": [
     0,
     {
@@ -777,13 +802,32 @@ exports[`contains all the oxlint rules 1`] = `
   "no-label-var": [
     0,
   ],
+  "no-labels": [
+    0,
+    {
+      "allowLoop": false,
+      "allowSwitch": false,
+    },
+  ],
   "no-loss-of-precision": [
     0,
   ],
   "no-magic-numbers": [
     0,
   ],
+  "no-multi-assign": [
+    0,
+    {
+      "ignoreNonDeclaration": false,
+    },
+  ],
   "no-multi-str": [
+    0,
+  ],
+  "no-negated-condition": [
+    0,
+  ],
+  "no-nested-ternary": [
     0,
   ],
   "no-new": [
@@ -952,6 +996,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "prefer-object-has-own": [
+    0,
+  ],
+  "prefer-rest-params": [
     0,
   ],
   "prefer-spread": [
@@ -1216,9 +1263,6 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-magic-array-flat-depth": [
     0,
   ],
-  "unicorn/no-negated-condition": [
-    0,
-  ],
   "unicorn/no-negation-in-equality-check": [
     0,
   ],
@@ -1426,6 +1470,9 @@ exports[`contains all the oxlint rules 1`] = `
     {
       "requireStringLiterals": false,
     },
+  ],
+  "vars-on-top": [
+    0,
   ],
   "vitest/consistent-test-it": [
     0,

@@ -17,6 +17,7 @@ import {
   handleIgnorePatternsScope,
   readIgnorePatternsFromConfig,
 } from './ignore-patterns.js';
+import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
@@ -66,6 +67,7 @@ export const buildFromOxlintConfig = (
 ): EslintPluginOxlintConfig[] => {
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
+  const categories = readCategoriesFromConfig(config) ?? defaultCategories;
 
   // it is not a plugin but it is activated by default
   plugins.push('eslint');
@@ -76,11 +78,7 @@ export const buildFromOxlintConfig = (
     plugins.push('react-hooks');
   }
 
-  handleCategoriesScope(
-    plugins,
-    readCategoriesFromConfig(config) ?? defaultCategories,
-    rules
-  );
+  handleCategoriesScope(plugins, categories, rules);
 
   const configRules = readRulesFromConfig(config);
 
@@ -99,7 +97,14 @@ export const buildFromOxlintConfig = (
     handleIgnorePatternsScope(ignorePatterns, baseConfig);
   }
 
-  return [baseConfig];
+  const overrides = readOverridesFromConfig(config);
+  const configs = [baseConfig];
+
+  if (overrides !== undefined) {
+    handleOverridesScope(overrides, configs, categories);
+  }
+
+  return configs;
 };
 
 /**
