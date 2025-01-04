@@ -132,17 +132,21 @@ You need to install both the [oxc](https://marketplace.visualstudio.com/items?it
 
 ## Contributing
 
-sparse clone the oxlint repository to have a local copy
+### Generate rules
 
-```shell
-pnpm clone
-```
-
-generates the rules from the sparse cloned Rust library, only for the latest version,
-new rules that haven't been released will not be included.
+Generates the rules from installed oxlint version
 
 ```shell
 pnpm generate
+pnpm format
+```
+
+### Test
+
+Tests the source code
+
+```shell
+pnpm test
 ```
 
 ## License
