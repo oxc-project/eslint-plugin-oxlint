@@ -8,6 +8,7 @@ import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
 import {
   typescriptRulesExtendEslintRules,
+  unicornRulesExtendEslintRules,
   viteTestCompatibleRules,
 } from './constants.js';
 
@@ -191,6 +192,22 @@ describe('buildFromOxlintConfig', () => {
   for (const alias of viteTestCompatibleRules) {
     it(`disables vitest jest alias rules for ${alias}`, () => {
       for (const rule of [`jest/${alias}`, `vitest/${alias}`]) {
+        const configs = buildFromOxlintConfig({
+          rules: {
+            [rule]: 'warn',
+          },
+        });
+
+        expect(configs.length).toBe(1);
+        expect(configs[0].rules).not.toBeUndefined();
+        expect(rule in configs[0].rules!).toBe(true);
+      }
+    });
+  }
+
+  for (const alias of unicornRulesExtendEslintRules) {
+    it(`disables unicorn eslint alias rules for ${alias}`, () => {
+      for (const rule of [`unicorn/${alias}`, alias]) {
         const configs = buildFromOxlintConfig({
           rules: {
             [rule]: 'warn',
@@ -503,6 +520,13 @@ describe('integration test with oxlint', () => {
       if (config.plugins?.includes('vitest')) {
         expectedCount += viteTestCompatibleRules.filter(
           (aliasRule) => `vitest/${aliasRule}` in configs[0].rules!
+        ).length;
+      }
+
+      // special mapping for unicorn alias rules
+      if (config.plugins === undefined || config.plugins.includes('unicorn')) {
+        expectedCount += unicornRulesExtendEslintRules.filter(
+          (aliasRule) => `unicorn/${aliasRule}` in configs[0].rules!
         ).length;
       }
 

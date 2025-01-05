@@ -4,6 +4,7 @@ import {
   aliasPluginNames,
   reactHookRulesInsideReactScope,
   typescriptRulesExtendEslintRules,
+  unicornRulesExtendEslintRules,
   viteTestCompatibleRules,
 } from '../src/constants.js';
 
@@ -73,6 +74,17 @@ function getAliasRules(rule: Rule): Rule | undefined {
     return {
       value: `vitest/${rule.value}`,
       scope: 'vitest',
+      category: rule.category,
+    };
+  }
+
+  if (
+    rule.scope === 'eslint' &&
+    unicornRulesExtendEslintRules.includes(rule.value)
+  ) {
+    return {
+      value: `unicorn/${rule.value}`,
+      scope: 'unicorn',
       category: rule.category,
     };
   }

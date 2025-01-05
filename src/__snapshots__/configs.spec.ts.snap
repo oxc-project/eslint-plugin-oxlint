@@ -1263,6 +1263,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-magic-array-flat-depth": [
     0,
   ],
+  "unicorn/no-negated-condition": [
+    0,
+  ],
   "unicorn/no-negation-in-equality-check": [
     0,
   ],
