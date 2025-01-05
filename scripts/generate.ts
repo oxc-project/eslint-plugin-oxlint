@@ -6,13 +6,7 @@ import { traverseRules } from './traverse-rules.js';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
-const { successResultArray, failureResultArray } = await traverseRules();
-
-if (failureResultArray.length > 0) {
-  console.error(
-    `Failed to generate rules for the following rules ${JSON.stringify(failureResultArray)}`
-  );
-}
+const successResultArray = traverseRules();
 
 const rulesGenerator = new RulesGenerator(successResultArray);
 const configGenerator = new ConfigGenerator(successResultArray);
