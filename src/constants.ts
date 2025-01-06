@@ -76,6 +76,8 @@ export const viteTestCompatibleRules = [
   'valid-expect',
 ];
 
+export const unicornRulesExtendEslintRules = ['no-negated-condition'];
+
 // All rules from `eslint-plugin-react-hooks`
 // Since oxlint supports these rules under react/*, we need to remap them.
 export const reactHookRulesInsideReactScope = [

@@ -77,6 +77,7 @@ const pedanticRules = {
   'unicorn/prefer-type-error': 'off',
   'unicorn/require-number-to-fixed-digits-argument': 'off',
   '@typescript-eslint/no-array-constructor': 'off',
+  'unicorn/no-negated-condition': 'off',
   '@typescript-eslint/no-redeclare': 'off',
   'vitest/no-conditional-in-test': 'off',
 } as const;

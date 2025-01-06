@@ -480,6 +480,7 @@ const unicornRules = {
   'unicorn/switch-case-braces': 'off',
   'unicorn/text-encoding-identifier-case': 'off',
   'unicorn/throw-new-error': 'off',
+  'unicorn/no-negated-condition': 'off',
 } as const;
 
 const vitestRules = {
