@@ -809,6 +809,9 @@ exports[`contains all the oxlint rules 1`] = `
       "allowSwitch": false,
     },
   ],
+  "no-lone-blocks": [
+    0,
+  ],
   "no-loss-of-precision": [
     0,
   ],
@@ -1423,6 +1426,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-set-size": [
+    0,
+  ],
+  "unicorn/prefer-spread": [
     0,
   ],
   "unicorn/prefer-string-raw": [
