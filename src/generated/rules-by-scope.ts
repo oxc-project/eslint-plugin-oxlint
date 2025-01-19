@@ -108,6 +108,7 @@ const eslintRules = {
   'no-var': 'off',
   'no-void': 'off',
   'no-with': 'off',
+  'prefer-promise-reject-errors': 'off',
   'prefer-rest-params': 'off',
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
@@ -175,6 +176,7 @@ const jestRules = {
   'jest/no-test-prefixes': 'off',
   'jest/no-test-return-statement': 'off',
   'jest/no-untyped-mock-factory': 'off',
+  'jest/prefer-each': 'off',
   'jest/prefer-called-with': 'off',
   'jest/prefer-comparison-matcher': 'off',
   'jest/prefer-equality-matcher': 'off',
@@ -488,7 +490,6 @@ const unicornRules = {
 const vitestRules = {
   'vitest/no-conditional-tests': 'off',
   'vitest/no-import-node-test': 'off',
-  'vitest/prefer-each': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
