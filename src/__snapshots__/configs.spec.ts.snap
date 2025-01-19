@@ -385,6 +385,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/prefer-comparison-matcher": [
     0,
   ],
+  "jest/prefer-each": [
+    0,
+  ],
   "jest/prefer-equality-matcher": [
     0,
   ],
@@ -1001,6 +1004,12 @@ exports[`contains all the oxlint rules 1`] = `
   "prefer-object-has-own": [
     0,
   ],
+  "prefer-promise-reject-errors": [
+    0,
+    {
+      "allowEmptyReject": false,
+    },
+  ],
   "prefer-rest-params": [
     0,
   ],
@@ -1520,9 +1529,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/no-test-prefixes": [
-    0,
-  ],
-  "vitest/prefer-each": [
     0,
   ],
   "vitest/prefer-hooks-in-order": [
