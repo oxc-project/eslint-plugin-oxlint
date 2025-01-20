@@ -17,6 +17,8 @@ on:
       - 'scripts/**'
       - '.github/workflows/generate.yml'
 
+permissions: {}
+
 jobs:
   generate:
     runs-on: ubuntu-latest
