@@ -8,6 +8,8 @@ on:
       - main
       - 'renovate/**'
 
+permissions: {}
+
 jobs:
   type-check:
     runs-on: ubuntu-latest
