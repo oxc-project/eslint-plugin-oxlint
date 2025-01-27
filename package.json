@@ -40,7 +40,7 @@
     "prepare": "husky",
     "generate": "node --import @oxc-node/core/register ./scripts/generate.ts",
     "build": "vite build",
-    "lint": "npx oxlint --tsconfig=tsconfig.json && npx eslint --flag unstable_ts_config",
+    "lint": "npx oxlint --tsconfig=tsconfig.json && npx eslint",
     "format": "npx prettier --write .",
     "type-check": "tsc --noEmit",
     "test": "vitest --reporter=verbose"
@@ -76,7 +76,7 @@
     "vitest": "^3.0.0"
   },
   "lint-staged": {
-    "*.{js,cjs,ts}": "eslint --flag unstable_ts_config",
+    "*.{js,cjs,ts}": "eslint",
     "*": "prettier --ignore-unknown --write"
   },
   "volta": {
