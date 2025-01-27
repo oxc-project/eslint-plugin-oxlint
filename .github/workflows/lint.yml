@@ -25,4 +25,4 @@ jobs:
         run: npx oxlint --tsconfig=tsconfig.json
 
       - name: Run eslint
-        run: npx eslint --flag unstable_ts_config
+        run: npx eslint
