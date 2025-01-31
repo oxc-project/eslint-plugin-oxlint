@@ -23,7 +23,8 @@
       "import": "./dist/generated/rules-by-scope.mjs",
       "require": "./dist/generated/rules-by-scope.cjs",
       "default": "./dist/generated/rules-by-scope.mjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
