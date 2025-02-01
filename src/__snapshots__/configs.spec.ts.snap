@@ -957,6 +957,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-unused-vars": [
     0,
   ],
+  "no-useless-call": [
+    0,
+  ],
   "no-useless-catch": [
     0,
   ],
@@ -1002,6 +1005,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "prefer-object-has-own": [
+    0,
+  ],
+  "prefer-object-spread": [
     0,
   ],
   "prefer-promise-reject-errors": [
