@@ -167,10 +167,11 @@ const styleRules = {
   'no-template-curly-in-string': 'off',
   'no-ternary': 'off',
   'prefer-promise-reject-errors': 'off',
-  'prefer-rest-params': 'off',
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
   'prefer-object-has-own': 'off',
+  'prefer-object-spread': 'off',
+  'prefer-rest-params': 'off',
   'prefer-spread': 'off',
   'sort-imports': 'off',
   'sort-keys': 'off',
@@ -469,6 +470,7 @@ const correctnessRules = {
 } as const;
 
 const perfRules = {
+  'no-useless-call': 'off',
   'no-await-in-loop': 'off',
   'react/no-array-index-key': 'off',
   'react-perf/jsx-no-jsx-as-prop': 'off',
