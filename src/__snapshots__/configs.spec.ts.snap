@@ -92,6 +92,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/explicit-function-return-type": [
     0,
   ],
+  "@typescript-eslint/init-declarations": [
+    0,
+  ],
   "@typescript-eslint/max-params": [
     0,
   ],
@@ -244,6 +247,14 @@ exports[`contains all the oxlint rules 1`] = `
     "always",
     {},
   ],
+  "func-style": [
+    0,
+    "expression",
+    {
+      "allowArrowFunctions": false,
+      "overrides": {},
+    },
+  ],
   "guard-for-in": [
     0,
   ],
@@ -296,6 +307,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/unambiguous": [
+    0,
+  ],
+  "init-declarations": [
     0,
   ],
   "jest/consistent-test-it": [
@@ -957,6 +971,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-unused-vars": [
     0,
   ],
+  "no-useless-call": [
+    0,
+  ],
   "no-useless-catch": [
     0,
   ],
@@ -1002,6 +1019,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "prefer-object-has-own": [
+    0,
+  ],
+  "prefer-object-spread": [
     0,
   ],
   "prefer-promise-reject-errors": [

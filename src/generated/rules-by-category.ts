@@ -147,8 +147,10 @@ const restrictionRules = {
 const styleRules = {
   'default-case-last': 'off',
   'default-param-last': 'off',
+  'func-style': 'off',
   'func-names': 'off',
   'guard-for-in': 'off',
+  'init-declarations': 'off',
   'max-params': 'off',
   'new-cap': 'off',
   'no-extra-label': 'off',
@@ -167,10 +169,11 @@ const styleRules = {
   'no-template-curly-in-string': 'off',
   'no-ternary': 'off',
   'prefer-promise-reject-errors': 'off',
-  'prefer-rest-params': 'off',
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
   'prefer-object-has-own': 'off',
+  'prefer-object-spread': 'off',
+  'prefer-rest-params': 'off',
   'prefer-spread': 'off',
   'sort-imports': 'off',
   'sort-keys': 'off',
@@ -270,6 +273,7 @@ const styleRules = {
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
   '@typescript-eslint/default-param-last': 'off',
+  '@typescript-eslint/init-declarations': 'off',
   '@typescript-eslint/max-params': 'off',
   '@typescript-eslint/no-magic-numbers': 'off',
   'vitest/consistent-test-it': 'off',
@@ -469,6 +473,7 @@ const correctnessRules = {
 } as const;
 
 const perfRules = {
+  'no-useless-call': 'off',
   'no-await-in-loop': 'off',
   'react/no-array-index-key': 'off',
   'react-perf/jsx-no-jsx-as-prop': 'off',
