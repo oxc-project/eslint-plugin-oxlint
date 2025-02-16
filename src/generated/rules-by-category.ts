@@ -147,8 +147,10 @@ const restrictionRules = {
 const styleRules = {
   'default-case-last': 'off',
   'default-param-last': 'off',
+  'func-style': 'off',
   'func-names': 'off',
   'guard-for-in': 'off',
+  'init-declarations': 'off',
   'max-params': 'off',
   'new-cap': 'off',
   'no-extra-label': 'off',
@@ -271,6 +273,7 @@ const styleRules = {
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
   '@typescript-eslint/default-param-last': 'off',
+  '@typescript-eslint/init-declarations': 'off',
   '@typescript-eslint/max-params': 'off',
   '@typescript-eslint/no-magic-numbers': 'off',
   'vitest/consistent-test-it': 'off',
