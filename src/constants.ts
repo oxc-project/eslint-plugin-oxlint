@@ -17,7 +17,7 @@ export const aliasPluginNames: Record<string, string> = {
 // Some typescript-eslint rules are re-implemented version of eslint rules.
 // Since oxlint supports these rules under eslint/* and it also supports TS,
 // we should override these to make implementation status up-to-date.
-// remapping in source-code: <https://github.com/oxc-project/oxc/blob/d966e0addafc4e0160ea27bf2d65e8b97ef299cb/crates/oxc_linter/src/utils/mod.rs>
+// remapping in source-code: <https://github.com/oxc-project/oxc/blob/814eab656291a7d809de808bf4a717bcfa483430/crates/oxc_linter/src/utils/mod.rs>
 export const typescriptRulesExtendEslintRules = [
   'class-methods-use-this',
   'default-param-last',
@@ -41,7 +41,7 @@ export const typescriptRulesExtendEslintRules = [
 
 // Some vitest rules are re-implemented version of jest rules.
 // Since oxlint supports these rules under jest/*, we need to remap them.
-// remapping in source-code: <https://github.com/oxc-project/oxc/blob/d966e0addafc4e0160ea27bf2d65e8b97ef299cb/crates/oxc_linter/src/utils/mod.rs>
+// remapping in source-code: <https://github.com/oxc-project/oxc/blob/814eab656291a7d809de808bf4a717bcfa483430/crates/oxc_linter/src/utils/mod.rs>
 export const viteTestCompatibleRules = [
   'consistent-test-it',
   'expect-expect',
@@ -59,6 +59,7 @@ export const viteTestCompatibleRules = [
   'no-interpolation-in-snapshots',
   'no-restricted-jest-methods',
   'no-restricted-matchers',
+  'no-standalone-expect',
   'no-test-prefixes',
   'no-test-return-statement',
   'prefer-comparison-matcher',
@@ -67,6 +68,7 @@ export const viteTestCompatibleRules = [
   'prefer-expect-resolves',
   'prefer-hooks-in-order',
   'prefer-hooks-on-top',
+  'prefer-lowercase-title',
   'prefer-mock-promise-shorthand',
   'prefer-strict-equal',
   'prefer-to-have-length',
