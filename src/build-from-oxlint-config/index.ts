@@ -6,7 +6,7 @@ import {
   OxlintConfigCategories,
   OxlintConfigPlugins,
 } from './types.js';
-import { isObject } from './utils.js';
+import { isObject } from './utilities.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
   handleCategoriesScope,
