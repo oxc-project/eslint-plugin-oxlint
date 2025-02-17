@@ -5,7 +5,7 @@ import {
   OxlintConfigCategories,
   OxlintConfigPlugins,
 } from './types.js';
-import { isObject } from './utils.js';
+import { isObject } from './utilities.js';
 
 /**
  * appends all rules which are enabled by a plugin and falls into a specific category
