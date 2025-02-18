@@ -129,7 +129,7 @@ describe('buildFromOxlintConfig', () => {
     expect('import/no-self-import' in configs[0].rules!).toBe(false);
   });
 
-  // look here: <https://github.com/oxc-project/oxc/blob/0b329516372a0353e9eb18e5bc0fbe63bce21fee/crates/oxc_linter/src/config/rules.rs#L285>
+  // look here: <https://github.com/oxc-project/oxc/blob/542bbd77ed50ad037c275b3af169b1edfab59988/crates/oxc_linter/src/config/rules.rs#L283-L296>
   it('detects oxlint rules with plugin alias inside rules block', () => {
     const configs = buildFromOxlintConfig({
       rules: {
@@ -139,6 +139,7 @@ describe('buildFromOxlintConfig', () => {
         'nextjs/no-img-element': 'warn',
         'jsx_a11y/alt-text': 'warn',
         'react/rules-of-hooks': 'warn',
+        'import-x/namespace': 'warn',
         // 'deepscan/xxx': 'warn',
       },
     });
@@ -153,6 +154,7 @@ describe('buildFromOxlintConfig', () => {
     expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
     expect('jsx-a11y/alt-text' in configs[0].rules!).toBe(true);
     expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);
+    expect('import/namespace' in configs[0].rules!).toBe(true);
   });
 
   it('detects rules without plugin name', () => {
