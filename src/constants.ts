@@ -12,6 +12,7 @@ export const aliasPluginNames: Record<string, string> = {
   // only for src/build-from-oxlint-config
   react_perf: 'react-perf',
   jsx_a11y: 'jsx-a11y',
+  'import-x': 'import',
 };
 
 // Some typescript-eslint rules are re-implemented version of eslint rules.
