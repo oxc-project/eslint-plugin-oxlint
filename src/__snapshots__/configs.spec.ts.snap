@@ -1566,6 +1566,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-restricted-matchers": [
     0,
   ],
+  "vitest/no-standalone-expect": [
+    0,
+  ],
   "vitest/no-test-prefixes": [
     0,
   ],
@@ -1588,6 +1591,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/prefer-hooks-on-top": [
+    0,
+  ],
+  "vitest/prefer-lowercase-title": [
     0,
   ],
   "vitest/prefer-mock-promise-shorthand": [

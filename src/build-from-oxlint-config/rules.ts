@@ -8,7 +8,7 @@ import {
   OxlintConfigRules,
 } from './types.js';
 import configByCategory from '../generated/configs-by-category.js';
-import { isObject } from './utils.js';
+import { isObject } from './utilities.js';
 
 const allRulesObjects = Object.values(configByCategory).map(
   (config) => config.rules
