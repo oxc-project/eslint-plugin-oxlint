@@ -2,6 +2,7 @@ import * as ruleMapsByScope from './generated/rules-by-scope.js';
 import * as ruleMapsByCategory from './generated/rules-by-category.js';
 import configByScope from './generated/configs-by-scope.js';
 import configByCategory from './generated/configs-by-category.js';
+import { overrideDisabledRulesForVueAndSvelteFiles } from './config-helper.js';
 
 type UnionToIntersection<U> = (
   U extends unknown ? (x: U) => void : never
@@ -18,14 +19,14 @@ const allRules: UnionToIntersection<AllRules> = Object.assign(
 );
 
 export default {
-  recommended: {
+  recommended: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
     rules: ruleMapsByCategory.correctnessRules,
-  },
-  all: {
+  }),
+  all: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
     rules: allRules,
-  },
+  }),
   'flat/all': {
     name: 'oxlint/all',
     rules: allRules,

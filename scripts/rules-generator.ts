@@ -56,14 +56,14 @@ export class RulesGenerator {
       exportGrouping.push(grouping);
       const rules = rulesMap.get(grouping);
 
-      code += `const ${camelCase(grouping)}Rules = {\n`;
+      code += `const ${camelCase(grouping)}Rules: Record<string, "off"> = {\n`;
 
       code += rules
         ?.map((rule) => {
           return `  '${rule.replaceAll('_', '-')}': "off"`;
         })
         .join(',\n');
-      code += '\n} as const;\n\n';
+      code += '\n};\n\n';
     }
 
     code += 'export {\n';
