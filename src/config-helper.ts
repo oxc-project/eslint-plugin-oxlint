@@ -1,11 +1,14 @@
 import { rulesDisabledForVueAndSvelteFiles } from './constants.js';
 
 type expectedConfig = {
-  rules: Record<string, 'off'>;
+  name?: string;
   plugins?: string[];
-  overrides?: { files: string[]; rules: Record<string, 'off'> }[];
+  files?: string[];
+  rules: Record<string, 'off'>;
+  overrides?: expectedConfig[];
 };
 
+// for eslint legacy configuration
 export const overrideDisabledRulesForVueAndSvelteFiles = (
   config: expectedConfig
 ): expectedConfig => {
@@ -32,4 +35,31 @@ export const overrideDisabledRulesForVueAndSvelteFiles = (
   }
 
   return newConfig;
+};
+
+// for eslint flat configuration
+export const splitDisabledRulesForVueAndSvelteFiles = (
+  config: expectedConfig
+): expectedConfig[] => {
+  const foundRules = Object.keys(config.rules).filter((rule) =>
+    rulesDisabledForVueAndSvelteFiles.includes(rule)
+  );
+
+  if (foundRules.length === 0) {
+    return [config];
+  }
+
+  const oldConfig = structuredClone(config);
+
+  const newConfig: expectedConfig = {
+    files: ['!*.vue', '!*.svelte'],
+    rules: {},
+  };
+
+  for (const rule of foundRules) {
+    delete oldConfig.rules[rule];
+    newConfig.rules[rule] = 'off';
+  }
+
+  return [oldConfig, newConfig];
 };

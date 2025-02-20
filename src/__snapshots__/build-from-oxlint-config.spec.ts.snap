@@ -64,7 +64,6 @@ exports[`buildFromOxlintConfig > custom plugins, default categories > customPlug
       "no-unsafe-optional-chaining": "off",
       "no-unused-labels": "off",
       "no-unused-private-class-members": "off",
-      "no-unused-vars": "off",
       "no-useless-catch": "off",
       "no-useless-escape": "off",
       "no-useless-rename": "off",
@@ -87,6 +86,15 @@ exports[`buildFromOxlintConfig > custom plugins, default categories > customPlug
       "valid-typeof": "off",
     },
   },
+  {
+    "files": [
+      "!*.vue",
+      "!*.svelte",
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+    },
+  },
 ]
 `;
 
@@ -103,7 +111,6 @@ exports[`buildFromOxlintConfig > default plugins (react, unicorn, typescript), d
       "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
       "@typescript-eslint/no-this-alias": "off",
       "@typescript-eslint/no-unsafe-declaration-merging": "off",
-      "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-useless-empty-export": "off",
       "@typescript-eslint/no-wrapper-object-types": "off",
       "@typescript-eslint/prefer-as-const": "off",
@@ -148,7 +155,6 @@ exports[`buildFromOxlintConfig > default plugins (react, unicorn, typescript), d
       "no-unsafe-optional-chaining": "off",
       "no-unused-labels": "off",
       "no-unused-private-class-members": "off",
-      "no-unused-vars": "off",
       "no-useless-catch": "off",
       "no-useless-escape": "off",
       "no-useless-rename": "off",
@@ -182,6 +188,16 @@ exports[`buildFromOxlintConfig > default plugins (react, unicorn, typescript), d
       "unicorn/prefer-string-starts-ends-with": "off",
       "use-isnan": "off",
       "valid-typeof": "off",
+    },
+  },
+  {
+    "files": [
+      "!*.vue",
+      "!*.svelte",
+    ],
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-unused-vars": "off",
     },
   },
 ]
