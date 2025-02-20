@@ -9,9 +9,9 @@ describe('disabledSpecificRulesOnlyForVueAndSvelteFiles', () => {
       },
     } as const;
 
-    overrideDisabledRulesForVueAndSvelteFiles(config);
+    const newConfig = overrideDisabledRulesForVueAndSvelteFiles(config);
 
-    expect(config).toStrictEqual({
+    expect(newConfig).toStrictEqual({
       rules: {
         'no-magic-numbers': 'off',
       },
@@ -26,9 +26,9 @@ describe('disabledSpecificRulesOnlyForVueAndSvelteFiles', () => {
       },
     } as const;
 
-    overrideDisabledRulesForVueAndSvelteFiles(config);
+    const newConfig = overrideDisabledRulesForVueAndSvelteFiles(config);
 
-    expect(config).toStrictEqual({
+    expect(newConfig).toStrictEqual({
       rules: {
         'no-magic-numbers': 'off',
       },

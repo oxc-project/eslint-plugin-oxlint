@@ -1,19 +1,25 @@
 import { rulesDisabledForVueAndSvelteFiles } from './constants.js';
 
-export const overrideDisabledRulesForVueAndSvelteFiles = (config: {
+type expectedConfig = {
   rules: Record<string, 'off'>;
   plugins?: string[];
   overrides?: { files: string[]; rules: Record<string, 'off'> }[];
-}): void => {
+};
+
+export const overrideDisabledRulesForVueAndSvelteFiles = (
+  config: expectedConfig
+): expectedConfig => {
   const foundRules = Object.keys(config.rules).filter((rule) =>
     rulesDisabledForVueAndSvelteFiles.includes(rule)
   );
 
   if (foundRules.length === 0) {
-    return;
+    return config;
   }
 
-  config.overrides = [
+  const newConfig = structuredClone(config);
+
+  newConfig.overrides = [
     {
       files: ['!*.vue', '!*.svelte'],
       rules: {},
@@ -21,7 +27,9 @@ export const overrideDisabledRulesForVueAndSvelteFiles = (config: {
   ];
 
   for (const rule of foundRules) {
-    delete config.rules[rule];
-    config.overrides[0].rules[rule] = 'off';
+    delete newConfig.rules[rule];
+    newConfig.overrides[0].rules[rule] = 'off';
   }
+
+  return newConfig;
 };
