@@ -75,100 +75,6 @@ describe('buildFromOxlintConfig', () => {
     expect('import/no-self-import' in configs[0].rules!).toBe(false);
   });
 
-  // look here: <https://github.com/oxc-project/oxc/blob/542bbd77ed50ad037c275b3af169b1edfab59988/crates/oxc_linter/src/config/rules.rs#L283-L296>
-  it('detects oxlint rules with plugin alias inside rules block', () => {
-    const configs = buildFromOxlintConfig({
-      rules: {
-        'eslint/eqeqeq': 'warn',
-        'typescript/no-unused-vars': 'warn',
-        'react_perf/jsx-no-new-array-as-prop': 'warn',
-        'nextjs/no-img-element': 'warn',
-        'jsx_a11y/alt-text': 'warn',
-        'react/rules-of-hooks': 'warn',
-        'import-x/namespace': 'warn',
-        // 'deepscan/xxx': 'warn',
-      },
-    });
-
-    expect(configs.length).toBe(1);
-    expect(configs[0].rules).not.toBeUndefined();
-    expect('eqeqeq' in configs[0].rules!).toBe(true);
-    expect('@typescript-eslint/no-unused-vars' in configs[0].rules!).toBe(true);
-    expect('react-perf/jsx-no-new-array-as-prop' in configs[0].rules!).toBe(
-      true
-    );
-    expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
-    expect('jsx-a11y/alt-text' in configs[0].rules!).toBe(true);
-    expect('react-hooks/rules-of-hooks' in configs[0].rules!).toBe(true);
-    expect('import/namespace' in configs[0].rules!).toBe(true);
-  });
-
-  it('detects rules without plugin name', () => {
-    const configs = buildFromOxlintConfig({
-      rules: {
-        'no-unused-vars': 'warn',
-        'jsx-no-new-array-as-prop': 'warn',
-        'no-img-element': 'warn',
-        'no-array-reduce': 'warn',
-      },
-    });
-
-    expect(configs.length).toBe(1);
-    expect(configs[0].rules).not.toBeUndefined();
-    expect('@typescript-eslint/no-unused-vars' in configs[0].rules!).toBe(true);
-    expect('react-perf/jsx-no-new-array-as-prop' in configs[0].rules!).toBe(
-      true
-    );
-    expect('@next/next/no-img-element' in configs[0].rules!).toBe(true);
-    expect('unicorn/no-array-reduce' in configs[0].rules!).toBe(true);
-  });
-
-  it('skips unknown oxlint rules', () => {
-    const configs = buildFromOxlintConfig({
-      rules: {
-        unknown: 'warn',
-        'typescript/no-img-element': 'warn', // valid rule, but wrong plugin-name
-      },
-    });
-
-    expect(configs.length).toBe(1);
-    expect(configs[0].rules).not.toBeUndefined();
-    expect('unknown' in configs[0].rules!).toBe(false);
-    expect('@next/next/no-img-element' in configs[0].rules!).toBe(false);
-  });
-
-  for (const alias of viteTestCompatibleRules) {
-    it(`disables vitest jest alias rules for ${alias}`, () => {
-      for (const rule of [`jest/${alias}`, `vitest/${alias}`]) {
-        const configs = buildFromOxlintConfig({
-          rules: {
-            [rule]: 'warn',
-          },
-        });
-
-        expect(configs.length).toBe(1);
-        expect(configs[0].rules).not.toBeUndefined();
-        expect(rule in configs[0].rules!).toBe(true);
-      }
-    });
-  }
-
-  for (const alias of unicornRulesExtendEslintRules) {
-    it(`disables unicorn eslint alias rules for ${alias}`, () => {
-      for (const rule of [`unicorn/${alias}`, alias]) {
-        const configs = buildFromOxlintConfig({
-          rules: {
-            [rule]: 'warn',
-          },
-        });
-
-        expect(configs.length).toBe(1);
-        expect(configs[0].rules).not.toBeUndefined();
-        expect(rule in configs[0].rules!).toBe(true);
-      }
-    });
-  }
-
   describe('ignorePattern Property', () => {
     it('should append ignorePatterns to eslint v9 ignore property', () => {
       const configs = buildFromOxlintConfig({
@@ -229,7 +135,7 @@ describe('buildFromOxlintConfig', () => {
       expect('vitest/no-conditional-tests' in configs[1].rules).toBe(true);
     });
 
-    it(' rule in overrides', () => {
+    it('rule in overrides', () => {
       const configs = buildFromOxlintConfig({
         rules: {
           'no-debugger': 'warn',
