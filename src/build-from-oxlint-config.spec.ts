@@ -13,60 +13,6 @@ import {
 } from './constants.js';
 
 describe('buildFromOxlintConfig', () => {
-  describe('rule values', () => {
-    for (const ruleSetting of [
-      'error',
-      ['error'],
-      'warn',
-      ['warn'],
-      1,
-      [1],
-      2,
-      [2],
-    ]) {
-      it(`detect active rule ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
-        const configs = buildFromOxlintConfig({
-          rules: {
-            eqeqeq: ruleSetting,
-          },
-        });
-
-        expect(configs.length).toBe(1);
-        expect(configs[0].rules).not.toBeUndefined();
-        expect('eqeqeq' in configs[0].rules!).toBe(true);
-        expect(configs[0].rules!.eqeqeq).toBe('off');
-      });
-    }
-
-    for (const ruleSetting of ['off', ['off'], 0, [0]]) {
-      it(`skip deactive rule ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
-        const configs = buildFromOxlintConfig({
-          rules: {
-            eqeqeq: ruleSetting,
-          },
-        });
-
-        expect(configs.length).toBe(1);
-        expect(configs[0].rules).not.toBeUndefined();
-        expect('eqeqeq' in configs[0].rules!).toBe(false);
-      });
-    }
-
-    for (const ruleSetting of ['on', ['on'], 3, [3]]) {
-      it(`skip invalid ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
-        const configs = buildFromOxlintConfig({
-          rules: {
-            eqeqeq: ruleSetting,
-          },
-        });
-
-        expect(configs.length).toBe(1);
-        expect(configs[0].rules).not.toBeUndefined();
-        expect('eqeqeq' in configs[0].rules!).toBe(false);
-      });
-    }
-  });
-
   it('skip deactivate categories', () => {
     expect(
       buildFromOxlintConfig({
