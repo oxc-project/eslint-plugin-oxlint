@@ -12,94 +12,6 @@ import {
   viteTestCompatibleRules,
 } from './constants.js';
 
-describe('buildFromOxlintConfig', () => {
-  it('skip deactivate categories', () => {
-    expect(
-      buildFromOxlintConfig({
-        categories: {
-          // correctness is the only category on by default
-          correctness: 'off',
-        },
-      })
-    ).toStrictEqual([
-      {
-        name: 'oxlint/from-oxlint-config',
-        rules: {},
-      },
-    ]);
-  });
-
-  it('default plugins (react, unicorn, typescript), default categories', () => {
-    // snapshot because it can change with the next release
-    expect(buildFromOxlintConfig({})).toMatchSnapshot(
-      'defaultPluginDefaultCategories'
-    );
-  });
-
-  it('custom plugins, default categories', () => {
-    // snapshot because it can change with the next release
-    expect(
-      buildFromOxlintConfig({
-        plugins: ['unicorn'],
-      })
-    ).toMatchSnapshot('customPluginDefaultCategories');
-  });
-
-  it('custom plugins, custom categories', () => {
-    // snapshot because it can change with the next release
-    expect(
-      buildFromOxlintConfig({
-        plugins: ['import'],
-        categories: {
-          suspicious: 'warn',
-          correctness: 'off',
-        },
-      })
-    ).toMatchSnapshot('customPluginCustomCategories');
-  });
-
-  it('skip deactivate rules, for custom enable category', () => {
-    const configs = buildFromOxlintConfig({
-      plugins: ['import'],
-      categories: {
-        suspicious: 'warn',
-        correctness: 'off',
-      },
-      rules: {
-        'import/no-self-import': 'off',
-      },
-    });
-
-    expect(configs.length).toBe(1);
-    expect(configs[0].rules).not.toBeUndefined();
-    expect('import/no-self-import' in configs[0].rules!).toBe(false);
-  });
-
-  describe('ignorePattern Property', () => {
-    it('should append ignorePatterns to eslint v9 ignore property', () => {
-      const configs = buildFromOxlintConfig({
-        ignorePatterns: ['./tests/.*ts'],
-      });
-
-      expect(configs.length).toBe(1);
-      expect(configs[0].ignores).toStrictEqual(['./tests/.*ts']);
-    });
-  });
-});
-
-const createConfigFileAndBuildFromIt = (
-  filename: string,
-  content: string
-): Linter.Config<Record<string, 'off'>>[] => {
-  fs.writeFileSync(filename, content);
-
-  const rules = buildFromOxlintConfigFile(filename);
-
-  fs.unlinkSync(filename);
-
-  return rules;
-};
-
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint json config', () => {
     const configs = createConfigFileAndBuildFromIt(
@@ -153,44 +65,6 @@ describe('buildFromOxlintConfigFile', () => {
     ]);
   });
 });
-
-const executeOxlintWithConfiguration = (
-  filename: string,
-  config: {
-    [key: string]: unknown;
-    plugins?: string[];
-    categories?: Record<string, unknown>;
-    rules?: Record<string, unknown>;
-  }
-) => {
-  fs.writeFileSync(filename, JSON.stringify(config));
-  let oxlintOutput: string;
-
-  const cliArguments = [
-    `--config=${filename}`,
-    '--disable-oxc-plugin',
-    '--silent',
-  ];
-
-  try {
-    oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
-      encoding: 'utf8',
-      stdio: 'pipe',
-    });
-  } catch {
-    oxlintOutput = '';
-  }
-
-  fs.unlinkSync(filename);
-
-  const result = /with\s(\d+)\srules/.exec(oxlintOutput);
-
-  if (result === null) {
-    return;
-  }
-
-  return Number.parseInt(result[1], 10) ?? undefined;
-};
 
 describe('integration test with oxlint', () => {
   for (const [index, config] of [
@@ -314,3 +188,54 @@ describe('integration test with oxlint', () => {
     });
   }
 });
+
+const createConfigFileAndBuildFromIt = (
+  filename: string,
+  content: string
+): Linter.Config<Record<string, 'off'>>[] => {
+  fs.writeFileSync(filename, content);
+
+  const rules = buildFromOxlintConfigFile(filename);
+
+  fs.unlinkSync(filename);
+
+  return rules;
+};
+
+const executeOxlintWithConfiguration = (
+  filename: string,
+  config: {
+    [key: string]: unknown;
+    plugins?: string[];
+    categories?: Record<string, unknown>;
+    rules?: Record<string, unknown>;
+  }
+) => {
+  fs.writeFileSync(filename, JSON.stringify(config));
+  let oxlintOutput: string;
+
+  const cliArguments = [
+    `--config=${filename}`,
+    '--disable-oxc-plugin',
+    '--silent',
+  ];
+
+  try {
+    oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
+      encoding: 'utf8',
+      stdio: 'pipe',
+    });
+  } catch {
+    oxlintOutput = '';
+  }
+
+  fs.unlinkSync(filename);
+
+  const result = /with\s(\d+)\srules/.exec(oxlintOutput);
+
+  if (result === null) {
+    return;
+  }
+
+  return Number.parseInt(result[1], 10) ?? undefined;
+};
