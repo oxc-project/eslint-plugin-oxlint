@@ -4,12 +4,16 @@ import { handleCategoriesScope } from './categories.js';
 describe('handleCategoriesScope', () => {
   it('default plugins (react, unicorn, typescript), default categories', () => {
     const rules = {};
-    handleCategoriesScope(['unicorn', 'react', 'typescript'], {}, rules);
+    handleCategoriesScope(
+      ['unicorn', 'react', 'typescript'],
+      {
+        correctness: 'warn',
+      },
+      rules
+    );
 
     // snapshot because it can change with the next release
-    expect(['unicorn', 'react', 'typescript']).toMatchSnapshot(
-      'defaultPluginDefaultCategories'
-    );
+    expect(rules).toMatchSnapshot('defaultPluginDefaultCategories');
   });
 
   it('skip deactivate categories', () => {
