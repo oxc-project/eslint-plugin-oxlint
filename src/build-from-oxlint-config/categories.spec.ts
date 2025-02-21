@@ -5,7 +5,7 @@ describe('handleCategoriesScope', () => {
   it('default plugins (react, unicorn, typescript), default categories', () => {
     const rules = {};
     handleCategoriesScope(
-      ['unicorn', 'react', 'typescript'],
+      ['eslint', 'unicorn', 'react', 'typescript'],
       {
         correctness: 'warn',
       },
@@ -26,7 +26,7 @@ describe('handleCategoriesScope', () => {
   it('custom plugins, default categories', () => {
     const rules = {};
     handleCategoriesScope(
-      ['unicorn'],
+      ['eslint', 'unicorn'],
       {
         correctness: 'warn',
       },
@@ -39,7 +39,7 @@ describe('handleCategoriesScope', () => {
   it('custom plugins, custom categories', () => {
     const rules = {};
     handleCategoriesScope(
-      ['import'],
+      ['eslint', 'import'],
       {
         suspicious: 'warn',
         correctness: 'off',
@@ -55,7 +55,7 @@ describe('handleCategoriesScope', () => {
       'import/no-self-import': 'off',
     } as const;
     handleCategoriesScope(
-      ['import'],
+      ['eslint', 'import'],
       {
         suspicious: 'warn',
         correctness: 'off',
