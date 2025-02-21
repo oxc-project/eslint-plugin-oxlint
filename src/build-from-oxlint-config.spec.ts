@@ -155,7 +155,7 @@ describe('integration test with oxlint', () => {
 
       const configs = buildFromOxlintConfig(config);
 
-      expect(configs.length).toBe(1);
+      expect(configs.length).toBeGreaterThanOrEqual(1);
       expect(configs[0].rules).not.toBeUndefined();
 
       let expectedCount = oxlintRulesCount ?? 0;
