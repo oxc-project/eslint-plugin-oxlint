@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { handleOverridesScope } from './overrides.js';
 
-describe('overrides', () => {
+describe('handleOverridesScope', () => {
   it('supports simple files + rules overrides', () => {
     const configs = [
       {
