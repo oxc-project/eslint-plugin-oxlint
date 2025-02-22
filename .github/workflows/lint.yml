@@ -24,5 +24,6 @@ jobs:
       - name: Run oxlint
         run: npx oxlint --tsconfig=tsconfig.json
 
-      - name: Run eslint
-        run: npx eslint
+      # ToDo: check why it lints every file in the repo
+      # - name: Run eslint
+      #   run: npx eslint
