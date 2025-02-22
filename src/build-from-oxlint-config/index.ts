@@ -125,11 +125,7 @@ export const buildFromOxlintConfigFile = (
   // we could not parse form the file, do not build with default values
   // we can not be sure if the setup is right
   if (config === undefined) {
-    return [
-      {
-        name: 'oxlint/from-oxlint-config',
-      },
-    ];
+    return [];
   }
 
   return buildFromOxlintConfig(config);
