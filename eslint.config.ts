@@ -6,6 +6,9 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
+    files: ['**/*.ts', '**/*.cts', '**.*.mts'],
+  },
+  {
     ignores: ['dist/'],
   },
   eslint.configs.recommended,
