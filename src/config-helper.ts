@@ -1,18 +1,11 @@
 import { rulesDisabledForVueAndSvelteFiles } from './constants.js';
-
-type expectedConfig = {
-  name?: string;
-  plugins?: string[];
-  files?: string[];
-  rules: Record<string, 'off'>;
-  overrides?: expectedConfig[];
-};
+import type { Linter } from 'eslint';
 
 // for eslint legacy configuration
 export const overrideDisabledRulesForVueAndSvelteFiles = (
-  config: expectedConfig
-): expectedConfig => {
-  const foundRules = Object.keys(config.rules).filter((rule) =>
+  config: Linter.LegacyConfig<Record<string, 'off'>>
+): Linter.LegacyConfig<Record<string, 'off'>> => {
+  const foundRules = Object.keys(config.rules!).filter((rule) =>
     rulesDisabledForVueAndSvelteFiles.includes(rule)
   );
 
@@ -31,8 +24,8 @@ export const overrideDisabledRulesForVueAndSvelteFiles = (
   ];
 
   for (const rule of foundRules) {
-    delete newConfig.rules[rule];
-    newConfig.overrides[0].rules[rule] = 'off';
+    delete newConfig.rules![rule];
+    newConfig.overrides[0].rules![rule] = 'off';
   }
 
   return newConfig;
@@ -40,9 +33,9 @@ export const overrideDisabledRulesForVueAndSvelteFiles = (
 
 // for eslint flat configuration
 export const splitDisabledRulesForVueAndSvelteFiles = (
-  config: expectedConfig
-): expectedConfig[] => {
-  const foundRules = Object.keys(config.rules).filter((rule) =>
+  config: Linter.Config
+): Linter.Config[] => {
+  const foundRules = Object.keys(config.rules!).filter((rule) =>
     rulesDisabledForVueAndSvelteFiles.includes(rule)
   );
 
@@ -52,15 +45,15 @@ export const splitDisabledRulesForVueAndSvelteFiles = (
 
   const oldConfig = structuredClone(config);
 
-  const newConfig: expectedConfig = {
+  const newConfig: Linter.Config = {
     // flat configs use minimatch syntax
     files: ['!**/*.vue', '!**/*.svelte'],
     rules: {},
   };
 
   for (const rule of foundRules) {
-    delete oldConfig.rules[rule];
-    newConfig.rules[rule] = 'off';
+    delete oldConfig.rules![rule];
+    newConfig.rules![rule] = 'off';
   }
 
   return [oldConfig, newConfig];
