@@ -83,7 +83,7 @@ describe('splitDisabledRulesForVueAndSvelteFiles', () => {
         },
       },
       {
-        files: ['!*.vue', '!*.svelte'],
+        files: ['!**/*.vue', '!**/*.svelte'],
         rules: {
           'no-unused-vars': 'off',
         },

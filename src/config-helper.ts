@@ -24,6 +24,7 @@ export const overrideDisabledRulesForVueAndSvelteFiles = (
 
   newConfig.overrides = [
     {
+      // classic configs use glob syntax
       files: ['!*.vue', '!*.svelte'],
       rules: {},
     },
@@ -52,7 +53,8 @@ export const splitDisabledRulesForVueAndSvelteFiles = (
   const oldConfig = structuredClone(config);
 
   const newConfig: expectedConfig = {
-    files: ['!*.vue', '!*.svelte'],
+    // flat configs use minimatch syntax
+    files: ['!**/*.vue', '!**/*.svelte'],
     rules: {},
   };
 
