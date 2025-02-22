@@ -32,11 +32,7 @@ describe('buildFromOxlintConfigFile', () => {
   it('fails to find oxlint config', () => {
     const configs = buildFromOxlintConfigFile('not-found.json');
 
-    expect(configs).toStrictEqual([
-      {
-        name: 'oxlint/from-oxlint-config',
-      },
-    ]);
+    expect(configs).toStrictEqual([]);
   });
 
   it('fails to parse invalid json', () => {
@@ -45,11 +41,7 @@ describe('buildFromOxlintConfigFile', () => {
       '["this", is an invalid json format]'
     );
 
-    expect(configs).toStrictEqual([
-      {
-        name: 'oxlint/from-oxlint-config',
-      },
-    ]);
+    expect(configs).toStrictEqual([]);
   });
 
   it('fails to parse invalid oxlint config', () => {
@@ -58,11 +50,7 @@ describe('buildFromOxlintConfigFile', () => {
       JSON.stringify(['this is valid json but not an object'])
     );
 
-    expect(configs).toStrictEqual([
-      {
-        name: 'oxlint/from-oxlint-config',
-      },
-    ]);
+    expect(configs).toStrictEqual([]);
   });
 });
 
