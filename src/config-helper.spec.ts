@@ -37,7 +37,8 @@ describe('overrideDisabledRulesForVueAndSvelteFiles', () => {
       },
       overrides: [
         {
-          files: ['!*.vue', '!*.svelte'],
+          files: ['*.*'],
+          excludedFiles: ['*.vue', '*.svelte'],
           rules: {
             'no-unused-vars': 'off',
           },
@@ -84,7 +85,7 @@ describe('splitDisabledRulesForVueAndSvelteFiles', () => {
       },
       {
         name: 'oxlint/vue-svelte-exceptions',
-        files: ['!**/*.vue', '!**/*.svelte'],
+        ignores: ['**/*.vue', '**/*.svelte'],
         rules: {
           'no-unused-vars': 'off',
         },

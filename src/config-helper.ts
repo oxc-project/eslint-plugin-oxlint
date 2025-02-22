@@ -18,7 +18,8 @@ export const overrideDisabledRulesForVueAndSvelteFiles = (
   newConfig.overrides = [
     {
       // classic configs use glob syntax
-      files: ['!*.vue', '!*.svelte'],
+      files: ['*.*'],
+      excludedFiles: ['*.vue', '*.svelte'],
       rules: {},
     },
   ];
@@ -48,7 +49,7 @@ export const splitDisabledRulesForVueAndSvelteFiles = (
   const newConfig: Linter.Config = {
     // flat configs use minimatch syntax
     name: 'oxlint/vue-svelte-exceptions',
-    files: ['!**/*.vue', '!**/*.svelte'],
+    ignores: ['**/*.vue', '**/*.svelte'],
     rules: {},
   };
 
