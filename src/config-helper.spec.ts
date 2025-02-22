@@ -83,6 +83,7 @@ describe('splitDisabledRulesForVueAndSvelteFiles', () => {
         },
       },
       {
+        name: 'oxlint/vue-svelte-exceptions',
         files: ['!**/*.vue', '!**/*.svelte'],
         rules: {
           'no-unused-vars': 'off',

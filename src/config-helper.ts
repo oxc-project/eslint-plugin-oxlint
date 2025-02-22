@@ -47,6 +47,7 @@ export const splitDisabledRulesForVueAndSvelteFiles = (
 
   const newConfig: Linter.Config = {
     // flat configs use minimatch syntax
+    name: 'oxlint/vue-svelte-exceptions',
     files: ['!**/*.vue', '!**/*.svelte'],
     rules: {},
   };
