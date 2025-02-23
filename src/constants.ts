@@ -88,3 +88,11 @@ export const reactHookRulesInsideReactScope = [
   'rules-of-hooks',
   'exhaustive-deps',
 ];
+
+// These rules are disabled for vue and svelte files
+// because oxlint can not parse currently the HTML
+export const rulesDisabledForVueAndSvelteFiles = [
+  'no-unused-vars',
+  '@typescript-eslint/no-unused-vars',
+  'react-hooks/rules-of-hooks', // disabled because its react
+];

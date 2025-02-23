@@ -24,7 +24,7 @@ describe('buildFromOxlintConfigFile', () => {
       }`
     );
 
-    expect(configs.length).toBe(1);
+    expect(configs.length).toBeGreaterThanOrEqual(1);
     expect(configs[0].rules).not.toBeUndefined();
     expect('no-await-in-loop' in configs[0].rules!).toBe(true);
   });
@@ -143,36 +143,44 @@ describe('integration test with oxlint', () => {
 
       const configs = buildFromOxlintConfig(config);
 
-      expect(configs.length).toBe(1);
+      expect(configs.length).toBeGreaterThanOrEqual(1);
       expect(configs[0].rules).not.toBeUndefined();
 
       let expectedCount = oxlintRulesCount ?? 0;
+      let receivedCount = 0;
 
-      // special mapping for ts alias rules
-      if (
-        config.plugins === undefined ||
-        config.plugins.includes('typescript')
-      ) {
-        expectedCount += typescriptRulesExtendEslintRules.filter(
-          (aliasRule) => aliasRule in configs[0].rules!
-        ).length;
+      for (const buildConfig of configs) {
+        receivedCount += Object.keys(buildConfig.rules!).length;
+
+        // special mapping for ts alias rules
+        if (
+          config.plugins === undefined ||
+          config.plugins.includes('typescript')
+        ) {
+          expectedCount += typescriptRulesExtendEslintRules.filter(
+            (aliasRule) => aliasRule in buildConfig.rules!
+          ).length;
+        }
+
+        // special case for vitest / jest alias rules
+        if (config.plugins?.includes('vitest')) {
+          expectedCount += viteTestCompatibleRules.filter(
+            (aliasRule) => `vitest/${aliasRule}` in buildConfig.rules!
+          ).length;
+        }
+
+        // special mapping for unicorn alias rules
+        if (
+          config.plugins === undefined ||
+          config.plugins.includes('unicorn')
+        ) {
+          expectedCount += unicornRulesExtendEslintRules.filter(
+            (aliasRule) => `unicorn/${aliasRule}` in buildConfig.rules!
+          ).length;
+        }
       }
 
-      // special case for vitest / jest alias rules
-      if (config.plugins?.includes('vitest')) {
-        expectedCount += viteTestCompatibleRules.filter(
-          (aliasRule) => `vitest/${aliasRule}` in configs[0].rules!
-        ).length;
-      }
-
-      // special mapping for unicorn alias rules
-      if (config.plugins === undefined || config.plugins.includes('unicorn')) {
-        expectedCount += unicornRulesExtendEslintRules.filter(
-          (aliasRule) => `unicorn/${aliasRule}` in configs[0].rules!
-        ).length;
-      }
-
-      expect(Object.keys(configs[0].rules!).length).toBe(expectedCount);
+      expect(receivedCount).toBe(expectedCount);
     });
   }
 });

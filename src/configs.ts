@@ -2,6 +2,11 @@ import * as ruleMapsByScope from './generated/rules-by-scope.js';
 import * as ruleMapsByCategory from './generated/rules-by-category.js';
 import configByScope from './generated/configs-by-scope.js';
 import configByCategory from './generated/configs-by-category.js';
+import {
+  overrideDisabledRulesForVueAndSvelteFiles,
+  splitDisabledRulesForVueAndSvelteFiles,
+} from './config-helper.js';
+import type { Linter } from 'eslint';
 
 type UnionToIntersection<U> = (
   U extends unknown ? (x: U) => void : never
@@ -17,23 +22,33 @@ const allRules: UnionToIntersection<AllRules> = Object.assign(
   ...Object.values(ruleMapsByScope)
 );
 
+const splitDisabledRulesForVueAndSvelteFilesDeep = <T extends string>(
+  config: Record<T, Linter.Config>
+): Record<T, Linter.Config[]> => {
+  const entries = Object.entries<Linter.Config>(config).map(
+    ([name, config]) => [name, splitDisabledRulesForVueAndSvelteFiles(config)]
+  );
+
+  return Object.fromEntries(entries);
+};
+
 export default {
-  recommended: {
+  recommended: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
     rules: ruleMapsByCategory.correctnessRules,
-  },
-  all: {
+  }),
+  all: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
     rules: allRules,
-  },
-  'flat/all': {
+  }),
+  'flat/all': splitDisabledRulesForVueAndSvelteFiles({
     name: 'oxlint/all',
     rules: allRules,
-  },
-  'flat/recommended': {
+  }),
+  'flat/recommended': splitDisabledRulesForVueAndSvelteFiles({
     name: 'oxlint/recommended',
     rules: ruleMapsByCategory.correctnessRules,
-  },
-  ...configByScope,
-  ...configByCategory,
+  }),
+  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByScope),
+  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByCategory),
 };

@@ -18,6 +18,7 @@ import {
   readIgnorePatternsFromConfig,
 } from './ignore-patterns.js';
 import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
+import { splitDisabledRulesForVueAndSvelteFiles } from '../config-helper.js';
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
@@ -98,7 +99,9 @@ export const buildFromOxlintConfig = (
   }
 
   const overrides = readOverridesFromConfig(config);
-  const configs = [baseConfig];
+  const configs = splitDisabledRulesForVueAndSvelteFiles(
+    baseConfig
+  ) as EslintPluginOxlintConfig[];
 
   if (overrides !== undefined) {
     handleOverridesScope(overrides, configs, categories);
