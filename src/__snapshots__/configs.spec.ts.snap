@@ -255,6 +255,10 @@ exports[`contains all the oxlint rules 1`] = `
       "overrides": {},
     },
   ],
+  "grouped-accessor-pairs": [
+    0,
+    "anyOrder",
+  ],
   "guard-for-in": [
     0,
   ],
@@ -603,7 +607,16 @@ exports[`contains all the oxlint rules 1`] = `
   "max-classes-per-file": [
     0,
   ],
+  "max-depth": [
+    0,
+  ],
   "max-lines": [
+    0,
+  ],
+  "max-lines-per-function": [
+    0,
+  ],
+  "max-nested-callbacks": [
     0,
   ],
   "max-params": [
@@ -937,6 +950,12 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-unexpected-multiline": [
     0,
+  ],
+  "no-unneeded-ternary": [
+    0,
+    {
+      "defaultAssignment": true,
+    },
   ],
   "no-unsafe-finally": [
     0,
@@ -1281,6 +1300,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-instanceof-array": [
+    0,
+  ],
+  "unicorn/no-invalid-fetch-options": [
     0,
   ],
   "unicorn/no-invalid-remove-event-listener": [
