@@ -3,7 +3,10 @@
 const pedanticRules: Record<string, 'off'> = {
   'array-callback-return': 'off',
   eqeqeq: 'off',
+  'max-nested-callbacks': 'off',
+  'max-lines-per-function': 'off',
   'max-classes-per-file': 'off',
+  'max-depth': 'off',
   'max-lines': 'off',
   'no-object-constructor': 'off',
   'no-array-constructor': 'off',
@@ -91,7 +94,6 @@ const restrictionRules: Record<string, 'off'> = {
   'no-empty-function': 'off',
   'no-empty': 'off',
   'no-eq-null': 'off',
-  'no-eval': 'off',
   'no-iterator': 'off',
   'no-plusplus': 'off',
   'no-proto': 'off',
@@ -149,6 +151,7 @@ const styleRules: Record<string, 'off'> = {
   'default-param-last': 'off',
   'func-style': 'off',
   'func-names': 'off',
+  'grouped-accessor-pairs': 'off',
   'guard-for-in': 'off',
   'init-declarations': 'off',
   'max-params': 'off',
@@ -322,6 +325,7 @@ const correctnessRules: Record<string, 'off'> = {
   'no-empty-character-class': 'off',
   'no-empty-pattern': 'off',
   'no-empty-static-block': 'off',
+  'no-eval': 'off',
   'no-ex-assign': 'off',
   'no-extra-boolean-cast': 'off',
   'no-func-assign': 'off',
@@ -446,6 +450,7 @@ const correctnessRules: Record<string, 'off'> = {
   '@typescript-eslint/no-wrapper-object-types': 'off',
   '@typescript-eslint/prefer-as-const': 'off',
   '@typescript-eslint/triple-slash-reference': 'off',
+  'unicorn/no-invalid-fetch-options': 'off',
   'unicorn/no-await-in-promise-methods': 'off',
   'unicorn/no-document-cookie': 'off',
   'unicorn/no-empty-file': 'off',
@@ -486,6 +491,7 @@ const perfRules: Record<string, 'off'> = {
 };
 
 const suspiciousRules: Record<string, 'off'> = {
+  'no-unneeded-ternary': 'off',
   'no-extend-native': 'off',
   'no-new': 'off',
   'no-unexpected-multiline': 'off',
