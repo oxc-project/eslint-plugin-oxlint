@@ -2,6 +2,7 @@
 
 const eslintRules: Record<string, 'off'> = {
   'array-callback-return': 'off',
+  curly: 'off',
   'default-case': 'off',
   'default-case-last': 'off',
   'default-param-last': 'off',
@@ -26,6 +27,7 @@ const eslintRules: Record<string, 'off'> = {
   'no-nested-ternary': 'off',
   'no-labels': 'off',
   'no-lone-blocks': 'off',
+  'no-restricted-imports': 'off',
   'no-object-constructor': 'off',
   'no-duplicate-imports': 'off',
   'no-alert': 'off',
@@ -116,6 +118,7 @@ const eslintRules: Record<string, 'off'> = {
   'no-var': 'off',
   'no-void': 'off',
   'no-with': 'off',
+  'operator-assignment': 'off',
   'prefer-promise-reject-errors': 'off',
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
@@ -140,6 +143,8 @@ const eslintRules: Record<string, 'off'> = {
 const importRules: Record<string, 'off'> = {
   'import/default': 'off',
   'import/first': 'off',
+  'import/no-absolute-path': 'off',
+  'import/no-mutable-exports': 'off',
   'import/no-named-default': 'off',
   'import/no-namespace': 'off',
   'import/max-dependencies': 'off',
@@ -293,6 +298,7 @@ const nodeRules: Record<string, 'off'> = {
 const promiseRules: Record<string, 'off'> = {
   'promise/avoid-new': 'off',
   'promise/catch-or-return': 'off',
+  'promise/no-nesting': 'off',
   'promise/no-promise-in-callback': 'off',
   'promise/no-callback-in-promise': 'off',
   'promise/no-new-statics': 'off',
@@ -317,6 +323,7 @@ const reactRules: Record<string, 'off'> = {
   'react/jsx-no-undef': 'off',
   'react/jsx-no-useless-fragment': 'off',
   'react/jsx-props-no-spread-multi': 'off',
+  'react/no-namespace': 'off',
   'react/no-array-index-key': 'off',
   'react/no-children-prop': 'off',
   'react/no-danger-with-children': 'off',
@@ -391,6 +398,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/default-param-last': 'off',
   '@typescript-eslint/init-declarations': 'off',
   '@typescript-eslint/max-params': 'off',
+  '@typescript-eslint/no-restricted-imports': 'off',
   '@typescript-eslint/no-array-constructor': 'off',
   '@typescript-eslint/no-dupe-class-members': 'off',
   '@typescript-eslint/no-empty-function': 'off',
@@ -404,6 +412,7 @@ const typescriptRules: Record<string, 'off'> = {
 
 const unicornRules: Record<string, 'off'> = {
   'unicorn/catch-error-name': 'off',
+  'unicorn/consistent-date-clone': 'off',
   'unicorn/consistent-empty-array-spread': 'off',
   'unicorn/consistent-existence-index-check': 'off',
   'unicorn/consistent-function-scoping': 'off',
