@@ -164,6 +164,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-require-imports": [
     0,
   ],
+  "@typescript-eslint/no-restricted-imports": [
+    0,
+  ],
   "@typescript-eslint/no-this-alias": [
     0,
   ],
@@ -226,6 +229,10 @@ exports[`contains all the oxlint rules 1`] = `
       "checkForEach": false,
     },
   ],
+  "curly": [
+    0,
+    "all",
+  ],
   "default-case": [
     0,
     {},
@@ -274,6 +281,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/namespace": [
     0,
   ],
+  "import/no-absolute-path": [
+    0,
+  ],
   "import/no-amd": [
     0,
   ],
@@ -290,6 +300,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-dynamic-require": [
+    0,
+  ],
+  "import/no-mutable-exports": [
     0,
   ],
   "import/no-named-as-default": [
@@ -908,6 +921,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-restricted-globals": [
     0,
   ],
+  "no-restricted-imports": [
+    0,
+  ],
   "no-return-assign": [
     0,
     "except-parens",
@@ -1031,6 +1047,10 @@ exports[`contains all the oxlint rules 1`] = `
   "node/no-new-require": [
     0,
   ],
+  "operator-assignment": [
+    0,
+    "always",
+  ],
   "prefer-exponentiation-operator": [
     0,
   ],
@@ -1062,6 +1082,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "promise/no-callback-in-promise": [
+    0,
+  ],
+  "promise/no-nesting": [
     0,
   ],
   "promise/no-new-statics": [
@@ -1164,6 +1187,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-is-mounted": [
     0,
   ],
+  "react/no-namespace": [
+    0,
+  ],
   "react/no-render-return-value": [
     0,
   ],
@@ -1240,6 +1266,9 @@ exports[`contains all the oxlint rules 1`] = `
     "never",
   ],
   "unicorn/catch-error-name": [
+    0,
+  ],
+  "unicorn/consistent-date-clone": [
     0,
   ],
   "unicorn/consistent-empty-array-spread": [

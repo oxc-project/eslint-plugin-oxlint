@@ -7,14 +7,14 @@ const pedanticConfig = {
   rules: rules.pedanticRules,
 };
 
-const restrictionConfig = {
-  name: 'oxlint/restriction',
-  rules: rules.restrictionRules,
-};
-
 const styleConfig = {
   name: 'oxlint/style',
   rules: rules.styleRules,
+};
+
+const restrictionConfig = {
+  name: 'oxlint/restriction',
+  rules: rules.restrictionRules,
 };
 
 const correctnessConfig = {
@@ -34,8 +34,8 @@ const suspiciousConfig = {
 
 const configByCategory = {
   'flat/pedantic': pedanticConfig,
-  'flat/restriction': restrictionConfig,
   'flat/style': styleConfig,
+  'flat/restriction': restrictionConfig,
   'flat/correctness': correctnessConfig,
   'flat/perf': perfConfig,
   'flat/suspicious': suspiciousConfig,
