@@ -61,7 +61,7 @@ const getConfigContent = (
 
 /**
  * builds turned off rules, which are supported by oxlint.
- * It accepts an object similar to the oxlint.json file.
+ * It accepts an object similar to the .oxlintrc.json file.
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
@@ -112,9 +112,9 @@ export const buildFromOxlintConfig = (
 
 /**
  * builds turned off rules, which are supported by oxlint.
- * It accepts an filepath to the oxlint.json file.
+ * It accepts an filepath to the .oxlintrc.json file.
  *
- * It the oxlint.json file could not be found or parsed,
+ * It the .oxlintrc.json file could not be found or parsed,
  * no rules will be deactivated and an error to `console.error` will be emitted
  */
 export const buildFromOxlintConfigFile = (
