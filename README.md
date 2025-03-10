@@ -47,7 +47,7 @@ module.exports = {
 }
 ```
 
-### Detect rules from `oxlint.json`
+### Detect rules from `.oxlintrc.json`
 
 If you are using flat configuration (eslint >= 9.0), you can use the following config:
 
@@ -56,11 +56,11 @@ If you are using flat configuration (eslint >= 9.0), you can use the following c
 import oxlint from 'eslint-plugin-oxlint';
 export default [
   ..., // other plugins
-  ...oxlint.buildFromOxlintConfigFile('./oxlint.json'),
+  ...oxlint.buildFromOxlintConfigFile('./.oxlintrc.json'),
 ];
 ```
 
-Or build it by an `oxlint.json`-like object:
+Or build it by an `.oxlintrc.json`-like object:
 
 ```js
 // eslint.config.js
