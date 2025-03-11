@@ -272,6 +272,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/default": [
     0,
   ],
+  "import/exports-last": [
+    0,
+  ],
   "import/first": [
     0,
   ],
@@ -285,6 +288,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-amd": [
+    0,
+  ],
+  "import/no-anonymous-default-export": [
     0,
   ],
   "import/no-commonjs": [
@@ -1093,6 +1099,9 @@ exports[`contains all the oxlint rules 1`] = `
   "promise/no-promise-in-callback": [
     0,
   ],
+  "promise/no-return-wrap": [
+    0,
+  ],
   "promise/param-names": [
     0,
   ],
@@ -1100,6 +1109,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "promise/prefer-await-to-then": [
+    0,
+  ],
+  "promise/prefer-catch": [
     0,
   ],
   "promise/spec-only": [
@@ -1140,6 +1152,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-curly-brace-presence": [
+    0,
+  ],
+  "react/jsx-filename-extension": [
     0,
   ],
   "react/jsx-key": [

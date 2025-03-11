@@ -142,7 +142,9 @@ const eslintRules: Record<string, 'off'> = {
 
 const importRules: Record<string, 'off'> = {
   'import/default': 'off',
+  'import/exports-last': 'off',
   'import/first': 'off',
+  'import/no-anonymous-default-export': 'off',
   'import/no-absolute-path': 'off',
   'import/no-mutable-exports': 'off',
   'import/no-named-default': 'off',
@@ -298,11 +300,13 @@ const nodeRules: Record<string, 'off'> = {
 const promiseRules: Record<string, 'off'> = {
   'promise/avoid-new': 'off',
   'promise/catch-or-return': 'off',
+  'promise/no-return-wrap': 'off',
   'promise/no-nesting': 'off',
   'promise/no-promise-in-callback': 'off',
   'promise/no-callback-in-promise': 'off',
   'promise/no-new-statics': 'off',
   'promise/param-names': 'off',
+  'promise/prefer-catch': 'off',
   'promise/prefer-await-to-callbacks': 'off',
   'promise/prefer-await-to-then': 'off',
   'promise/spec-only': 'off',
@@ -313,6 +317,7 @@ const reactRules: Record<string, 'off'> = {
   'react/button-has-type': 'off',
   'react/checked-requires-onchange-or-readonly': 'off',
   'react/iframe-missing-sandbox': 'off',
+  'react/jsx-filename-extension': 'off',
   'react/jsx-boolean-value': 'off',
   'react/jsx-curly-brace-presence': 'off',
   'react/jsx-key': 'off',
