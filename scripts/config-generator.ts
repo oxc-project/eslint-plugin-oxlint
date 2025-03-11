@@ -21,7 +21,7 @@ export class ConfigGenerator {
     this.rulesGrouping = rulesGrouping;
   }
 
-  public setRulesGrouping(rulesGrouping: RulesGrouping) {
+  public setRulesGrouping(rulesGrouping: RulesGrouping): void {
     this.rulesGrouping = rulesGrouping;
   }
 
@@ -37,7 +37,7 @@ export class ConfigGenerator {
     return set;
   }
 
-  public generateRulesCode() {
+  public generateRulesCode(): string {
     console.log(`Generating config, grouped by ${this.rulesGrouping}`);
 
     const rulesGrouping = this.rulesGrouping;

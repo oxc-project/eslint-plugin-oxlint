@@ -1,8 +1,8 @@
 import path from 'node:path';
 import dts from 'vite-plugin-dts';
-import { defineConfig, Plugin } from 'vitest/config';
+import { defineConfig, Plugin, type ViteUserConfig } from 'vitest/config';
 
-export default defineConfig({
+const config: ViteUserConfig = defineConfig({
   test: {
     coverage: {
       include: ['src', 'scripts'],
@@ -32,3 +32,5 @@ export default defineConfig({
     }) as Plugin,
   ],
 });
+
+export default config;
