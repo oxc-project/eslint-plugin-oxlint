@@ -1553,6 +1553,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/require-number-to-fixed-digits-argument": [
     0,
   ],
+  "unicorn/require-post-message-target-origin": [
+    0,
+  ],
   "unicorn/switch-case-braces": [
     0,
   ],

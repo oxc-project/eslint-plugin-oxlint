@@ -504,6 +504,7 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/prefer-string-trim-start-end': 'off',
   'unicorn/prefer-structured-clone': 'off',
   'unicorn/prefer-type-error': 'off',
+  'unicorn/require-post-message-target-origin': 'off',
   'unicorn/require-array-join-separator': 'off',
   'unicorn/require-number-to-fixed-digits-argument': 'off',
   'unicorn/switch-case-braces': 'off',

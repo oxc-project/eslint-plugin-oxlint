@@ -527,6 +527,7 @@ const suspiciousRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/prefer-add-event-listener': 'off',
+  'unicorn/require-post-message-target-origin': 'off',
   '@typescript-eslint/no-useless-constructor': 'off',
   'vitest/no-commented-out-tests': 'off',
 };
