@@ -8,6 +8,7 @@ const pedanticRules: Record<string, 'off'> = {
   'max-classes-per-file': 'off',
   'max-depth': 'off',
   'max-lines': 'off',
+  'no-lonely-if': 'off',
   'no-object-constructor': 'off',
   'no-array-constructor': 'off',
   'no-case-declarations': 'off',

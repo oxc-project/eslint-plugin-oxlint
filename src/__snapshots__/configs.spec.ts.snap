@@ -861,6 +861,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-lone-blocks": [
     0,
   ],
+  "no-lonely-if": [
+    0,
+  ],
   "no-loss-of-precision": [
     0,
   ],
