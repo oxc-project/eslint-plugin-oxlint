@@ -20,6 +20,7 @@ const eslintRules: Record<string, 'off'> = {
   'max-lines': 'off',
   'max-params': 'off',
   'new-cap': 'off',
+  'no-lonely-if': 'off',
   'no-useless-call': 'off',
   'no-unneeded-ternary': 'off',
   'no-extra-label': 'off',
