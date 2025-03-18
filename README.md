@@ -96,7 +96,7 @@ And then you can add the following script to your `package.json`:
 
 ```js
   configs: {
-    // recmmended only contains the `correctness` category
+    // recommended only contains the `correctness` category
     recommended: { plugins: [Array], rules: [Object] },
     'flat/recommended': { rules: [Object] },
 
