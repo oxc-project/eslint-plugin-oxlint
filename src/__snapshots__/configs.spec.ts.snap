@@ -170,6 +170,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-this-alias": [
     0,
   ],
+  "@typescript-eslint/no-unnecessary-parameter-property-assignment": [
+    0,
+  ],
   "@typescript-eslint/no-unnecessary-type-constraint": [
     0,
   ],
@@ -306,6 +309,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-dynamic-require": [
+    0,
+  ],
+  "import/no-empty-named-blocks": [
     0,
   ],
   "import/no-mutable-exports": [

@@ -4,6 +4,7 @@ exports[`handleCategoriesScope > custom plugins, custom categories > customPlugi
 {
   "import/no-absolute-path": "off",
   "import/no-duplicates": "off",
+  "import/no-empty-named-blocks": "off",
   "import/no-named-as-default": "off",
   "import/no-named-as-default-member": "off",
   "import/no-self-import": "off",
@@ -93,6 +94,7 @@ exports[`handleCategoriesScope > default plugins (react, unicorn, typescript), d
   "@typescript-eslint/no-misused-new": "off",
   "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
   "@typescript-eslint/no-this-alias": "off",
+  "@typescript-eslint/no-unnecessary-parameter-property-assignment": "off",
   "@typescript-eslint/no-unsafe-declaration-merging": "off",
   "@typescript-eslint/no-unused-vars": "off",
   "@typescript-eslint/no-useless-empty-export": "off",
