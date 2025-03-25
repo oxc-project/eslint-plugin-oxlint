@@ -2,6 +2,6 @@
   "plugins": ["unicorn", "typescript", "oxc"],
   "categories": {
     "correctness": "error",
-    "suspicious": "warn"
+    "suspicious": "error"
   }
 }
