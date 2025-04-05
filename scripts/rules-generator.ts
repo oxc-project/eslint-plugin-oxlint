@@ -21,7 +21,7 @@ export class RulesGenerator {
     this.rulesGrouping = rulesGrouping;
   }
 
-  public setRulesGrouping(rulesGrouping: RulesGrouping) {
+  public setRulesGrouping(rulesGrouping: RulesGrouping): void {
     this.rulesGrouping = rulesGrouping;
   }
 
@@ -40,7 +40,7 @@ export class RulesGenerator {
     return map;
   }
 
-  public generateRulesCode() {
+  public generateRulesCode(): string {
     console.log(`Generating rules, grouped by ${this.rulesGrouping}`);
 
     const rulesGrouping = this.rulesGrouping;
