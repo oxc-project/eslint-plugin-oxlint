@@ -430,6 +430,7 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/explicit-length-check': 'off',
   'unicorn/filename-case': 'off',
   'unicorn/new-for-builtins': 'off',
+  'unicorn/no-accessor-recursion': 'off',
   'unicorn/no-invalid-fetch-options': 'off',
   'unicorn/no-abusive-eslint-disable': 'off',
   'unicorn/no-anonymous-default-export': 'off',
