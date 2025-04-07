@@ -19,7 +19,7 @@ export const aliasPluginNames: Record<string, string> = {
 // Since oxlint supports these rules under eslint/* and it also supports TS,
 // we should override these to make implementation status up-to-date.
 // remapping in source-code: <https://github.com/oxc-project/oxc/blob/814eab656291a7d809de808bf4a717bcfa483430/crates/oxc_linter/src/utils/mod.rs>
-export const typescriptRulesExtendEslintRules = [
+export const typescriptRulesExtendEslintRules: string[] = [
   'class-methods-use-this',
   'default-param-last',
   'init-declarations',
@@ -43,7 +43,7 @@ export const typescriptRulesExtendEslintRules = [
 // Some vitest rules are re-implemented version of jest rules.
 // Since oxlint supports these rules under jest/*, we need to remap them.
 // remapping in source-code: <https://github.com/oxc-project/oxc/blob/814eab656291a7d809de808bf4a717bcfa483430/crates/oxc_linter/src/utils/mod.rs>
-export const viteTestCompatibleRules = [
+export const viteTestCompatibleRules: string[] = [
   'consistent-test-it',
   'expect-expect',
   'max-expects',
@@ -80,18 +80,18 @@ export const viteTestCompatibleRules = [
   'valid-expect',
 ];
 
-export const unicornRulesExtendEslintRules = ['no-negated-condition'];
+export const unicornRulesExtendEslintRules: string[] = ['no-negated-condition'];
 
 // All rules from `eslint-plugin-react-hooks`
 // Since oxlint supports these rules under react/*, we need to remap them.
-export const reactHookRulesInsideReactScope = [
+export const reactHookRulesInsideReactScope: string[] = [
   'rules-of-hooks',
   'exhaustive-deps',
 ];
 
 // These rules are disabled for vue and svelte files
 // because oxlint can not parse currently the HTML
-export const rulesDisabledForVueAndSvelteFiles = [
+export const rulesDisabledForVueAndSvelteFiles: string[] = [
   'no-unused-vars',
   '@typescript-eslint/no-unused-vars',
   'react-hooks/rules-of-hooks', // disabled because its react
