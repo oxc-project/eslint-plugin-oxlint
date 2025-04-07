@@ -1325,6 +1325,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-abusive-eslint-disable": [
     0,
   ],
+  "unicorn/no-accessor-recursion": [
+    0,
+  ],
   "unicorn/no-anonymous-default-export": [
     0,
   ],
