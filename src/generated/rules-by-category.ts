@@ -126,6 +126,7 @@ const styleRules: Record<string, 'off'> = {
   yoda: 'off',
   'import/exports-last': 'off',
   'import/first': 'off',
+  'import/group-exports': 'off',
   'import/no-anonymous-default-export': 'off',
   'import/no-mutable-exports': 'off',
   'import/no-named-default': 'off',
