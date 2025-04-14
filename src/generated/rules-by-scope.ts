@@ -145,6 +145,7 @@ const importRules: Record<string, 'off'> = {
   'import/default': 'off',
   'import/exports-last': 'off',
   'import/first': 'off',
+  'import/group-exports': 'off',
   'import/no-empty-named-blocks': 'off',
   'import/no-anonymous-default-export': 'off',
   'import/no-absolute-path': 'off',

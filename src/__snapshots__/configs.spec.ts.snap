@@ -281,6 +281,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/first": [
     0,
   ],
+  "import/group-exports": [
+    0,
+  ],
   "import/max-dependencies": [
     0,
   ],
