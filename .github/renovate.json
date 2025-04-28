@@ -8,7 +8,7 @@
     {
       "groupName": "npm packages",
       "matchManagers": ["npm"],
-      "ignoreDeps": ["oxlint", "@oxc-node/core"]
+      "ignoreDeps": ["oxlint"]
     },
     {
       "groupName": "oxlint",
