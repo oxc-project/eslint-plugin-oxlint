@@ -2,6 +2,7 @@
 
 exports[`handleCategoriesScope > custom plugins, custom categories > customPluginCustomCategories 1`] = `
 {
+  "block-scoped-var": "off",
   "import/no-absolute-path": "off",
   "import/no-duplicates": "off",
   "import/no-empty-named-blocks": "off",
@@ -146,6 +147,7 @@ exports[`handleCategoriesScope > default plugins (react, unicorn, typescript), d
   "no-useless-escape": "off",
   "no-useless-rename": "off",
   "no-with": "off",
+  "react/forward-ref-uses-ref": "off",
   "react/jsx-key": "off",
   "react/jsx-no-duplicate-props": "off",
   "react/jsx-no-target-blank": "off",

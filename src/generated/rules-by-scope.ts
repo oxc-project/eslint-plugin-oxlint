@@ -2,6 +2,7 @@
 
 const eslintRules: Record<string, 'off'> = {
   'array-callback-return': 'off',
+  'block-scoped-var': 'off',
   curly: 'off',
   'default-case': 'off',
   'default-case-last': 'off',
@@ -319,6 +320,7 @@ const promiseRules: Record<string, 'off'> = {
 const reactRules: Record<string, 'off'> = {
   'react/button-has-type': 'off',
   'react/checked-requires-onchange-or-readonly': 'off',
+  'react/forward-ref-uses-ref': 'off',
   'react/iframe-missing-sandbox': 'off',
   'react/jsx-filename-extension': 'off',
   'react/jsx-boolean-value': 'off',
@@ -421,6 +423,7 @@ const typescriptRules: Record<string, 'off'> = {
 
 const unicornRules: Record<string, 'off'> = {
   'unicorn/catch-error-name': 'off',
+  'unicorn/consistent-assert': 'off',
   'unicorn/consistent-date-clone': 'off',
   'unicorn/consistent-empty-array-spread': 'off',
   'unicorn/consistent-existence-index-check': 'off',

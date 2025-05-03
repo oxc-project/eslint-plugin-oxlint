@@ -232,6 +232,9 @@ exports[`contains all the oxlint rules 1`] = `
       "checkForEach": false,
     },
   ],
+  "block-scoped-var": [
+    0,
+  ],
   "curly": [
     0,
     "all",
@@ -1157,6 +1160,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/checked-requires-onchange-or-readonly": [
     0,
   ],
+  "react/forward-ref-uses-ref": [
+    0,
+  ],
   "react/iframe-missing-sandbox": [
     0,
   ],
@@ -1293,6 +1299,9 @@ exports[`contains all the oxlint rules 1`] = `
     "never",
   ],
   "unicorn/catch-error-name": [
+    0,
+  ],
+  "unicorn/consistent-assert": [
     0,
   ],
   "unicorn/consistent-date-clone": [
