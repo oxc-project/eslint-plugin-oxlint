@@ -966,6 +966,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-shadow-restricted-names": [
     0,
+    {
+      "reportGlobalThis": false,
+    },
   ],
   "no-sparse-arrays": [
     0,
@@ -1016,6 +1019,7 @@ exports[`contains all the oxlint rules 1`] = `
       "allowTaggedTemplates": false,
       "allowTernary": false,
       "enforceForJSX": false,
+      "ignoreDirectives": false,
     },
   ],
   "no-unused-labels": [
