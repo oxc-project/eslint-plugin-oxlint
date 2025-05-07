@@ -12,7 +12,7 @@ See https://oxc.rs/blog/2023-12-12-announcing-oxlint.html
 ## Installation
 
 ```shell
-pnpm add eslint-plugin-oxlint --D
+pnpm add eslint-plugin-oxlint -D
 ```
 
 ## Usage
