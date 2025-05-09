@@ -1031,6 +1031,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-unused-vars": [
     0,
   ],
+  "no-useless-backreference": [
+    0,
+  ],
   "no-useless-call": [
     0,
   ],
@@ -1429,6 +1432,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-unnecessary-await": [
+    0,
+  ],
+  "unicorn/no-unnecessary-slice-end": [
     0,
   ],
   "unicorn/no-unreadable-array-destructuring": [
