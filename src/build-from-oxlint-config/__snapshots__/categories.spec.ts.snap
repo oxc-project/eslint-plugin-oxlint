@@ -9,6 +9,7 @@ exports[`handleCategoriesScope > custom plugins, custom categories > customPlugi
   "import/no-named-as-default": "off",
   "import/no-named-as-default-member": "off",
   "import/no-self-import": "off",
+  "import/no-unassigned-import": "off",
   "no-extend-native": "off",
   "no-new": "off",
   "no-unexpected-multiline": "off",
