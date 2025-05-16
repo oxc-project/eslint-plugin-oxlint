@@ -86,6 +86,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/consistent-type-definitions": [
     0,
   ],
+  "@typescript-eslint/consistent-type-imports": [
+    0,
+  ],
   "@typescript-eslint/default-param-last": [
     0,
   ],
@@ -275,6 +278,9 @@ exports[`contains all the oxlint rules 1`] = `
   "guard-for-in": [
     0,
   ],
+  "import/consistent-type-specifier-style": [
+    0,
+  ],
   "import/default": [
     0,
   ],
@@ -336,6 +342,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-self-import": [
+    0,
+  ],
+  "import/no-unassigned-import": [
     0,
   ],
   "import/no-webpack-loader-syntax": [
@@ -1165,6 +1174,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/checked-requires-onchange-or-readonly": [
+    0,
+  ],
+  "react/forbid-elements": [
     0,
   ],
   "react/forward-ref-uses-ref": [

@@ -144,10 +144,12 @@ const eslintRules: Record<string, 'off'> = {
 };
 
 const importRules: Record<string, 'off'> = {
+  'import/consistent-type-specifier-style': 'off',
   'import/default': 'off',
   'import/exports-last': 'off',
   'import/first': 'off',
   'import/group-exports': 'off',
+  'import/no-unassigned-import': 'off',
   'import/no-empty-named-blocks': 'off',
   'import/no-anonymous-default-export': 'off',
   'import/no-absolute-path': 'off',
@@ -321,6 +323,7 @@ const promiseRules: Record<string, 'off'> = {
 const reactRules: Record<string, 'off'> = {
   'react/button-has-type': 'off',
   'react/checked-requires-onchange-or-readonly': 'off',
+  'react/forbid-elements': 'off',
   'react/forward-ref-uses-ref': 'off',
   'react/iframe-missing-sandbox': 'off',
   'react/jsx-filename-extension': 'off',
@@ -374,6 +377,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-generic-constructors': 'off',
   '@typescript-eslint/consistent-indexed-object-style': 'off',
   '@typescript-eslint/consistent-type-definitions': 'off',
+  '@typescript-eslint/consistent-type-imports': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/no-inferrable-types': 'off',
   '@typescript-eslint/no-confusing-non-null-assertion': 'off',
