@@ -44,6 +44,33 @@ const getConfigContent = (
         throw new TypeError('not an valid config file');
       }
 
+      if ('extends' in configContent && Array.isArray(configContent.extends)) {
+        for (const extendFile of configContent.extends) {
+          const extendsContent = getConfigContent(extendFile);
+          if (!extendsContent) continue;
+          if (extendsContent.plugins) {
+            configContent.plugins = [
+              ...extendsContent.plugins,
+              ...(configContent.plugins ?? []),
+            ];
+          }
+          if (extendsContent.rules)
+            configContent.rules = {
+              ...extendsContent.rules,
+              ...configContent.rules,
+            };
+          if (
+            'overrides' in extendsContent &&
+            Array.isArray(extendsContent.overrides)
+          ) {
+            configContent.overrides = [
+              ...extendsContent.overrides,
+              ...(configContent.overrides ?? []),
+            ];
+          }
+        }
+      }
+
       return configContent;
     } catch {
       console.error(
