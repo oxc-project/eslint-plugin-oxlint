@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { handleExtendsScope } from './extends.js';
 import { OxlintConfig } from './types.js';
 
-describe.only('handleExtendsScope', () => {
+describe('handleExtendsScope', () => {
   it('should handle empty extends configs', () => {
     const extendsConfigs: OxlintConfig[] = [];
     const config: OxlintConfig = {
