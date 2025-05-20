@@ -1057,6 +1057,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-useless-escape": [
     0,
+    {
+      "allowRegexCharacters": [],
+    },
   ],
   "no-useless-rename": [
     0,
