@@ -1,12 +1,9 @@
-import fs from 'node:fs';
-import JSONCParser from 'jsonc-parser';
 import {
   EslintPluginOxlintConfig,
   OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigPlugins,
 } from './types.js';
-import { isObject } from './utilities.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
   handleCategoriesScope,
@@ -19,6 +16,8 @@ import {
 } from './ignore-patterns.js';
 import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 import { splitDisabledRulesForVueAndSvelteFiles } from '../config-helper.js';
+import { handleExtendsScope, readExtendsConfigsFromConfig } from './extends.js';
+import { getConfigContent } from './utilities.js';
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
@@ -27,72 +26,17 @@ const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
 const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
 
 /**
- * tries to read the oxlint config file and returning its JSON content.
- * if the file is not found or could not be parsed, undefined is returned.
- * And an error message will be emitted to `console.error`
- */
-const getConfigContent = (
-  oxlintConfigFile: string
-): OxlintConfig | undefined => {
-  try {
-    const content = fs.readFileSync(oxlintConfigFile, 'utf8');
-
-    try {
-      const configContent = JSONCParser.parse(content);
-
-      if (!isObject(configContent)) {
-        throw new TypeError('not an valid config file');
-      }
-
-      if ('extends' in configContent && Array.isArray(configContent.extends)) {
-        for (const extendFile of configContent.extends) {
-          const extendsContent = getConfigContent(extendFile);
-          if (!extendsContent) continue;
-          if (extendsContent.plugins) {
-            configContent.plugins = [
-              ...extendsContent.plugins,
-              ...(configContent.plugins ?? []),
-            ];
-          }
-          if (extendsContent.rules)
-            configContent.rules = {
-              ...extendsContent.rules,
-              ...configContent.rules,
-            };
-          if (
-            'overrides' in extendsContent &&
-            Array.isArray(extendsContent.overrides)
-          ) {
-            configContent.overrides = [
-              ...extendsContent.overrides,
-              ...(configContent.overrides ?? []),
-            ];
-          }
-        }
-      }
-
-      return configContent;
-    } catch {
-      console.error(
-        `eslint-plugin-oxlint: could not parse oxlint config file: ${oxlintConfigFile}`
-      );
-      return undefined;
-    }
-  } catch {
-    console.error(
-      `eslint-plugin-oxlint: could not find oxlint config file: ${oxlintConfigFile}`
-    );
-    return undefined;
-  }
-};
-
-/**
  * builds turned off rules, which are supported by oxlint.
  * It accepts an object similar to the .oxlintrc.json file.
  */
 export const buildFromOxlintConfig = (
   config: OxlintConfig
 ): EslintPluginOxlintConfig[] => {
+  const extendConfigs = readExtendsConfigsFromConfig(config);
+  if (extendConfigs !== undefined && extendConfigs.length > 0) {
+    handleExtendsScope(extendConfigs, config);
+  }
+
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
   const categories = readCategoriesFromConfig(config) ?? defaultCategories;

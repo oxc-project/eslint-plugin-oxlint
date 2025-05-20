@@ -1,5 +1,7 @@
 import type { Linter } from 'eslint';
 
+export type OxlintExtendsConfigs = string[];
+
 export type OxlintConfigPlugins = string[];
 
 export type OxlintConfigCategories = Record<string, unknown>;
@@ -18,6 +20,7 @@ export type OxlintConfigOverride = {
 
 export type OxlintConfig = {
   [key: string]: unknown;
+  extends?: OxlintExtendsConfigs;
   plugins?: OxlintConfigPlugins;
   categories?: OxlintConfigCategories;
   rules?: OxlintConfigRules;
