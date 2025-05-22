@@ -52,5 +52,5 @@ jobs:
           branch: release
           branch-suffix: timestamp
           title: 'release: v${{ inputs.version }}'
-          assignees: Boshen
+          assignees: camc314, Sysix
           base: main
