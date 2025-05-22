@@ -12,7 +12,11 @@ import {
 } from './ignore-patterns.js';
 import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 import { splitDisabledRulesForVueAndSvelteFiles } from '../config-helper.js';
-import { handleExtendsScope, readExtendsConfigsFromConfig } from './extends.js';
+import {
+  handleExtendsScope,
+  readExtendsConfigsFromConfig,
+  resolveRelativeExtendsPaths,
+} from './extends.js';
 import { getConfigContent } from './utilities.js';
 
 /**
@@ -88,6 +92,8 @@ export const buildFromOxlintConfigFile = (
   if (config === undefined) {
     return [];
   }
+
+  resolveRelativeExtendsPaths(config, oxlintConfigFile);
 
   return buildFromOxlintConfig(config);
 };

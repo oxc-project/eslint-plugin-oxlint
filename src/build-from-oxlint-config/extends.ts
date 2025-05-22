@@ -1,9 +1,11 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import type {
   OxlintConfig,
   OxlintConfigOverride,
   OxlintConfigPlugins,
   OxlintConfigRules,
+  OxlintExtendsConfigs,
 } from './types.js';
 import { getConfigContent } from './utilities.js';
 import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
@@ -22,6 +24,36 @@ const isFile = (path: string) => {
   } catch {
     return false;
   }
+};
+
+/**
+ * tries to return the "extends" section from the config.
+ * it returns `undefined` when not found or invalid.
+ */
+const readExtendsFromConfig = (
+  config: OxlintConfig
+): OxlintExtendsConfigs | undefined => {
+  return 'extends' in config && Array.isArray(config.extends)
+    ? (config.extends as OxlintExtendsConfigs)
+    : undefined;
+};
+
+/**
+ * Resolves the paths of the "extends" section relative to the given config file.
+ */
+export const resolveRelativeExtendsPaths = (
+  config: OxlintConfig,
+  configFile: string
+) => {
+  const extendsFiles = readExtendsFromConfig(config);
+  if (!extendsFiles || extendsFiles.length === 0) return;
+  const configFileDirectory = path.dirname(path.resolve(configFile));
+  config.extends = extendsFiles.map((extendFile) => {
+    if (isFile(extendFile)) {
+      return path.resolve(configFileDirectory, extendFile);
+    }
+    return extendFile;
+  });
 };
 
 /**
@@ -52,14 +84,14 @@ export const handleExtendsScope = (
 export const readExtendsConfigsFromConfig = (
   config: OxlintConfig
 ): OxlintConfig[] | undefined => {
-  if (!('extends' in config) || !Array.isArray(config.extends)) {
-    return undefined;
-  }
+  const extendsFiles = readExtendsFromConfig(config);
+  if (!extendsFiles || extendsFiles.length === 0) return undefined;
   const extendsConfigs: OxlintConfig[] = [];
-  for (const file of config.extends) {
+  for (const file of extendsFiles) {
     if (!isFile(file)) continue; // ignore non file paths
     const extendConfig = getConfigContent(file);
     if (!extendConfig) continue;
+    resolveRelativeExtendsPaths(extendConfig, file);
     extendsConfigs.push(
       extendConfig,
       ...(readExtendsConfigsFromConfig(extendConfig) ?? [])
