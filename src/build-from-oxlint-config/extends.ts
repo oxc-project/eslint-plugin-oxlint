@@ -6,7 +6,7 @@ import type {
   OxlintConfigRules,
 } from './types.js';
 import { getConfigContent } from './utilities.js';
-import { readPluginsFromConfig } from './plugins.js';
+import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
 import { readRulesFromConfig } from './rules.js';
 import { readOverridesFromConfig } from './overrides.js';
 
@@ -36,7 +36,7 @@ export const handleExtendsScope = (
   const overrides: OxlintConfigOverride[] =
     readOverridesFromConfig(config) ?? [];
   for (const extendConfig of extendsConfigs) {
-    plugins.unshift(...(readPluginsFromConfig(extendConfig) ?? []));
+    plugins.unshift(...(readPluginsFromConfig(extendConfig) ?? defaultPlugins));
     rules = { ...readRulesFromConfig(extendConfig), ...rules };
     overrides.unshift(...(readOverridesFromConfig(extendConfig) ?? []));
   }

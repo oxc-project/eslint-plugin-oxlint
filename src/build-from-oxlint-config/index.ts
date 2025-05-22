@@ -1,15 +1,11 @@
-import {
-  EslintPluginOxlintConfig,
-  OxlintConfig,
-  OxlintConfigCategories,
-  OxlintConfigPlugins,
-} from './types.js';
+import { EslintPluginOxlintConfig, OxlintConfig } from './types.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
+  defaultCategories,
   handleCategoriesScope,
   readCategoriesFromConfig,
 } from './categories.js';
-import { readPluginsFromConfig } from './plugins.js';
+import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
 import {
   handleIgnorePatternsScope,
   readIgnorePatternsFromConfig,
@@ -18,12 +14,6 @@ import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 import { splitDisabledRulesForVueAndSvelteFiles } from '../config-helper.js';
 import { handleExtendsScope, readExtendsConfigsFromConfig } from './extends.js';
 import { getConfigContent } from './utilities.js';
-
-// default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
-const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
-
-// default categories, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
-const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
 
 /**
  * builds turned off rules, which are supported by oxlint.
