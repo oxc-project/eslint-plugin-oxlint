@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { handleExtendsScope } from './extends.js';
+import { handleExtendsScope, resolveRelativeExtendsPaths } from './extends.js';
 import { OxlintConfig } from './types.js';
 
 describe('handleExtendsScope', () => {
@@ -109,5 +109,27 @@ describe('handleExtendsScope', () => {
         { files: ['*.spec.ts'], rules: { rule4: 'error' } },
       ],
     });
+  });
+});
+
+describe('resolveRelativeExtendsPaths', () => {
+  it('should resolve relative paths', () => {
+    const config: OxlintConfig = {
+      extends: [
+        './extends1.json',
+        './folder/extends2.json',
+        '../parent/extends3.json',
+      ],
+      __misc: {
+        filePath: '/root/of/the/file/test-config.json',
+      },
+    };
+    resolveRelativeExtendsPaths(config);
+
+    expect(config.extends).toEqual([
+      '/root/of/the/file/extends1.json',
+      '/root/of/the/file/folder/extends2.json',
+      '/root/of/the/parent/extends3.json',
+    ]);
   });
 });
