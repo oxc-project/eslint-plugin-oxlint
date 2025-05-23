@@ -18,6 +18,7 @@ import {
   resolveRelativeExtendsPaths,
 } from './extends.js';
 import { getConfigContent } from './utilities.js';
+import path from 'node:path';
 
 /**
  * builds turned off rules, which are supported by oxlint.
@@ -26,8 +27,10 @@ import { getConfigContent } from './utilities.js';
 export const buildFromOxlintConfig = (
   config: OxlintConfig
 ): EslintPluginOxlintConfig[] => {
+  resolveRelativeExtendsPaths(config);
+
   const extendConfigs = readExtendsConfigsFromConfig(config);
-  if (extendConfigs !== undefined && extendConfigs.length > 0) {
+  if (extendConfigs.length > 0) {
     handleExtendsScope(extendConfigs, config);
   }
 
@@ -93,7 +96,9 @@ export const buildFromOxlintConfigFile = (
     return [];
   }
 
-  resolveRelativeExtendsPaths(config, oxlintConfigFile);
+  config.__misc = {
+    filePath: path.resolve(oxlintConfigFile),
+  };
 
   return buildFromOxlintConfig(config);
 };
