@@ -1368,6 +1368,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-array-for-each": [
     0,
   ],
+  "unicorn/no-array-method-this-argument": [
+    0,
+  ],
   "unicorn/no-array-reduce": [
     0,
   ],
@@ -1386,10 +1389,16 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-empty-file": [
     0,
   ],
+  "unicorn/no-for-loop": [
+    0,
+  ],
   "unicorn/no-hex-escape": [
     0,
   ],
   "unicorn/no-instanceof-array": [
+    0,
+  ],
+  "unicorn/no-instanceof-builtins": [
     0,
   ],
   "unicorn/no-invalid-fetch-options": [
@@ -1446,6 +1455,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-typeof-undefined": [
     0,
   ],
+  "unicorn/no-unnecessary-array-flat-depth": [
+    0,
+  ],
   "unicorn/no-unnecessary-await": [
     0,
   ],
@@ -1488,10 +1500,16 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-add-event-listener": [
     0,
   ],
+  "unicorn/prefer-array-find": [
+    0,
+  ],
   "unicorn/prefer-array-flat": [
     0,
   ],
   "unicorn/prefer-array-flat-map": [
+    0,
+  ],
+  "unicorn/prefer-array-index-of": [
     0,
   ],
   "unicorn/prefer-array-some": [
@@ -1519,6 +1537,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-event-target": [
+    0,
+  ],
+  "unicorn/prefer-global-this": [
     0,
   ],
   "unicorn/prefer-includes": [
@@ -1549,6 +1570,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-number-properties": [
+    0,
+  ],
+  "unicorn/prefer-object-from-entries": [
     0,
   ],
   "unicorn/prefer-optional-catch-binding": [
