@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - uses: ./.github/actions/pnpm
+      - uses: oxc-project/setup-node@f42e3bda950c7454575e78ee4eaac880a077700c # v1.0.0
 
       - name: Build
         run: pnpm run build

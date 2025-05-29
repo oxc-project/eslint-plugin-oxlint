@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: false # should be fine, we give another token for PR creation
 
-      - uses: ./.github/actions/pnpm
+      - uses: oxc-project/setup-node@f42e3bda950c7454575e78ee4eaac880a077700c # v1.0.0
 
       - name: Generate version ${{ inputs.version }}
         env:

@@ -18,7 +18,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: ./.github/actions/pnpm
+      - uses: oxc-project/setup-node@f42e3bda950c7454575e78ee4eaac880a077700c # v1.0.0
 
       - name: Type Check
         run: npx tsc --noEmit
