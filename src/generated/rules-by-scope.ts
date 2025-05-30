@@ -358,6 +358,7 @@ const reactRules: Record<string, 'off'> = {
 };
 
 const reactHooksRules: Record<string, 'off'> = {
+  'react-hooks/exhaustive-deps': 'off',
   'react-hooks/rules-of-hooks': 'off',
 };
 
@@ -442,7 +443,6 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/no-instanceof-builtins': 'off',
   'unicorn/no-array-method-this-argument': 'off',
   'unicorn/no-unnecessary-array-flat-depth': 'off',
-  'unicorn/no-for-loop': 'off',
   'unicorn/no-unnecessary-slice-end': 'off',
   'unicorn/no-accessor-recursion': 'off',
   'unicorn/no-invalid-fetch-options': 'off',

@@ -1158,6 +1158,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
     "always",
   ],
+  "react-hooks/exhaustive-deps": [
+    0,
+  ],
   "react-hooks/rules-of-hooks": [
     0,
   ],
@@ -1387,9 +1390,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-empty-file": [
-    0,
-  ],
-  "unicorn/no-for-loop": [
     0,
   ],
   "unicorn/no-hex-escape": [
