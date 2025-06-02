@@ -1,63 +1,24 @@
-import fs from 'node:fs';
-import JSONCParser from 'jsonc-parser';
-import {
-  EslintPluginOxlintConfig,
-  OxlintConfig,
-  OxlintConfigCategories,
-  OxlintConfigPlugins,
-} from './types.js';
-import { isObject } from './utilities.js';
+import { EslintPluginOxlintConfig, OxlintConfig } from './types.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
+  defaultCategories,
   handleCategoriesScope,
   readCategoriesFromConfig,
 } from './categories.js';
-import { readPluginsFromConfig } from './plugins.js';
+import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
 import {
   handleIgnorePatternsScope,
   readIgnorePatternsFromConfig,
 } from './ignore-patterns.js';
 import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 import { splitDisabledRulesForVueAndSvelteFiles } from '../config-helper.js';
-
-// default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
-const defaultPlugins: OxlintConfigPlugins = ['react', 'unicorn', 'typescript'];
-
-// default categories, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
-const defaultCategories: OxlintConfigCategories = { correctness: 'warn' };
-
-/**
- * tries to read the oxlint config file and returning its JSON content.
- * if the file is not found or could not be parsed, undefined is returned.
- * And an error message will be emitted to `console.error`
- */
-const getConfigContent = (
-  oxlintConfigFile: string
-): OxlintConfig | undefined => {
-  try {
-    const content = fs.readFileSync(oxlintConfigFile, 'utf8');
-
-    try {
-      const configContent = JSONCParser.parse(content);
-
-      if (!isObject(configContent)) {
-        throw new TypeError('not an valid config file');
-      }
-
-      return configContent;
-    } catch {
-      console.error(
-        `eslint-plugin-oxlint: could not parse oxlint config file: ${oxlintConfigFile}`
-      );
-      return undefined;
-    }
-  } catch {
-    console.error(
-      `eslint-plugin-oxlint: could not find oxlint config file: ${oxlintConfigFile}`
-    );
-    return undefined;
-  }
-};
+import {
+  handleExtendsScope,
+  readExtendsConfigsFromConfig,
+  resolveRelativeExtendsPaths,
+} from './extends.js';
+import { getConfigContent } from './utilities.js';
+import path from 'node:path';
 
 /**
  * builds turned off rules, which are supported by oxlint.
@@ -66,6 +27,13 @@ const getConfigContent = (
 export const buildFromOxlintConfig = (
   config: OxlintConfig
 ): EslintPluginOxlintConfig[] => {
+  resolveRelativeExtendsPaths(config);
+
+  const extendConfigs = readExtendsConfigsFromConfig(config);
+  if (extendConfigs.length > 0) {
+    handleExtendsScope(extendConfigs, config);
+  }
+
   const rules: Record<string, 'off'> = {};
   const plugins = readPluginsFromConfig(config) ?? defaultPlugins;
   const categories = readCategoriesFromConfig(config) ?? defaultCategories;
@@ -127,6 +95,10 @@ export const buildFromOxlintConfigFile = (
   if (config === undefined) {
     return [];
   }
+
+  config.__misc = {
+    filePath: path.resolve(oxlintConfigFile),
+  };
 
   return buildFromOxlintConfig(config);
 };

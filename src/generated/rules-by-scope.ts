@@ -358,6 +358,7 @@ const reactRules: Record<string, 'off'> = {
 };
 
 const reactHooksRules: Record<string, 'off'> = {
+  'react-hooks/exhaustive-deps': 'off',
   'react-hooks/rules-of-hooks': 'off',
 };
 
@@ -439,6 +440,9 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/explicit-length-check': 'off',
   'unicorn/filename-case': 'off',
   'unicorn/new-for-builtins': 'off',
+  'unicorn/no-instanceof-builtins': 'off',
+  'unicorn/no-array-method-this-argument': 'off',
+  'unicorn/no-unnecessary-array-flat-depth': 'off',
   'unicorn/no-unnecessary-slice-end': 'off',
   'unicorn/no-accessor-recursion': 'off',
   'unicorn/no-invalid-fetch-options': 'off',
@@ -481,6 +485,10 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/no-zero-fractions': 'off',
   'unicorn/number-literal-case': 'off',
   'unicorn/numeric-separators-style': 'off',
+  'unicorn/prefer-global-this': 'off',
+  'unicorn/prefer-object-from-entries': 'off',
+  'unicorn/prefer-array-find': 'off',
+  'unicorn/prefer-array-index-of': 'off',
   'unicorn/prefer-spread': 'off',
   'unicorn/prefer-add-event-listener': 'off',
   'unicorn/prefer-array-flat': 'off',

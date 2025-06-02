@@ -17,6 +17,18 @@ pnpm add eslint-plugin-oxlint -D
 
 ## Usage
 
+### Run oxlint before eslint
+
+Add the following script to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "lint": "npx oxlint && npx eslint"
+  }
+}
+```
+
 ### Flat config
 
 This plugin is optimized for flat config usage (eslint >= 9.0). See [here](https://eslint.org/docs/latest/use/configure/configuration-files-new) for more details.
@@ -79,18 +91,6 @@ export default [
 ```
 
 `buildFromOxlintConfigFile` is not supported for legacy configuration (eslint < 9.0).
-
-### Run it before eslint
-
-And then you can add the following script to your `package.json`:
-
-```json
-{
-  "scripts": {
-    "lint": "npx oxlint && npx eslint"
-  }
-}
-```
 
 ## All Configs
 

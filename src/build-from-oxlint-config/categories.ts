@@ -7,6 +7,11 @@ import {
 } from './types.js';
 import { isObject } from './utilities.js';
 
+// default categories, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
+export const defaultCategories: OxlintConfigCategories = {
+  correctness: 'warn',
+};
+
 /**
  * appends all rules which are enabled by a plugin and falls into a specific category
  */
