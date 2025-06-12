@@ -21,6 +21,7 @@ const eslintRules: Record<string, 'off'> = {
   'max-nested-callbacks': 'off',
   'max-params': 'off',
   'new-cap': 'off',
+  'no-extra-bind': 'off',
   'no-alert': 'off',
   'no-array-constructor': 'off',
   'no-async-promise-executor': 'off',

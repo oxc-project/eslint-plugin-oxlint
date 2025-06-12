@@ -11,6 +11,7 @@ exports[`handleCategoriesScope > custom plugins, custom categories > customPlugi
   "import/no-self-import": "off",
   "import/no-unassigned-import": "off",
   "no-extend-native": "off",
+  "no-extra-bind": "off",
   "no-new": "off",
   "no-unexpected-multiline": "off",
   "no-unneeded-ternary": "off",
