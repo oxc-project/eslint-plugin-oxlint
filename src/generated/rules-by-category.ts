@@ -91,6 +91,7 @@ const pedanticRules: Record<string, 'off'> = {
 
 const suspiciousRules: Record<string, 'off'> = {
   'block-scoped-var': 'off',
+  'no-extra-bind': 'off',
   'no-unneeded-ternary': 'off',
   'no-extend-native': 'off',
   'no-new': 'off',

@@ -820,6 +820,9 @@ exports[`contains all the oxlint rules 1`] = `
       "exceptions": [],
     },
   ],
+  "no-extra-bind": [
+    0,
+  ],
   "no-extra-boolean-cast": [
     0,
     {},
