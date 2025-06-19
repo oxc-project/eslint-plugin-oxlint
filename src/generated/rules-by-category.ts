@@ -320,6 +320,7 @@ const restrictionRules: Record<string, 'off'> = {
   'no-var': 'off',
   'no-void': 'off',
   'unicode-bom': 'off',
+  'import/extensions': 'off',
   'import/no-amd': 'off',
   'import/no-commonjs': 'off',
   'import/no-cycle': 'off',
