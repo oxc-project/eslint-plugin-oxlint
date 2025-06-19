@@ -288,6 +288,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/exports-last": [
     0,
   ],
+  "import/extensions": [
+    0,
+  ],
   "import/first": [
     0,
   ],

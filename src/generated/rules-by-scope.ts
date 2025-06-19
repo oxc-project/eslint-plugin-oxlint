@@ -148,6 +148,7 @@ const importRules: Record<string, 'off'> = {
   'import/consistent-type-specifier-style': 'off',
   'import/default': 'off',
   'import/exports-last': 'off',
+  'import/extensions': 'off',
   'import/first': 'off',
   'import/group-exports': 'off',
   'import/no-unassigned-import': 'off',
