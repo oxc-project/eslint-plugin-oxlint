@@ -788,6 +788,7 @@ exports[`contains all the oxlint rules 1`] = `
   "no-duplicate-imports": [
     0,
     {
+      "allowSeparateTypeImports": false,
       "includeExports": false,
     },
   ],
