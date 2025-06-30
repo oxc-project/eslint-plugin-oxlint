@@ -4,7 +4,6 @@ exports[`handleCategoriesScope > custom plugins, custom categories > customPlugi
 {
   "block-scoped-var": "off",
   "import/no-absolute-path": "off",
-  "import/no-duplicates": "off",
   "import/no-empty-named-blocks": "off",
   "import/no-named-as-default": "off",
   "import/no-named-as-default-member": "off",
