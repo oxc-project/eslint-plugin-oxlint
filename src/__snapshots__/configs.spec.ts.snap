@@ -235,6 +235,10 @@ exports[`contains all the oxlint rules 1`] = `
       "checkForEach": false,
     },
   ],
+  "arrow-body-style": [
+    0,
+    "as-needed",
+  ],
   "block-scoped-var": [
     0,
   ],
@@ -278,6 +282,15 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "guard-for-in": [
     0,
+  ],
+  "id-length": [
+    0,
+    {
+      "exceptionPatterns": [],
+      "exceptions": [],
+      "min": 2,
+      "properties": "always",
+    },
   ],
   "import/consistent-type-specifier-style": [
     0,
@@ -352,6 +365,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-webpack-loader-syntax": [
+    0,
+  ],
+  "import/prefer-default-export": [
     0,
   ],
   "import/unambiguous": [

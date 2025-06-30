@@ -2,6 +2,7 @@
 
 const eslintRules: Record<string, 'off'> = {
   'array-callback-return': 'off',
+  'arrow-body-style': 'off',
   'block-scoped-var': 'off',
   curly: 'off',
   'default-case': 'off',
@@ -13,6 +14,7 @@ const eslintRules: Record<string, 'off'> = {
   'func-names': 'off',
   'grouped-accessor-pairs': 'off',
   'guard-for-in': 'off',
+  'id-length': 'off',
   'init-declarations': 'off',
   'max-classes-per-file': 'off',
   'max-depth': 'off',
@@ -170,6 +172,7 @@ const importRules: Record<string, 'off'> = {
   'import/no-named-as-default-member': 'off',
   'import/no-self-import': 'off',
   'import/no-webpack-loader-syntax': 'off',
+  'import/prefer-default-export': 'off',
   'import/unambiguous': 'off',
 };
 
