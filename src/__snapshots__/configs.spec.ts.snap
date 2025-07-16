@@ -38,6 +38,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@next/next/no-head-import-in-document": [
     0,
   ],
+  "@next/next/no-html-link-for-pages": [
+    0,
+  ],
   "@next/next/no-img-element": [
     0,
   ],

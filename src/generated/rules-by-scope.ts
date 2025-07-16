@@ -302,6 +302,7 @@ const nextjsRules: Record<string, 'off'> = {
   '@next/next/no-title-in-document-head': 'off',
   '@next/next/no-typos': 'off',
   '@next/next/no-unwanted-polyfillio': 'off',
+  '@next/next/no-html-link-for-pages': 'off',
 };
 
 const nodeRules: Record<string, 'off'> = {

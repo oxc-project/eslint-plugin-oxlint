@@ -490,6 +490,7 @@ const correctnessRules: Record<string, 'off'> = {
   '@next/next/no-title-in-document-head': 'off',
   '@next/next/no-typos': 'off',
   '@next/next/no-unwanted-polyfillio': 'off',
+  '@next/next/no-html-link-for-pages': 'off',
   'promise/no-callback-in-promise': 'off',
   'promise/no-new-statics': 'off',
   'promise/valid-params': 'off',
