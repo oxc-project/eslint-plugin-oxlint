@@ -103,7 +103,7 @@ describe('integration test with oxlint', () => {
         'node',
         'promise',
         'jest',
-        // 'vitest',
+        'vitest',
       ],
     },
     // everything on
@@ -120,7 +120,7 @@ describe('integration test with oxlint', () => {
         'node',
         'promise',
         'jest',
-        // 'vitest',
+        'vitest',
       ],
       categories: {
         nursery: 'off', // we not support this category
