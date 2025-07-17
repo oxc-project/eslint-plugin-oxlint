@@ -67,13 +67,13 @@ describe('integration test with oxlint', () => {
       rules: { eqeqeq: 'off' },
     },
     // combination plugin + rule
-    { plugins: ['vite'], rules: { eqeqeq: 'off' } },
+    { plugins: ['nextjs'], rules: { eqeqeq: 'off' } },
 
     // categories change
     { categories: { correctness: 'off', suspicious: 'warn' } },
     // combination plugin + categires + rules
     {
-      plugins: ['vite'],
+      plugins: ['nextjs'],
       categories: { correctness: 'off', style: 'warn' },
       rules: { eqeqeq: 'off' },
     },
@@ -100,7 +100,7 @@ describe('integration test with oxlint', () => {
         'import',
         'jsdoc',
         'jsx-a11y',
-        'n',
+        'node',
         'promise',
         'jest',
         'vitest',
@@ -117,7 +117,7 @@ describe('integration test with oxlint', () => {
         'import',
         'jsdoc',
         'jsx-a11y',
-        'n',
+        'node',
         'promise',
         'jest',
         'vitest',
