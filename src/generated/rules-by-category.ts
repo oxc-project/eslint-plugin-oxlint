@@ -220,7 +220,6 @@ const styleRules: Record<string, 'off'> = {
   'unicorn/prefer-object-from-entries': 'off',
   'unicorn/prefer-array-index-of': 'off',
   'unicorn/prefer-spread': 'off',
-  'unicorn/prefer-array-flat-map': 'off',
   'unicorn/prefer-dom-node-text-content': 'off',
   'unicorn/prefer-includes': 'off',
   'unicorn/prefer-logical-operator-over-ternary': 'off',
@@ -557,6 +556,7 @@ const perfRules: Record<string, 'off'> = {
   'react-perf/jsx-no-new-function-as-prop': 'off',
   'react-perf/jsx-no-new-object-as-prop': 'off',
   'unicorn/prefer-array-find': 'off',
+  'unicorn/prefer-array-flat-map': 'off',
   'unicorn/prefer-set-has': 'off',
 };
 
