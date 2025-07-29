@@ -385,6 +385,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-indexed-object-style': 'off',
   '@typescript-eslint/consistent-type-definitions': 'off',
   '@typescript-eslint/consistent-type-imports': 'off',
+  '@typescript-eslint/explicit-module-boundary-types': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/no-inferrable-types': 'off',
   '@typescript-eslint/no-confusing-non-null-assertion': 'off',

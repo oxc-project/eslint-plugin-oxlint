@@ -342,6 +342,7 @@ const restrictionRules: Record<string, 'off'> = {
   'react/jsx-filename-extension': 'off',
   'react/no-danger': 'off',
   'react/no-unknown-property': 'off',
+  '@typescript-eslint/explicit-module-boundary-types': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/no-dynamic-delete': 'off',
   '@typescript-eslint/no-empty-object-type': 'off',
