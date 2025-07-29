@@ -98,6 +98,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/explicit-function-return-type": [
     0,
   ],
+  "@typescript-eslint/explicit-module-boundary-types": [
+    0,
+  ],
   "@typescript-eslint/init-declarations": [
     0,
   ],
