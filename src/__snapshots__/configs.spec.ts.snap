@@ -1024,6 +1024,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-throw-literal": [
     0,
   ],
+  "no-unassigned-vars": [
+    0,
+  ],
   "no-undefined": [
     0,
   ],
@@ -1120,6 +1123,9 @@ exports[`contains all the oxlint rules 1`] = `
   "operator-assignment": [
     0,
     "always",
+  ],
+  "prefer-destructuring": [
+    0,
   ],
   "prefer-exponentiation-operator": [
     0,

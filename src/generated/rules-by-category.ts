@@ -118,6 +118,7 @@ const styleRules: Record<string, 'off'> = {
   'no-template-curly-in-string': 'off',
   'no-ternary': 'off',
   'operator-assignment': 'off',
+  'prefer-destructuring': 'off',
   'prefer-promise-reject-errors': 'off',
   'prefer-exponentiation-operator': 'off',
   'prefer-numeric-literals': 'off',
@@ -372,6 +373,7 @@ const restrictionRules: Record<string, 'off'> = {
 
 const correctnessRules: Record<string, 'off'> = {
   'for-direction': 'off',
+  'no-unassigned-vars': 'off',
   'no-async-promise-executor': 'off',
   'no-caller': 'off',
   'no-class-assign': 'off',
