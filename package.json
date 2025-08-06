@@ -28,7 +28,9 @@
   },
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.spec.ts",
+    "!**/*.snap"
   ],
   "author": "Dunqing <dengqing0821@gmail.com>",
   "homepage": "https://github.com/oxc-project/eslint-plugin-oxlint",
