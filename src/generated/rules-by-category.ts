@@ -292,6 +292,8 @@ const suspiciousRules: Record<string, 'off'> = {
   'react/no-namespace': 'off',
   'react/react-in-jsx-scope': 'off',
   'react/style-prop-object': 'off',
+  '@typescript-eslint/no-misused-promises': 'off',
+  '@typescript-eslint/no-floating-promises': 'off',
   '@typescript-eslint/no-confusing-non-null-assertion': 'off',
   '@typescript-eslint/no-extraneous-class': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
