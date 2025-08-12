@@ -157,6 +157,13 @@ describe('integration test with oxlint', () => {
           config.plugins === undefined ||
           config.plugins.includes('typescript')
         ) {
+          if (
+            config.categories?.suspicious === 'warn' ||
+            config.categories?.suspicious === 'error'
+          ) {
+            expectedCount -= 2;
+          }
+
           expectedCount += typescriptRulesExtendEslintRules.filter(
             (aliasRule) => aliasRule in buildConfig.rules!
           ).length;
