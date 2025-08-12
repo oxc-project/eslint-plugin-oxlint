@@ -51,7 +51,7 @@ const getEsLintRuleName = (rule: string): string | undefined => {
   const expectedRule =
     esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
 
-  return allRules.find((rule) => rule == expectedRule);
+  return allRules.find((rule) => rule === expectedRule);
 };
 
 /**
