@@ -392,8 +392,6 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-type-imports': 'off',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
-  '@typescript-eslint/no-misused-promises': 'off',
-  '@typescript-eslint/no-floating-promises': 'off',
   '@typescript-eslint/no-inferrable-types': 'off',
   '@typescript-eslint/no-array-delete': 'off',
   '@typescript-eslint/no-base-to-string': 'off',

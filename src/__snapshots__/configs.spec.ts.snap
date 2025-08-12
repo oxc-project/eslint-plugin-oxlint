@@ -155,9 +155,6 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-extraneous-class": [
     0,
   ],
-  "@typescript-eslint/no-floating-promises": [
-    0,
-  ],
   "@typescript-eslint/no-for-in-array": [
     0,
   ],
@@ -180,9 +177,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-misused-new": [
-    0,
-  ],
-  "@typescript-eslint/no-misused-promises": [
     0,
   ],
   "@typescript-eslint/no-misused-spread": [
