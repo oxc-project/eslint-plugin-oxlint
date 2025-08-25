@@ -285,6 +285,9 @@ exports[`contains all the oxlint rules 1`] = `
   "grouped-accessor-pairs": [
     0,
     "anyOrder",
+    {
+      "enforceForTSTypes": false,
+    },
   ],
   "guard-for-in": [
     0,
