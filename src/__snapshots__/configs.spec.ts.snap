@@ -1151,6 +1151,9 @@ exports[`contains all the oxlint rules 1`] = `
   "prefer-spread": [
     0,
   ],
+  "prefer-template": [
+    0,
+  ],
   "promise/avoid-new": [
     0,
   ],
@@ -1234,6 +1237,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-filename-extension": [
+    0,
+  ],
+  "react/jsx-fragments": [
     0,
   ],
   "react/jsx-key": [

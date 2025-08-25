@@ -11,6 +11,7 @@ import {
   unicornRulesExtendEslintRules,
   viteTestCompatibleRules,
 } from './constants.js';
+import { typescriptTypeAwareRules } from '../scripts/constants.js';
 
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint json config', () => {
@@ -157,6 +158,10 @@ describe('integration test with oxlint', () => {
           config.plugins === undefined ||
           config.plugins.includes('typescript')
         ) {
+          expectedCount += typescriptTypeAwareRules.filter(
+            (tsRule) => `@typescript-eslint/${tsRule}` in buildConfig.rules!
+          ).length;
+
           expectedCount += typescriptRulesExtendEslintRules.filter(
             (aliasRule) => aliasRule in buildConfig.rules!
           ).length;
