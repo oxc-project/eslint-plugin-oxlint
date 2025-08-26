@@ -466,6 +466,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/no-untyped-mock-factory": [
     0,
   ],
+  "jest/padding-around-test-blocks": [
+    0,
+  ],
   "jest/prefer-called-with": [
     0,
   ],
@@ -1157,6 +1160,9 @@ exports[`contains all the oxlint rules 1`] = `
   "prefer-template": [
     0,
   ],
+  "promise/always-return": [
+    0,
+  ],
   "promise/avoid-new": [
     0,
   ],
@@ -1243,6 +1249,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-fragments": [
+    0,
+  ],
+  "react/jsx-handler-names": [
     0,
   ],
   "react/jsx-key": [
