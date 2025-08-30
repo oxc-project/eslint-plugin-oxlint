@@ -592,6 +592,10 @@ const vitestRules: Record<string, 'off'> = {
   'vitest/valid-expect': 'off',
 };
 
+const vueRules: Record<string, 'off'> = {
+  'vue/valid-define-emits': 'off',
+};
+
 export {
   eslintRules,
   importRules,
@@ -607,4 +611,5 @@ export {
   typescriptRules,
   unicornRules,
   vitestRules,
+  vueRules,
 };
