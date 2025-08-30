@@ -72,6 +72,11 @@ const vitestConfig = {
   rules: rules.vitestRules,
 };
 
+const vueConfig = {
+  name: 'oxlint/vue',
+  rules: rules.vueRules,
+};
+
 const configByScope = {
   'flat/eslint': eslintConfig,
   'flat/import': importConfig,
@@ -87,6 +92,7 @@ const configByScope = {
   'flat/typescript': typescriptConfig,
   'flat/unicorn': unicornConfig,
   'flat/vitest': vitestConfig,
+  'flat/vue': vueConfig,
 };
 
 export default configByScope;
