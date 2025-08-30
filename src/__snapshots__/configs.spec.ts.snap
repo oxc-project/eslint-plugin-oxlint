@@ -1828,9 +1828,6 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/valid-expect": [
     0,
   ],
-  "vue/valid-define-emits": [
-    0,
-  ],
   "yoda": [
     0,
     "never",
