@@ -542,7 +542,6 @@ const correctnessRules: Record<string, 'off'> = {
   'unicorn/prefer-string-starts-ends-with': 'off',
   'vitest/no-conditional-tests': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
-  'vue/valid-define-emits': 'off',
   '@typescript-eslint/no-dupe-class-members': 'off',
   '@typescript-eslint/no-loss-of-precision': 'off',
   '@typescript-eslint/no-unused-vars': 'off',
