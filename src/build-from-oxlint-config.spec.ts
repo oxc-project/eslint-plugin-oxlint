@@ -105,6 +105,8 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
+        'vue',
+        'regexp',
       ],
     },
     // everything on
@@ -122,6 +124,8 @@ describe('integration test with oxlint', () => {
         'promise',
         'jest',
         'vitest',
+        'vue',
+        'regexp',
       ],
       categories: {
         nursery: 'off', // we not support this category
