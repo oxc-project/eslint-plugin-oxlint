@@ -207,6 +207,7 @@ const jestRules: Record<string, 'off'> = {
   'jest/no-test-prefixes': 'off',
   'jest/no-test-return-statement': 'off',
   'jest/no-untyped-mock-factory': 'off',
+  'jest/padding-around-test-blocks': 'off',
   'jest/prefer-each': 'off',
   'jest/prefer-called-with': 'off',
   'jest/prefer-comparison-matcher': 'off',
@@ -314,6 +315,7 @@ const nodeRules: Record<string, 'off'> = {
 };
 
 const promiseRules: Record<string, 'off'> = {
+  'promise/always-return': 'off',
   'promise/avoid-new': 'off',
   'promise/catch-or-return': 'off',
   'promise/no-return-wrap': 'off',
@@ -339,6 +341,7 @@ const reactRules: Record<string, 'off'> = {
   'react/jsx-filename-extension': 'off',
   'react/jsx-boolean-value': 'off',
   'react/jsx-curly-brace-presence': 'off',
+  'react/jsx-handler-names': 'off',
   'react/jsx-key': 'off',
   'react/jsx-no-comment-textnodes': 'off',
   'react/jsx-no-duplicate-props': 'off',
