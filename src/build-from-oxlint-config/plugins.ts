@@ -15,6 +15,6 @@ export const readPluginsFromConfig = (
   config: OxlintConfig | OxlintConfigOverride
 ): OxlintConfigPlugins | undefined => {
   return 'plugins' in config && Array.isArray(config.plugins)
-    ? (config.plugins as OxlintConfigPlugins)
+    ? config.plugins
     : undefined;
 };

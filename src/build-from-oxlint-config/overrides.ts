@@ -13,8 +13,7 @@ export const handleOverridesScope = (
   configs: EslintPluginOxlintConfig[],
   baseCategories?: OxlintConfigCategories
 ): void => {
-  for (const overrideIndex in overrides) {
-    const override = overrides[overrideIndex];
+  for (const [overrideIndex, override] of overrides.entries()) {
     const eslintRules: Record<string, 'off'> = {};
     const eslintConfig: EslintPluginOxlintConfig = {
       name: `oxlint/from-oxlint-config-override-${overrideIndex}`,

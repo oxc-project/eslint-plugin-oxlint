@@ -19,7 +19,7 @@ const readExtendsFromConfig = (
   config: OxlintConfig
 ): OxlintConfigExtends | undefined => {
   return 'extends' in config && Array.isArray(config.extends)
-    ? (config.extends as OxlintConfigExtends)
+    ? config.extends
     : undefined;
 };
 

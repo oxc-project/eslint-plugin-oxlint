@@ -24,10 +24,10 @@ suite('RulesGenerator', () => {
     );
 
     // Call the generateRules method
-    expect(await generator.generateRulesCode()).toMatchSnapshot('byScope');
+    expect(generator.generateRulesCode()).toMatchSnapshot('byScope');
 
     generator.setRulesGrouping(RulesGrouping.CATEGORY);
     // Call the generateRules method
-    expect(await generator.generateRulesCode()).toMatchSnapshot('byCategory');
+    expect(generator.generateRulesCode()).toMatchSnapshot('byCategory');
   });
 });
