@@ -21,6 +21,6 @@ export const readIgnorePatternsFromConfig = (
   config: OxlintConfig
 ): OxlintConfigIgnorePatterns | undefined => {
   return 'ignorePatterns' in config && Array.isArray(config.ignorePatterns)
-    ? (config.ignorePatterns as OxlintConfigIgnorePatterns)
+    ? config.ignorePatterns
     : undefined;
 };

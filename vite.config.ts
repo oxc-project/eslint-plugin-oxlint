@@ -1,6 +1,6 @@
 import path from 'node:path';
 import dts from 'vite-plugin-dts';
-import { defineConfig, Plugin } from 'vitest/config';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
@@ -29,6 +29,6 @@ export default defineConfig({
     dts({
       include: 'src/**',
       exclude: 'src/**/*.spec.ts',
-    }) as Plugin,
+    }),
   ],
 });
