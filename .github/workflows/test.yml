@@ -20,5 +20,17 @@ jobs:
 
       - uses: oxc-project/setup-node@f42e3bda950c7454575e78ee4eaac880a077700c # v1.0.0
 
+      - name: Run oxlint
+        run: npx oxlint --tsconfig=tsconfig.json --type-aware
+
+      - name: Run eslint
+        run: npx eslint
+
+      - name: Run Format (prettier)
+        run: npx prettier . --check
+
+      - name: Type Check
+        run: npx tsc --noEmit
+
       - name: Run tests
         run: pnpm run test --coverage
