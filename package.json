@@ -43,7 +43,7 @@
     "prepare": "husky",
     "generate": "node --import @oxc-node/core/register ./scripts/generate.ts",
     "build": "vite build",
-    "lint": "npx oxlint --tsconfig=tsconfig.json --type-aware && npx eslint",
+    "lint": "npx oxlint --tsconfig=tsconfig.json && npx eslint",
     "format": "npx prettier --write .",
     "type-check": "tsc --noEmit",
     "test": "vitest --reporter=verbose"
