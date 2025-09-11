@@ -1431,6 +1431,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-array-reduce": [
     0,
   ],
+  "unicorn/no-array-reverse": [
+    0,
+  ],
   "unicorn/no-await-expression-member": [
     0,
   ],
@@ -1828,7 +1831,19 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/valid-expect": [
     0,
   ],
+  "vue/define-emits-declaration": [
+    0,
+  ],
+  "vue/define-props-declaration": [
+    0,
+  ],
+  "vue/no-multiple-slot-args": [
+    0,
+  ],
   "vue/valid-define-emits": [
+    0,
+  ],
+  "vue/valid-define-props": [
     0,
   ],
   "yoda": [

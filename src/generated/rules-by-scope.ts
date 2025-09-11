@@ -454,6 +454,7 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/explicit-length-check': 'off',
   'unicorn/filename-case': 'off',
   'unicorn/new-for-builtins': 'off',
+  'unicorn/no-array-reverse': 'off',
   'unicorn/no-instanceof-builtins': 'off',
   'unicorn/no-array-method-this-argument': 'off',
   'unicorn/no-unnecessary-array-flat-depth': 'off',
@@ -593,7 +594,11 @@ const vitestRules: Record<string, 'off'> = {
 };
 
 const vueRules: Record<string, 'off'> = {
+  'vue/define-emits-declaration': 'off',
+  'vue/define-props-declaration': 'off',
+  'vue/no-multiple-slot-args': 'off',
   'vue/valid-define-emits': 'off',
+  'vue/valid-define-props': 'off',
 };
 
 export {
