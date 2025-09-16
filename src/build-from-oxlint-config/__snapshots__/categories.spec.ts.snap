@@ -16,6 +16,7 @@ exports[`handleCategoriesScope > custom plugins, custom categories > customPlugi
   "no-unneeded-ternary": "off",
   "no-useless-concat": "off",
   "no-useless-constructor": "off",
+  "preserve-caught-error": "off",
 }
 `;
 

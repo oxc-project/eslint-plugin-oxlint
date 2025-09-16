@@ -80,6 +80,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/ban-types": [
     0,
   ],
+  "@typescript-eslint/class-methods-use-this": [
+    0,
+  ],
   "@typescript-eslint/consistent-generic-constructors": [
     0,
   ],
@@ -247,6 +250,14 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "block-scoped-var": [
     0,
+  ],
+  "class-methods-use-this": [
+    0,
+    {
+      "enforceForClassFields": true,
+      "exceptMethods": [],
+      "ignoreOverrideMethods": false,
+    },
   ],
   "curly": [
     0,
@@ -1088,6 +1099,12 @@ exports[`contains all the oxlint rules 1`] = `
   "no-useless-catch": [
     0,
   ],
+  "no-useless-computed-key": [
+    0,
+    {
+      "enforceForClassMembers": true,
+    },
+  ],
   "no-useless-concat": [
     0,
   ],
@@ -1158,6 +1175,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "prefer-template": [
+    0,
+  ],
+  "preserve-caught-error": [
     0,
   ],
   "promise/always-return": [
