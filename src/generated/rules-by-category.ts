@@ -102,6 +102,7 @@ const styleRules: Record<string, 'off'> = {
   'init-declarations': 'off',
   'max-params': 'off',
   'new-cap': 'off',
+  'no-useless-computed-key': 'off',
   'no-duplicate-imports': 'off',
   'no-extra-label': 'off',
   'no-labels': 'off',
@@ -284,6 +285,7 @@ const suspiciousRules: Record<string, 'off'> = {
   'no-unexpected-multiline': 'off',
   'no-useless-concat': 'off',
   'no-useless-constructor': 'off',
+  'preserve-caught-error': 'off',
   'import/no-unassigned-import': 'off',
   'import/no-empty-named-blocks': 'off',
   'import/no-absolute-path': 'off',
@@ -313,6 +315,7 @@ const suspiciousRules: Record<string, 'off'> = {
 };
 
 const restrictionRules: Record<string, 'off'> = {
+  'class-methods-use-this': 'off',
   'default-case': 'off',
   'no-alert': 'off',
   'no-bitwise': 'off',
@@ -375,6 +378,7 @@ const restrictionRules: Record<string, 'off'> = {
   'unicorn/prefer-node-protocol': 'off',
   'unicorn/prefer-number-properties': 'off',
   'vue/no-multiple-slot-args': 'off',
+  '@typescript-eslint/class-methods-use-this': 'off',
   '@typescript-eslint/no-restricted-imports': 'off',
   '@typescript-eslint/no-empty-function': 'off',
   '@typescript-eslint/no-unused-expressions': 'off',
