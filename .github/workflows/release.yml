@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - uses: oxc-project/setup-node@f42e3bda950c7454575e78ee4eaac880a077700c # v1.0.0
+      - uses: oxc-project/setup-node@fdbf0dfd334c4e6d56ceeb77d91c76339c2a0885 # v1.0.4
 
       - name: Build
         run: pnpm run build
