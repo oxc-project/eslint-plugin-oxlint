@@ -1179,6 +1179,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "preserve-caught-error": [
     0,
+    {
+      "requireCatchParameter": false,
+    },
   ],
   "promise/always-return": [
     0,
