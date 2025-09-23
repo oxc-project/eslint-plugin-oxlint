@@ -246,6 +246,7 @@ const styleRules: Record<string, 'off'> = {
   'vitest/prefer-to-be-truthy': 'off',
   'vue/define-emits-declaration': 'off',
   'vue/define-props-declaration': 'off',
+  'vue/require-typed-ref': 'off',
   '@typescript-eslint/default-param-last': 'off',
   '@typescript-eslint/init-declarations': 'off',
   '@typescript-eslint/max-params': 'off',
@@ -310,6 +311,7 @@ const suspiciousRules: Record<string, 'off'> = {
   'unicorn/no-accessor-recursion': 'off',
   'unicorn/prefer-add-event-listener': 'off',
   'unicorn/require-post-message-target-origin': 'off',
+  'vue/no-required-prop-with-default': 'off',
   '@typescript-eslint/no-useless-constructor': 'off',
   'vitest/no-commented-out-tests': 'off',
 };
