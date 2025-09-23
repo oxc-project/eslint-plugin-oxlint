@@ -1863,6 +1863,12 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-multiple-slot-args": [
     0,
   ],
+  "vue/no-required-prop-with-default": [
+    0,
+  ],
+  "vue/require-typed-ref": [
+    0,
+  ],
   "vue/valid-define-emits": [
     0,
   ],

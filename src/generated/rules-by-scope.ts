@@ -601,6 +601,8 @@ const vueRules: Record<string, 'off'> = {
   'vue/define-emits-declaration': 'off',
   'vue/define-props-declaration': 'off',
   'vue/no-multiple-slot-args': 'off',
+  'vue/no-required-prop-with-default': 'off',
+  'vue/require-typed-ref': 'off',
   'vue/valid-define-emits': 'off',
   'vue/valid-define-props': 'off',
 };
