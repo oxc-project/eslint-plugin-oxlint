@@ -375,6 +375,9 @@ exports[`contains all the oxlint rules 1`] = `
   "import/no-named-default": [
     0,
   ],
+  "import/no-named-export": [
+    0,
+  ],
   "import/no-namespace": [
     0,
   ],
@@ -1195,6 +1198,9 @@ exports[`contains all the oxlint rules 1`] = `
   "promise/no-callback-in-promise": [
     0,
   ],
+  "promise/no-multiple-resolved": [
+    0,
+  ],
   "promise/no-nesting": [
     0,
   ],
@@ -1296,6 +1302,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-no-useless-fragment": [
+    0,
+  ],
+  "react/jsx-pascal-case": [
     0,
   ],
   "react/jsx-props-no-spread-multi": [
@@ -1445,6 +1454,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-anonymous-default-export": [
     0,
   ],
+  "unicorn/no-array-callback-reference": [
+    0,
+  ],
   "unicorn/no-array-for-each": [
     0,
   ],
@@ -1455,6 +1467,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-array-reverse": [
+    0,
+  ],
+  "unicorn/no-array-sort": [
     0,
   ],
   "unicorn/no-await-expression-member": [
@@ -1858,6 +1873,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/define-props-declaration": [
+    0,
+  ],
+  "vue/max-props": [
     0,
   ],
   "vue/no-multiple-slot-args": [
