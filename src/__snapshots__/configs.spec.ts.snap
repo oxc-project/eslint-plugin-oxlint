@@ -977,6 +977,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-object-constructor": [
     0,
   ],
+  "no-param-reassign": [
+    0,
+  ],
   "no-plusplus": [
     0,
     {
@@ -1553,6 +1556,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-unnecessary-array-flat-depth": [
     0,
   ],
+  "unicorn/no-unnecessary-array-splice-count": [
+    0,
+  ],
   "unicorn/no-unnecessary-await": [
     0,
   ],
@@ -1563,6 +1569,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-unreadable-iife": [
+    0,
+  ],
+  "unicorn/no-useless-error-capture-stack-trace": [
     0,
   ],
   "unicorn/no-useless-fallback-in-spread": [
@@ -1610,7 +1619,16 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-array-some": [
     0,
   ],
+  "unicorn/prefer-at": [
+    0,
+  ],
   "unicorn/prefer-blob-reading-methods": [
+    0,
+  ],
+  "unicorn/prefer-class-fields": [
+    0,
+  ],
+  "unicorn/prefer-classlist-toggle": [
     0,
   ],
   "unicorn/prefer-code-point": [
@@ -1712,10 +1730,16 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-structured-clone": [
     0,
   ],
+  "unicorn/prefer-top-level-await": [
+    0,
+  ],
   "unicorn/prefer-type-error": [
     0,
   ],
   "unicorn/require-array-join-separator": [
+    0,
+  ],
+  "unicorn/require-module-specifiers": [
     0,
   ],
   "unicorn/require-number-to-fixed-digits-argument": [
@@ -1875,13 +1899,22 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/define-props-declaration": [
     0,
   ],
+  "vue/define-props-destructuring": [
+    0,
+  ],
   "vue/max-props": [
+    0,
+  ],
+  "vue/no-export-in-script-setup": [
     0,
   ],
   "vue/no-multiple-slot-args": [
     0,
   ],
   "vue/no-required-prop-with-default": [
+    0,
+  ],
+  "vue/prefer-import-from-vue": [
     0,
   ],
   "vue/require-typed-ref": [
