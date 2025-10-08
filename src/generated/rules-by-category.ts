@@ -324,6 +324,7 @@ const suspiciousRules: Record<string, 'off'> = {
   'unicorn/require-module-specifiers': 'off',
   'unicorn/require-post-message-target-origin': 'off',
   'vue/no-required-prop-with-default': 'off',
+  'vue/require-default-export': 'off',
   '@typescript-eslint/no-useless-constructor': 'off',
   'vitest/no-commented-out-tests': 'off',
 };
@@ -393,6 +394,7 @@ const restrictionRules: Record<string, 'off'> = {
   'unicorn/prefer-node-protocol': 'off',
   'unicorn/prefer-number-properties': 'off',
   'vue/max-props': 'off',
+  'vue/no-import-compiler-macros': 'off',
   'vue/no-multiple-slot-args': 'off',
   '@typescript-eslint/class-methods-use-this': 'off',
   '@typescript-eslint/no-restricted-imports': 'off',
