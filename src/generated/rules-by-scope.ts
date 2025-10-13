@@ -315,6 +315,7 @@ const nextjsRules: Record<string, 'off'> = {
 };
 
 const nodeRules: Record<string, 'off'> = {
+  'node/no-process-env': 'off',
   'node/no-exports-assign': 'off',
   'node/no-new-require': 'off',
 };
@@ -370,6 +371,7 @@ const reactRules: Record<string, 'off'> = {
   'react/no-string-refs': 'off',
   'react/no-unescaped-entities': 'off',
   'react/no-unknown-property': 'off',
+  'react/only-export-components': 'off',
   'react/prefer-es6-class': 'off',
   'react/react-in-jsx-scope': 'off',
   'react/self-closing-comp': 'off',

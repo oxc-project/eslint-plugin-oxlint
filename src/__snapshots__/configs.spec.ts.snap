@@ -1149,6 +1149,9 @@ exports[`contains all the oxlint rules 1`] = `
   "node/no-new-require": [
     0,
   ],
+  "node/no-process-env": [
+    0,
+  ],
   "operator-assignment": [
     0,
     "always",
@@ -1350,6 +1353,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-unknown-property": [
+    0,
+  ],
+  "react/only-export-components": [
     0,
   ],
   "react/prefer-es6-class": [
