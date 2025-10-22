@@ -5,77 +5,77 @@ import * as rules from './rules-by-scope.js';
 const eslintConfig = {
   name: 'oxlint/eslint',
   rules: rules.eslintRules,
-};
+} as const;
 
 const importConfig = {
   name: 'oxlint/import',
   rules: rules.importRules,
-};
+} as const;
 
 const jestConfig = {
   name: 'oxlint/jest',
   rules: rules.jestRules,
-};
+} as const;
 
 const jsdocConfig = {
   name: 'oxlint/jsdoc',
   rules: rules.jsdocRules,
-};
+} as const;
 
 const jsxA11yConfig = {
   name: 'oxlint/jsx-a11y',
   rules: rules.jsxA11yRules,
-};
+} as const;
 
 const nextjsConfig = {
   name: 'oxlint/nextjs',
   rules: rules.nextjsRules,
-};
+} as const;
 
 const nodeConfig = {
   name: 'oxlint/node',
   rules: rules.nodeRules,
-};
+} as const;
 
 const promiseConfig = {
   name: 'oxlint/promise',
   rules: rules.promiseRules,
-};
+} as const;
 
 const reactConfig = {
   name: 'oxlint/react',
   rules: rules.reactRules,
-};
+} as const;
 
 const reactHooksConfig = {
   name: 'oxlint/react-hooks',
   rules: rules.reactHooksRules,
-};
+} as const;
 
 const reactPerfConfig = {
   name: 'oxlint/react-perf',
   rules: rules.reactPerfRules,
-};
+} as const;
 
 const typescriptConfig = {
   name: 'oxlint/typescript',
   rules: rules.typescriptRules,
-};
+} as const;
 
 const unicornConfig = {
   name: 'oxlint/unicorn',
   rules: rules.unicornRules,
-};
+} as const;
 
 const vitestConfig = {
   name: 'oxlint/vitest',
   rules: rules.vitestRules,
-};
+} as const;
 
 const vueConfig = {
   name: 'oxlint/vue',
   rules: rules.vueRules,
-};
+} as const;
 
 const configByScope = {
   'flat/eslint': eslintConfig,

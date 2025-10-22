@@ -5,8 +5,8 @@ import configByCategory from './generated/configs-by-category.js';
 import {
   overrideDisabledRulesForVueAndSvelteFiles,
   splitDisabledRulesForVueAndSvelteFiles,
+  splitDisabledRulesForVueAndSvelteFilesDeep,
 } from './config-helper.js';
-import type { Linter } from 'eslint';
 
 type UnionToIntersection<U> = (
   U extends unknown ? (x: U) => void : never
@@ -21,16 +21,6 @@ const allRules: UnionToIntersection<AllRules> = Object.assign(
   {},
   ...Object.values(ruleMapsByScope)
 );
-
-const splitDisabledRulesForVueAndSvelteFilesDeep = <T extends string>(
-  config: Record<T, Linter.Config>
-): Record<T, Linter.Config[]> => {
-  const entries = Object.entries<Linter.Config>(config).map(
-    ([name, config]) => [name, splitDisabledRulesForVueAndSvelteFiles(config)]
-  );
-
-  return Object.fromEntries(entries);
-};
 
 export default {
   recommended: overrideDisabledRulesForVueAndSvelteFiles({
@@ -51,4 +41,4 @@ export default {
   }),
   ...splitDisabledRulesForVueAndSvelteFilesDeep(configByScope),
   ...splitDisabledRulesForVueAndSvelteFilesDeep(configByCategory),
-};
+} as const;
