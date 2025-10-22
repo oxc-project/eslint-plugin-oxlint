@@ -127,6 +127,7 @@ const eslintRules: Record<string, 'off'> = {
   'no-useless-rename': 'off',
   'no-var': 'off',
   'no-void': 'off',
+  'no-warning-comments': 'off',
   'no-with': 'off',
   'operator-assignment': 'off',
   'prefer-template': 'off',
@@ -341,6 +342,7 @@ const promiseRules: Record<string, 'off'> = {
 const reactRules: Record<string, 'off'> = {
   'react/button-has-type': 'off',
   'react/checked-requires-onchange-or-readonly': 'off',
+  'react/forbid-dom-props': 'off',
   'react/forbid-elements': 'off',
   'react/forward-ref-uses-ref': 'off',
   'react/iframe-missing-sandbox': 'off',

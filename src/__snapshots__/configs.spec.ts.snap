@@ -1140,6 +1140,17 @@ exports[`contains all the oxlint rules 1`] = `
       "allowAsStatement": false,
     },
   ],
+  "no-warning-comments": [
+    0,
+    {
+      "location": "start",
+      "terms": [
+        "todo",
+        "fixme",
+        "xxx",
+      ],
+    },
+  ],
   "no-with": [
     0,
   ],
@@ -1263,6 +1274,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/checked-requires-onchange-or-readonly": [
+    0,
+  ],
+  "react/forbid-dom-props": [
     0,
   ],
   "react/forbid-elements": [
