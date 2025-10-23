@@ -49,10 +49,12 @@ export const overrideDisabledRulesForVueAndSvelteFiles = <
   return newConfig;
 };
 
+export type SplittedFlatConfig<C extends FlatConfig> = [C] | [C, FlatConfig];
+
 // for eslint flat configuration
 export const splitDisabledRulesForVueAndSvelteFiles = <C extends FlatConfig>(
   config: C
-): [C] | [C, FlatConfig] => {
+): SplittedFlatConfig<C> => {
   const foundRules = Object.keys(config.rules!).filter((rule) =>
     rulesDisabledForVueAndSvelteFiles.includes(rule)
   );
@@ -82,8 +84,8 @@ export const splitDisabledRulesForVueAndSvelteFilesDeep = <
   T extends Record<string, FlatConfig>,
 >(
   config: T
-): { [K in keyof T]: [T[K]] | [T[K], FlatConfig] } => {
-  const result = {} as { [K in keyof T]: [T[K]] | [T[K], FlatConfig] };
+): { [K in keyof T]: SplittedFlatConfig<T[K]> } => {
+  const result = {} as { [K in keyof T]: SplittedFlatConfig<T[K]> };
 
   for (const name in config) {
     result[name] = splitDisabledRulesForVueAndSvelteFiles(config[name]);
