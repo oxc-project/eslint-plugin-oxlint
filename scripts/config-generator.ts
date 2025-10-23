@@ -59,7 +59,7 @@ export class ConfigGenerator {
 
       code += `  name: 'oxlint/${kebabCase(grouping)}',\n`;
       code += `  rules: rules.${camelCase(grouping)}Rules,`;
-      code += '\n};\n\n';
+      code += '\n} as const;\n\n';
     }
 
     code += `const configBy${exportName} =  {\n`;

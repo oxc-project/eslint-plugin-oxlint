@@ -1,10 +1,27 @@
 import { rulesDisabledForVueAndSvelteFiles } from './constants.js';
-import type { Linter } from 'eslint';
+
+// Some type helpers for better type inference
+type LegacyConfig = {
+  rules?: Record<string, 'off'>;
+  overrides?: {
+    files: string[];
+    excludedFiles?: string[];
+    rules?: Record<string, 'off'>;
+  }[];
+};
+
+type FlatConfig = {
+  name?: string;
+  rules?: Record<string, 'off'>;
+  ignores?: string[];
+};
 
 // for eslint legacy configuration
-export const overrideDisabledRulesForVueAndSvelteFiles = (
-  config: Linter.LegacyConfig<Record<string, 'off'>>
-): Linter.LegacyConfig<Record<string, 'off'>> => {
+export const overrideDisabledRulesForVueAndSvelteFiles = <
+  C extends LegacyConfig,
+>(
+  config: C
+): C => {
   const foundRules = Object.keys(config.rules!).filter((rule) =>
     rulesDisabledForVueAndSvelteFiles.includes(rule)
   );
@@ -32,10 +49,12 @@ export const overrideDisabledRulesForVueAndSvelteFiles = (
   return newConfig;
 };
 
+export type SplittedFlatConfig<C extends FlatConfig> = [C] | [C, FlatConfig];
+
 // for eslint flat configuration
-export const splitDisabledRulesForVueAndSvelteFiles = (
-  config: Linter.Config
-): Linter.Config[] => {
+export const splitDisabledRulesForVueAndSvelteFiles = <C extends FlatConfig>(
+  config: C
+): SplittedFlatConfig<C> => {
   const foundRules = Object.keys(config.rules!).filter((rule) =>
     rulesDisabledForVueAndSvelteFiles.includes(rule)
   );
@@ -46,7 +65,7 @@ export const splitDisabledRulesForVueAndSvelteFiles = (
 
   const oldConfig = structuredClone(config);
 
-  const newConfig: Linter.Config = {
+  const newConfig: FlatConfig = {
     // flat configs use minimatch syntax
     name: 'oxlint/vue-svelte-exceptions',
     ignores: ['**/*.vue', '**/*.svelte'],
@@ -59,4 +78,18 @@ export const splitDisabledRulesForVueAndSvelteFiles = (
   }
 
   return [oldConfig, newConfig];
+};
+
+export const splitDisabledRulesForVueAndSvelteFilesDeep = <
+  T extends Record<string, FlatConfig>,
+>(
+  config: T
+): { [K in keyof T]: SplittedFlatConfig<T[K]> } => {
+  const result = {} as { [K in keyof T]: SplittedFlatConfig<T[K]> };
+
+  for (const name in config) {
+    result[name] = splitDisabledRulesForVueAndSvelteFiles(config[name]);
+  }
+
+  return result;
 };

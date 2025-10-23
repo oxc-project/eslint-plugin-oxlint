@@ -5,32 +5,32 @@ import * as rules from './rules-by-category.js';
 const pedanticConfig = {
   name: 'oxlint/pedantic',
   rules: rules.pedanticRules,
-};
+} as const;
 
 const styleConfig = {
   name: 'oxlint/style',
   rules: rules.styleRules,
-};
+} as const;
 
 const suspiciousConfig = {
   name: 'oxlint/suspicious',
   rules: rules.suspiciousRules,
-};
+} as const;
 
 const restrictionConfig = {
   name: 'oxlint/restriction',
   rules: rules.restrictionRules,
-};
+} as const;
 
 const correctnessConfig = {
   name: 'oxlint/correctness',
   rules: rules.correctnessRules,
-};
+} as const;
 
 const perfConfig = {
   name: 'oxlint/perf',
   rules: rules.perfRules,
-};
+} as const;
 
 const configByCategory = {
   'flat/pedantic': pedanticConfig,
