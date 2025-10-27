@@ -17,10 +17,9 @@ export const handleOverridesScope = (
     const eslintRules: Record<string, 'off'> = {};
     const eslintConfig: EslintPluginOxlintConfig = {
       name: `oxlint/from-oxlint-config-override-${overrideIndex}`,
+      // expect that oxlint `files` syntax is the same as eslint
+      files: override.files,
     };
-
-    // expect that oxlint `files` syntax is the same as eslint
-    eslintConfig.files = override.files;
 
     const plugins = readPluginsFromConfig(override);
     if (baseCategories !== undefined && plugins !== undefined) {
