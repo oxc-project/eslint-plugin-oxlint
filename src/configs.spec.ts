@@ -3,6 +3,7 @@ import { ESLint } from 'eslint';
 import { ESLintTestConfig } from '../test/helpers.js';
 import configs from './configs.js';
 import { nurseryRules } from './generated/rules-by-category.js';
+import configByScope from './generated/configs-by-scope.js';
 
 it('contains all the oxlint rules', async () => {
   const eslint = new ESLint(ESLintTestConfig);
@@ -31,6 +32,18 @@ describe('nursery rules in configs', () => {
         for (const nurseryRule of Object.keys(nurseryRules)) {
           expect(nurseryRule in config.rules).toBe(false);
         }
+      }
+    }
+  });
+
+  it('should not include nursery rules in scope-based configs', () => {
+    // Check all scope-based configs (flat/eslint, flat/react, etc.)
+    for (const [_configName, config] of Object.entries(configByScope)) {
+      expect(config.rules).toBeDefined();
+
+      // Check that none of the nursery rules are in any scope config
+      for (const nurseryRule of Object.keys(nurseryRules)) {
+        expect(nurseryRule in config.rules).toBe(false);
       }
     }
   });
