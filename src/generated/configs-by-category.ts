@@ -22,6 +22,11 @@ const restrictionConfig = {
   rules: rules.restrictionRules,
 } as const;
 
+const nurseryConfig = {
+  name: 'oxlint/nursery',
+  rules: rules.nurseryRules,
+} as const;
+
 const correctnessConfig = {
   name: 'oxlint/correctness',
   rules: rules.correctnessRules,
@@ -37,6 +42,7 @@ const configByCategory = {
   'flat/style': styleConfig,
   'flat/suspicious': suspiciousConfig,
   'flat/restriction': restrictionConfig,
+  'flat/nursery': nurseryConfig,
   'flat/correctness': correctnessConfig,
   'flat/perf': perfConfig,
 };

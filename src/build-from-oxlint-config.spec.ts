@@ -192,6 +192,141 @@ describe('integration test with oxlint', () => {
   }
 });
 
+describe('nursery rules', () => {
+  it('should not output nursery rules by default with buildFromOxlintConfig', () => {
+    const config = {
+      rules: {
+        'import/named': 'error',
+        'no-undef': 'error',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config);
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // nursery rules should NOT be present
+    expect('import/named' in configs[0].rules!).toBe(false);
+    expect('no-undef' in configs[0].rules!).toBe(false);
+  });
+
+  it('should output nursery rules when withNursery option is true', () => {
+    const config = {
+      rules: {
+        'import/named': 'error',
+        'no-undef': 'error',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config, { withNursery: true });
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // nursery rules SHOULD be present when withNursery is true
+    expect('import/named' in configs[0].rules!).toBe(true);
+    expect('no-undef' in configs[0].rules!).toBe(true);
+    expect(configs[0].rules!['import/named']).toBe('off');
+    expect(configs[0].rules!['no-undef']).toBe('off');
+  });
+
+  it('should not output nursery rules by default with buildFromOxlintConfigFile', () => {
+    const configs = createConfigFileAndBuildFromIt(
+      'nursery-default-config.json',
+      JSON.stringify({
+        rules: {
+          'import/named': 'error',
+          'no-undef': 'error',
+        },
+      })
+    );
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // nursery rules should NOT be present by default
+    expect('import/named' in configs[0].rules!).toBe(false);
+    expect('no-undef' in configs[0].rules!).toBe(false);
+  });
+
+  it('should output nursery rules when withNursery option is true with buildFromOxlintConfigFile', () => {
+    const filename = 'nursery-with-option-config.json';
+    fs.writeFileSync(
+      filename,
+      JSON.stringify({
+        rules: {
+          'import/named': 'error',
+          'no-undef': 'error',
+        },
+      })
+    );
+
+    const configs = buildFromOxlintConfigFile(filename, { withNursery: true });
+
+    fs.unlinkSync(filename);
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // nursery rules SHOULD be present when withNursery is true
+    expect('import/named' in configs[0].rules!).toBe(true);
+    expect('no-undef' in configs[0].rules!).toBe(true);
+    expect(configs[0].rules!['import/named']).toBe('off');
+    expect(configs[0].rules!['no-undef']).toBe('off');
+  });
+
+  it('should not output nursery category by default', () => {
+    const config = {
+      categories: {
+        nursery: 'warn',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config);
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // No nursery rules should be present
+    const hasNurseryRules = Object.keys(configs[0].rules!).some((rule) =>
+      [
+        'import/named',
+        'no-undef',
+        'constructor-super',
+        'getter-return',
+      ].includes(rule)
+    );
+
+    expect(hasNurseryRules).toBe(false);
+  });
+
+  it('should output nursery category when withNursery option is true', () => {
+    const config = {
+      categories: {
+        nursery: 'warn',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config, { withNursery: true });
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // Nursery rules should be present
+    const hasNurseryRules = Object.keys(configs[0].rules!).some((rule) =>
+      [
+        'import/named',
+        'no-undef',
+        'constructor-super',
+        'getter-return',
+      ].includes(rule)
+    );
+
+    expect(hasNurseryRules).toBe(true);
+  });
+});
+
 const createConfigFileAndBuildFromIt = (
   filename: string,
   content: string

@@ -1,4 +1,8 @@
-import { EslintPluginOxlintConfig, OxlintConfig } from './types.js';
+import {
+  BuildFromOxlintConfigOptions,
+  EslintPluginOxlintConfig,
+  OxlintConfig,
+} from './types.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
   defaultCategories,
@@ -25,7 +29,8 @@ import path from 'node:path';
  * It accepts an object similar to the .oxlintrc.json file.
  */
 export const buildFromOxlintConfig = (
-  config: OxlintConfig
+  config: OxlintConfig,
+  options: BuildFromOxlintConfigOptions = {}
 ): EslintPluginOxlintConfig[] => {
   resolveRelativeExtendsPaths(config);
 
@@ -47,12 +52,12 @@ export const buildFromOxlintConfig = (
     plugins.push('react-hooks');
   }
 
-  handleCategoriesScope(plugins, categories, rules);
+  handleCategoriesScope(plugins, categories, rules, options);
 
   const configRules = readRulesFromConfig(config);
 
   if (configRules !== undefined) {
-    handleRulesScope(configRules, rules);
+    handleRulesScope(configRules, rules, options);
   }
 
   const baseConfig = {
@@ -72,7 +77,7 @@ export const buildFromOxlintConfig = (
   ) as EslintPluginOxlintConfig[];
 
   if (overrides !== undefined) {
-    handleOverridesScope(overrides, configs, categories);
+    handleOverridesScope(overrides, configs, categories, options);
   }
 
   return configs;
@@ -86,7 +91,8 @@ export const buildFromOxlintConfig = (
  * no rules will be deactivated and an error to `console.error` will be emitted
  */
 export const buildFromOxlintConfigFile = (
-  oxlintConfigFile: string
+  oxlintConfigFile: string,
+  options: BuildFromOxlintConfigOptions = {}
 ): EslintPluginOxlintConfig[] => {
   const config = getConfigContent(oxlintConfigFile);
 
@@ -100,5 +106,5 @@ export const buildFromOxlintConfigFile = (
     filePath: path.resolve(oxlintConfigFile),
   };
 
-  return buildFromOxlintConfig(config);
+  return buildFromOxlintConfig(config, options);
 };

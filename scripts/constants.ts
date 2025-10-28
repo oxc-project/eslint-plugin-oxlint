@@ -2,7 +2,8 @@
 export const ignoreScope = new Set(['oxc', 'deepscan', 'security']);
 
 // these are the rules that are not fully implemented in oxc
-export const ignoreCategories = new Set(['nursery']);
+// nursery rules are now included in generation but filtered at usage time
+export const ignoreCategories = new Set<string>();
 
 // we are ignoring typescript type-aware rules for now, until it is stable.
 // When support it with a flag, do the same for `ignoreCategories`.

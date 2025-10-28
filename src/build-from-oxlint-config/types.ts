@@ -1,5 +1,9 @@
 import type { Linter } from 'eslint';
 
+export type BuildFromOxlintConfigOptions = {
+  withNursery?: boolean;
+};
+
 export type OxlintConfigExtends = string[];
 
 export type OxlintConfigPlugins = string[];

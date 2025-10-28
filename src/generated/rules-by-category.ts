@@ -405,6 +405,18 @@ const restrictionRules: Record<string, 'off'> = {
   '@typescript-eslint/no-empty-function': 'off',
 };
 
+const nurseryRules: Record<string, 'off'> = {
+  'constructor-super': 'off',
+  'getter-return': 'off',
+  'no-misleading-character-class': 'off',
+  'no-undef': 'off',
+  'no-unreachable': 'off',
+  'import/export': 'off',
+  'import/named': 'off',
+  'promise/no-return-in-finally': 'off',
+  'react/require-render-return': 'off',
+};
+
 const correctnessRules: Record<string, 'off'> = {
   'for-direction': 'off',
   'no-unassigned-vars': 'off',
@@ -608,6 +620,7 @@ export {
   styleRules,
   suspiciousRules,
   restrictionRules,
+  nurseryRules,
   correctnessRules,
   perfRules,
 };

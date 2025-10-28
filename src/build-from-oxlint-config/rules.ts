@@ -3,11 +3,13 @@ import {
   reactHookRulesInsideReactScope,
 } from '../constants.js';
 import {
+  BuildFromOxlintConfigOptions,
   OxlintConfig,
   OxlintConfigOverride,
   OxlintConfigRules,
 } from './types.js';
 import configByCategory from '../generated/configs-by-category.js';
+import { nurseryRules } from '../generated/rules-by-category.js';
 import { isObject } from './utilities.js';
 
 const allRulesObjects = Object.values(configByCategory).map(
@@ -17,12 +19,22 @@ const allRules: string[] = allRulesObjects.flatMap((rulesObject) =>
   Object.keys(rulesObject)
 );
 
-const getEsLintRuleName = (rule: string): string | undefined => {
+const getEsLintRuleName = (
+  rule: string,
+  options: BuildFromOxlintConfigOptions = {}
+): string | undefined => {
   // there is no plugin prefix, it can be all plugin
   if (!rule.includes('/')) {
-    return allRules.find(
+    const found = allRules.find(
       (search) => search.endsWith(`/${rule}`) || search === rule
     );
+
+    // Filter out nursery rules unless explicitly enabled
+    if (found && !options.withNursery && found in nurseryRules) {
+      return undefined;
+    }
+
+    return found;
   }
 
   // greedy works with `@next/next/no-img-element` as an example
@@ -51,7 +63,14 @@ const getEsLintRuleName = (rule: string): string | undefined => {
   const expectedRule =
     esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
 
-  return allRules.find((rule) => rule === expectedRule);
+  const found = allRules.find((rule) => rule === expectedRule);
+
+  // Filter out nursery rules unless explicitly enabled
+  if (found && !options.withNursery && found in nurseryRules) {
+    return undefined;
+  }
+
+  return found;
 };
 
 /**
@@ -77,10 +96,11 @@ const isActiveValue = (value: unknown) =>
  */
 export const handleRulesScope = (
   oxlintRules: OxlintConfigRules,
-  rules: Record<string, 'off'>
+  rules: Record<string, 'off'>,
+  options: BuildFromOxlintConfigOptions = {}
 ): void => {
   for (const rule in oxlintRules) {
-    const eslintName = getEsLintRuleName(rule);
+    const eslintName = getEsLintRuleName(rule, options);
 
     if (eslintName === undefined) {
       continue;
