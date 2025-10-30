@@ -615,12 +615,12 @@ const vitestRules: Record<string, 'off'> = {
 };
 
 const vueRules: Record<string, 'off'> = {
-  'vue/define-props-destructuring': 'off',
   'vue/define-emits-declaration': 'off',
   'vue/define-props-declaration': 'off',
+  'vue/define-props-destructuring': 'off',
   'vue/max-props': 'off',
-  'vue/no-import-compiler-macros': 'off',
   'vue/no-export-in-script-setup': 'off',
+  'vue/no-import-compiler-macros': 'off',
   'vue/no-multiple-slot-args': 'off',
   'vue/no-required-prop-with-default': 'off',
   'vue/prefer-import-from-vue': 'off',
