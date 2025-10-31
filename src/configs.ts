@@ -17,10 +17,17 @@ type UnionToIntersection<U> = (
 type RulesGroups = keyof typeof ruleMapsByScope;
 type AllRules = (typeof ruleMapsByScope)[RulesGroups];
 
-const allRules: UnionToIntersection<AllRules> = Object.assign(
+const allRulesIncludingNursery: UnionToIntersection<AllRules> = Object.assign(
   {},
   ...Object.values(ruleMapsByScope)
 );
+
+// Exclude nursery rules from the default 'all' config
+const allRules = Object.fromEntries(
+  Object.entries(allRulesIncludingNursery).filter(
+    ([ruleName]) => !(ruleName in ruleMapsByCategory.nurseryRules)
+  )
+) as UnionToIntersection<AllRules>;
 
 export default {
   recommended: overrideDisabledRulesForVueAndSvelteFiles({

@@ -44,7 +44,11 @@ export class RulesGenerator {
     console.log(`Generating rules, grouped by ${this.rulesGrouping}`);
 
     const rulesGrouping = this.rulesGrouping;
-    const rulesArray = this.rulesArray;
+    // Filter out nursery rules when grouping by scope
+    const rulesArray =
+      this.rulesGrouping === RulesGrouping.SCOPE
+        ? this.rulesArray.filter((rule) => rule.category !== 'nursery')
+        : this.rulesArray;
 
     const rulesMap = this.groupItemsBy(rulesArray, rulesGrouping);
 

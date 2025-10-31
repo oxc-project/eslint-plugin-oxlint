@@ -192,6 +192,46 @@ describe('integration test with oxlint', () => {
   }
 });
 
+describe('nursery rules', () => {
+  it('should not output nursery rules by default', () => {
+    const config = {
+      rules: {
+        'import/named': 'error',
+        'no-undef': 'error',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config);
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // nursery rules should NOT be present
+    expect('import/named' in configs[0].rules!).toBe(false);
+    expect('no-undef' in configs[0].rules!).toBe(false);
+  });
+
+  it('should output nursery rules when withNursery option is true', () => {
+    const config = {
+      rules: {
+        'import/named': 'error',
+        'no-undef': 'error',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config, { withNursery: true });
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // nursery rules SHOULD be present when withNursery is true
+    expect('import/named' in configs[0].rules!).toBe(true);
+    expect('no-undef' in configs[0].rules!).toBe(true);
+    expect(configs[0].rules!['import/named']).toBe('off');
+    expect(configs[0].rules!['no-undef']).toBe('off');
+  });
+});
+
 const createConfigFileAndBuildFromIt = (
   filename: string,
   content: string

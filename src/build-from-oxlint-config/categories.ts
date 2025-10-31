@@ -1,6 +1,7 @@
 import { aliasPluginNames } from '../constants.js';
 import configByCategory from '../generated/configs-by-category.js';
 import {
+  BuildFromOxlintConfigOptions,
   OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigPlugins,
@@ -18,10 +19,16 @@ export const defaultCategories: OxlintConfigCategories = {
 export const handleCategoriesScope = (
   plugins: OxlintConfigPlugins,
   categories: OxlintConfigCategories,
-  rules: Record<string, 'off'>
+  rules: Record<string, 'off'>,
+  options: BuildFromOxlintConfigOptions = {}
 ): void => {
   for (const category in categories) {
     const configName = `flat/${category}`;
+
+    // Skip nursery category unless explicitly enabled
+    if (category === 'nursery' && !options.withNursery) {
+      continue;
+    }
 
     // category is not enabled or not in found categories
     if (categories[category] === 'off' || !(configName in configByCategory)) {
