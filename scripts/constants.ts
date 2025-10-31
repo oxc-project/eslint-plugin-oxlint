@@ -1,10 +1,6 @@
 // these are the rules that don't have a direct equivalent in the eslint rules
 export const ignoreScope = new Set(['oxc', 'deepscan', 'security']);
 
-// these are the rules that are not fully implemented in oxc
-// nursery rules are now included in generation but filtered at usage time
-export const ignoreCategories = new Set<string>();
-
 // we are ignoring typescript type-aware rules for now, until it is stable.
 // When support it with a flag, do the same for `ignoreCategories`.
 // List copied from:

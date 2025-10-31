@@ -1,9 +1,5 @@
 import { execSync } from 'node:child_process';
-import {
-  ignoreCategories,
-  ignoreScope,
-  typescriptTypeAwareRules,
-} from './constants.js';
+import { ignoreScope, typescriptTypeAwareRules } from './constants.js';
 import {
   aliasPluginNames,
   reactHookRulesInsideReactScope,
@@ -98,7 +94,6 @@ export function traverseRules(): Rule[] {
   // get all rules and filter the ignored one
   const rules = readRulesFromCommand().filter(
     (rule) =>
-      !ignoreCategories.has(rule.category) &&
       !ignoreScope.has(rule.scope) &&
       // ignore type-aware rules
       !(
