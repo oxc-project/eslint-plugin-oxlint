@@ -1381,6 +1381,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/self-closing-comp": [
     0,
   ],
+  "react/state-in-constructor": [
+    0,
+  ],
   "react/style-prop-object": [
     0,
   ],

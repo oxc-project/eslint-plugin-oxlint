@@ -377,6 +377,7 @@ const reactRules: Record<string, 'off'> = {
   'react/prefer-es6-class': 'off',
   'react/react-in-jsx-scope': 'off',
   'react/self-closing-comp': 'off',
+  'react/state-in-constructor': 'off',
   'react/style-prop-object': 'off',
   'react/void-dom-elements-no-children': 'off',
 };
