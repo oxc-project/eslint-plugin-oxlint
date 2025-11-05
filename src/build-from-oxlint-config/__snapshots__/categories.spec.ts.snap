@@ -159,7 +159,6 @@ exports[`handleCategoriesScope > default plugins (react, unicorn, typescript), d
   "react/forward-ref-uses-ref": "off",
   "react/jsx-key": "off",
   "react/jsx-no-duplicate-props": "off",
-  "react/jsx-no-target-blank": "off",
   "react/jsx-no-undef": "off",
   "react/jsx-props-no-spread-multi": "off",
   "react/no-children-prop": "off",
