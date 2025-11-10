@@ -1594,6 +1594,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-unreadable-iife": [
     0,
   ],
+  "unicorn/no-useless-collection-argument": [
+    0,
+  ],
   "unicorn/no-useless-error-capture-stack-trace": [
     0,
   ],

@@ -469,6 +469,7 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/new-for-builtins': 'off',
   'unicorn/no-unnecessary-array-splice-count': 'off',
   'unicorn/no-array-callback-reference': 'off',
+  'unicorn/no-useless-collection-argument': 'off',
   'unicorn/no-useless-error-capture-stack-trace': 'off',
   'unicorn/no-array-sort': 'off',
   'unicorn/no-array-reverse': 'off',
