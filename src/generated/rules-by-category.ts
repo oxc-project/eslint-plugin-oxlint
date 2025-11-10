@@ -222,6 +222,7 @@ const styleRules: Record<string, 'off'> = {
   'unicorn/empty-brace-spaces': 'off',
   'unicorn/error-message': 'off',
   'unicorn/filename-case': 'off',
+  'unicorn/no-useless-collection-argument': 'off',
   'unicorn/no-array-method-this-argument': 'off',
   'unicorn/no-await-expression-member': 'off',
   'unicorn/no-console-spaces': 'off',
