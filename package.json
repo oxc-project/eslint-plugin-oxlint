@@ -4,7 +4,7 @@
   "description": "Turn off all rules already supported by oxlint",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.22.0",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
