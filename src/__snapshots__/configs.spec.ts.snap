@@ -1729,6 +1729,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-regexp-test": [
     0,
   ],
+  "unicorn/prefer-response-static-json": [
+    0,
+  ],
   "unicorn/prefer-set-has": [
     0,
   ],
