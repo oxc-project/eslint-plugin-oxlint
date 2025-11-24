@@ -1648,6 +1648,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-at": [
     0,
   ],
+  "unicorn/prefer-bigint-literals": [
+    0,
+  ],
   "unicorn/prefer-blob-reading-methods": [
     0,
   ],

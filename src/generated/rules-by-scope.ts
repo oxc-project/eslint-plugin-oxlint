@@ -520,6 +520,7 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/numeric-separators-style': 'off',
   'unicorn/prefer-classlist-toggle': 'off',
   'unicorn/prefer-class-fields': 'off',
+  'unicorn/prefer-bigint-literals': 'off',
   'unicorn/prefer-response-static-json': 'off',
   'unicorn/prefer-top-level-await': 'off',
   'unicorn/prefer-at': 'off',
