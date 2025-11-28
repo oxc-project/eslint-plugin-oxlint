@@ -80,7 +80,7 @@
   },
   "lint-staged": {
     "*.{js,cjs,ts}": "eslint",
-    "*": "oxfmt"
+    "*": "oxfmt ."
   },
   "volta": {
     "node": "20.14.0"
