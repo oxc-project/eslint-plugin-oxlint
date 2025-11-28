@@ -84,10 +84,7 @@ export const unicornRulesExtendEslintRules = ['no-negated-condition'];
 
 // All rules from `eslint-plugin-react-hooks`
 // Since oxlint supports these rules under react/*, we need to remap them.
-export const reactHookRulesInsideReactScope = [
-  'rules-of-hooks',
-  'exhaustive-deps',
-];
+export const reactHookRulesInsideReactScope = ['rules-of-hooks', 'exhaustive-deps'];
 
 // These rules are disabled for vue and svelte files
 // because oxlint can not parse currently the HTML

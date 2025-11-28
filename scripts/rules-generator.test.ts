@@ -18,10 +18,7 @@ suite('RulesGenerator', () => {
     ];
 
     // Create an instance of RulesGenerator
-    const generator = new RulesGenerator(
-      successResultArray,
-      RulesGrouping.SCOPE
-    );
+    const generator = new RulesGenerator(successResultArray, RulesGrouping.SCOPE);
 
     // Call the generateRules method
     expect(generator.generateRulesCode()).toMatchSnapshot('byScope');

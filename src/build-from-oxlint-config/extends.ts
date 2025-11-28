@@ -15,12 +15,8 @@ import { readOverridesFromConfig } from './overrides.js';
  * tries to return the "extends" section from the config.
  * it returns `undefined` when not found or invalid.
  */
-const readExtendsFromConfig = (
-  config: OxlintConfig
-): OxlintConfigExtends | undefined => {
-  return 'extends' in config && Array.isArray(config.extends)
-    ? config.extends
-    : undefined;
+const readExtendsFromConfig = (config: OxlintConfig): OxlintConfigExtends | undefined => {
+  return 'extends' in config && Array.isArray(config.extends) ? config.extends : undefined;
 };
 
 /**
@@ -34,22 +30,16 @@ export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
   const extendsFiles = readExtendsFromConfig(config);
   if (!extendsFiles?.length) return;
   const configFileDirectory = path.dirname(config.__misc.filePath);
-  config.extends = extendsFiles.map((extendFile) =>
-    path.resolve(configFileDirectory, extendFile)
-  );
+  config.extends = extendsFiles.map((extendFile) => path.resolve(configFileDirectory, extendFile));
 };
 
 /**
  * Appends plugins, rules and overrides from the extends configs files to the given config.
  */
-export const handleExtendsScope = (
-  extendsConfigs: OxlintConfig[],
-  config: OxlintConfig
-) => {
+export const handleExtendsScope = (extendsConfigs: OxlintConfig[], config: OxlintConfig) => {
   let rules: OxlintConfigRules = readRulesFromConfig(config) ?? {};
   const plugins: OxlintConfigPlugins = readPluginsFromConfig(config) ?? [];
-  const overrides: OxlintConfigOverride[] =
-    readOverridesFromConfig(config) ?? [];
+  const overrides: OxlintConfigOverride[] = readOverridesFromConfig(config) ?? [];
   for (const extendConfig of extendsConfigs) {
     plugins.unshift(...(readPluginsFromConfig(extendConfig) ?? defaultPlugins));
     rules = { ...readRulesFromConfig(extendConfig), ...rules };
@@ -63,9 +53,7 @@ export const handleExtendsScope = (
 /**
  * tries to return the content of the chain "extends" section from the config.
  */
-export const readExtendsConfigsFromConfig = (
-  config: OxlintConfig
-): OxlintConfig[] => {
+export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig[] => {
   const extendsFiles = readExtendsFromConfig(config);
   if (!extendsFiles?.length) return [];
 
@@ -80,10 +68,7 @@ export const readExtendsConfigsFromConfig = (
 
     resolveRelativeExtendsPaths(extendConfig);
 
-    extendsConfigs.push(
-      extendConfig,
-      ...readExtendsConfigsFromConfig(extendConfig)
-    );
+    extendsConfigs.push(extendConfig, ...readExtendsConfigsFromConfig(extendConfig));
   }
   return extendsConfigs;
 };

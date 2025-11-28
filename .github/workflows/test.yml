@@ -26,8 +26,8 @@ jobs:
       - name: Run eslint
         run: npx eslint
 
-      - name: Run Format (prettier)
-        run: npx prettier . --check
+      - name: Run Format (oxfmt)
+        run: npx oxfmt . --check
 
       - name: Type Check
         run: npx tsc --noEmit

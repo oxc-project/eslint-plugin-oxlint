@@ -1,7 +1,4 @@
-import {
-  aliasPluginNames,
-  reactHookRulesInsideReactScope,
-} from '../constants.js';
+import { aliasPluginNames, reactHookRulesInsideReactScope } from '../constants.js';
 import {
   BuildFromOxlintConfigOptions,
   OxlintConfig,
@@ -12,12 +9,8 @@ import configByCategory from '../generated/configs-by-category.js';
 import { nurseryRules } from '../generated/rules-by-category.js';
 import { isObject } from './utilities.js';
 
-const allRulesObjects = Object.values(configByCategory).map(
-  (config) => config.rules
-);
-const allRules: string[] = allRulesObjects.flatMap((rulesObject) =>
-  Object.keys(rulesObject)
-);
+const allRulesObjects = Object.values(configByCategory).map((config) => config.rules);
+const allRules: string[] = allRulesObjects.flatMap((rulesObject) => Object.keys(rulesObject));
 
 const getEsLintRuleName = (
   rule: string,
@@ -25,9 +18,7 @@ const getEsLintRuleName = (
 ): string | undefined => {
   // there is no plugin prefix, it can be all plugin
   if (!rule.includes('/')) {
-    const found = allRules.find(
-      (search) => search.endsWith(`/${rule}`) || search === rule
-    );
+    const found = allRules.find((search) => search.endsWith(`/${rule}`) || search === rule);
 
     // Filter out nursery rules unless explicitly enabled
     if (found && !options.withNursery && found in nurseryRules) {
@@ -48,20 +39,15 @@ const getEsLintRuleName = (
   const ruleName = match[2];
 
   // map to the right eslint plugin
-  let esPluginName =
-    pluginName in aliasPluginNames ? aliasPluginNames[pluginName] : pluginName;
+  let esPluginName = pluginName in aliasPluginNames ? aliasPluginNames[pluginName] : pluginName;
 
   // special case for eslint-plugin-react-hooks
-  if (
-    esPluginName === 'react' &&
-    reactHookRulesInsideReactScope.includes(ruleName)
-  ) {
+  if (esPluginName === 'react' && reactHookRulesInsideReactScope.includes(ruleName)) {
     esPluginName = 'react-hooks';
   }
 
   // extra check for eslint
-  const expectedRule =
-    esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
+  const expectedRule = esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
 
   const found = allRules.find((rule) => rule === expectedRule);
 
@@ -77,8 +63,7 @@ const getEsLintRuleName = (
  * checks if value is validSet, or if validSet is an array, check if value is first value of it
  */
 const isValueInSet = (value: unknown, validSet: unknown[]) =>
-  validSet.includes(value) ||
-  (Array.isArray(value) && validSet.includes(value[0]));
+  validSet.includes(value) || (Array.isArray(value) && validSet.includes(value[0]));
 
 /**
  * check if the value is "off", 0, ["off", ...], or [0, ...]
@@ -88,8 +73,7 @@ const isDeactivateValue = (value: unknown) => isValueInSet(value, ['off', 0]);
 /**
  * check if the value is "error", "warn", 1, 2, ["error", ...], ["warn", ...], [1, ...], or [2, ...]
  */
-const isActiveValue = (value: unknown) =>
-  isValueInSet(value, ['error', 'warn', 1, 2]);
+const isActiveValue = (value: unknown) => isValueInSet(value, ['error', 'warn', 1, 2]);
 
 /**
  * checks if the oxlint rule is activated/deactivated and append/remove it.

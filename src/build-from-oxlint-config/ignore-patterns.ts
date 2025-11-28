@@ -1,8 +1,4 @@
-import {
-  EslintPluginOxlintConfig,
-  OxlintConfig,
-  OxlintConfigIgnorePatterns,
-} from './types.js';
+import { EslintPluginOxlintConfig, OxlintConfig, OxlintConfigIgnorePatterns } from './types.js';
 
 /**
  * adds the ignore patterns to the config

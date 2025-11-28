@@ -1,21 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { handleRulesScope } from './rules.js';
-import {
-  unicornRulesExtendEslintRules,
-  viteTestCompatibleRules,
-} from '../constants.js';
+import { unicornRulesExtendEslintRules, viteTestCompatibleRules } from '../constants.js';
 
 describe('handleRulesScope', () => {
-  for (const ruleSetting of [
-    'error',
-    ['error'],
-    'warn',
-    ['warn'],
-    1,
-    [1],
-    2,
-    [2],
-  ]) {
+  for (const ruleSetting of ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]]) {
     it(`detect active rule ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
       const rules = {};
       handleRulesScope(

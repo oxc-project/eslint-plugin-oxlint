@@ -1,8 +1,4 @@
-import {
-  OxlintConfig,
-  OxlintConfigOverride,
-  OxlintConfigPlugins,
-} from './types.js';
+import { OxlintConfig, OxlintConfigOverride, OxlintConfigPlugins } from './types.js';
 
 // default plugins, see <https://oxc.rs/docs/guide/usage/linter/config#plugins>
 export const defaultPlugins: OxlintConfigPlugins = ['unicorn', 'typescript'];
@@ -14,7 +10,5 @@ export const defaultPlugins: OxlintConfigPlugins = ['unicorn', 'typescript'];
 export const readPluginsFromConfig = (
   config: OxlintConfig | OxlintConfigOverride
 ): OxlintConfigPlugins | undefined => {
-  return 'plugins' in config && Array.isArray(config.plugins)
-    ? config.plugins
-    : undefined;
+  return 'plugins' in config && Array.isArray(config.plugins) ? config.plugins : undefined;
 };

@@ -41,8 +41,7 @@ export const handleCategoriesScope = (
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of Object.keys(possibleRules)) {
       for (const plugin of plugins) {
-        const pluginPrefix =
-          plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
+        const pluginPrefix = plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
 
         // the rule has no prefix, so it is a eslint one
         if (pluginPrefix === '' && !rule.includes('/')) {

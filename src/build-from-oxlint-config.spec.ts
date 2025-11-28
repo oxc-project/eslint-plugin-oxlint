@@ -156,10 +156,7 @@ describe('integration test with oxlint', () => {
         receivedCount += Object.keys(buildConfig.rules!).length;
 
         // special mapping for ts alias rules
-        if (
-          config.plugins === undefined ||
-          config.plugins.includes('typescript')
-        ) {
+        if (config.plugins === undefined || config.plugins.includes('typescript')) {
           expectedCount += typescriptTypeAwareRules.filter(
             (tsRule) => `@typescript-eslint/${tsRule}` in buildConfig.rules!
           ).length;
@@ -177,10 +174,7 @@ describe('integration test with oxlint', () => {
         }
 
         // special mapping for unicorn alias rules
-        if (
-          config.plugins === undefined ||
-          config.plugins.includes('unicorn')
-        ) {
+        if (config.plugins === undefined || config.plugins.includes('unicorn')) {
           expectedCount += unicornRulesExtendEslintRules.filter(
             (aliasRule) => `unicorn/${aliasRule}` in buildConfig.rules!
           ).length;
@@ -271,11 +265,7 @@ const executeOxlintWithConfiguration = (
   fs.writeFileSync(filename, JSON.stringify(config));
   let oxlintOutput: string;
 
-  const cliArguments = [
-    `--config=${filename}`,
-    '--disable-oxc-plugin',
-    '--silent',
-  ];
+  const cliArguments = [`--config=${filename}`, '--disable-oxc-plugin', '--silent'];
 
   try {
     oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {

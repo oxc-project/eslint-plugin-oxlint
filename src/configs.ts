@@ -8,9 +8,9 @@ import {
   splitDisabledRulesForVueAndSvelteFilesDeep,
 } from './config-helper.js';
 
-type UnionToIntersection<U> = (
-  U extends unknown ? (x: U) => void : never
-) extends (x: infer I) => void
+type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) extends (
+  x: infer I
+) => void
   ? I
   : never;
 
