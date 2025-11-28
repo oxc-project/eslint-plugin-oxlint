@@ -226,6 +226,20 @@ describe('nursery rules', () => {
   });
 });
 
+describe('ignorePatterns handling', () => {
+  it('should create ignore config as eslint global ignores', () => {
+    const config = {
+      ignorePatterns: ['**/*.test.ts', '**/*.spec.ts'],
+      rules: { eqeqeq: 'off' },
+    };
+    const configs = buildFromOxlintConfig(config);
+
+    expect(configs.length).toBeGreaterThanOrEqual(2);
+    expect(configs[0].rules).toBeUndefined();
+    expect(configs[0].ignores).toStrictEqual(['**/*.test.ts', '**/*.spec.ts']);
+  });
+});
+
 const createConfigFileAndBuildFromIt = (
   filename: string,
   content: string

@@ -58,12 +58,6 @@ export const buildFromOxlintConfig = (
     rules,
   };
 
-  const ignorePatterns = readIgnorePatternsFromConfig(config);
-
-  if (ignorePatterns !== undefined) {
-    handleIgnorePatternsScope(ignorePatterns, baseConfig);
-  }
-
   const overrides = readOverridesFromConfig(config);
   const configs = splitDisabledRulesForVueAndSvelteFiles(baseConfig) as EslintPluginOxlintConfig[];
 
@@ -71,7 +65,16 @@ export const buildFromOxlintConfig = (
     handleOverridesScope(overrides, configs, categories, options);
   }
 
-  return configs;
+  const ignorePatterns = readIgnorePatternsFromConfig(config);
+  if (ignorePatterns === undefined) {
+    return configs;
+  } else {
+    const ignoreConfig: EslintPluginOxlintConfig = {
+      name: 'oxlint/oxlint-config-ignore-patterns',
+    };
+    handleIgnorePatternsScope(ignorePatterns, ignoreConfig);
+    return [ignoreConfig, ...configs];
+  }
 };
 
 /**
