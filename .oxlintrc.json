@@ -6,5 +6,6 @@
   },
   "rules": {
     "@typescript-eslint/no-unsafe-type-assertion": "off" // FIX: ignore them inline or fix them
-  }
+  },
+  "ignorePatterns": ["dist/"]
 }
