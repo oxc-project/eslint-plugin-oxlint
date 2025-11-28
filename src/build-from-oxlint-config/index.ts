@@ -22,7 +22,6 @@ import {
   resolveRelativeExtendsPaths,
 } from './extends.js';
 import { getConfigContent } from './utilities.js';
-import type { FlatConfig } from '../config-helper.js';
 import path from 'node:path';
 
 /**
@@ -61,7 +60,7 @@ export const buildFromOxlintConfig = (
     handleRulesScope(configRules, rules, options);
   }
 
-  const baseConfig: FlatConfig = {
+  const baseConfig = {
     name: 'oxlint/from-oxlint-config',
     rules,
   };
@@ -79,7 +78,7 @@ export const buildFromOxlintConfig = (
   if (ignorePatterns === undefined) {
     return configs;
   } else {
-    const ignoreConfig: FlatConfig = {
+    const ignoreConfig: EslintPluginOxlintConfig = {
       name: 'oxlint/oxlint-config-ignore-patterns',
     };
     handleIgnorePatternsScope(ignorePatterns, ignoreConfig);
