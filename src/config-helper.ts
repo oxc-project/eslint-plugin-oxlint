@@ -17,11 +17,7 @@ type FlatConfig = {
 };
 
 // for eslint legacy configuration
-export const overrideDisabledRulesForVueAndSvelteFiles = <
-  C extends LegacyConfig,
->(
-  config: C
-): C => {
+export const overrideDisabledRulesForVueAndSvelteFiles = <C extends LegacyConfig>(config: C): C => {
   const foundRules = Object.keys(config.rules!).filter((rule) =>
     rulesDisabledForVueAndSvelteFiles.includes(rule)
   );
@@ -80,9 +76,7 @@ export const splitDisabledRulesForVueAndSvelteFiles = <C extends FlatConfig>(
   return [oldConfig, newConfig];
 };
 
-export const splitDisabledRulesForVueAndSvelteFilesDeep = <
-  T extends Record<string, FlatConfig>,
->(
+export const splitDisabledRulesForVueAndSvelteFilesDeep = <T extends Record<string, FlatConfig>>(
   config: T
 ): { [K in keyof T]: SplittedFlatConfig<T[K]> } => {
   const result = {} as { [K in keyof T]: SplittedFlatConfig<T[K]> };

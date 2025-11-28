@@ -32,10 +32,7 @@ function readRulesFromCommand(): Rule[] {
  * Some rules are in a different scope then in eslint
  */
 function fixScopeOfRule(rule: Rule): void {
-  if (
-    rule.scope === 'react' &&
-    reactHookRulesInsideReactScope.includes(rule.value)
-  ) {
+  if (rule.scope === 'react' && reactHookRulesInsideReactScope.includes(rule.value)) {
     rule.scope = 'react_hooks';
   }
 }
@@ -48,8 +45,7 @@ function fixValueOfRule(rule: Rule): void {
     return;
   }
 
-  const scope =
-    rule.scope in aliasPluginNames ? aliasPluginNames[rule.scope] : rule.scope;
+  const scope = rule.scope in aliasPluginNames ? aliasPluginNames[rule.scope] : rule.scope;
 
   rule.value = `${scope}/${rule.value}`;
 }
@@ -59,10 +55,7 @@ function fixValueOfRule(rule: Rule): void {
  * remap them so we can disable all the reimplemented too
  */
 function getAliasRules(rule: Rule): Rule | undefined {
-  if (
-    rule.scope === 'eslint' &&
-    typescriptRulesExtendEslintRules.includes(rule.value)
-  ) {
+  if (rule.scope === 'eslint' && typescriptRulesExtendEslintRules.includes(rule.value)) {
     return {
       value: `@typescript-eslint/${rule.value}`,
       scope: 'typescript',
@@ -78,10 +71,7 @@ function getAliasRules(rule: Rule): Rule | undefined {
     };
   }
 
-  if (
-    rule.scope === 'eslint' &&
-    unicornRulesExtendEslintRules.includes(rule.value)
-  ) {
+  if (rule.scope === 'eslint' && unicornRulesExtendEslintRules.includes(rule.value)) {
     return {
       value: `unicorn/${rule.value}`,
       scope: 'unicorn',
@@ -96,10 +86,7 @@ export function traverseRules(): Rule[] {
     (rule) =>
       !ignoreScope.has(rule.scope) &&
       // ignore type-aware rules
-      !(
-        rule.scope === 'typescript' &&
-        typescriptTypeAwareRules.includes(rule.value)
-      )
+      !(rule.scope === 'typescript' && typescriptTypeAwareRules.includes(rule.value))
   );
 
   const aliasRules: Rule[] = [];

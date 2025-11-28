@@ -13,9 +13,7 @@ export const isObject = (value: unknown): boolean =>
  * if the file is not found or could not be parsed, undefined is returned.
  * And an error message will be emitted to `console.error`
  */
-export const getConfigContent = (
-  oxlintConfigFile: string
-): OxlintConfig | undefined => {
+export const getConfigContent = (oxlintConfigFile: string): OxlintConfig | undefined => {
   try {
     const content = fs.readFileSync(oxlintConfigFile, 'utf8');
 
@@ -34,9 +32,7 @@ export const getConfigContent = (
       return undefined;
     }
   } catch {
-    console.error(
-      `eslint-plugin-oxlint: could not find oxlint config file: ${oxlintConfigFile}`
-    );
+    console.error(`eslint-plugin-oxlint: could not find oxlint config file: ${oxlintConfigFile}`);
     return undefined;
   }
 };

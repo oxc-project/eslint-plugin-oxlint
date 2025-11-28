@@ -1,8 +1,4 @@
-import {
-  BuildFromOxlintConfigOptions,
-  EslintPluginOxlintConfig,
-  OxlintConfig,
-} from './types.js';
+import { BuildFromOxlintConfigOptions, EslintPluginOxlintConfig, OxlintConfig } from './types.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
   defaultCategories,
@@ -10,10 +6,7 @@ import {
   readCategoriesFromConfig,
 } from './categories.js';
 import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
-import {
-  handleIgnorePatternsScope,
-  readIgnorePatternsFromConfig,
-} from './ignore-patterns.js';
+import { handleIgnorePatternsScope, readIgnorePatternsFromConfig } from './ignore-patterns.js';
 import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
 import { splitDisabledRulesForVueAndSvelteFiles } from '../config-helper.js';
 import {
@@ -72,9 +65,7 @@ export const buildFromOxlintConfig = (
   }
 
   const overrides = readOverridesFromConfig(config);
-  const configs = splitDisabledRulesForVueAndSvelteFiles(
-    baseConfig
-  ) as EslintPluginOxlintConfig[];
+  const configs = splitDisabledRulesForVueAndSvelteFiles(baseConfig) as EslintPluginOxlintConfig[];
 
   if (overrides !== undefined) {
     handleOverridesScope(overrides, configs, categories, options);
