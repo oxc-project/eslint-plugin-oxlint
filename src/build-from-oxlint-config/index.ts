@@ -22,6 +22,7 @@ import {
   resolveRelativeExtendsPaths,
 } from './extends.js';
 import { getConfigContent } from './utilities.js';
+import type { FlatConfig } from '../config-helper.js';
 import path from 'node:path';
 
 /**
@@ -60,16 +61,10 @@ export const buildFromOxlintConfig = (
     handleRulesScope(configRules, rules, options);
   }
 
-  const baseConfig = {
+  const baseConfig: FlatConfig = {
     name: 'oxlint/from-oxlint-config',
     rules,
   };
-
-  const ignorePatterns = readIgnorePatternsFromConfig(config);
-
-  if (ignorePatterns !== undefined) {
-    handleIgnorePatternsScope(ignorePatterns, baseConfig);
-  }
 
   const overrides = readOverridesFromConfig(config);
   const configs = splitDisabledRulesForVueAndSvelteFiles(
@@ -80,7 +75,16 @@ export const buildFromOxlintConfig = (
     handleOverridesScope(overrides, configs, categories, options);
   }
 
-  return configs;
+  const ignorePatterns = readIgnorePatternsFromConfig(config);
+  if (ignorePatterns === undefined) {
+    return configs;
+  } else {
+    const ignoreConfig: FlatConfig = {
+      name: 'oxlint/oxlint-config-ignore-patterns',
+    };
+    handleIgnorePatternsScope(ignorePatterns, ignoreConfig);
+    return [ignoreConfig, ...configs];
+  }
 };
 
 /**

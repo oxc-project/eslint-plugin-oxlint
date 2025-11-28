@@ -10,7 +10,7 @@ type LegacyConfig = {
   }[];
 };
 
-type FlatConfig = {
+export type FlatConfig = {
   name?: string;
   rules?: Record<string, 'off'>;
   ignores?: string[];
