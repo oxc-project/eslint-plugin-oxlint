@@ -388,6 +388,7 @@ const restrictionRules: Record<string, 'off'> = {
   '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'off',
   '@typescript-eslint/no-non-null-assertion': 'off',
   '@typescript-eslint/no-require-imports': 'off',
+  '@typescript-eslint/no-restricted-types': 'off',
   '@typescript-eslint/no-var-requires': 'off',
   '@typescript-eslint/prefer-literal-enum-member': 'off',
   'unicorn/no-useless-error-capture-stack-trace': 'off',

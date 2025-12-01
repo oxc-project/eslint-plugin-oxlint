@@ -422,6 +422,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
   '@typescript-eslint/no-non-null-assertion': 'off',
   '@typescript-eslint/no-require-imports': 'off',
+  '@typescript-eslint/no-restricted-types': 'off',
   '@typescript-eslint/no-this-alias': 'off',
   '@typescript-eslint/no-unnecessary-parameter-property-assignment': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
