@@ -179,6 +179,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-restricted-imports": [
     0,
   ],
+  "@typescript-eslint/no-restricted-types": [
+    0,
+  ],
   "@typescript-eslint/no-this-alias": [
     0,
   ],
