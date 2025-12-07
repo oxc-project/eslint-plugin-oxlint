@@ -18,7 +18,7 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false # should be fine, we give another token for PR creation
 
@@ -41,7 +41,7 @@ jobs:
           OXLINT_VERSION: ${{ inputs.version }}
         run: npm version ${OXLINT_VERSION} --no-git-tag-version
 
-      - uses: peter-evans/create-pull-request@84ae59a2cdc2258d6fa0732dd66352dddae2a412 # v7.0.9
+      - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7.0.11
         with:
           # bot account with PAT required for triggering workflow runs
           # See https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
