@@ -125,6 +125,7 @@ const eslintRules: Record<string, 'off'> = {
   'no-useless-constructor': 'off',
   'no-useless-escape': 'off',
   'no-useless-rename': 'off',
+  'no-useless-return': 'off',
   'no-var': 'off',
   'no-void': 'off',
   'no-warning-comments': 'off',

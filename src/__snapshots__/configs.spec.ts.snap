@@ -1134,6 +1134,9 @@ exports[`contains all the oxlint rules 1`] = `
       "ignoreImport": false,
     },
   ],
+  "no-useless-return": [
+    0,
+  ],
   "no-var": [
     0,
   ],
