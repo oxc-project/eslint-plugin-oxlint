@@ -22,6 +22,7 @@ const pedanticRules: Record<string, 'off'> = {
   'no-redeclare': 'off',
   'no-self-compare': 'off',
   'no-throw-literal': 'off',
+  'no-useless-return': 'off',
   'no-warning-comments': 'off',
   radix: 'off',
   'require-await': 'off',
