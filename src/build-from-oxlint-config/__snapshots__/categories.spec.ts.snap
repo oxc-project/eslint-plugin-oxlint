@@ -22,6 +22,7 @@ exports[`handleCategoriesScope > custom plugins, custom categories > customPlugi
 
 exports[`handleCategoriesScope > custom plugins, default categories > customPluginDefaultCategories 1`] = `
 {
+  "constructor-super": "off",
   "for-direction": "off",
   "no-async-promise-executor": "off",
   "no-caller": "off",
@@ -107,6 +108,7 @@ exports[`handleCategoriesScope > default plugins (react, unicorn, typescript), d
   "@typescript-eslint/no-wrapper-object-types": "off",
   "@typescript-eslint/prefer-as-const": "off",
   "@typescript-eslint/triple-slash-reference": "off",
+  "constructor-super": "off",
   "for-direction": "off",
   "no-async-promise-executor": "off",
   "no-caller": "off",
