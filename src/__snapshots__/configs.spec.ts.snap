@@ -149,6 +149,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-inferrable-types": [
     0,
   ],
+  "@typescript-eslint/no-loop-func": [
+    0,
+  ],
   "@typescript-eslint/no-loss-of-precision": [
     0,
   ],
@@ -239,6 +242,15 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/triple-slash-reference": [
     0,
   ],
+  "accessor-pairs": [
+    0,
+    {
+      "enforceForClassMembers": true,
+      "enforceForTSTypes": false,
+      "getWithoutSet": false,
+      "setWithoutGet": true,
+    },
+  ],
   "array-callback-return": [
     0,
     {
@@ -261,6 +273,9 @@ exports[`contains all the oxlint rules 1`] = `
       "exceptMethods": [],
       "ignoreOverrideMethods": false,
     },
+  ],
+  "constructor-super": [
+    0,
   ],
   "curly": [
     0,
@@ -895,6 +910,16 @@ exports[`contains all the oxlint rules 1`] = `
       "exceptions": [],
     },
   ],
+  "no-implicit-coercion": [
+    0,
+    {
+      "allow": [],
+      "boolean": true,
+      "disallowTemplateShorthand": false,
+      "number": true,
+      "string": true,
+    },
+  ],
   "no-import-assign": [
     0,
   ],
@@ -936,6 +961,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-lonely-if": [
+    0,
+  ],
+  "no-loop-func": [
     0,
   ],
   "no-loss-of-precision": [
@@ -989,6 +1017,12 @@ exports[`contains all the oxlint rules 1`] = `
       "allowForLoopAfterthoughts": false,
     },
   ],
+  "no-promise-executor-return": [
+    0,
+    {
+      "allowVoid": false,
+    },
+  ],
   "no-proto": [
     0,
   ],
@@ -1025,6 +1059,12 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-self-compare": [
     0,
+  ],
+  "no-sequences": [
+    0,
+    {
+      "allowInParentheses": true,
+    },
   ],
   "no-setter-return": [
     0,
@@ -1336,6 +1376,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-props-no-spread-multi": [
     0,
   ],
+  "react/jsx-props-no-spreading": [
+    0,
+  ],
   "react/no-array-index-key": [
     0,
   ],
@@ -1358,6 +1401,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-namespace": [
+    0,
+  ],
+  "react/no-redundant-should-component-update": [
     0,
   ],
   "react/no-render-return-value": [
@@ -1672,6 +1718,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-date-now": [
     0,
   ],
+  "unicorn/prefer-default-parameters": [
+    0,
+  ],
   "unicorn/prefer-dom-node-append": [
     0,
   ],
@@ -1691,6 +1740,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-includes": [
+    0,
+  ],
+  "unicorn/prefer-keyboard-event-key": [
     0,
   ],
   "unicorn/prefer-logical-operator-over-ternary": [
