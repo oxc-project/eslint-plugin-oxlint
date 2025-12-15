@@ -42,7 +42,7 @@ export const typescriptRulesExtendEslintRules = [
 
 // Some vitest rules are re-implemented version of jest rules.
 // Since oxlint supports these rules under jest/*, we need to remap them.
-// remapping in source-code: <https://github.com/oxc-project/oxc/blob/814eab656291a7d809de808bf4a717bcfa483430/crates/oxc_linter/src/utils/mod.rs>
+// remapping in source-code: <https://github.com/oxc-project/oxc/blob/d77e22d4d94dfd151265c2c78ac5c19623cd88d8/crates/oxc_linter/src/utils/mod.rs>
 export const viteTestCompatibleRules = [
   'consistent-test-it',
   'expect-expect',
@@ -58,6 +58,8 @@ export const viteTestCompatibleRules = [
   'no-hooks',
   'no-identical-title',
   'no-interpolation-in-snapshots',
+  'no-large-snapshots',
+  'no-mocks-import',
   'no-restricted-jest-methods',
   'no-restricted-matchers',
   'no-standalone-expect',
@@ -67,11 +69,14 @@ export const viteTestCompatibleRules = [
   'prefer-each',
   'prefer-equality-matcher',
   'prefer-expect-resolves',
+  'require-hook',
   'prefer-hooks-in-order',
   'prefer-hooks-on-top',
   'prefer-lowercase-title',
   'prefer-mock-promise-shorthand',
   'prefer-strict-equal',
+  'prefer-to-be',
+  'prefer-to-contain',
   'prefer-to-have-length',
   'prefer-todo',
   'require-to-throw-message',
