@@ -6,7 +6,7 @@ import {
   OxlintConfigRules,
 } from './types.js';
 import configByCategory from '../generated/configs-by-category.js';
-import { nurseryRules } from '../generated/rules-by-category.js';
+import { nurseryRules, typeAwareRules } from '../generated/rules-by-category.js';
 import { isObject } from './utilities.js';
 
 const allRulesObjects = Object.values(configByCategory).map((config) => config.rules);
@@ -22,6 +22,11 @@ const getEsLintRuleName = (
 
     // Filter out nursery rules unless explicitly enabled
     if (found && !options.withNursery && found in nurseryRules) {
+      return undefined;
+    }
+
+    // Filter out type-aware rules unless explicitly enabled
+    if (found && !options.includeTypeAwareRules && found in typeAwareRules) {
       return undefined;
     }
 
@@ -53,6 +58,11 @@ const getEsLintRuleName = (
 
   // Filter out nursery rules unless explicitly enabled
   if (found && !options.withNursery && found in nurseryRules) {
+    return undefined;
+  }
+
+  // Filter out type-aware rules unless explicitly enabled
+  if (found && !options.includeTypeAwareRules && found in typeAwareRules) {
     return undefined;
   }
 

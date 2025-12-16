@@ -226,6 +226,66 @@ describe('nursery rules', () => {
   });
 });
 
+describe('type-aware rules filtering', () => {
+  it('should filter out type-aware rules by default when using categories', () => {
+    const config = {
+      plugins: ['typescript'],
+      categories: { correctness: 'warn', pedantic: 'warn' },
+    };
+
+    const configs = buildFromOxlintConfig(config);
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // type-aware rules should NOT be present by default
+    expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(false);
+    expect('@typescript-eslint/no-unsafe-call' in configs[0].rules!).toBe(false);
+    // Should have some typescript rules but not type-aware ones
+    const hasNonTypeAwareRules = Object.keys(configs[0].rules!).some((rule) =>
+      rule.startsWith('@typescript-eslint/')
+    );
+    expect(hasNonTypeAwareRules).toBe(true);
+  });
+
+  it('should include type-aware rules when includeTypeAwareRules option is true', () => {
+    const config = {
+      plugins: ['typescript'],
+      categories: { correctness: 'warn', pedantic: 'warn' },
+    };
+
+    const configs = buildFromOxlintConfig(config, { includeTypeAwareRules: true });
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // type-aware rules SHOULD be present when includeTypeAwareRules is true
+    expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(true);
+    expect('@typescript-eslint/no-unsafe-call' in configs[0].rules!).toBe(true);
+    expect(configs[0].rules!['@typescript-eslint/await-thenable']).toBe('off');
+    expect(configs[0].rules!['@typescript-eslint/no-unsafe-call']).toBe('off');
+  });
+
+  it('should filter type-aware rules from categories', () => {
+    const config = {
+      plugins: ['typescript'],
+      categories: { correctness: 'warn' },
+    };
+
+    const configsWithoutTypeAware = buildFromOxlintConfig(config);
+    const configsWithTypeAware = buildFromOxlintConfig(config, { includeTypeAwareRules: true });
+
+    expect(configsWithoutTypeAware.length).toBeGreaterThanOrEqual(1);
+    expect(configsWithTypeAware.length).toBeGreaterThanOrEqual(1);
+
+    const rulesCountWithout = Object.keys(configsWithoutTypeAware[0].rules!).length;
+    const rulesCountWith = Object.keys(configsWithTypeAware[0].rules!).length;
+
+    // Should have more rules when type-aware rules are included
+    expect(rulesCountWith).toBeGreaterThan(rulesCountWithout);
+  });
+});
+
 describe('ignorePatterns handling', () => {
   it('should create ignore config as eslint global ignores', () => {
     const config = {

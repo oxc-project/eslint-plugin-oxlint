@@ -82,12 +82,8 @@ function getAliasRules(rule: Rule): Rule | undefined {
 
 export function traverseRules(): Rule[] {
   // get all rules and filter the ignored one
-  const rules = readRulesFromCommand().filter(
-    (rule) =>
-      !ignoreScope.has(rule.scope) &&
-      // ignore type-aware rules
-      !(rule.scope === 'typescript' && typescriptTypeAwareRules.includes(rule.value))
-  );
+  // Type-aware rules are now included and filtered at runtime via options
+  const rules = readRulesFromCommand().filter((rule) => !ignoreScope.has(rule.scope));
 
   const aliasRules: Rule[] = [];
 
