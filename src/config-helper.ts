@@ -1,4 +1,4 @@
-import { rulesDisabledForVueAndSvelteFiles } from './constants.js';
+import { rulesDisabledForVueAndSvelteFiles, typeAwareRulesSet } from './constants.js';
 
 // Some type helpers for better type inference
 type LegacyConfig = {
@@ -87,3 +87,17 @@ export const splitDisabledRulesForVueAndSvelteFilesDeep = <T extends Record<stri
 
   return result;
 };
+
+/**
+ * Filters out TypeScript type-aware rules from a rules object.
+ * Type-aware rules should not be included in pre-built configs since they
+ * require type information and can significantly impact performance.
+ *
+ * @param rules - The rules object to filter
+ * @returns A new rules object without type-aware rules
+ */
+export function filterTypeAwareRules(rules: Record<string, 'off'>): Record<string, 'off'> {
+  return Object.fromEntries(
+    Object.entries(rules).filter(([ruleName]) => !typeAwareRulesSet.has(ruleName))
+  );
+}

@@ -1,9 +1,10 @@
 import { execSync } from 'node:child_process';
-import { ignoreScope, typescriptTypeAwareRules } from './constants.js';
+import { ignoreScope } from './constants.js';
 import {
   aliasPluginNames,
   reactHookRulesInsideReactScope,
   typescriptRulesExtendEslintRules,
+  typescriptTypeAwareRules,
   unicornRulesExtendEslintRules,
   viteTestCompatibleRules,
 } from '../src/constants.js';

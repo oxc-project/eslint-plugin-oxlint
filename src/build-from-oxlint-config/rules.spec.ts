@@ -160,7 +160,7 @@ describe('handleRulesScope', () => {
       });
     });
 
-    it('should include type-aware rules when includeTypeAwareRules is true', () => {
+    it('should include type-aware rules when typeAware is true', () => {
       const rules = {};
       handleRulesScope(
         {
@@ -168,7 +168,7 @@ describe('handleRulesScope', () => {
           '@typescript-eslint/no-unused-vars': 'error',
         },
         rules,
-        { includeTypeAwareRules: true }
+        { typeAware: true }
       );
 
       expect(rules).toStrictEqual({

@@ -2,7 +2,7 @@ import type { Linter } from 'eslint';
 
 export type BuildFromOxlintConfigOptions = {
   withNursery?: boolean;
-  includeTypeAwareRules?: boolean;
+  typeAware?: boolean;
 };
 
 export type OxlintConfigExtends = string[];

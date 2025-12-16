@@ -8,10 +8,10 @@ import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
 import {
   typescriptRulesExtendEslintRules,
+  typescriptTypeAwareRules,
   unicornRulesExtendEslintRules,
   viteTestCompatibleRules,
 } from './constants.js';
-import { typescriptTypeAwareRules } from '../scripts/constants.js';
 
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint json config', () => {
@@ -248,18 +248,18 @@ describe('type-aware rules filtering', () => {
     expect(hasNonTypeAwareRules).toBe(true);
   });
 
-  it('should include type-aware rules when includeTypeAwareRules option is true', () => {
+  it('should include type-aware rules when typeAware option is true', () => {
     const config = {
       plugins: ['typescript'],
       categories: { correctness: 'warn', pedantic: 'warn' },
     };
 
-    const configs = buildFromOxlintConfig(config, { includeTypeAwareRules: true });
+    const configs = buildFromOxlintConfig(config, { typeAware: true });
 
     expect(configs.length).toBeGreaterThanOrEqual(1);
     expect(configs[0].rules).not.toBeUndefined();
 
-    // type-aware rules SHOULD be present when includeTypeAwareRules is true
+    // type-aware rules SHOULD be present when typeAware is true
     expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(true);
     expect('@typescript-eslint/no-unsafe-call' in configs[0].rules!).toBe(true);
     expect(configs[0].rules!['@typescript-eslint/await-thenable']).toBe('off');
@@ -273,7 +273,7 @@ describe('type-aware rules filtering', () => {
     };
 
     const configsWithoutTypeAware = buildFromOxlintConfig(config);
-    const configsWithTypeAware = buildFromOxlintConfig(config, { includeTypeAwareRules: true });
+    const configsWithTypeAware = buildFromOxlintConfig(config, { typeAware: true });
 
     expect(configsWithoutTypeAware.length).toBeGreaterThanOrEqual(1);
     expect(configsWithTypeAware.length).toBeGreaterThanOrEqual(1);

@@ -1,4 +1,8 @@
-import { aliasPluginNames, reactHookRulesInsideReactScope } from '../constants.js';
+import {
+  aliasPluginNames,
+  reactHookRulesInsideReactScope,
+  typeAwareRulesSet,
+} from '../constants.js';
 import {
   BuildFromOxlintConfigOptions,
   OxlintConfig,
@@ -6,7 +10,7 @@ import {
   OxlintConfigRules,
 } from './types.js';
 import configByCategory from '../generated/configs-by-category.js';
-import { nurseryRules, typeAwareRules } from '../generated/rules-by-category.js';
+import { nurseryRules } from '../generated/rules-by-category.js';
 import { isObject } from './utilities.js';
 
 const allRulesObjects = Object.values(configByCategory).map((config) => config.rules);
@@ -26,7 +30,7 @@ const getEsLintRuleName = (
     }
 
     // Filter out type-aware rules unless explicitly enabled
-    if (found && !options.includeTypeAwareRules && found in typeAwareRules) {
+    if (found && !options.typeAware && typeAwareRulesSet.has(found)) {
       return undefined;
     }
 
@@ -62,7 +66,7 @@ const getEsLintRuleName = (
   }
 
   // Filter out type-aware rules unless explicitly enabled
-  if (found && !options.includeTypeAwareRules && found in typeAwareRules) {
+  if (found && !options.typeAware && typeAwareRulesSet.has(found)) {
     return undefined;
   }
 

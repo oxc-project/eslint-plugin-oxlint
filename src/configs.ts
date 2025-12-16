@@ -3,6 +3,7 @@ import * as ruleMapsByCategory from './generated/rules-by-category.js';
 import configByScope from './generated/configs-by-scope.js';
 import configByCategory from './generated/configs-by-category.js';
 import {
+  filterTypeAwareRules,
   overrideDisabledRulesForVueAndSvelteFiles,
   splitDisabledRulesForVueAndSvelteFiles,
   splitDisabledRulesForVueAndSvelteFilesDeep,
@@ -29,23 +30,40 @@ const allRules = Object.fromEntries(
   )
 ) as UnionToIntersection<AllRules>;
 
+// Filter type-aware rules from pre-built configs
+// Note: buildFromOxlintConfig uses configByCategory/configByScope directly,
+// so we only filter here in the exported configs
+const filteredConfigByScope = Object.fromEntries(
+  Object.entries(configByScope).map(([key, config]) => [
+    key,
+    { ...config, rules: filterTypeAwareRules(config.rules) },
+  ])
+);
+
+const filteredConfigByCategory = Object.fromEntries(
+  Object.entries(configByCategory).map(([key, config]) => [
+    key,
+    { ...config, rules: filterTypeAwareRules(config.rules) },
+  ])
+);
+
 export default {
   recommended: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
-    rules: ruleMapsByCategory.correctnessRules,
+    rules: filterTypeAwareRules(ruleMapsByCategory.correctnessRules),
   }),
   all: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
-    rules: allRules,
+    rules: filterTypeAwareRules(allRules),
   }),
   'flat/all': splitDisabledRulesForVueAndSvelteFiles({
     name: 'oxlint/all',
-    rules: allRules,
+    rules: filterTypeAwareRules(allRules),
   }),
   'flat/recommended': splitDisabledRulesForVueAndSvelteFiles({
     name: 'oxlint/recommended',
-    rules: ruleMapsByCategory.correctnessRules,
+    rules: filterTypeAwareRules(ruleMapsByCategory.correctnessRules),
   }),
-  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByScope),
-  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByCategory),
+  ...splitDisabledRulesForVueAndSvelteFilesDeep(filteredConfigByScope),
+  ...splitDisabledRulesForVueAndSvelteFilesDeep(filteredConfigByCategory),
 } as const;
