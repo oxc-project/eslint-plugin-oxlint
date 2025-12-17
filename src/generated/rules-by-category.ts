@@ -284,6 +284,8 @@ const styleRules: Record<string, 'off'> = {
   'vitest/no-hooks': 'off',
   'vitest/no-identical-title': 'off',
   'vitest/no-interpolation-in-snapshots': 'off',
+  'vitest/no-large-snapshots': 'off',
+  'vitest/no-mocks-import': 'off',
   'vitest/no-restricted-jest-methods': 'off',
   'vitest/no-restricted-matchers': 'off',
   'vitest/no-test-prefixes': 'off',
@@ -297,8 +299,11 @@ const styleRules: Record<string, 'off'> = {
   'vitest/prefer-lowercase-title': 'off',
   'vitest/prefer-mock-promise-shorthand': 'off',
   'vitest/prefer-strict-equal': 'off',
+  'vitest/prefer-to-be': 'off',
+  'vitest/prefer-to-contain': 'off',
   'vitest/prefer-to-have-length': 'off',
   'vitest/prefer-todo': 'off',
+  'vitest/require-hook': 'off',
   'vitest/require-top-level-describe': 'off',
 };
 
