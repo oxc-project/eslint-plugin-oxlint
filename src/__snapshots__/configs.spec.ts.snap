@@ -1911,6 +1911,12 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-interpolation-in-snapshots": [
     0,
   ],
+  "vitest/no-large-snapshots": [
+    0,
+  ],
+  "vitest/no-mocks-import": [
+    0,
+  ],
   "vitest/no-restricted-jest-methods": [
     0,
   ],
@@ -1953,6 +1959,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-strict-equal": [
     0,
   ],
+  "vitest/prefer-to-be": [
+    0,
+  ],
   "vitest/prefer-to-be-falsy": [
     0,
   ],
@@ -1962,10 +1971,16 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-to-be-truthy": [
     0,
   ],
+  "vitest/prefer-to-contain": [
+    0,
+  ],
   "vitest/prefer-to-have-length": [
     0,
   ],
   "vitest/prefer-todo": [
+    0,
+  ],
+  "vitest/require-hook": [
     0,
   ],
   "vitest/require-local-test-context-for-concurrent-snapshots": [
