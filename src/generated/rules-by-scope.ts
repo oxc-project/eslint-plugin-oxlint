@@ -635,6 +635,7 @@ const vitestRules: Record<string, 'off'> = {
   'vitest/require-to-throw-message': 'off',
   'vitest/require-top-level-describe': 'off',
   'vitest/valid-describe-callback': 'off',
+  'vitest/valid-expect': 'off',
 };
 
 const vueRules: Record<string, 'off'> = {

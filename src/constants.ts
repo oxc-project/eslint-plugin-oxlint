@@ -84,6 +84,7 @@ export const viteTestCompatibleRules = [
   'require-to-throw-message',
   'require-top-level-describe',
   'valid-describe-callback',
+  'valid-expect',
 ];
 
 export const unicornRulesExtendEslintRules = ['no-negated-condition'];

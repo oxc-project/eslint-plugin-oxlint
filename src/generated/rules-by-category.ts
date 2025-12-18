@@ -611,6 +611,7 @@ const correctnessRules: Record<string, 'off'> = {
   'vitest/no-standalone-expect': 'off',
   'vitest/require-to-throw-message': 'off',
   'vitest/valid-describe-callback': 'off',
+  'vitest/valid-expect': 'off',
 };
 
 const nurseryRules: Record<string, 'off'> = {

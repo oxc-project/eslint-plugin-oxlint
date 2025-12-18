@@ -1932,6 +1932,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-test-return-statement": [
     0,
   ],
+  "vitest/prefer-called-with": [
+    0,
+  ],
   "vitest/prefer-comparison-matcher": [
     0,
   ],
@@ -1954,6 +1957,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/prefer-mock-promise-shorthand": [
+    0,
+  ],
+  "vitest/prefer-spy-on": [
     0,
   ],
   "vitest/prefer-strict-equal": [
