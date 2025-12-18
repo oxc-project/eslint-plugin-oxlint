@@ -42,7 +42,7 @@ export const typescriptRulesExtendEslintRules = [
 
 // Some vitest rules are re-implemented version of jest rules.
 // Since oxlint supports these rules under jest/*, we need to remap them.
-// remapping in source-code: <https://github.com/oxc-project/oxc/blob/d77e22d4d94dfd151265c2c78ac5c19623cd88d8/crates/oxc_linter/src/utils/mod.rs>
+// remapping in source-code: <https://github.com/oxc-project/oxc/blob/b48d5f15b25bd31a3fc09399f33c6e5a9e6abdd2/crates/oxc_linter/src/utils/mod.rs>
 export const viteTestCompatibleRules = [
   'consistent-test-it',
   'expect-expect',
@@ -65,24 +65,25 @@ export const viteTestCompatibleRules = [
   'no-standalone-expect',
   'no-test-prefixes',
   'no-test-return-statement',
+  'prefer-called-with',
   'prefer-comparison-matcher',
   'prefer-each',
   'prefer-equality-matcher',
   'prefer-expect-resolves',
-  'require-hook',
   'prefer-hooks-in-order',
   'prefer-hooks-on-top',
   'prefer-lowercase-title',
   'prefer-mock-promise-shorthand',
+  'prefer-spy-on',
   'prefer-strict-equal',
   'prefer-to-be',
   'prefer-to-contain',
   'prefer-to-have-length',
   'prefer-todo',
+  'require-hook',
   'require-to-throw-message',
   'require-top-level-describe',
   'valid-describe-callback',
-  'valid-expect',
 ];
 
 export const unicornRulesExtendEslintRules = ['no-negated-condition'];

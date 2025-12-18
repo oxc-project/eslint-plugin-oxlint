@@ -617,6 +617,7 @@ const vitestRules: Record<string, 'off'> = {
   'vitest/no-test-prefixes': 'off',
   'vitest/no-test-return-statement': 'off',
   'vitest/prefer-each': 'off',
+  'vitest/prefer-called-with': 'off',
   'vitest/prefer-comparison-matcher': 'off',
   'vitest/prefer-equality-matcher': 'off',
   'vitest/prefer-expect-resolves': 'off',
@@ -624,6 +625,7 @@ const vitestRules: Record<string, 'off'> = {
   'vitest/prefer-hooks-on-top': 'off',
   'vitest/prefer-lowercase-title': 'off',
   'vitest/prefer-mock-promise-shorthand': 'off',
+  'vitest/prefer-spy-on': 'off',
   'vitest/prefer-strict-equal': 'off',
   'vitest/prefer-to-be': 'off',
   'vitest/prefer-to-contain': 'off',
@@ -633,7 +635,6 @@ const vitestRules: Record<string, 'off'> = {
   'vitest/require-to-throw-message': 'off',
   'vitest/require-top-level-describe': 'off',
   'vitest/valid-describe-callback': 'off',
-  'vitest/valid-expect': 'off',
 };
 
 const vueRules: Record<string, 'off'> = {
