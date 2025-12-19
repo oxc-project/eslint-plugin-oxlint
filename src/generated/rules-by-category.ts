@@ -9,6 +9,7 @@ const pedanticRules: Record<string, 'off'> = {
   'max-lines-per-function': 'off',
   'max-lines': 'off',
   'max-nested-callbacks': 'off',
+  'no-inline-comments': 'off',
   'no-loop-func': 'off',
   'no-array-constructor': 'off',
   'no-case-declarations': 'off',
@@ -102,6 +103,7 @@ const pedanticRules: Record<string, 'off'> = {
 
 const styleRules: Record<string, 'off'> = {
   'arrow-body-style': 'off',
+  'capitalized-comments': 'off',
   curly: 'off',
   'default-case-last': 'off',
   'default-param-last': 'off',
@@ -189,6 +191,8 @@ const styleRules: Record<string, 'off'> = {
   'jest/prefer-strict-equal': 'off',
   'jest/prefer-to-be': 'off',
   'jest/prefer-to-contain': 'off',
+  'jest/prefer-to-have-been-called': 'off',
+  'jest/prefer-to-have-been-called-times': 'off',
   'jest/prefer-to-have-length': 'off',
   'jest/prefer-todo': 'off',
   'jest/require-hook': 'off',

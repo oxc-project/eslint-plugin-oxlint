@@ -266,6 +266,9 @@ exports[`contains all the oxlint rules 1`] = `
   "block-scoped-var": [
     0,
   ],
+  "capitalized-comments": [
+    0,
+  ],
   "class-methods-use-this": [
     0,
     {
@@ -541,6 +544,12 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/prefer-to-contain": [
+    0,
+  ],
+  "jest/prefer-to-have-been-called": [
+    0,
+  ],
+  "jest/prefer-to-have-been-called-times": [
     0,
   ],
   "jest/prefer-to-have-length": [
@@ -922,6 +931,10 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-import-assign": [
     0,
+  ],
+  "no-inline-comments": [
+    0,
+    {},
   ],
   "no-inner-declarations": [
     0,
