@@ -65,9 +65,9 @@ const getEsLintRuleName = (
     return undefined;
   }
 
-  // Filter out type-aware rules unless explicitly enabled
-  if (found && !options.typeAware && typeAwareRulesSet.has(found)) {
-    return undefined;
+  // Check for type-aware rules when enabled
+  if (options.typeAware && typeAwareRulesSet.has(expectedRule)) {
+    return expectedRule;
   }
 
   return found;

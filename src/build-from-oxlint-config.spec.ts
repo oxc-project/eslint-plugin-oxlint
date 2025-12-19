@@ -226,11 +226,13 @@ describe('nursery rules', () => {
   });
 });
 
-describe('type-aware rules filtering', () => {
-  it('should filter out type-aware rules by default when using categories', () => {
+describe('type-aware rules', () => {
+  it('should not output type-aware rules by default', () => {
     const config = {
-      plugins: ['typescript'],
-      categories: { correctness: 'warn', pedantic: 'warn' },
+      rules: {
+        '@typescript-eslint/await-thenable': 'error',
+        '@typescript-eslint/no-floating-promises': 'warn',
+      },
     };
 
     const configs = buildFromOxlintConfig(config);
@@ -240,18 +242,15 @@ describe('type-aware rules filtering', () => {
 
     // type-aware rules should NOT be present by default
     expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(false);
-    expect('@typescript-eslint/no-unsafe-call' in configs[0].rules!).toBe(false);
-    // Should have some typescript rules but not type-aware ones
-    const hasNonTypeAwareRules = Object.keys(configs[0].rules!).some((rule) =>
-      rule.startsWith('@typescript-eslint/')
-    );
-    expect(hasNonTypeAwareRules).toBe(true);
+    expect('@typescript-eslint/no-floating-promises' in configs[0].rules!).toBe(false);
   });
 
-  it('should include type-aware rules when typeAware option is true', () => {
+  it('should output type-aware rules when typeAware option is true', () => {
     const config = {
-      plugins: ['typescript'],
-      categories: { correctness: 'warn', pedantic: 'warn' },
+      rules: {
+        '@typescript-eslint/await-thenable': 'error',
+        '@typescript-eslint/no-floating-promises': 'warn',
+      },
     };
 
     const configs = buildFromOxlintConfig(config, { typeAware: true });
@@ -259,30 +258,8 @@ describe('type-aware rules filtering', () => {
     expect(configs.length).toBeGreaterThanOrEqual(1);
     expect(configs[0].rules).not.toBeUndefined();
 
-    // type-aware rules SHOULD be present when typeAware is true
     expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(true);
-    expect('@typescript-eslint/no-unsafe-call' in configs[0].rules!).toBe(true);
-    expect(configs[0].rules!['@typescript-eslint/await-thenable']).toBe('off');
-    expect(configs[0].rules!['@typescript-eslint/no-unsafe-call']).toBe('off');
-  });
-
-  it('should filter type-aware rules from categories', () => {
-    const config = {
-      plugins: ['typescript'],
-      categories: { correctness: 'warn' },
-    };
-
-    const configsWithoutTypeAware = buildFromOxlintConfig(config);
-    const configsWithTypeAware = buildFromOxlintConfig(config, { typeAware: true });
-
-    expect(configsWithoutTypeAware.length).toBeGreaterThanOrEqual(1);
-    expect(configsWithTypeAware.length).toBeGreaterThanOrEqual(1);
-
-    const rulesCountWithout = Object.keys(configsWithoutTypeAware[0].rules!).length;
-    const rulesCountWith = Object.keys(configsWithTypeAware[0].rules!).length;
-
-    // Should have more rules when type-aware rules are included
-    expect(rulesCountWith).toBeGreaterThan(rulesCountWithout);
+    expect('@typescript-eslint/no-floating-promises' in configs[0].rules!).toBe(true);
   });
 });
 
