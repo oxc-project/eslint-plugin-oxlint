@@ -143,9 +143,7 @@ describe('integration test with oxlint', () => {
         config
       );
 
-      const configs = buildFromOxlintConfig(config, {
-        typeAware: true,
-      });
+      const configs = buildFromOxlintConfig(config);
 
       expect(configs.length).toBeGreaterThanOrEqual(1);
       expect(configs[0].rules).not.toBeUndefined();

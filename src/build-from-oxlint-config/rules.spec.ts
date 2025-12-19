@@ -144,7 +144,7 @@ describe('handleRulesScope', () => {
     });
   }
 
-  describe('type-aware rules filtering', () => {
+  describe('type-aware rules', () => {
     it('should filter out type-aware rules by default', () => {
       const rules = {};
       handleRulesScope(

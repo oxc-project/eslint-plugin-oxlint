@@ -65,4 +65,38 @@ describe('handleCategoriesScope', () => {
 
     expect(rules['import/no-self-import']).toBe('off');
   });
+
+  it('includes type-aware rules when typeAware=true', () => {
+    const rules: Record<string, 'off'> = {};
+    handleCategoriesScope(
+      ['eslint', 'typescript'],
+      {
+        correctness: 'warn',
+      },
+      rules,
+      { typeAware: true }
+    );
+
+    // Comes from correctnessTypeAwareRules and requires typescript plugin
+    expect(rules['@typescript-eslint/no-floating-promises']).toBe('off');
+    // Base correctness rule should still be included
+    expect(rules['@typescript-eslint/no-unused-vars']).toBe('off');
+  });
+
+  it('excludes type-aware rules when typeAware=false (default)', () => {
+    const rules: Record<string, 'off'> = {};
+    handleCategoriesScope(
+      ['eslint', 'typescript'],
+      {
+        correctness: 'warn',
+      },
+      rules,
+      { typeAware: false }
+    );
+
+    // Type-aware rule should not be present
+    expect(rules['@typescript-eslint/no-floating-promises']).toBeUndefined();
+    // Base correctness rule should be present
+    expect(rules['@typescript-eslint/no-unused-vars']).toBe('off');
+  });
 });
