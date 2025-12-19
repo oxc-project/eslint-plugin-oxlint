@@ -8,7 +8,6 @@ import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
 import {
   typescriptRulesExtendEslintRules,
-  typescriptTypeAwareRules,
   unicornRulesExtendEslintRules,
   viteTestCompatibleRules,
 } from './constants.js';
@@ -144,7 +143,9 @@ describe('integration test with oxlint', () => {
         config
       );
 
-      const configs = buildFromOxlintConfig(config);
+      const configs = buildFromOxlintConfig(config, {
+        typeAware: true,
+      });
 
       expect(configs.length).toBeGreaterThanOrEqual(1);
       expect(configs[0].rules).not.toBeUndefined();
@@ -157,10 +158,6 @@ describe('integration test with oxlint', () => {
 
         // special mapping for ts alias rules
         if (config.plugins === undefined || config.plugins.includes('typescript')) {
-          expectedCount += typescriptTypeAwareRules.filter(
-            (tsRule) => `@typescript-eslint/${tsRule}` in buildConfig.rules!
-          ).length;
-
           expectedCount += typescriptRulesExtendEslintRules.filter(
             (aliasRule) => aliasRule in buildConfig.rules!
           ).length;

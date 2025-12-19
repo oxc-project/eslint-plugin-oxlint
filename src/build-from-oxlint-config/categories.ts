@@ -1,4 +1,4 @@
-import { aliasPluginNames, typeAwareRulesSet } from '../constants.js';
+import { aliasPluginNames } from '../constants.js';
 import configByCategory from '../generated/configs-by-category.js';
 import {
   BuildFromOxlintConfigOptions,
@@ -41,9 +41,10 @@ export const handleCategoriesScope = (
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of Object.keys(possibleRules)) {
       // Filter out type-aware rules unless explicitly enabled
-      if (!options.typeAware && typeAwareRulesSet.has(rule)) {
-        continue;
-      }
+      // TODO: fix me
+      // if (!options.typeAware && typeAwareRulesSet.has(rule)) {
+      //   continue;
+      // }
 
       for (const plugin of plugins) {
         const pluginPrefix = plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;

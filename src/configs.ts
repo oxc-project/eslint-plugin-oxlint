@@ -3,7 +3,6 @@ import * as ruleMapsByCategory from './generated/rules-by-category.js';
 import configByScope from './generated/configs-by-scope.js';
 import configByCategory from './generated/configs-by-category.js';
 import {
-  filterTypeAwareRules,
   overrideDisabledRulesForVueAndSvelteFiles,
   splitDisabledRulesForVueAndSvelteFiles,
   splitDisabledRulesForVueAndSvelteFilesDeep,
@@ -30,40 +29,23 @@ const allRules = Object.fromEntries(
   )
 ) as UnionToIntersection<AllRules>;
 
-// Filter type-aware rules from pre-built configs
-// Note: buildFromOxlintConfig uses configByCategory/configByScope directly,
-// so we only filter here in the exported configs
-const filteredConfigByScope = Object.fromEntries(
-  Object.entries(configByScope).map(([key, config]) => [
-    key,
-    { ...config, rules: filterTypeAwareRules(config.rules) },
-  ])
-);
-
-const filteredConfigByCategory = Object.fromEntries(
-  Object.entries(configByCategory).map(([key, config]) => [
-    key,
-    { ...config, rules: filterTypeAwareRules(config.rules) },
-  ])
-);
-
 export default {
   recommended: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
-    rules: filterTypeAwareRules(ruleMapsByCategory.correctnessRules),
+    rules: ruleMapsByCategory.correctnessRules,
   }),
   all: overrideDisabledRulesForVueAndSvelteFiles({
     plugins: ['oxlint'],
-    rules: filterTypeAwareRules(allRules),
+    rules: allRules,
   }),
   'flat/all': splitDisabledRulesForVueAndSvelteFiles({
     name: 'oxlint/all',
-    rules: filterTypeAwareRules(allRules),
+    rules: allRules,
   }),
   'flat/recommended': splitDisabledRulesForVueAndSvelteFiles({
     name: 'oxlint/recommended',
-    rules: filterTypeAwareRules(ruleMapsByCategory.correctnessRules),
+    rules: ruleMapsByCategory.correctnessRules,
   }),
-  ...splitDisabledRulesForVueAndSvelteFilesDeep(filteredConfigByScope),
-  ...splitDisabledRulesForVueAndSvelteFilesDeep(filteredConfigByCategory),
+  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByScope),
+  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByCategory),
 } as const;
