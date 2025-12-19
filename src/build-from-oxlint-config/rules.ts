@@ -5,12 +5,18 @@ import {
   OxlintConfigOverride,
   OxlintConfigRules,
 } from './types.js';
-import configByCategory from '../generated/configs-by-category.js';
-import { nurseryRules } from '../generated/rules-by-category.js';
+import * as allRulesObjects from '../generated/rules-by-category.js';
 import { isObject } from './utilities.js';
 
-const allRulesObjects = Object.values(configByCategory).map((config) => config.rules);
-const allRules: string[] = allRulesObjects.flatMap((rulesObject) => Object.keys(rulesObject));
+const allRules: string[] = Object.values(allRulesObjects).flatMap((rulesObject) =>
+  Object.keys(rulesObject)
+);
+
+const typeAwareRules = new Set(
+  Object.entries(allRulesObjects)
+    .filter(([key]) => key.endsWith('TypeAwareRules'))
+    .flatMap(([, rulesObject]) => Object.keys(rulesObject))
+);
 
 const getEsLintRuleName = (
   rule: string,
@@ -20,8 +26,17 @@ const getEsLintRuleName = (
   if (!rule.includes('/')) {
     const found = allRules.find((search) => search.endsWith(`/${rule}`) || search === rule);
 
+    if (!found) {
+      return undefined;
+    }
+
     // Filter out nursery rules unless explicitly enabled
-    if (found && !options.withNursery && found in nurseryRules) {
+    if (!options.withNursery && found in allRulesObjects.nurseryRules) {
+      return undefined;
+    }
+
+    // Check for type-aware rules when enabled
+    if (!options.typeAware && typeAwareRules.has(found)) {
       return undefined;
     }
 
@@ -51,8 +66,16 @@ const getEsLintRuleName = (
 
   const found = allRules.find((rule) => rule === expectedRule);
 
+  if (!found) {
+    return undefined;
+  }
   // Filter out nursery rules unless explicitly enabled
-  if (found && !options.withNursery && found in nurseryRules) {
+  if (!options.withNursery && found in allRulesObjects.nurseryRules) {
+    return undefined;
+  }
+
+  // Check for type-aware rules when enabled
+  if (!options.typeAware && typeAwareRules.has(found)) {
     return undefined;
   }
 

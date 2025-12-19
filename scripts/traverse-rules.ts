@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process';
-import { ignoreScope, typescriptTypeAwareRules } from './constants.js';
+import { ignoreScope } from './constants.js';
 import {
   aliasPluginNames,
   reactHookRulesInsideReactScope,
@@ -82,12 +82,7 @@ function getAliasRules(rule: Rule): Rule | undefined {
 
 export function traverseRules(): Rule[] {
   // get all rules and filter the ignored one
-  const rules = readRulesFromCommand().filter(
-    (rule) =>
-      !ignoreScope.has(rule.scope) &&
-      // ignore type-aware rules
-      !(rule.scope === 'typescript' && typescriptTypeAwareRules.includes(rule.value))
-  );
+  const rules = readRulesFromCommand().filter((rule) => !ignoreScope.has(rule.scope));
 
   const aliasRules: Rule[] = [];
 

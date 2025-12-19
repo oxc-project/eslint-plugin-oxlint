@@ -11,7 +11,6 @@ import {
   unicornRulesExtendEslintRules,
   viteTestCompatibleRules,
 } from './constants.js';
-import { typescriptTypeAwareRules } from '../scripts/constants.js';
 
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint json config', () => {
@@ -157,10 +156,6 @@ describe('integration test with oxlint', () => {
 
         // special mapping for ts alias rules
         if (config.plugins === undefined || config.plugins.includes('typescript')) {
-          expectedCount += typescriptTypeAwareRules.filter(
-            (tsRule) => `@typescript-eslint/${tsRule}` in buildConfig.rules!
-          ).length;
-
           expectedCount += typescriptRulesExtendEslintRules.filter(
             (aliasRule) => aliasRule in buildConfig.rules!
           ).length;
@@ -223,6 +218,43 @@ describe('nursery rules', () => {
     expect('no-undef' in configs[0].rules!).toBe(true);
     expect(configs[0].rules!['import/named']).toBe('off');
     expect(configs[0].rules!['no-undef']).toBe('off');
+  });
+});
+
+describe('type-aware rules', () => {
+  it('should not output type-aware rules by default', () => {
+    const config = {
+      rules: {
+        '@typescript-eslint/await-thenable': 'error',
+        '@typescript-eslint/no-floating-promises': 'warn',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config);
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    // type-aware rules should NOT be present by default
+    expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(false);
+    expect('@typescript-eslint/no-floating-promises' in configs[0].rules!).toBe(false);
+  });
+
+  it('should output type-aware rules when typeAware option is true', () => {
+    const config = {
+      rules: {
+        '@typescript-eslint/await-thenable': 'error',
+        '@typescript-eslint/no-floating-promises': 'warn',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config, { typeAware: true });
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(true);
+    expect('@typescript-eslint/no-floating-promises' in configs[0].rules!).toBe(true);
   });
 });
 

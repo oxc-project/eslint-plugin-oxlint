@@ -7,5 +7,7 @@ export default [
   eslint.configs.recommended,
   unicorn.configs['flat/recommended'],
   ...tseslint.configs.recommended,
-  ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
+  ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json', {
+    typeAware: true,
+  }),
 ];

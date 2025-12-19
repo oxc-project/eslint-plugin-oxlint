@@ -143,4 +143,54 @@ describe('handleRulesScope', () => {
       }
     });
   }
+
+  describe('type-aware rules', () => {
+    it('should filter out type-aware rules by default', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          '@typescript-eslint/await-thenable': 'error',
+          '@typescript-eslint/no-unused-vars': 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        '@typescript-eslint/no-unused-vars': 'off',
+      });
+    });
+
+    it('should include type-aware rules when typeAware is true', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          '@typescript-eslint/await-thenable': 'error',
+          '@typescript-eslint/no-unused-vars': 'error',
+        },
+        rules,
+        { typeAware: true }
+      );
+
+      expect(rules).toStrictEqual({
+        '@typescript-eslint/await-thenable': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+      });
+    });
+
+    it('should filter multiple type-aware rules', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          '@typescript-eslint/no-unsafe-call': 'error',
+          '@typescript-eslint/no-floating-promises': 'warn',
+          eqeqeq: 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        eqeqeq: 'off',
+      });
+    });
+  });
 });

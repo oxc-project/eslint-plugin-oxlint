@@ -1,8 +1,9 @@
 // these are the rules that don't have a direct equivalent in the eslint rules
 export const ignoreScope = new Set(['oxc', 'deepscan', 'security']);
 
-// we are ignoring typescript type-aware rules for now, until it is stable.
-// When support it with a flag, do the same for `ignoreCategories`.
+// TypeScript type-aware rules that require type information
+// These are excluded from pre-built configs by default but can be enabled
+// via the `typeAware` option in buildFromOxlintConfig
 // List copied from:
 // https://github.com/typescript-eslint/typescript-eslint/blob/7319bad3a5022be2adfbcb331451cfd85d1d786a/packages/eslint-plugin/src/configs/flat/disable-type-checked.ts
 export const typescriptTypeAwareRules = [
@@ -66,3 +67,8 @@ export const typescriptTypeAwareRules = [
   'unbound-method',
   'use-unknown-in-catch-callback-variable',
 ];
+
+// Set of type-aware rules with full names for efficient O(1) lookup
+export const typeAwareRulesSet = new Set(
+  typescriptTypeAwareRules.map((rule) => `@typescript-eslint/${rule}`)
+);

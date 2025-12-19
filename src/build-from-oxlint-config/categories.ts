@@ -1,5 +1,5 @@
 import { aliasPluginNames } from '../constants.js';
-import configByCategory from '../generated/configs-by-category.js';
+import * as allRulesObjects from '../generated/rules-by-category.js';
 import {
   BuildFromOxlintConfigOptions,
   OxlintConfig,
@@ -23,7 +23,7 @@ export const handleCategoriesScope = (
   options: BuildFromOxlintConfigOptions = {}
 ): void => {
   for (const category in categories) {
-    const configName = `flat/${category}`;
+    const configName = `${category}Rules`;
 
     // Skip nursery category unless explicitly enabled
     if (category === 'nursery' && !options.withNursery) {
@@ -31,15 +31,22 @@ export const handleCategoriesScope = (
     }
 
     // category is not enabled or not in found categories
-    if (categories[category] === 'off' || !(configName in configByCategory)) {
+    if (categories[category] === 'off' || !(configName in allRulesObjects)) {
       continue;
     }
 
-    // @ts-expect-error -- come on TS, we are checking if the configName exists in the configByCategory
-    const possibleRules = configByCategory[configName].rules;
+    const possibleRules: string[] = [];
+    // Correct lookup for type-aware rules export: e.g., correctnessTypeAwareRules
+    const typeAwareConfigName = `${category}TypeAwareRules`;
+    if (options.typeAware && typeAwareConfigName in allRulesObjects) {
+      // @ts-expect-error -- come on TS, we are checking if the configName exists in the allRulesObjects
+      possibleRules.push(...Object.keys(allRulesObjects[typeAwareConfigName]));
+    }
+    // @ts-expect-error -- come on TS, we are checking if the configName exists in the allRulesObjects
+    possibleRules.push(...Object.keys(allRulesObjects[configName]));
 
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
-    for (const rule of Object.keys(possibleRules)) {
+    for (const rule of possibleRules) {
       for (const plugin of plugins) {
         const pluginPrefix = plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
 
