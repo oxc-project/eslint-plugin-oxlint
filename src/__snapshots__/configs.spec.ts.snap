@@ -867,6 +867,9 @@ exports[`contains all the oxlint rules 1`] = `
   "max-params": [
     0,
   ],
+  "max-statements": [
+    0,
+  ],
   "new-cap": [
     0,
     {
@@ -1566,6 +1569,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-unknown-property": [
     0,
   ],
+  "react/no-unsafe": [
+    0,
+  ],
   "react/only-export-components": [
     0,
   ],
@@ -1711,6 +1717,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-hex-escape": [
+    0,
+  ],
+  "unicorn/no-immediate-mutation": [
     0,
   ],
   "unicorn/no-instanceof-array": [
@@ -1974,6 +1983,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/require-array-join-separator": [
     0,
   ],
+  "unicorn/require-module-attributes": [
+    0,
+  ],
   "unicorn/require-module-specifiers": [
     0,
   ],
@@ -2077,6 +2089,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-test-return-statement": [
     0,
   ],
+  "vitest/prefer-called-times": [
+    0,
+  ],
   "vitest/prefer-called-with": [
     0,
   ],
@@ -2159,6 +2174,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/max-props": [
+    0,
+  ],
+  "vue/no-deprecated-destroyed-lifecycle": [
     0,
   ],
   "vue/no-export-in-script-setup": [
