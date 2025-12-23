@@ -622,6 +622,7 @@ const correctnessRules: Record<string, 'off'> = {
   'vitest/require-to-throw-message': 'off',
   'vitest/valid-describe-callback': 'off',
   'vitest/valid-expect': 'off',
+  'vitest/valid-title': 'off',
 };
 
 const nurseryRules: Record<string, 'off'> = {

@@ -70,6 +70,7 @@ export const viteTestCompatibleRules = [
   'prefer-each',
   'prefer-equality-matcher',
   'prefer-expect-resolves',
+  'require-hook',
   'prefer-hooks-in-order',
   'prefer-hooks-on-top',
   'prefer-lowercase-title',
@@ -80,11 +81,11 @@ export const viteTestCompatibleRules = [
   'prefer-to-contain',
   'prefer-to-have-length',
   'prefer-todo',
-  'require-hook',
   'require-to-throw-message',
   'require-top-level-describe',
   'valid-describe-callback',
   'valid-expect',
+  'valid-title',
 ];
 
 export const unicornRulesExtendEslintRules = ['no-negated-condition'];
