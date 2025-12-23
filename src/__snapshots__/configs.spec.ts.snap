@@ -2164,6 +2164,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/valid-expect": [
     0,
   ],
+  "vitest/valid-title": [
+    0,
+  ],
   "vue/define-emits-declaration": [
     0,
   ],
