@@ -277,6 +277,7 @@ const jsxA11yRules: Record<string, 'off'> = {
   'jsx-a11y/anchor-is-valid': 'off',
   'jsx-a11y/aria-activedescendant-has-tabindex': 'off',
   'jsx-a11y/aria-props': 'off',
+  'jsx-a11y/aria-proptypes': 'off',
   'jsx-a11y/aria-role': 'off',
   'jsx-a11y/aria-unsupported-elements': 'off',
   'jsx-a11y/autocomplete-valid': 'off',
@@ -328,6 +329,7 @@ const nextjsRules: Record<string, 'off'> = {
 };
 
 const nodeRules: Record<string, 'off'> = {
+  'node/global-require': 'off',
   'node/no-process-env': 'off',
   'node/no-exports-assign': 'off',
   'node/no-new-require': 'off',
@@ -365,6 +367,7 @@ const reactRules: Record<string, 'off'> = {
   'react/jsx-curly-brace-presence': 'off',
   'react/jsx-handler-names': 'off',
   'react/jsx-key': 'off',
+  'react/jsx-max-depth': 'off',
   'react/jsx-no-comment-textnodes': 'off',
   'react/jsx-no-duplicate-props': 'off',
   'react/jsx-no-script-url': 'off',
@@ -373,6 +376,7 @@ const reactRules: Record<string, 'off'> = {
   'react/jsx-no-useless-fragment': 'off',
   'react/jsx-props-no-spread-multi': 'off',
   'react/jsx-props-no-spreading': 'off',
+  'react/no-did-mount-set-state': 'off',
   'react/no-namespace': 'off',
   'react/no-array-index-key': 'off',
   'react/no-children-prop': 'off',
@@ -597,6 +601,7 @@ const unicornRules: Record<string, 'off'> = {
 };
 
 const vitestRules: Record<string, 'off'> = {
+  'vitest/consistent-test-filename': 'off',
   'vitest/no-conditional-tests': 'off',
   'vitest/no-import-node-test': 'off',
   'vitest/prefer-called-times': 'off',
