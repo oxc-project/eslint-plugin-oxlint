@@ -165,6 +165,7 @@ exports[`handleCategoriesScope > default plugins (react, unicorn, typescript), d
   "react/jsx-props-no-spread-multi": "off",
   "react/no-children-prop": "off",
   "react/no-danger-with-children": "off",
+  "react/no-did-mount-set-state": "off",
   "react/no-direct-mutation-state": "off",
   "react/no-find-dom-node": "off",
   "react/no-is-mounted": "off",

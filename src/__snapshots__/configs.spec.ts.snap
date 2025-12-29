@@ -780,6 +780,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/aria-props": [
     0,
   ],
+  "jsx-a11y/aria-proptypes": [
+    0,
+  ],
   "jsx-a11y/aria-role": [
     0,
   ],
@@ -1348,6 +1351,9 @@ exports[`contains all the oxlint rules 1`] = `
   "no-with": [
     0,
   ],
+  "node/global-require": [
+    0,
+  ],
   "node/no-exports-assign": [
     0,
   ],
@@ -1500,6 +1506,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-key": [
     0,
   ],
+  "react/jsx-max-depth": [
+    0,
+  ],
   "react/jsx-no-comment-textnodes": [
     0,
   ],
@@ -1537,6 +1546,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-danger-with-children": [
+    0,
+  ],
+  "react/no-did-mount-set-state": [
     0,
   ],
   "react/no-direct-mutation-state": [
@@ -2018,6 +2030,9 @@ exports[`contains all the oxlint rules 1`] = `
     },
   ],
   "vars-on-top": [
+    0,
+  ],
+  "vitest/consistent-test-filename": [
     0,
   ],
   "vitest/consistent-test-it": [
