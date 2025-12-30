@@ -3,16 +3,12 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/oxc-project/eslint-plugin-oxlint/.github%2Fworkflows%2Ftest.yml?branch=main)
 ![NPM Version](https://img.shields.io/npm/v/eslint-plugin-oxlint) ![NPM Downloads](https://img.shields.io/npm/dm/eslint-plugin-oxlint)
 
-Turn off all rules already supported by `oxlint`. The rules are extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs).
-
-## What is oxlint?
-
-See https://oxc.rs/blog/2023-12-12-announcing-oxlint.html
+Turn off all rules already supported by [`oxlint`](https://oxc.rs/docs/guide/usage/linter). The rules are extracted from [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs).
 
 ## Installation
 
 ```shell
-pnpm add eslint-plugin-oxlint -D
+pnpm add -D eslint-plugin-oxlint
 ```
 
 ## Usage
@@ -24,7 +20,7 @@ Add the following script to your `package.json`:
 ```json
 {
   "scripts": {
-    "lint": "npx oxlint && npx eslint"
+    "lint": "oxlint && eslint"
   }
 }
 ```
@@ -125,30 +121,3 @@ export default [
     'flat/suspicious': { rules: [Object] }
   }
 ```
-
-## VSCode Support
-
-You need to install both the [oxc](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode) and [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extensions
-
-## Contributing
-
-### Generate rules
-
-Generates the rules from installed oxlint version
-
-```shell
-pnpm generate
-pnpm format
-```
-
-### Test
-
-Tests the source code
-
-```shell
-pnpm test
-```
-
-## License
-
-[MIT](https://github.com/Dunqing/eslint-plugin-oxlint/blob/main/LICENSE)
