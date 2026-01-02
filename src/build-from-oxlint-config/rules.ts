@@ -129,6 +129,14 @@ export const handleRulesScope = (
           rules[tsAlias] = 'off';
         }
       }
+
+      // If this is a TypeScript rule that has an ESLint base, disable that too
+      if (eslintName.startsWith('@typescript-eslint/')) {
+        const baseRule = eslintName.replace('@typescript-eslint/', '');
+        if (typescriptRulesExtendEslintRules.includes(baseRule) && allRules.includes(baseRule)) {
+          rules[baseRule] = 'off';
+        }
+      }
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
       delete rules[eslintName];
@@ -138,6 +146,14 @@ export const handleRulesScope = (
         const tsAlias = `@typescript-eslint/${eslintName}`;
         if (tsAlias in rules) {
           delete rules[tsAlias];
+        }
+      }
+
+      // Also delete the base ESLint rule if this is a TypeScript rule
+      if (eslintName.startsWith('@typescript-eslint/')) {
+        const baseRule = eslintName.replace('@typescript-eslint/', '');
+        if (baseRule in rules) {
+          delete rules[baseRule];
         }
       }
     }

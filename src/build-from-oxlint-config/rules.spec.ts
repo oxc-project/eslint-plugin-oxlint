@@ -67,6 +67,7 @@ describe('handleRulesScope', () => {
     expect(rules).toStrictEqual({
       eqeqeq: 'off',
       '@typescript-eslint/no-unused-vars': 'off',
+      'no-unused-vars': 'off',
       'react-perf/jsx-no-new-array-as-prop': 'off',
       '@next/next/no-img-element': 'off',
       'jsx-a11y/alt-text': 'off',
@@ -158,6 +159,7 @@ describe('handleRulesScope', () => {
 
       expect(rules).toStrictEqual({
         '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
       });
     });
 
@@ -175,6 +177,7 @@ describe('handleRulesScope', () => {
       expect(rules).toStrictEqual({
         '@typescript-eslint/await-thenable': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
       });
     });
 
@@ -217,6 +220,27 @@ describe('handleRulesScope', () => {
       });
     });
 
+    it('should disable ESLint base rules when TypeScript alias rules are active', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          '@typescript-eslint/no-unused-vars': 'error',
+          '@typescript-eslint/no-redeclare': 'warn',
+          '@typescript-eslint/no-loop-func': 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-redeclare': 'off',
+        'no-redeclare': 'off',
+        '@typescript-eslint/no-loop-func': 'off',
+        'no-loop-func': 'off',
+      });
+    });
+
     it('should not add TypeScript alias for rules that do not have one', () => {
       const rules = {};
       handleRulesScope(
@@ -239,6 +263,21 @@ describe('handleRulesScope', () => {
       handleRulesScope(
         {
           'no-unused-vars': 'off',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({});
+    });
+
+    it('should disable both base and alias when TypeScript rule is turned off', () => {
+      const rules: Record<string, 'off'> = {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+      };
+      handleRulesScope(
+        {
+          '@typescript-eslint/no-unused-vars': 'off',
         },
         rules
       );
