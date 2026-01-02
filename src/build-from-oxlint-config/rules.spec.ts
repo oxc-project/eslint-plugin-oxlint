@@ -232,7 +232,7 @@ describe('handleRulesScope', () => {
     });
 
     it('should disable both base and alias when base rule is turned off', () => {
-      const rules = {
+      const rules: Record<string, 'off'> = {
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
       };
