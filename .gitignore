@@ -132,4 +132,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-.oxc_sparsepackage-lock.json
+.oxc_sparse
