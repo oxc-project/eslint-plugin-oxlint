@@ -1,4 +1,8 @@
-import { aliasPluginNames, reactHookRulesInsideReactScope } from '../constants.js';
+import {
+  aliasPluginNames,
+  reactHookRulesInsideReactScope,
+  typescriptRulesExtendEslintRules,
+} from '../constants.js';
 import {
   BuildFromOxlintConfigOptions,
   OxlintConfig,
@@ -116,9 +120,42 @@ export const handleRulesScope = (
     // is this rules not turned off
     if (isActiveValue(oxlintRules[rule])) {
       rules[eslintName] = 'off';
+
+      // If this is an ESLint rule that has a TypeScript alias, disable that too
+      if (!eslintName.includes('/') && typescriptRulesExtendEslintRules.includes(eslintName)) {
+        const tsAlias = `@typescript-eslint/${eslintName}`;
+        // Only add the alias if it exists in allRules
+        if (allRules.includes(tsAlias)) {
+          rules[tsAlias] = 'off';
+        }
+      }
+
+      // If this is a TypeScript rule that has an ESLint base, disable that too
+      if (eslintName.startsWith('@typescript-eslint/')) {
+        const baseRule = eslintName.replace('@typescript-eslint/', '');
+        if (typescriptRulesExtendEslintRules.includes(baseRule) && allRules.includes(baseRule)) {
+          rules[baseRule] = 'off';
+        }
+      }
     } else if (rule in rules && isDeactivateValue(oxlintRules[rule])) {
       // rules extended by categories or plugins can be disabled manually
       delete rules[eslintName];
+
+      // Also delete the TypeScript alias if it exists
+      if (!eslintName.includes('/') && typescriptRulesExtendEslintRules.includes(eslintName)) {
+        const tsAlias = `@typescript-eslint/${eslintName}`;
+        if (tsAlias in rules) {
+          delete rules[tsAlias];
+        }
+      }
+
+      // Also delete the base ESLint rule if this is a TypeScript rule
+      if (eslintName.startsWith('@typescript-eslint/')) {
+        const baseRule = eslintName.replace('@typescript-eslint/', '');
+        if (baseRule in rules) {
+          delete rules[baseRule];
+        }
+      }
     }
   }
 };

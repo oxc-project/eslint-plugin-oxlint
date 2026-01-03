@@ -67,6 +67,7 @@ describe('handleRulesScope', () => {
     expect(rules).toStrictEqual({
       eqeqeq: 'off',
       '@typescript-eslint/no-unused-vars': 'off',
+      'no-unused-vars': 'off',
       'react-perf/jsx-no-new-array-as-prop': 'off',
       '@next/next/no-img-element': 'off',
       'jsx-a11y/alt-text': 'off',
@@ -88,7 +89,8 @@ describe('handleRulesScope', () => {
     );
 
     expect(rules).toStrictEqual({
-      'no-unused-vars': 'off', // ToDo: should be @typescript-eslint/
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off', // TypeScript alias is also disabled
       'react-perf/jsx-no-new-array-as-prop': 'off',
       '@next/next/no-img-element': 'off',
       'unicorn/no-array-reduce': 'off',
@@ -157,6 +159,7 @@ describe('handleRulesScope', () => {
 
       expect(rules).toStrictEqual({
         '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
       });
     });
 
@@ -174,6 +177,7 @@ describe('handleRulesScope', () => {
       expect(rules).toStrictEqual({
         '@typescript-eslint/await-thenable': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
       });
     });
 
@@ -191,6 +195,94 @@ describe('handleRulesScope', () => {
       expect(rules).toStrictEqual({
         eqeqeq: 'off',
       });
+    });
+  });
+
+  describe('TypeScript alias rules', () => {
+    it('should disable TypeScript alias rules when ESLint base rules are active', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          'no-unused-vars': 'error',
+          'no-redeclare': 'warn',
+          'no-loop-func': 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        'no-redeclare': 'off',
+        '@typescript-eslint/no-redeclare': 'off',
+        'no-loop-func': 'off',
+        '@typescript-eslint/no-loop-func': 'off',
+      });
+    });
+
+    it('should disable ESLint base rules when TypeScript alias rules are active', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          '@typescript-eslint/no-unused-vars': 'error',
+          '@typescript-eslint/no-redeclare': 'warn',
+          '@typescript-eslint/no-loop-func': 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-redeclare': 'off',
+        'no-redeclare': 'off',
+        '@typescript-eslint/no-loop-func': 'off',
+        'no-loop-func': 'off',
+      });
+    });
+
+    it('should not add TypeScript alias for rules that do not have one', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          eqeqeq: 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        eqeqeq: 'off',
+      });
+    });
+
+    it('should disable both base and alias when base rule is turned off', () => {
+      const rules: Record<string, 'off'> = {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+      };
+      handleRulesScope(
+        {
+          'no-unused-vars': 'off',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({});
+    });
+
+    it('should disable both base and alias when TypeScript rule is turned off', () => {
+      const rules: Record<string, 'off'> = {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+      };
+      handleRulesScope(
+        {
+          '@typescript-eslint/no-unused-vars': 'off',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({});
     });
   });
 });
