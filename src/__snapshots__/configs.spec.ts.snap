@@ -409,6 +409,10 @@ exports[`contains all the oxlint rules 1`] = `
       "ignoreOverrideMethods": false,
     },
   ],
+  "complexity": [
+    0,
+    20,
+  ],
   "constructor-super": [
     0,
   ],
@@ -835,6 +839,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jsx-a11y/no-redundant-roles": [
+    0,
+  ],
+  "jsx-a11y/no-static-element-interactions": [
     0,
   ],
   "jsx-a11y/prefer-tag-over-role": [
@@ -1575,6 +1582,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-string-refs": [
     0,
   ],
+  "react/no-this-in-sfc": [
+    0,
+  ],
   "react/no-unescaped-entities": [
     0,
   ],
@@ -1582,6 +1592,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-unsafe": [
+    0,
+  ],
+  "react/no-will-update-set-state": [
     0,
   ],
   "react/only-export-components": [
@@ -2038,6 +2051,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/consistent-test-it": [
     0,
   ],
+  "vitest/consistent-vitest-vi": [
+    0,
+  ],
   "vitest/expect-expect": [
     0,
   ],
@@ -2179,6 +2195,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/valid-expect": [
     0,
   ],
+  "vitest/warn-todo": [
+    0,
+  ],
   "vue/define-emits-declaration": [
     0,
   ],
@@ -2204,6 +2223,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/no-required-prop-with-default": [
+    0,
+  ],
+  "vue/no-this-in-before-route-enter": [
     0,
   ],
   "vue/prefer-import-from-vue": [
