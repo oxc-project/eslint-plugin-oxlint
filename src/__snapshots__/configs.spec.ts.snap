@@ -326,6 +326,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-nullish-coalescing": [
     0,
   ],
+  "@typescript-eslint/prefer-optional-chain": [
+    0,
+  ],
   "@typescript-eslint/prefer-promise-reject-errors": [
     0,
   ],
@@ -839,9 +842,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jsx-a11y/no-redundant-roles": [
-    0,
-  ],
-  "jsx-a11y/no-static-element-interactions": [
     0,
   ],
   "jsx-a11y/prefer-tag-over-role": [
@@ -2045,6 +2045,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vars-on-top": [
     0,
   ],
+  "vitest/consistent-each-for": [
+    0,
+  ],
   "vitest/consistent-test-filename": [
     0,
   ],
@@ -2055,6 +2058,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/expect-expect": [
+    0,
+  ],
+  "vitest/hoisted-apis-on-top": [
     0,
   ],
   "vitest/max-expects": [
@@ -2120,6 +2126,12 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-test-return-statement": [
     0,
   ],
+  "vitest/no-unneeded-async-expect-function": [
+    0,
+  ],
+  "vitest/prefer-called-once": [
+    0,
+  ],
   "vitest/prefer-called-times": [
     0,
   ],
@@ -2127,6 +2139,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/prefer-comparison-matcher": [
+    0,
+  ],
+  "vitest/prefer-describe-function-title": [
     0,
   ],
   "vitest/prefer-each": [
@@ -2210,6 +2225,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/max-props": [
     0,
   ],
+  "vue/no-arrow-functions-in-watch": [
+    0,
+  ],
   "vue/no-deprecated-destroyed-lifecycle": [
     0,
   ],
@@ -2217,6 +2235,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/no-import-compiler-macros": [
+    0,
+  ],
+  "vue/no-lifecycle-after-await": [
     0,
   ],
   "vue/no-multiple-slot-args": [
