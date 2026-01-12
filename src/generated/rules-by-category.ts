@@ -276,7 +276,10 @@ const styleRules: Record<string, 'off'> = {
   'vitest/consistent-test-filename': 'off',
   'vitest/consistent-vitest-vi': 'off',
   'vitest/no-import-node-test': 'off',
+  'vitest/no-unneeded-async-expect-function': 'off',
+  'vitest/prefer-called-once': 'off',
   'vitest/prefer-called-times': 'off',
+  'vitest/prefer-describe-function-title': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
@@ -536,7 +539,6 @@ const correctnessRules: Record<string, 'off'> = {
   'jsx-a11y/media-has-caption': 'off',
   'jsx-a11y/mouse-events-have-key-events': 'off',
   'jsx-a11y/no-noninteractive-tabindex': 'off',
-  'jsx-a11y/no-static-element-interactions': 'off',
   'jsx-a11y/no-access-key': 'off',
   'jsx-a11y/no-aria-hidden-on-focusable': 'off',
   'jsx-a11y/no-autofocus': 'off',
@@ -613,11 +615,15 @@ const correctnessRules: Record<string, 'off'> = {
   'unicorn/no-useless-spread': 'off',
   'unicorn/prefer-set-size': 'off',
   'unicorn/prefer-string-starts-ends-with': 'off',
+  'vitest/consistent-each-for': 'off',
+  'vitest/hoisted-apis-on-top': 'off',
   'vitest/no-conditional-tests': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
   'vitest/warn-todo': 'off',
+  'vue/no-arrow-functions-in-watch': 'off',
   'vue/no-deprecated-destroyed-lifecycle': 'off',
   'vue/no-export-in-script-setup': 'off',
+  'vue/no-lifecycle-after-await': 'off',
   'vue/no-this-in-before-route-enter': 'off',
   'vue/prefer-import-from-vue': 'off',
   'vue/valid-define-emits': 'off',
@@ -643,6 +649,7 @@ const nurseryRules: Record<string, 'off'> = {
   'no-unreachable': 'off',
   'import/export': 'off',
   'import/named': 'off',
+  'jsx-a11y/no-static-element-interactions': 'off',
   'promise/no-return-in-finally': 'off',
   'react/require-render-return': 'off',
 };
@@ -715,6 +722,7 @@ const restrictionTypeAwareRules: Record<string, 'off'> = {
 };
 
 const styleTypeAwareRules: Record<string, 'off'> = {
+  '@typescript-eslint/prefer-optional-chain': 'off',
   '@typescript-eslint/prefer-reduce-type-parameter': 'off',
   '@typescript-eslint/prefer-return-this-type': 'off',
 };
