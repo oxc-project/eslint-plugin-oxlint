@@ -74,6 +74,7 @@ export const viteTestCompatibleRules = [
   'prefer-hooks-on-top',
   'prefer-lowercase-title',
   'prefer-mock-promise-shorthand',
+  'prefer-mock-return-shorthand',
   'prefer-spy-on',
   'prefer-strict-equal',
   'prefer-to-be',
