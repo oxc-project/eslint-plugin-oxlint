@@ -326,9 +326,6 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-nullish-coalescing": [
     0,
   ],
-  "@typescript-eslint/prefer-optional-chain": [
-    0,
-  ],
   "@typescript-eslint/prefer-promise-reject-errors": [
     0,
   ],

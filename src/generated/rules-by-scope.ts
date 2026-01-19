@@ -713,7 +713,6 @@ const typescriptTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/only-throw-error': 'off',
   '@typescript-eslint/prefer-includes': 'off',
   '@typescript-eslint/prefer-nullish-coalescing': 'off',
-  '@typescript-eslint/prefer-optional-chain': 'off',
   '@typescript-eslint/prefer-promise-reject-errors': 'off',
   '@typescript-eslint/prefer-reduce-type-parameter': 'off',
   '@typescript-eslint/prefer-return-this-type': 'off',
