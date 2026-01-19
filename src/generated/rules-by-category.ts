@@ -721,8 +721,11 @@ const restrictionTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
 };
 
-const styleTypeAwareRules: Record<string, 'off'> = {
+const nurseryTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/prefer-optional-chain': 'off',
+};
+
+const styleTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/prefer-reduce-type-parameter': 'off',
   '@typescript-eslint/prefer-return-this-type': 'off',
 };
@@ -739,5 +742,6 @@ export {
   pedanticTypeAwareRules,
   suspiciousTypeAwareRules,
   restrictionTypeAwareRules,
+  nurseryTypeAwareRules,
   styleTypeAwareRules,
 };
