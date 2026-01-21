@@ -1451,18 +1451,6 @@ exports[`contains all the oxlint rules 1`] = `
   "no-with": [
     0,
   ],
-  "node/global-require": [
-    0,
-  ],
-  "node/no-exports-assign": [
-    0,
-  ],
-  "node/no-new-require": [
-    0,
-  ],
-  "node/no-process-env": [
-    0,
-  ],
   "operator-assignment": [
     0,
     "always",

@@ -179,8 +179,8 @@ const styleRules: Record<string, 'off'> = {
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
   'vitest/prefer-to-be-truthy': 'off',
-  'node/global-require': 'off',
-  'node/no-exports-assign': 'off',
+  'n/global-require': 'off',
+  'n/no-exports-assign': 'off',
   'vue/define-emits-declaration': 'off',
   'vue/define-props-declaration': 'off',
   'vue/define-props-destructuring': 'off',
@@ -231,8 +231,6 @@ const styleRules: Record<string, 'off'> = {
   'vitest/prefer-todo': 'off',
   'vitest/require-hook': 'off',
   'vitest/require-top-level-describe': 'off',
-  'n/global-require': 'off',
-  'n/no-exports-assign': 'off',
 };
 
 const correctnessRules: Record<string, 'off'> = {
@@ -516,8 +514,8 @@ const restrictionRules: Record<string, 'off'> = {
   'jsdoc/empty-tags': 'off',
   'promise/catch-or-return': 'off',
   'promise/spec-only': 'off',
-  'node/no-new-require': 'off',
-  'node/no-process-env': 'off',
+  'n/no-new-require': 'off',
+  'n/no-process-env': 'off',
   'vue/max-props': 'off',
   'vue/no-import-compiler-macros': 'off',
   'vue/no-multiple-slot-args': 'off',
@@ -533,8 +531,6 @@ const restrictionRules: Record<string, 'off'> = {
   '@typescript-eslint/no-empty-function': 'off',
   '@typescript-eslint/no-restricted-imports': 'off',
   'react-refresh/only-export-components': 'off',
-  'n/no-new-require': 'off',
-  'n/no-process-env': 'off',
 };
 
 const pedanticRules: Record<string, 'off'> = {

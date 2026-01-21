@@ -32,6 +32,11 @@ export class RulesGenerator {
       map.set(key, group);
     }
 
+    // Ensure that the rules in each group are unique.
+    for (const [key, group] of map.entries()) {
+      map.set(key, [...new Set(group)]);
+    }
+
     return map;
   }
 

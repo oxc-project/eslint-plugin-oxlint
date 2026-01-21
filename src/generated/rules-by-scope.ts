@@ -686,10 +686,6 @@ const vitestRules: Record<string, 'off'> = {
 };
 
 const nodeRules: Record<string, 'off'> = {
-  'node/global-require': 'off',
-  'node/no-exports-assign': 'off',
-  'node/no-new-require': 'off',
-  'node/no-process-env': 'off',
   'n/global-require': 'off',
   'n/no-exports-assign': 'off',
   'n/no-new-require': 'off',
