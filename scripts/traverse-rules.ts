@@ -35,10 +35,6 @@ function fixScopeOfRule(rule: Rule): void {
   if (rule.scope === 'react' && reactHookRulesInsideReactScope.includes(rule.value)) {
     rule.scope = 'react_hooks';
   }
-
-  if (rule.scope === 'n') {
-    rule.scope = 'node';
-  }
 }
 
 /**
