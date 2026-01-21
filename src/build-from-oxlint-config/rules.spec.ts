@@ -61,6 +61,7 @@ describe('handleRulesScope', () => {
         'react/rules-of-hooks': 'warn',
         'react/only-export-components': 'warn',
         'import-x/namespace': 'warn',
+        'node/global-require': 'warn',
         // 'deepscan/xxx': 'warn',
       },
       rules
@@ -77,6 +78,7 @@ describe('handleRulesScope', () => {
       'react-hooks/rules-of-hooks': 'off',
       'react-refresh/only-export-components': 'off',
       'import/namespace': 'off',
+      'n/global-require': 'off',
     });
   });
 
