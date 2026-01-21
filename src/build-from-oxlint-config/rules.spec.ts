@@ -50,6 +50,7 @@ describe('handleRulesScope', () => {
   // look here: <https://github.com/oxc-project/oxc/blob/542bbd77ed50ad037c275b3af169b1edfab59988/crates/oxc_linter/src/config/rules.rs#L283-L296>
   it('detects oxlint rules with plugin alias inside rules block', () => {
     const rules = {};
+    // This is the oxlint side
     handleRulesScope(
       {
         'eslint/eqeqeq': 'warn',
@@ -58,12 +59,14 @@ describe('handleRulesScope', () => {
         'nextjs/no-img-element': 'warn',
         'jsx_a11y/alt-text': 'warn',
         'react/rules-of-hooks': 'warn',
+        'react/only-export-components': 'warn',
         'import-x/namespace': 'warn',
         // 'deepscan/xxx': 'warn',
       },
       rules
     );
 
+    // Resulting ESLint ruleset
     expect(rules).toStrictEqual({
       eqeqeq: 'off',
       '@typescript-eslint/no-unused-vars': 'off',
@@ -72,12 +75,14 @@ describe('handleRulesScope', () => {
       '@next/next/no-img-element': 'off',
       'jsx-a11y/alt-text': 'off',
       'react-hooks/rules-of-hooks': 'off',
+      'react-refresh/only-export-components': 'off',
       'import/namespace': 'off',
     });
   });
 
   it('detects rules without plugin name', () => {
     const rules = {};
+    // This is the oxlint side
     handleRulesScope(
       {
         'no-unused-vars': 'warn',
@@ -88,6 +93,7 @@ describe('handleRulesScope', () => {
       rules
     );
 
+    // Resulting ESLint ruleset
     expect(rules).toStrictEqual({
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'off', // TypeScript alias is also disabled
