@@ -29,6 +29,34 @@ const importRules: Record<string, 'off'> = {
   'import/no-webpack-loader-syntax': 'off',
   'import/prefer-default-export': 'off',
   'import/unambiguous': 'off',
+  'import-x/consistent-type-specifier-style': 'off',
+  'import-x/default': 'off',
+  'import-x/exports-last': 'off',
+  'import-x/extensions': 'off',
+  'import-x/first': 'off',
+  'import-x/group-exports': 'off',
+  'import-x/max-dependencies': 'off',
+  'import-x/namespace': 'off',
+  'import-x/no-absolute-path': 'off',
+  'import-x/no-amd': 'off',
+  'import-x/no-anonymous-default-export': 'off',
+  'import-x/no-commonjs': 'off',
+  'import-x/no-cycle': 'off',
+  'import-x/no-default-export': 'off',
+  'import-x/no-duplicates': 'off',
+  'import-x/no-dynamic-require': 'off',
+  'import-x/no-empty-named-blocks': 'off',
+  'import-x/no-mutable-exports': 'off',
+  'import-x/no-named-as-default': 'off',
+  'import-x/no-named-as-default-member': 'off',
+  'import-x/no-named-default': 'off',
+  'import-x/no-named-export': 'off',
+  'import-x/no-namespace': 'off',
+  'import-x/no-self-import': 'off',
+  'import-x/no-unassigned-import': 'off',
+  'import-x/no-webpack-loader-syntax': 'off',
+  'import-x/prefer-default-export': 'off',
+  'import-x/unambiguous': 'off',
 };
 
 const eslintRules: Record<string, 'off'> = {
@@ -362,6 +390,7 @@ const reactRules: Record<string, 'off'> = {
   'react/state-in-constructor': 'off',
   'react/style-prop-object': 'off',
   'react/void-dom-elements-no-children': 'off',
+  'react-refresh/only-export-components': 'off',
 };
 
 const reactHooksRules: Record<string, 'off'> = {
@@ -661,6 +690,10 @@ const nodeRules: Record<string, 'off'> = {
   'node/no-exports-assign': 'off',
   'node/no-new-require': 'off',
   'node/no-process-env': 'off',
+  'n/global-require': 'off',
+  'n/no-exports-assign': 'off',
+  'n/no-new-require': 'off',
+  'n/no-process-env': 'off',
 };
 
 const vueRules: Record<string, 'off'> = {

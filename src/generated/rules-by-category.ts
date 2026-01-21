@@ -185,6 +185,17 @@ const styleRules: Record<string, 'off'> = {
   'vue/define-props-declaration': 'off',
   'vue/define-props-destructuring': 'off',
   'vue/require-typed-ref': 'off',
+  'import-x/consistent-type-specifier-style': 'off',
+  'import-x/exports-last': 'off',
+  'import-x/first': 'off',
+  'import-x/group-exports': 'off',
+  'import-x/no-anonymous-default-export': 'off',
+  'import-x/no-duplicates': 'off',
+  'import-x/no-mutable-exports': 'off',
+  'import-x/no-named-default': 'off',
+  'import-x/no-named-export': 'off',
+  'import-x/no-namespace': 'off',
+  'import-x/prefer-default-export': 'off',
   '@typescript-eslint/default-param-last': 'off',
   '@typescript-eslint/init-declarations': 'off',
   '@typescript-eslint/max-params': 'off',
@@ -220,6 +231,8 @@ const styleRules: Record<string, 'off'> = {
   'vitest/prefer-todo': 'off',
   'vitest/require-hook': 'off',
   'vitest/require-top-level-describe': 'off',
+  'n/global-require': 'off',
+  'n/no-exports-assign': 'off',
 };
 
 const correctnessRules: Record<string, 'off'> = {
@@ -405,6 +418,8 @@ const correctnessRules: Record<string, 'off'> = {
   'vue/prefer-import-from-vue': 'off',
   'vue/valid-define-emits': 'off',
   'vue/valid-define-props': 'off',
+  'import-x/default': 'off',
+  'import-x/namespace': 'off',
   '@typescript-eslint/no-dupe-class-members': 'off',
   '@typescript-eslint/no-loss-of-precision': 'off',
   '@typescript-eslint/no-unused-expressions': 'off',
@@ -429,6 +444,8 @@ const nurseryRules: Record<string, 'off'> = {
   'react/require-render-return': 'off',
   'jsx-a11y/no-static-element-interactions': 'off',
   'promise/no-return-in-finally': 'off',
+  'import-x/export': 'off',
+  'import-x/named': 'off',
 };
 
 const restrictionRules: Record<string, 'off'> = {
@@ -504,9 +521,20 @@ const restrictionRules: Record<string, 'off'> = {
   'vue/max-props': 'off',
   'vue/no-import-compiler-macros': 'off',
   'vue/no-multiple-slot-args': 'off',
+  'import-x/extensions': 'off',
+  'import-x/no-amd': 'off',
+  'import-x/no-commonjs': 'off',
+  'import-x/no-cycle': 'off',
+  'import-x/no-default-export': 'off',
+  'import-x/no-dynamic-require': 'off',
+  'import-x/no-webpack-loader-syntax': 'off',
+  'import-x/unambiguous': 'off',
   '@typescript-eslint/class-methods-use-this': 'off',
   '@typescript-eslint/no-empty-function': 'off',
   '@typescript-eslint/no-restricted-imports': 'off',
+  'react-refresh/only-export-components': 'off',
+  'n/no-new-require': 'off',
+  'n/no-process-env': 'off',
 };
 
 const pedanticRules: Record<string, 'off'> = {
@@ -605,6 +633,7 @@ const pedanticRules: Record<string, 'off'> = {
   'jsdoc/require-returns': 'off',
   'jsdoc/require-returns-description': 'off',
   'jsdoc/require-returns-type': 'off',
+  'import-x/max-dependencies': 'off',
   '@typescript-eslint/no-array-constructor': 'off',
   '@typescript-eslint/no-loop-func': 'off',
   'unicorn/no-negated-condition': 'off',
@@ -651,6 +680,12 @@ const suspiciousRules: Record<string, 'off'> = {
   'promise/no-promise-in-callback': 'off',
   'vue/no-required-prop-with-default': 'off',
   'vue/require-default-export': 'off',
+  'import-x/no-absolute-path': 'off',
+  'import-x/no-empty-named-blocks': 'off',
+  'import-x/no-named-as-default': 'off',
+  'import-x/no-named-as-default-member': 'off',
+  'import-x/no-self-import': 'off',
+  'import-x/no-unassigned-import': 'off',
   '@typescript-eslint/no-useless-constructor': 'off',
   'vitest/no-commented-out-tests': 'off',
 };
