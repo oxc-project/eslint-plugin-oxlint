@@ -1480,6 +1480,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/checked-requires-onchange-or-readonly": [
     0,
   ],
+  "react/display-name": [
+    0,
+  ],
   "react/forbid-dom-props": [
     0,
   ],
