@@ -8,6 +8,7 @@ export const aliasPluginNames: Record<string, string> = {
   eslint: '',
   typescript: '@typescript-eslint',
   nextjs: '@next/next',
+  node: 'n',
 
   // only for src/build-from-oxlint-config
   react_perf: 'react-perf',

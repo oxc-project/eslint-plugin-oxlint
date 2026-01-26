@@ -51,8 +51,8 @@ function fixValueOfRule(rule: Rule): void {
 }
 
 /**
- * some rules are reimplemented in another scope
- * remap them so we can disable all the reimplemented too
+ * some rules are reimplemented in another scope or available in multiple ESLint plugins,
+ * remap them so we can disable all of those too
  */
 function getAliasRules(rule: Rule): Rule | undefined {
   if (rule.scope === 'eslint' && typescriptRulesExtendEslintRules.includes(rule.value)) {
@@ -67,6 +67,33 @@ function getAliasRules(rule: Rule): Rule | undefined {
     return {
       value: `vitest/${rule.value}`,
       scope: 'vitest',
+      category: rule.category,
+    };
+  }
+
+  if (rule.scope === 'import') {
+    return {
+      value: `import-x/${rule.value}`,
+      scope: 'import',
+      category: rule.category,
+    };
+  }
+
+  // Oxlint supports eslint-plugin-n rules only under the `node` plugin name.
+  if (rule.scope === 'node') {
+    return {
+      value: `n/${rule.value}`,
+      scope: 'node',
+      category: rule.category,
+    };
+  }
+
+  // This rule comes from eslint-plugin-react-refresh but is namespaced under `react/`
+  // in oxlint.
+  if (rule.scope === 'react' && rule.value === 'only-export-components') {
+    return {
+      value: `react-refresh/${rule.value}`,
+      scope: 'react',
       category: rule.category,
     };
   }
@@ -96,5 +123,6 @@ export function traverseRules(): Rule[] {
     fixValueOfRule(rule);
   }
 
-  return [...rules, ...aliasRules];
+  // Ensure all rules are unique
+  return [...new Set([...rules, ...aliasRules])];
 }

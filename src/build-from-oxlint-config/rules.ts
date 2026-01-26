@@ -65,6 +65,11 @@ const getEsLintRuleName = (
     esPluginName = 'react-hooks';
   }
 
+  // special case for eslint-plugin-react-refresh
+  if (esPluginName === 'react' && ruleName == 'only-export-components') {
+    esPluginName = 'react-refresh';
+  }
+
   // extra check for eslint
   const expectedRule = esPluginName === '' ? ruleName : `${esPluginName}/${ruleName}`;
 

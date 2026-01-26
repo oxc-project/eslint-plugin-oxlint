@@ -469,6 +469,90 @@ exports[`contains all the oxlint rules 1`] = `
       "properties": "always",
     },
   ],
+  "import-x/consistent-type-specifier-style": [
+    0,
+  ],
+  "import-x/default": [
+    0,
+  ],
+  "import-x/exports-last": [
+    0,
+  ],
+  "import-x/extensions": [
+    0,
+  ],
+  "import-x/first": [
+    0,
+  ],
+  "import-x/group-exports": [
+    0,
+  ],
+  "import-x/max-dependencies": [
+    0,
+  ],
+  "import-x/namespace": [
+    0,
+  ],
+  "import-x/no-absolute-path": [
+    0,
+  ],
+  "import-x/no-amd": [
+    0,
+  ],
+  "import-x/no-anonymous-default-export": [
+    0,
+  ],
+  "import-x/no-commonjs": [
+    0,
+  ],
+  "import-x/no-cycle": [
+    0,
+  ],
+  "import-x/no-default-export": [
+    0,
+  ],
+  "import-x/no-duplicates": [
+    0,
+  ],
+  "import-x/no-dynamic-require": [
+    0,
+  ],
+  "import-x/no-empty-named-blocks": [
+    0,
+  ],
+  "import-x/no-mutable-exports": [
+    0,
+  ],
+  "import-x/no-named-as-default": [
+    0,
+  ],
+  "import-x/no-named-as-default-member": [
+    0,
+  ],
+  "import-x/no-named-default": [
+    0,
+  ],
+  "import-x/no-named-export": [
+    0,
+  ],
+  "import-x/no-namespace": [
+    0,
+  ],
+  "import-x/no-self-import": [
+    0,
+  ],
+  "import-x/no-unassigned-import": [
+    0,
+  ],
+  "import-x/no-webpack-loader-syntax": [
+    0,
+  ],
+  "import-x/prefer-default-export": [
+    0,
+  ],
+  "import-x/unambiguous": [
+    0,
+  ],
   "import/consistent-type-specifier-style": [
     0,
   ],
@@ -875,6 +959,18 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "max-statements": [
+    0,
+  ],
+  "n/global-require": [
+    0,
+  ],
+  "n/no-exports-assign": [
+    0,
+  ],
+  "n/no-new-require": [
+    0,
+  ],
+  "n/no-process-env": [
     0,
   ],
   "new-cap": [
@@ -1355,18 +1451,6 @@ exports[`contains all the oxlint rules 1`] = `
   "no-with": [
     0,
   ],
-  "node/global-require": [
-    0,
-  ],
-  "node/no-exports-assign": [
-    0,
-  ],
-  "node/no-new-require": [
-    0,
-  ],
-  "node/no-process-env": [
-    0,
-  ],
   "operator-assignment": [
     0,
     "always",
@@ -1472,6 +1556,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react-perf/jsx-no-new-object-as-prop": [
+    0,
+  ],
+  "react-refresh/only-export-components": [
     0,
   ],
   "react/button-has-type": [
