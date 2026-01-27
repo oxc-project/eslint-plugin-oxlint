@@ -79,7 +79,7 @@
     "vitest": "^4.0.0"
   },
   "lint-staged": {
-    "*.{js,cjs,ts}": "eslint",
+    "*.{js,cjs,ts}": "pnpm run lint",
     "*": "oxfmt ."
   },
   "volta": {
