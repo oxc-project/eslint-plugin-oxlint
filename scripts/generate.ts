@@ -25,3 +25,5 @@ const promises = [rulesGenerator, configGenerator].map(async (generator) => {
 });
 
 await Promise.all(promises);
+
+console.log('Rules generated successfully.');

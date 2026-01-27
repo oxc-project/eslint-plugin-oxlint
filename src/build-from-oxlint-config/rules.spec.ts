@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { handleRulesScope } from './rules.js';
-import { unicornRulesExtendEslintRules, viteTestCompatibleRules } from '../constants.js';
+import { unicornRulesExtendEslintRules } from '../constants.js';
+import vitestCompatibleRules from '../../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 
 describe('handleRulesScope', () => {
   for (const ruleSetting of ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]]) {
@@ -118,7 +119,7 @@ describe('handleRulesScope', () => {
     expect(rules).toStrictEqual({});
   });
 
-  for (const alias of viteTestCompatibleRules) {
+  for (const alias of vitestCompatibleRules) {
     it(`disables vitest jest alias rules for ${alias}`, () => {
       for (const rule of [`jest/${alias}`, `vitest/${alias}`]) {
         const rules = {};
