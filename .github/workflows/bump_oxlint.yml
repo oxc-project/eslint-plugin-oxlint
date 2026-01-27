@@ -5,6 +5,7 @@ on:
     inputs:
       version:
         required: true
+        description: 'The X.Y.Z version to bump to, no `v` prefix.'
         type: string
 
 env:
@@ -30,7 +31,7 @@ jobs:
         run: |
           pnpm install oxlint@${OXLINT_VERSION}
           pnpm run generate # Generate rules
-          pnpm run format # run prettier over it
+          pnpm run format # run oxfmt over it
 
       - name: Test and update snapshot
         continue-on-error: true # we check in PR why it fails
