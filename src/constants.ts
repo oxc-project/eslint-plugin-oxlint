@@ -43,50 +43,8 @@ export const typescriptRulesExtendEslintRules = [
 
 // Some vitest rules are re-implemented version of jest rules.
 // Since oxlint supports these rules under jest/*, we need to remap them.
-// remapping in source-code: <https://github.com/oxc-project/oxc/blob/b48d5f15b25bd31a3fc09399f33c6e5a9e6abdd2/crates/oxc_linter/src/utils/mod.rs>
-export const viteTestCompatibleRules = [
-  'consistent-test-it',
-  'expect-expect',
-  'max-expects',
-  'max-nested-describe',
-  'no-alias-methods',
-  'no-commented-out-tests',
-  'no-conditional-expect',
-  'no-conditional-in-test',
-  'no-disabled-tests',
-  'no-duplicate-hooks',
-  'no-focused-tests',
-  'no-hooks',
-  'no-identical-title',
-  'no-interpolation-in-snapshots',
-  'no-large-snapshots',
-  'no-mocks-import',
-  'no-restricted-jest-methods',
-  'no-restricted-matchers',
-  'no-standalone-expect',
-  'no-test-prefixes',
-  'no-test-return-statement',
-  'prefer-called-with',
-  'prefer-comparison-matcher',
-  'prefer-each',
-  'prefer-equality-matcher',
-  'prefer-expect-resolves',
-  'prefer-hooks-in-order',
-  'prefer-hooks-on-top',
-  'prefer-lowercase-title',
-  'prefer-mock-promise-shorthand',
-  'prefer-spy-on',
-  'prefer-strict-equal',
-  'prefer-to-be',
-  'prefer-to-contain',
-  'prefer-to-have-length',
-  'prefer-todo',
-  'require-hook',
-  'require-to-throw-message',
-  'require-top-level-describe',
-  'valid-describe-callback',
-  'valid-expect',
-];
+// This list is auto-generated from the oxc repo via scripts/generate-vitest-rules.ts
+export { default as viteTestCompatibleRules } from '../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 
 export const unicornRulesExtendEslintRules = ['no-negated-condition'];
 

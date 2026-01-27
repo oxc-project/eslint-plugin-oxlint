@@ -5,8 +5,8 @@ import {
   reactHookRulesInsideReactScope,
   typescriptRulesExtendEslintRules,
   unicornRulesExtendEslintRules,
-  viteTestCompatibleRules,
 } from '../src/constants.js';
+import vitestCompatibleRules from './generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 
 export type Rule = {
   value: string;
@@ -63,7 +63,7 @@ function getAliasRules(rule: Rule): Rule | undefined {
     };
   }
 
-  if (rule.scope === 'jest' && viteTestCompatibleRules.includes(rule.value)) {
+  if (rule.scope === 'jest' && vitestCompatibleRules.includes(rule.value)) {
     return {
       value: `vitest/${rule.value}`,
       scope: 'vitest',

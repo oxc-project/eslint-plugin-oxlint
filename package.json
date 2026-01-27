@@ -46,7 +46,7 @@
   },
   "scripts": {
     "prepare": "husky",
-    "generate": "node --import @oxc-node/core/register ./scripts/generate.ts",
+    "generate": "node --import @oxc-node/core/register ./scripts/generate-vitest-rules.ts && node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
     "build": "vite build",
     "lint": "npx oxlint --type-aware --type-check && npx eslint",
     "format": "npx oxfmt",
