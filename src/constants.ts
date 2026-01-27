@@ -41,11 +41,6 @@ export const typescriptRulesExtendEslintRules = [
   'no-useless-constructor',
 ];
 
-// Some vitest rules are re-implemented version of jest rules.
-// Since oxlint supports these rules under jest/*, we need to remap them.
-// This list is auto-generated from the oxc repo via scripts/generate-vitest-rules.ts
-export { default as viteTestCompatibleRules } from '../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };
-
 export const unicornRulesExtendEslintRules = ['no-negated-condition'];
 
 // All rules from `eslint-plugin-react-hooks`
