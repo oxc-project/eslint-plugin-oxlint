@@ -5,7 +5,7 @@ import tseslint from 'typescript-eslint';
 
 export default [
   eslint.configs.recommended,
-  unicorn.configs['flat/recommended'],
+  unicorn.configs['recommended'],
   ...tseslint.configs.recommended,
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json', {
     typeAware: true,
