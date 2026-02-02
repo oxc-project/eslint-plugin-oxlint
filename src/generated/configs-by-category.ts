@@ -2,9 +2,24 @@
 
 import * as rules from './rules-by-category.js';
 
+const pedanticConfig = {
+  name: 'oxlint/pedantic',
+  rules: rules.pedanticRules,
+} as const;
+
 const styleConfig = {
   name: 'oxlint/style',
   rules: rules.styleRules,
+} as const;
+
+const suspiciousConfig = {
+  name: 'oxlint/suspicious',
+  rules: rules.suspiciousRules,
+} as const;
+
+const restrictionConfig = {
+  name: 'oxlint/restriction',
+  rules: rules.restrictionRules,
 } as const;
 
 const correctnessConfig = {
@@ -17,33 +32,18 @@ const nurseryConfig = {
   rules: rules.nurseryRules,
 } as const;
 
-const restrictionConfig = {
-  name: 'oxlint/restriction',
-  rules: rules.restrictionRules,
-} as const;
-
-const pedanticConfig = {
-  name: 'oxlint/pedantic',
-  rules: rules.pedanticRules,
-} as const;
-
-const suspiciousConfig = {
-  name: 'oxlint/suspicious',
-  rules: rules.suspiciousRules,
-} as const;
-
 const perfConfig = {
   name: 'oxlint/perf',
   rules: rules.perfRules,
 } as const;
 
 const configByCategory = {
+  'flat/pedantic': pedanticConfig,
   'flat/style': styleConfig,
+  'flat/suspicious': suspiciousConfig,
+  'flat/restriction': restrictionConfig,
   'flat/correctness': correctnessConfig,
   'flat/nursery': nurseryConfig,
-  'flat/restriction': restrictionConfig,
-  'flat/pedantic': pedanticConfig,
-  'flat/suspicious': suspiciousConfig,
   'flat/perf': perfConfig,
 };
 

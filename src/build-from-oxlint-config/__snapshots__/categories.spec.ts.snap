@@ -107,6 +107,7 @@ exports[`handleCategoriesScope > default plugins (react, unicorn, typescript), d
   "@typescript-eslint/no-useless-empty-export": "off",
   "@typescript-eslint/no-wrapper-object-types": "off",
   "@typescript-eslint/prefer-as-const": "off",
+  "@typescript-eslint/prefer-namespace-keyword": "off",
   "@typescript-eslint/triple-slash-reference": "off",
   "constructor-super": "off",
   "for-direction": "off",
