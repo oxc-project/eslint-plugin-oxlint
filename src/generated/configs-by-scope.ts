@@ -2,24 +2,44 @@
 
 import * as rules from './rules-by-scope.js';
 
-const importConfig = {
-  name: 'oxlint/import',
-  rules: rules.importRules,
-} as const;
-
 const eslintConfig = {
   name: 'oxlint/eslint',
   rules: rules.eslintRules,
 } as const;
 
-const typescriptConfig = {
-  name: 'oxlint/typescript',
-  rules: rules.typescriptRules,
+const importConfig = {
+  name: 'oxlint/import',
+  rules: rules.importRules,
 } as const;
 
 const jestConfig = {
   name: 'oxlint/jest',
   rules: rules.jestRules,
+} as const;
+
+const jsdocConfig = {
+  name: 'oxlint/jsdoc',
+  rules: rules.jsdocRules,
+} as const;
+
+const jsxA11yConfig = {
+  name: 'oxlint/jsx-a11y',
+  rules: rules.jsxA11yRules,
+} as const;
+
+const nextjsConfig = {
+  name: 'oxlint/nextjs',
+  rules: rules.nextjsRules,
+} as const;
+
+const nodeConfig = {
+  name: 'oxlint/node',
+  rules: rules.nodeRules,
+} as const;
+
+const promiseConfig = {
+  name: 'oxlint/promise',
+  rules: rules.promiseRules,
 } as const;
 
 const reactConfig = {
@@ -37,39 +57,19 @@ const reactPerfConfig = {
   rules: rules.reactPerfRules,
 } as const;
 
+const typescriptConfig = {
+  name: 'oxlint/typescript',
+  rules: rules.typescriptRules,
+} as const;
+
 const unicornConfig = {
   name: 'oxlint/unicorn',
   rules: rules.unicornRules,
 } as const;
 
-const jsxA11yConfig = {
-  name: 'oxlint/jsx-a11y',
-  rules: rules.jsxA11yRules,
-} as const;
-
-const nextjsConfig = {
-  name: 'oxlint/nextjs',
-  rules: rules.nextjsRules,
-} as const;
-
-const jsdocConfig = {
-  name: 'oxlint/jsdoc',
-  rules: rules.jsdocRules,
-} as const;
-
-const promiseConfig = {
-  name: 'oxlint/promise',
-  rules: rules.promiseRules,
-} as const;
-
 const vitestConfig = {
   name: 'oxlint/vitest',
   rules: rules.vitestRules,
-} as const;
-
-const nodeConfig = {
-  name: 'oxlint/node',
-  rules: rules.nodeRules,
 } as const;
 
 const vueConfig = {
@@ -78,20 +78,20 @@ const vueConfig = {
 } as const;
 
 const configByScope = {
-  'flat/import': importConfig,
   'flat/eslint': eslintConfig,
-  'flat/typescript': typescriptConfig,
+  'flat/import': importConfig,
   'flat/jest': jestConfig,
+  'flat/jsdoc': jsdocConfig,
+  'flat/jsx-a11y': jsxA11yConfig,
+  'flat/nextjs': nextjsConfig,
+  'flat/node': nodeConfig,
+  'flat/promise': promiseConfig,
   'flat/react': reactConfig,
   'flat/react-hooks': reactHooksConfig,
   'flat/react-perf': reactPerfConfig,
+  'flat/typescript': typescriptConfig,
   'flat/unicorn': unicornConfig,
-  'flat/jsx-a11y': jsxA11yConfig,
-  'flat/nextjs': nextjsConfig,
-  'flat/jsdoc': jsdocConfig,
-  'flat/promise': promiseConfig,
   'flat/vitest': vitestConfig,
-  'flat/node': nodeConfig,
   'flat/vue': vueConfig,
 };
 

@@ -538,6 +538,12 @@ exports[`contains all the oxlint rules 1`] = `
   "import-x/no-namespace": [
     0,
   ],
+  "import-x/no-nodejs-modules": [
+    0,
+  ],
+  "import-x/no-relative-parent-imports": [
+    0,
+  ],
   "import-x/no-self-import": [
     0,
   ],
@@ -620,6 +626,12 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/no-namespace": [
+    0,
+  ],
+  "import/no-nodejs-modules": [
+    0,
+  ],
+  "import/no-relative-parent-imports": [
     0,
   ],
   "import/no-self-import": [
@@ -716,6 +728,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/no-test-return-statement": [
+    0,
+  ],
+  "jest/no-unneeded-async-expect-function": [
     0,
   ],
   "jest/no-untyped-mock-factory": [
@@ -1455,6 +1470,13 @@ exports[`contains all the oxlint rules 1`] = `
     0,
     "always",
   ],
+  "prefer-const": [
+    0,
+    {
+      "destructuring": "any",
+      "ignoreReadBeforeAssign": false,
+    },
+  ],
   "prefer-destructuring": [
     0,
   ],
@@ -1652,6 +1674,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-is-mounted": [
+    0,
+  ],
+  "react/no-multi-comp": [
     0,
   ],
   "react/no-namespace": [
