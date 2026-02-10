@@ -92,6 +92,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/consistent-indexed-object-style": [
     0,
   ],
+  "@typescript-eslint/consistent-type-assertions": [
+    0,
+  ],
   "@typescript-eslint/consistent-type-definitions": [
     0,
   ],
@@ -1238,6 +1241,12 @@ exports[`contains all the oxlint rules 1`] = `
   "no-magic-numbers": [
     0,
   ],
+  "no-misleading-character-class": [
+    0,
+    {
+      "allowEscape": false,
+    },
+  ],
   "no-multi-assign": [
     0,
     {
@@ -2117,6 +2126,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-type-error": [
     0,
   ],
+  "unicorn/relative-url-style": [
+    0,
+  ],
   "unicorn/require-array-join-separator": [
     0,
   ],
@@ -2263,6 +2275,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/prefer-expect-resolves": [
+    0,
+  ],
+  "vitest/prefer-expect-type-of": [
     0,
   ],
   "vitest/prefer-hooks-in-order": [
