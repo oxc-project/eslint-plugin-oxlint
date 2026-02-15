@@ -1347,7 +1347,7 @@ exports[`contains all the oxlint rules 1`] = `
   "no-shadow-restricted-names": [
     0,
     {
-      "reportGlobalThis": false,
+      "reportGlobalThis": true,
     },
   ],
   "no-sparse-arrays": [
@@ -1569,7 +1569,6 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "radix": [
     0,
-    "always",
   ],
   "react-hooks/exhaustive-deps": [
     0,
