@@ -56,14 +56,14 @@
     "jsonc-parser": "^3.3.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.13.0",
+    "@eslint/js": "^10.0.0",
     "@oxc-node/core": "^0.0.35",
     "@types/node": "^25.0.0",
     "@types/shelljs": "^0.10.0",
     "@vitest/coverage-v8": "^4.0.0",
     "dedent": "^1.5.3",
-    "eslint": "^9.13.0",
-    "eslint-plugin-unicorn": "^62.0.0",
+    "eslint": "^10.0.0",
+    "eslint-plugin-unicorn": "^63.0.0",
     "husky": "^9.1.6",
     "jiti": "^2.4.2",
     "lint-staged": "^16.0.0",
