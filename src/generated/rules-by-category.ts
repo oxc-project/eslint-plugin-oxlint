@@ -228,6 +228,7 @@ const styleRules: Record<string, 'off'> = {
   '@typescript-eslint/adjacent-overload-signatures': 'off',
   '@typescript-eslint/array-type': 'off',
   '@typescript-eslint/ban-tslint-comment': 'off',
+  '@typescript-eslint/class-literal-property-style': 'off',
   '@typescript-eslint/consistent-generic-constructors': 'off',
   '@typescript-eslint/consistent-indexed-object-style': 'off',
   '@typescript-eslint/consistent-type-assertions': 'off',
@@ -235,8 +236,10 @@ const styleRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-type-imports': 'off',
   '@typescript-eslint/no-empty-interface': 'off',
   '@typescript-eslint/no-inferrable-types': 'off',
+  '@typescript-eslint/parameter-properties': 'off',
   '@typescript-eslint/prefer-for-of': 'off',
   '@typescript-eslint/prefer-function-type': 'off',
+  '@typescript-eslint/unified-signatures': 'off',
   'unicorn/catch-error-name': 'off',
   'unicorn/consistent-date-clone': 'off',
   'unicorn/consistent-existence-index-check': 'off',
@@ -348,7 +351,9 @@ const suspiciousRules: Record<string, 'off'> = {
   'no-extend-native': 'off',
   'no-extra-bind': 'off',
   'no-new': 'off',
+  'no-shadow': 'off',
   'no-unexpected-multiline': 'off',
+  'no-unmodified-loop-condition': 'off',
   'no-unneeded-ternary': 'off',
   'no-useless-concat': 'off',
   'no-useless-constructor': 'off',
@@ -382,6 +387,7 @@ const suspiciousRules: Record<string, 'off'> = {
   'unicorn/require-post-message-target-origin': 'off',
   'vue/no-required-prop-with-default': 'off',
   'vue/require-default-export': 'off',
+  '@typescript-eslint/no-shadow': 'off',
   '@typescript-eslint/no-useless-constructor': 'off',
   'import-x/no-absolute-path': 'off',
   'import-x/no-empty-named-blocks': 'off',
@@ -444,11 +450,13 @@ const restrictionRules: Record<string, 'off'> = {
   '@typescript-eslint/no-empty-object-type': 'off',
   '@typescript-eslint/no-explicit-any': 'off',
   '@typescript-eslint/no-import-type-side-effects': 'off',
+  '@typescript-eslint/no-invalid-void-type': 'off',
   '@typescript-eslint/no-namespace': 'off',
   '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'off',
   '@typescript-eslint/no-non-null-assertion': 'off',
   '@typescript-eslint/no-require-imports': 'off',
   '@typescript-eslint/no-restricted-types': 'off',
+  '@typescript-eslint/no-use-before-define': 'off',
   '@typescript-eslint/no-var-requires': 'off',
   '@typescript-eslint/prefer-literal-enum-member': 'off',
   'unicorn/no-abusive-eslint-disable': 'off',
@@ -582,6 +590,7 @@ const correctnessRules: Record<string, 'off'> = {
   'jsx-a11y/no-distracting-elements': 'off',
   'jsx-a11y/no-noninteractive-tabindex': 'off',
   'jsx-a11y/no-redundant-roles': 'off',
+  'jsx-a11y/no-static-element-interactions': 'off',
   'jsx-a11y/prefer-tag-over-role': 'off',
   'jsx-a11y/role-has-required-aria-props': 'off',
   'jsx-a11y/role-supports-aria-props': 'off',
@@ -689,7 +698,6 @@ const nurseryRules: Record<string, 'off'> = {
   'no-unreachable': 'off',
   'import/export': 'off',
   'import/named': 'off',
-  'jsx-a11y/no-static-element-interactions': 'off',
   'promise/no-return-in-finally': 'off',
   'react/require-render-return': 'off',
   'import-x/export': 'off',
@@ -699,6 +707,7 @@ const nurseryRules: Record<string, 'off'> = {
 const perfRules: Record<string, 'off'> = {
   'no-await-in-loop': 'off',
   'no-useless-call': 'off',
+  'react/jsx-no-constructed-context-values': 'off',
   'react/no-array-index-key': 'off',
   'react-perf/jsx-no-jsx-as-prop': 'off',
   'react-perf/jsx-no-new-array-as-prop': 'off',
@@ -757,14 +766,15 @@ const suspiciousTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unsafe-type-assertion': 'off',
 };
 
+const nurseryTypeAwareRules: Record<string, 'off'> = {
+  '@typescript-eslint/no-unnecessary-condition': 'off',
+  '@typescript-eslint/prefer-optional-chain': 'off',
+};
+
 const restrictionTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/non-nullable-type-assertion-style': 'off',
   '@typescript-eslint/promise-function-async': 'off',
   '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
-};
-
-const nurseryTypeAwareRules: Record<string, 'off'> = {
-  '@typescript-eslint/prefer-optional-chain': 'off',
 };
 
 const styleTypeAwareRules: Record<string, 'off'> = {
@@ -783,7 +793,7 @@ export {
   correctnessTypeAwareRules,
   pedanticTypeAwareRules,
   suspiciousTypeAwareRules,
-  restrictionTypeAwareRules,
   nurseryTypeAwareRules,
+  restrictionTypeAwareRules,
   styleTypeAwareRules,
 };

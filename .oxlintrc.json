@@ -5,7 +5,8 @@
     "suspicious": "error"
   },
   "rules": {
-    "@typescript-eslint/no-unsafe-type-assertion": "off" // FIX: ignore them inline or fix them
+    "@typescript-eslint/no-unsafe-type-assertion": "off", // FIX: ignore them inline or fix them
+    "no-shadow": "off" // FIX: ignore them inline or fix them
   },
   "ignorePatterns": ["dist/"]
 }

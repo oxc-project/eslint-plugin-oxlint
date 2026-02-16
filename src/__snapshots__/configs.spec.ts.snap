@@ -83,6 +83,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/ban-types": [
     0,
   ],
+  "@typescript-eslint/class-literal-property-style": [
+    0,
+  ],
   "@typescript-eslint/class-methods-use-this": [
     0,
   ],
@@ -179,6 +182,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-inferrable-types": [
     0,
   ],
+  "@typescript-eslint/no-invalid-void-type": [
+    0,
+  ],
   "@typescript-eslint/no-loop-func": [
     0,
   ],
@@ -228,6 +234,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-restricted-types": [
+    0,
+  ],
+  "@typescript-eslint/no-shadow": [
     0,
   ],
   "@typescript-eslint/no-this-alias": [
@@ -287,6 +296,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-unused-vars": [
     0,
   ],
+  "@typescript-eslint/no-use-before-define": [
+    0,
+  ],
   "@typescript-eslint/no-useless-constructor": [
     0,
   ],
@@ -303,6 +315,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/only-throw-error": [
+    0,
+  ],
+  "@typescript-eslint/parameter-properties": [
     0,
   ],
   "@typescript-eslint/prefer-as-const": [
@@ -372,6 +387,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/unbound-method": [
+    0,
+  ],
+  "@typescript-eslint/unified-signatures": [
     0,
   ],
   "@typescript-eslint/use-unknown-in-catch-callback-variable": [
@@ -943,6 +961,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/no-redundant-roles": [
     0,
   ],
+  "jsx-a11y/no-static-element-interactions": [
+    0,
+  ],
   "jsx-a11y/prefer-tag-over-role": [
     0,
   ],
@@ -1344,6 +1365,17 @@ exports[`contains all the oxlint rules 1`] = `
   "no-setter-return": [
     0,
   ],
+  "no-shadow": [
+    0,
+    {
+      "allow": [],
+      "builtinGlobals": false,
+      "hoist": "functions",
+      "ignoreFunctionTypeParameterNameValueShadow": true,
+      "ignoreOnInitialization": false,
+      "ignoreTypeValueShadow": true,
+    },
+  ],
   "no-shadow-restricted-names": [
     0,
     {
@@ -1372,6 +1404,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-unexpected-multiline": [
+    0,
+  ],
+  "no-unmodified-loop-condition": [
     0,
   ],
   "no-unneeded-ternary": [
@@ -1634,6 +1669,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/jsx-no-comment-textnodes": [
+    0,
+  ],
+  "react/jsx-no-constructed-context-values": [
     0,
   ],
   "react/jsx-no-duplicate-props": [
