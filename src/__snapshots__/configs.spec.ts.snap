@@ -790,6 +790,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/prefer-mock-promise-shorthand": [
     0,
   ],
+  "jest/prefer-mock-return-shorthand": [
+    0,
+  ],
   "jest/prefer-spy-on": [
     0,
   ],
@@ -1007,6 +1010,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "n/no-new-require": [
+    0,
+  ],
+  "n/no-path-concat": [
     0,
   ],
   "n/no-process-env": [
@@ -1448,6 +1454,18 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-unused-vars": [
     0,
+  ],
+  "no-use-before-define": [
+    0,
+    {
+      "allowNamedExports": false,
+      "classes": true,
+      "enums": true,
+      "functions": true,
+      "ignoreTypeReferences": true,
+      "typedefs": true,
+      "variables": true,
+    },
   ],
   "no-useless-backreference": [
     0,
@@ -2263,6 +2281,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-import-node-test": [
     0,
   ],
+  "vitest/no-importing-vitest-globals": [
+    0,
+  ],
   "vitest/no-interpolation-in-snapshots": [
     0,
   ],
@@ -2323,10 +2344,16 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-hooks-on-top": [
     0,
   ],
+  "vitest/prefer-import-in-mock": [
+    0,
+  ],
   "vitest/prefer-lowercase-title": [
     0,
   ],
   "vitest/prefer-mock-promise-shorthand": [
+    0,
+  ],
+  "vitest/prefer-mock-return-shorthand": [
     0,
   ],
   "vitest/prefer-spy-on": [
