@@ -15,6 +15,11 @@ export type OxlintConfigRules = Record<string, unknown>;
 
 export type OxlintConfigIgnorePatterns = string[];
 
+export type OxlintOptions = {
+  typeAware?: boolean;
+  typeCheck?: boolean;
+};
+
 export type EslintPluginOxlintConfig = Linter.Config<Record<string, 'off'>>;
 
 export type OxlintConfigOverride = {
@@ -30,6 +35,7 @@ export type OxlintConfig = {
   categories?: OxlintConfigCategories;
   rules?: OxlintConfigRules;
   ignorePatterns?: OxlintConfigIgnorePatterns;
+  options?: OxlintOptions;
 
   // extra properties only used by  `eslint-plugin-oxlint`
   __misc?: {

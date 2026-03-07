@@ -253,6 +253,36 @@ describe('type-aware rules', () => {
     expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(true);
     expect('@typescript-eslint/no-floating-promises' in configs[0].rules!).toBe(true);
   });
+
+  it('should output type-aware rules when oxlint config options.typeAware is true', () => {
+    const config = {
+      options: {
+        typeAware: true,
+      },
+      rules: {
+        '@typescript-eslint/await-thenable': 'error',
+        '@typescript-eslint/no-floating-promises': 'warn',
+      },
+    };
+
+    const configs = buildFromOxlintConfig(config);
+    const configsWithExplicitFalse = buildFromOxlintConfig(config, { typeAware: false });
+
+    expect(configs.length).toBeGreaterThanOrEqual(1);
+    expect(configs[0].rules).not.toBeUndefined();
+
+    expect('@typescript-eslint/await-thenable' in configs[0].rules!).toBe(true);
+    expect('@typescript-eslint/no-floating-promises' in configs[0].rules!).toBe(true);
+
+    expect(configsWithExplicitFalse.length).toBeGreaterThanOrEqual(1);
+    expect(configsWithExplicitFalse[0].rules).not.toBeUndefined();
+
+    // Explicit function options should override config-based defaults.
+    expect('@typescript-eslint/await-thenable' in configsWithExplicitFalse[0].rules!).toBe(false);
+    expect('@typescript-eslint/no-floating-promises' in configsWithExplicitFalse[0].rules!).toBe(
+      false
+    );
+  });
 });
 
 describe('ignorePatterns handling', () => {
