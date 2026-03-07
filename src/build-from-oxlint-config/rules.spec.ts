@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { handleRulesScope } from './rules.js';
-import { unicornRulesExtendEslintRules, viteTestCompatibleRules } from '../constants.js';
+import { unicornRulesExtendEslintRules } from '../constants.js';
+import vitestCompatibleRules from '../../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 
 describe('handleRulesScope', () => {
   for (const ruleSetting of ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]]) {
@@ -50,6 +51,7 @@ describe('handleRulesScope', () => {
   // look here: <https://github.com/oxc-project/oxc/blob/542bbd77ed50ad037c275b3af169b1edfab59988/crates/oxc_linter/src/config/rules.rs#L283-L296>
   it('detects oxlint rules with plugin alias inside rules block', () => {
     const rules = {};
+    // This is the oxlint side
     handleRulesScope(
       {
         'eslint/eqeqeq': 'warn',
@@ -58,25 +60,32 @@ describe('handleRulesScope', () => {
         'nextjs/no-img-element': 'warn',
         'jsx_a11y/alt-text': 'warn',
         'react/rules-of-hooks': 'warn',
+        'react/only-export-components': 'warn',
         'import-x/namespace': 'warn',
+        'node/global-require': 'warn',
         // 'deepscan/xxx': 'warn',
       },
       rules
     );
 
+    // Resulting ESLint ruleset
     expect(rules).toStrictEqual({
       eqeqeq: 'off',
       '@typescript-eslint/no-unused-vars': 'off',
+      'no-unused-vars': 'off',
       'react-perf/jsx-no-new-array-as-prop': 'off',
       '@next/next/no-img-element': 'off',
       'jsx-a11y/alt-text': 'off',
       'react-hooks/rules-of-hooks': 'off',
+      'react-refresh/only-export-components': 'off',
       'import/namespace': 'off',
+      'n/global-require': 'off',
     });
   });
 
   it('detects rules without plugin name', () => {
     const rules = {};
+    // This is the oxlint side
     handleRulesScope(
       {
         'no-unused-vars': 'warn',
@@ -87,8 +96,10 @@ describe('handleRulesScope', () => {
       rules
     );
 
+    // Resulting ESLint ruleset
     expect(rules).toStrictEqual({
-      'no-unused-vars': 'off', // ToDo: should be @typescript-eslint/
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off', // TypeScript alias is also disabled
       'react-perf/jsx-no-new-array-as-prop': 'off',
       '@next/next/no-img-element': 'off',
       'unicorn/no-array-reduce': 'off',
@@ -108,7 +119,7 @@ describe('handleRulesScope', () => {
     expect(rules).toStrictEqual({});
   });
 
-  for (const alias of viteTestCompatibleRules) {
+  for (const alias of vitestCompatibleRules) {
     it(`disables vitest jest alias rules for ${alias}`, () => {
       for (const rule of [`jest/${alias}`, `vitest/${alias}`]) {
         const rules = {};
@@ -157,6 +168,7 @@ describe('handleRulesScope', () => {
 
       expect(rules).toStrictEqual({
         '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
       });
     });
 
@@ -174,6 +186,7 @@ describe('handleRulesScope', () => {
       expect(rules).toStrictEqual({
         '@typescript-eslint/await-thenable': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
       });
     });
 
@@ -191,6 +204,94 @@ describe('handleRulesScope', () => {
       expect(rules).toStrictEqual({
         eqeqeq: 'off',
       });
+    });
+  });
+
+  describe('TypeScript alias rules', () => {
+    it('should disable TypeScript alias rules when ESLint base rules are active', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          'no-unused-vars': 'error',
+          'no-redeclare': 'warn',
+          'no-loop-func': 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        'no-redeclare': 'off',
+        '@typescript-eslint/no-redeclare': 'off',
+        'no-loop-func': 'off',
+        '@typescript-eslint/no-loop-func': 'off',
+      });
+    });
+
+    it('should disable ESLint base rules when TypeScript alias rules are active', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          '@typescript-eslint/no-unused-vars': 'error',
+          '@typescript-eslint/no-redeclare': 'warn',
+          '@typescript-eslint/no-loop-func': 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-redeclare': 'off',
+        'no-redeclare': 'off',
+        '@typescript-eslint/no-loop-func': 'off',
+        'no-loop-func': 'off',
+      });
+    });
+
+    it('should not add TypeScript alias for rules that do not have one', () => {
+      const rules = {};
+      handleRulesScope(
+        {
+          eqeqeq: 'error',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({
+        eqeqeq: 'off',
+      });
+    });
+
+    it('should disable both base and alias when base rule is turned off', () => {
+      const rules: Record<string, 'off'> = {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+      };
+      handleRulesScope(
+        {
+          'no-unused-vars': 'off',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({});
+    });
+
+    it('should disable both base and alias when TypeScript rule is turned off', () => {
+      const rules: Record<string, 'off'> = {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+      };
+      handleRulesScope(
+        {
+          '@typescript-eslint/no-unused-vars': 'off',
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({});
     });
   });
 });

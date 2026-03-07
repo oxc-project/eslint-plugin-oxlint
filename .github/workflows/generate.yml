@@ -25,20 +25,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
 
       - uses: oxc-project/setup-node@8958a8e040102244b619c4a94fccb657a44b1c21 # v1.0.6
 
       - name: Remove current generated code
-        run: rm -r ./src/generated/
+        run: rm -r ./src/generated/ && rm -r ./scripts/generated/
 
       - name: Generate from source code
         run: pnpm run generate
-
-      - name: Format generated code
-        run: pnpm run format
 
       - name: Check for git diff
         run: git diff --exit-code

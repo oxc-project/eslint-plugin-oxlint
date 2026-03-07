@@ -6,11 +6,8 @@ import {
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
-import {
-  typescriptRulesExtendEslintRules,
-  unicornRulesExtendEslintRules,
-  viteTestCompatibleRules,
-} from './constants.js';
+import { typescriptRulesExtendEslintRules, unicornRulesExtendEslintRules } from './constants.js';
+import vitestCompatibleRules from '../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint json config', () => {
@@ -163,7 +160,7 @@ describe('integration test with oxlint', () => {
 
         // special case for vitest / jest alias rules
         if (config.plugins?.includes('vitest')) {
-          expectedCount += viteTestCompatibleRules.filter(
+          expectedCount += vitestCompatibleRules.filter(
             (aliasRule) => `vitest/${aliasRule}` in buildConfig.rules!
           ).length;
         }

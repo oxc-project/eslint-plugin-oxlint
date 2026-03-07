@@ -18,7 +18,7 @@ describe('nursery rules in configs', () => {
 
     // Check that none of the nursery rules are in the "all" config
     for (const nurseryRule of Object.keys(nurseryRules)) {
-      expect(nurseryRule in allConfig.rules!).toBe(false);
+      expect(nurseryRule in allConfig.rules).toBe(false);
     }
   });
 

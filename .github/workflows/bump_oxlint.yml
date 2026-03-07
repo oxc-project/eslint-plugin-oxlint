@@ -5,6 +5,7 @@ on:
     inputs:
       version:
         required: true
+        description: 'The X.Y.Z version to bump to, no `v` prefix.'
         type: string
 
 env:
@@ -18,9 +19,14 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false # should be fine, we give another token for PR creation
+
+      - name: Bump Version
+        env:
+          OXLINT_VERSION: ${{ inputs.version }}
+        run: npm version ${OXLINT_VERSION} --no-git-tag-version
 
       - uses: oxc-project/setup-node@8958a8e040102244b619c4a94fccb657a44b1c21 # v1.0.6
 
@@ -30,18 +36,12 @@ jobs:
         run: |
           pnpm install oxlint@${OXLINT_VERSION}
           pnpm run generate # Generate rules
-          pnpm run format # run prettier over it
 
       - name: Test and update snapshot
         continue-on-error: true # we check in PR why it fails
         run: pnpm run test -u # Update test snapshots
 
-      - name: Bump oxlint rules
-        env:
-          OXLINT_VERSION: ${{ inputs.version }}
-        run: npm version ${OXLINT_VERSION} --no-git-tag-version
-
-      - uses: peter-evans/create-pull-request@98357b18bf14b5342f975ff684046ec3b2a07725 # v8.0.0
+      - uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
           # bot account with PAT required for triggering workflow runs
           # See https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
