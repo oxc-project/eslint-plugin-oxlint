@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@oxlint/migrate':
-        specifier: ^1.51.0
-        version: 1.51.0
       jsonc-parser:
         specifier: ^3.3.1
         version: 3.3.1
@@ -21,6 +18,9 @@ importers:
       '@oxc-node/core':
         specifier: ^0.0.35
         version: 0.0.35
+      '@oxlint/migrate':
+        specifier: ^1.51.0
+        version: 1.51.0
       '@types/node':
         specifier: ^25.0.0
         version: 25.0.2
