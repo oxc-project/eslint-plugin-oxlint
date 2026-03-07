@@ -25,6 +25,10 @@ export const buildFromOxlintConfig = (
   config: OxlintConfig,
   options: BuildFromOxlintConfigOptions = {}
 ): EslintPluginOxlintConfig[] => {
+  // if the option is not explicitly set but the config has typeAware enabled, we will enable it by default
+  if (config.options?.typeAware === true && options.typeAware === undefined) {
+    options.typeAware = true;
+  }
   resolveRelativeExtendsPaths(config);
 
   const extendConfigs = readExtendsConfigsFromConfig(config);
