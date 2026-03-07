@@ -38,7 +38,7 @@ describe('nursery rules in configs', () => {
 
   it('should not include nursery rules in scope-based configs', () => {
     // Check all scope-based configs (flat/eslint, flat/react, etc.)
-    for (const [_configName, config] of Object.entries(configByScope)) {
+    for (const config of Object.values(configByScope)) {
       expect(config.rules).toBeDefined();
 
       // Check that none of the nursery rules are in any scope config

@@ -53,6 +53,7 @@
     "test": "vitest --reporter=verbose"
   },
   "dependencies": {
+    "@oxlint/migrate": "^1.51.0",
     "jsonc-parser": "^3.3.1"
   },
   "devDependencies": {
