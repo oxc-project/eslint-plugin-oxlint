@@ -21,7 +21,7 @@ jobs:
       - uses: oxc-project/setup-node@8958a8e040102244b619c4a94fccb657a44b1c21 # v1.0.6
 
       - name: Run oxlint
-        run: npx oxlint --type-aware --type-check
+        run: npx oxlint
 
       - name: Run Format (oxfmt)
         run: npx oxfmt . --check

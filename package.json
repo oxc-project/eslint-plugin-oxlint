@@ -83,7 +83,7 @@
     "*": "oxfmt ."
   },
   "volta": {
-    "node": "20.14.0"
+    "node": "20.18.0"
   },
   "packageManager": "pnpm@10.30.3"
 }
