@@ -48,7 +48,7 @@
     "prepare": "husky",
     "generate": "node --import @oxc-node/core/register ./scripts/generate-vitest-rules.ts && node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
     "build": "vite build",
-    "lint": "npx oxlint && npx eslint",
+    "lint": "npx oxlint",
     "format": "npx oxfmt",
     "test": "vitest --reporter=verbose"
   },
