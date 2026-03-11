@@ -324,7 +324,12 @@ const executeOxlintWithConfiguration = (
   fs.writeFileSync(filename, JSON.stringify(config));
   let oxlintOutput: string;
 
-  const cliArguments = [`--config=${filename}`, '--disable-oxc-plugin', '--silent'];
+  const cliArguments = [
+    `--config=${filename}`,
+    '--disable-oxc-plugin',
+    '--silent',
+    '--format=default',
+  ];
 
   try {
     oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
