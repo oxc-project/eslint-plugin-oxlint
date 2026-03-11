@@ -1722,6 +1722,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-children-prop": [
     0,
   ],
+  "react/no-clone-element": [
+    0,
+  ],
   "react/no-danger": [
     0,
   ],
@@ -1744,6 +1747,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-namespace": [
+    0,
+  ],
+  "react/no-react-children": [
     0,
   ],
   "react/no-redundant-should-component-update": [
