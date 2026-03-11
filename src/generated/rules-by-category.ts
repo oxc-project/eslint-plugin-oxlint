@@ -751,6 +751,7 @@ const nurseryTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/dot-notation': 'off',
   '@typescript-eslint/no-unnecessary-condition': 'off',
   '@typescript-eslint/no-unnecessary-qualifier': 'off',
+  '@typescript-eslint/no-unnecessary-type-conversion': 'off',
   '@typescript-eslint/no-unnecessary-type-parameters': 'off',
   '@typescript-eslint/prefer-find': 'off',
   '@typescript-eslint/prefer-optional-chain': 'off',
