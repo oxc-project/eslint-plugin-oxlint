@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { handleExtendsScope, resolveRelativeExtendsPaths } from './extends.js';
+import {
+  handleExtendsScope,
+  readExtendsConfigsFromConfig,
+  resolveRelativeExtendsPaths,
+} from './extends.js';
 import { OxlintConfig } from './types.js';
 
 describe('handleExtendsScope', () => {
@@ -126,6 +130,57 @@ describe('resolveRelativeExtendsPaths', () => {
       '/root/of/the/file/extends1.json',
       '/root/of/the/file/folder/extends2.json',
       '/root/of/the/parent/extends3.json',
+    ]);
+  });
+
+  it('should ignore already resolved extends from js config', () => {
+    const config: OxlintConfig = {
+      extends: [
+        {
+          extends: [],
+        },
+      ],
+      __misc: {
+        filePath: '/root/of/the/file/test-config.json',
+      },
+    };
+
+    resolveRelativeExtendsPaths(config);
+
+    expect(config.extends).toEqual([
+      {
+        extends: [],
+      },
+    ]);
+  });
+});
+
+describe('readExtendsConfigsFromConfig', () => {
+  it('should pass resolved config as is', () => {
+    const config: OxlintConfig = {
+      extends: [
+        {
+          plugins: ['react'],
+          rules: { rule1: 'error' },
+          extends: [
+            {
+              plugins: ['unicorn'],
+            },
+          ],
+        },
+      ],
+    };
+
+    const extendsConfigs = readExtendsConfigsFromConfig(config);
+
+    expect(extendsConfigs).toEqual([
+      {
+        plugins: ['react'],
+        rules: { rule1: 'error' },
+      },
+      {
+        plugins: ['unicorn'],
+      },
     ]);
   });
 });
