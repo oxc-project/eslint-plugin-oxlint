@@ -5,7 +5,9 @@ export type BuildFromOxlintConfigOptions = {
   typeAware?: boolean;
 };
 
-export type OxlintConfigExtends = string[];
+export type OxlintConfigExtendsPath = string;
+export type OxlintConfigExtendsResolved = OxlintConfig;
+export type OxlintConfigExtends = (OxlintConfigExtendsPath | OxlintConfigExtendsResolved)[];
 
 export type OxlintConfigPlugins = string[];
 
