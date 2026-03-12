@@ -30,7 +30,12 @@ export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
   const extendsFiles = readExtendsFromConfig(config);
   if (!extendsFiles?.length) return;
   const configFileDirectory = path.dirname(config.__misc.filePath);
-  config.extends = extendsFiles.map((extendFile) => path.resolve(configFileDirectory, extendFile));
+  config.extends = extendsFiles.map((extendFile) => {
+    if (typeof extendFile === 'string') {
+      return path.resolve(configFileDirectory, extendFile);
+    }
+    return extendFile;
+  });
 };
 
 /**
@@ -59,6 +64,14 @@ export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig
 
   const extendsConfigs: OxlintConfig[] = [];
   for (const file of extendsFiles) {
+    // resolved extends from js config, we can directly use it without reading the file content
+    if (typeof file !== 'string') {
+      const extended = readExtendsConfigsFromConfig(file);
+      delete file.extends;
+      extendsConfigs.push(file, ...extended);
+      continue;
+    }
+
     const extendConfig = getConfigContent(file);
     if (!extendConfig) continue;
 
@@ -68,7 +81,9 @@ export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig
 
     resolveRelativeExtendsPaths(extendConfig);
 
-    extendsConfigs.push(extendConfig, ...readExtendsConfigsFromConfig(extendConfig));
+    const extended = readExtendsConfigsFromConfig(extendConfig);
+    delete extendConfig.extends;
+    extendsConfigs.push(extendConfig, ...extended);
   }
   return extendsConfigs;
 };

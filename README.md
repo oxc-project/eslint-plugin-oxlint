@@ -68,7 +68,7 @@ export default [
 ];
 ```
 
-Or build it by an `.oxlintrc.json`-like object:
+Or build it by an `.oxlintrc.json`-like or `oxlint.config.ts` object:
 
 ```js
 // eslint.config.js
