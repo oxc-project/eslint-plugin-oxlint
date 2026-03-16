@@ -55,6 +55,9 @@
   "dependencies": {
     "jsonc-parser": "^3.3.1"
   },
+  "peerDependencies": {
+    "oxlint": "~1.56.0"
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
     "@oxc-node/core": "^0.0.35",
