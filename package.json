@@ -55,9 +55,6 @@
   "dependencies": {
     "jsonc-parser": "^3.3.1"
   },
-  "peerDependencies": {
-    "oxlint": "~1.56.0"
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
     "@oxc-node/core": "^0.0.35",
@@ -80,6 +77,9 @@
     "vite": "^8.0.0",
     "vite-plugin-dts": "^4.2.4",
     "vitest": "^4.0.0"
+  },
+  "peerDependencies": {
+    "oxlint": "~1.56.0"
   },
   "lint-staged": {
     "*.{js,cjs,ts}": "pnpm run lint",
