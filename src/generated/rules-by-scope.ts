@@ -371,6 +371,7 @@ const nextjsRules: Record<string, 'off'> = {
 
 const nodeRules: Record<string, 'off'> = {
   'n/global-require': 'off',
+  'n/handle-callback-err': 'off',
   'n/no-exports-assign': 'off',
   'n/no-new-require': 'off',
   'n/no-path-concat': 'off',

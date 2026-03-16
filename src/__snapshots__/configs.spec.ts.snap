@@ -1006,6 +1006,9 @@ exports[`contains all the oxlint rules 1`] = `
   "n/global-require": [
     0,
   ],
+  "n/handle-callback-err": [
+    0,
+  ],
   "n/no-exports-assign": [
     0,
   ],

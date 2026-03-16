@@ -438,6 +438,7 @@ const restrictionRules: Record<string, 'off'> = {
   'jsdoc/check-access': 'off',
   'jsdoc/empty-tags': 'off',
   'jsx-a11y/anchor-ambiguous-text': 'off',
+  'n/handle-callback-err': 'off',
   'n/no-new-require': 'off',
   'n/no-path-concat': 'off',
   'n/no-process-env': 'off',
