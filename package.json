@@ -78,6 +78,9 @@
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.0"
   },
+  "peerDependencies": {
+    "oxlint": "~1.56.0"
+  },
   "lint-staged": {
     "*.{js,cjs,ts}": "pnpm run lint",
     "*": "oxfmt ."
