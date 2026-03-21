@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { parse } from 'jsonc-parser';
+import { parse as parseJSONC } from 'jsonc-parser';
 import { OxlintConfig } from './types.js';
 
 /**
@@ -18,7 +18,7 @@ export const getConfigContent = (oxlintConfigFile: string): OxlintConfig | undef
     const content = fs.readFileSync(oxlintConfigFile, 'utf8');
 
     try {
-      const configContent = parse(content);
+      const configContent = parseJSONC(content);
 
       if (!isObject(configContent)) {
         throw new TypeError('not an valid config file');
