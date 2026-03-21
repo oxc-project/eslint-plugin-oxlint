@@ -133,3 +133,4 @@ dist
 .pnp.*
 
 .oxc_sparse
+package-lock.json
