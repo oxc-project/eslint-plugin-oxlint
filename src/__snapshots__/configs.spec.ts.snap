@@ -1866,6 +1866,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/consistent-function-scoping": [
     0,
   ],
+  "unicorn/custom-error-definition": [
+    0,
+  ],
   "unicorn/empty-brace-spaces": [
     0,
   ],
@@ -2372,6 +2375,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/prefer-spy-on": [
+    0,
+  ],
+  "vitest/prefer-strict-boolean-matchers": [
     0,
   ],
   "vitest/prefer-strict-equal": [
