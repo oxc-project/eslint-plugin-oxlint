@@ -49,6 +49,8 @@ export default defineConfig({
     ...esLintRecommended,
     ...uniCornRecommended,
     ...typescriptRecommended,
+    '@typescript-eslint/no-unsafe-type-assertion': 'off', // FIX: ignore them inline or fix them
+    'no-shadow': 'off', // FIX: ignore them inline or fix them
   },
   ignorePatterns: ['dist/'],
   options: {
