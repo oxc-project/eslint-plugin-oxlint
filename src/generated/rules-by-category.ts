@@ -289,6 +289,7 @@ const styleRules: Record<string, 'off'> = {
   'vitest/consistent-vitest-vi': 'off',
   'vitest/no-import-node-test': 'off',
   'vitest/no-importing-vitest-globals': 'off',
+  'vitest/prefer-called-exactly-once-with': 'off',
   'vitest/prefer-called-once': 'off',
   'vitest/prefer-called-times': 'off',
   'vitest/prefer-describe-function-title': 'off',
@@ -347,6 +348,7 @@ const styleRules: Record<string, 'off'> = {
   'vitest/prefer-strict-equal': 'off',
   'vitest/prefer-to-be': 'off',
   'vitest/prefer-to-contain': 'off',
+  'vitest/prefer-to-have-been-called-times': 'off',
   'vitest/prefer-to-have-length': 'off',
   'vitest/prefer-todo': 'off',
   'vitest/require-hook': 'off',
@@ -483,6 +485,7 @@ const restrictionRules: Record<string, 'off'> = {
   'unicorn/prefer-module': 'off',
   'unicorn/prefer-node-protocol': 'off',
   'unicorn/prefer-number-properties': 'off',
+  'vitest/require-test-timeout': 'off',
   'vue/max-props': 'off',
   'vue/no-import-compiler-macros': 'off',
   'vue/no-multiple-slot-args': 'off',
@@ -679,7 +682,9 @@ const correctnessRules: Record<string, 'off'> = {
   'vitest/consistent-each-for': 'off',
   'vitest/hoisted-apis-on-top': 'off',
   'vitest/no-conditional-tests': 'off',
+  'vitest/require-awaited-expect-poll': 'off',
   'vitest/require-local-test-context-for-concurrent-snapshots': 'off',
+  'vitest/require-mock-type-parameters': 'off',
   'vitest/warn-todo': 'off',
   'vue/no-arrow-functions-in-watch': 'off',
   'vue/no-deprecated-destroyed-lifecycle': 'off',
@@ -703,6 +708,7 @@ const correctnessRules: Record<string, 'off'> = {
   'vitest/require-to-throw-message': 'off',
   'vitest/valid-describe-callback': 'off',
   'vitest/valid-expect': 'off',
+  'vitest/valid-title': 'off',
 };
 
 const nurseryRules: Record<string, 'off'> = {
@@ -758,12 +764,8 @@ const nurseryTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unnecessary-qualifier': 'off',
   '@typescript-eslint/no-unnecessary-type-conversion': 'off',
   '@typescript-eslint/no-unnecessary-type-parameters': 'off',
-  '@typescript-eslint/prefer-find': 'off',
   '@typescript-eslint/prefer-optional-chain': 'off',
-  '@typescript-eslint/prefer-readonly': 'off',
   '@typescript-eslint/prefer-readonly-parameter-types': 'off',
-  '@typescript-eslint/prefer-regexp-exec': 'off',
-  '@typescript-eslint/prefer-string-starts-ends-with': 'off',
 };
 
 const pedanticTypeAwareRules: Record<string, 'off'> = {
@@ -804,8 +806,12 @@ const restrictionTypeAwareRules: Record<string, 'off'> = {
 };
 
 const styleTypeAwareRules: Record<string, 'off'> = {
+  '@typescript-eslint/prefer-find': 'off',
+  '@typescript-eslint/prefer-readonly': 'off',
   '@typescript-eslint/prefer-reduce-type-parameter': 'off',
+  '@typescript-eslint/prefer-regexp-exec': 'off',
   '@typescript-eslint/prefer-return-this-type': 'off',
+  '@typescript-eslint/prefer-string-starts-ends-with': 'off',
 };
 
 export {
