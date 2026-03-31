@@ -326,6 +326,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-enum-initializers": [
     0,
   ],
+  "@typescript-eslint/prefer-find": [
+    0,
+  ],
   "@typescript-eslint/prefer-for-of": [
     0,
   ],
@@ -347,10 +350,19 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-promise-reject-errors": [
     0,
   ],
+  "@typescript-eslint/prefer-readonly": [
+    0,
+  ],
   "@typescript-eslint/prefer-reduce-type-parameter": [
     0,
   ],
+  "@typescript-eslint/prefer-regexp-exec": [
+    0,
+  ],
   "@typescript-eslint/prefer-return-this-type": [
+    0,
+  ],
+  "@typescript-eslint/prefer-string-starts-ends-with": [
     0,
   ],
   "@typescript-eslint/prefer-ts-expect-error": [
@@ -2329,6 +2341,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-unneeded-async-expect-function": [
     0,
   ],
+  "vitest/prefer-called-exactly-once-with": [
+    0,
+  ],
   "vitest/prefer-called-once": [
     0,
   ],
@@ -2398,16 +2413,28 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-to-contain": [
     0,
   ],
+  "vitest/prefer-to-have-been-called-times": [
+    0,
+  ],
   "vitest/prefer-to-have-length": [
     0,
   ],
   "vitest/prefer-todo": [
     0,
   ],
+  "vitest/require-awaited-expect-poll": [
+    0,
+  ],
   "vitest/require-hook": [
     0,
   ],
   "vitest/require-local-test-context-for-concurrent-snapshots": [
+    0,
+  ],
+  "vitest/require-mock-type-parameters": [
+    0,
+  ],
+  "vitest/require-test-timeout": [
     0,
   ],
   "vitest/require-to-throw-message": [
@@ -2420,6 +2447,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/valid-expect": [
+    0,
+  ],
+  "vitest/valid-title": [
     0,
   ],
   "vitest/warn-todo": [
