@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@oxc-node/core": "^0.0.35",
+    "@oxc-node/core": "^0.1.0",
     "@types/node": "^25.5.0",
     "@types/shelljs": "^0.10.0",
     "@vitest/coverage-v8": "^4.1.0",
