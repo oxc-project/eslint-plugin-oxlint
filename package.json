@@ -63,7 +63,7 @@
     "@vitest/coverage-v8": "^4.1.0",
     "dedent": "^1.7.2",
     "eslint": "^10.0.3",
-    "eslint-plugin-unicorn": "^63.0.0",
+    "eslint-plugin-unicorn": "^64.0.0",
     "husky": "^9.1.7",
     "jiti": "^2.6.1",
     "lint-staged": "^16.4.0",
