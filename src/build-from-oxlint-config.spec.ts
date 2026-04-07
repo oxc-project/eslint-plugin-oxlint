@@ -320,7 +320,7 @@ const executeOxlintWithConfiguration = (
     categories?: Record<string, unknown>;
     rules?: Record<string, unknown>;
   }
-) => {
+): number | void => {
   fs.writeFileSync(filename, JSON.stringify(config));
   let oxlintOutput: string;
 
