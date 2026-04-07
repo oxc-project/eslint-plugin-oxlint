@@ -85,6 +85,7 @@ const pedanticRules: Record<string, 'off'> = {
   'unicorn/prefer-dom-node-dataset': 'off',
   'unicorn/prefer-dom-node-remove': 'off',
   'unicorn/prefer-event-target': 'off',
+  'unicorn/prefer-import-meta-properties': 'off',
   'unicorn/prefer-math-min-max': 'off',
   'unicorn/prefer-math-trunc': 'off',
   'unicorn/prefer-native-coercion-functions': 'off',
@@ -136,6 +137,7 @@ const styleRules: Record<string, 'off'> = {
   'no-template-curly-in-string': 'off',
   'no-ternary': 'off',
   'no-useless-computed-key': 'off',
+  'object-shorthand': 'off',
   'operator-assignment': 'off',
   'prefer-const': 'off',
   'prefer-destructuring': 'off',
@@ -183,6 +185,7 @@ const styleRules: Record<string, 'off'> = {
   'jest/no-test-return-statement': 'off',
   'jest/no-unneeded-async-expect-function': 'off',
   'jest/no-untyped-mock-factory': 'off',
+  'jest/padding-around-after-all-blocks': 'off',
   'jest/padding-around-test-blocks': 'off',
   'jest/prefer-called-with': 'off',
   'jest/prefer-comparison-matcher': 'off',
@@ -214,6 +217,7 @@ const styleRules: Record<string, 'off'> = {
   'promise/prefer-await-to-callbacks': 'off',
   'promise/prefer-await-to-then': 'off',
   'promise/prefer-catch': 'off',
+  'react/hook-use-state': 'off',
   'react/jsx-boolean-value': 'off',
   'react/jsx-curly-brace-presence': 'off',
   'react/jsx-fragments': 'off',
@@ -283,6 +287,7 @@ const styleRules: Record<string, 'off'> = {
   'unicorn/require-array-join-separator': 'off',
   'unicorn/require-module-attributes': 'off',
   'unicorn/switch-case-braces': 'off',
+  'unicorn/switch-case-break-position': 'off',
   'unicorn/text-encoding-identifier-case': 'off',
   'unicorn/throw-new-error': 'off',
   'vitest/consistent-test-filename': 'off',
@@ -295,6 +300,7 @@ const styleRules: Record<string, 'off'> = {
   'vitest/prefer-describe-function-title': 'off',
   'vitest/prefer-expect-type-of': 'off',
   'vitest/prefer-import-in-mock': 'off',
+  'vitest/prefer-importing-vitest-globals': 'off',
   'vitest/prefer-strict-boolean-matchers': 'off',
   'vitest/prefer-to-be-falsy': 'off',
   'vitest/prefer-to-be-object': 'off',
@@ -458,6 +464,7 @@ const restrictionRules: Record<string, 'off'> = {
   'react/no-react-children': 'off',
   'react/no-unknown-property': 'off',
   'react/only-export-components': 'off',
+  'react/prefer-function-component': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
   '@typescript-eslint/no-dynamic-delete': 'off',
@@ -569,6 +576,7 @@ const correctnessRules: Record<string, 'off'> = {
   'jest/no-export': 'off',
   'jest/no-focused-tests': 'off',
   'jest/no-standalone-expect': 'off',
+  'jest/prefer-snapshot-hint': 'off',
   'jest/require-to-throw-message': 'off',
   'jest/valid-describe-callback': 'off',
   'jest/valid-expect': 'off',
@@ -705,6 +713,7 @@ const correctnessRules: Record<string, 'off'> = {
   'vitest/no-disabled-tests': 'off',
   'vitest/no-focused-tests': 'off',
   'vitest/no-standalone-expect': 'off',
+  'vitest/prefer-snapshot-hint': 'off',
   'vitest/require-to-throw-message': 'off',
   'vitest/valid-describe-callback': 'off',
   'vitest/valid-expect': 'off',
@@ -713,14 +722,17 @@ const correctnessRules: Record<string, 'off'> = {
 
 const nurseryRules: Record<string, 'off'> = {
   'getter-return': 'off',
+  'no-restricted-exports': 'off',
   'no-undef': 'off',
   'no-unreachable': 'off',
+  'no-useless-assignment': 'off',
   'import/export': 'off',
   'import/named': 'off',
   'promise/no-return-in-finally': 'off',
   'react/require-render-return': 'off',
   '@typescript-eslint/no-useless-default-assignment': 'off',
   '@typescript-eslint/strict-void-return': 'off',
+  'unicorn/no-useless-iterator-to-array': 'off',
   'import-x/export': 'off',
   'import-x/named': 'off',
 };
@@ -756,16 +768,26 @@ const correctnessTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/unbound-method': 'off',
 };
 
-const nurseryTypeAwareRules: Record<string, 'off'> = {
+const suspiciousTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-return': 'off',
+  '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
+  '@typescript-eslint/no-unnecessary-template-expression': 'off',
+  '@typescript-eslint/no-unnecessary-type-arguments': 'off',
+  '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+  '@typescript-eslint/no-unnecessary-type-conversion': 'off',
+  '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+  '@typescript-eslint/no-unsafe-type-assertion': 'off',
+};
+
+const styleTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-type-exports': 'off',
   '@typescript-eslint/dot-notation': 'off',
-  '@typescript-eslint/no-unnecessary-condition': 'off',
-  '@typescript-eslint/no-unnecessary-qualifier': 'off',
-  '@typescript-eslint/no-unnecessary-type-conversion': 'off',
-  '@typescript-eslint/no-unnecessary-type-parameters': 'off',
-  '@typescript-eslint/prefer-optional-chain': 'off',
-  '@typescript-eslint/prefer-readonly-parameter-types': 'off',
+  '@typescript-eslint/prefer-find': 'off',
+  '@typescript-eslint/prefer-readonly': 'off',
+  '@typescript-eslint/prefer-reduce-type-parameter': 'off',
+  '@typescript-eslint/prefer-regexp-exec': 'off',
+  '@typescript-eslint/prefer-return-this-type': 'off',
+  '@typescript-eslint/prefer-string-starts-ends-with': 'off',
 };
 
 const pedanticTypeAwareRules: Record<string, 'off'> = {
@@ -790,28 +812,18 @@ const pedanticTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/switch-exhaustiveness-check': 'off',
 };
 
-const suspiciousTypeAwareRules: Record<string, 'off'> = {
-  '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
-  '@typescript-eslint/no-unnecessary-template-expression': 'off',
-  '@typescript-eslint/no-unnecessary-type-arguments': 'off',
-  '@typescript-eslint/no-unnecessary-type-assertion': 'off',
-  '@typescript-eslint/no-unsafe-enum-comparison': 'off',
-  '@typescript-eslint/no-unsafe-type-assertion': 'off',
+const nurseryTypeAwareRules: Record<string, 'off'> = {
+  '@typescript-eslint/no-unnecessary-condition': 'off',
+  '@typescript-eslint/no-unnecessary-qualifier': 'off',
+  '@typescript-eslint/no-unnecessary-type-parameters': 'off',
+  '@typescript-eslint/prefer-optional-chain': 'off',
+  '@typescript-eslint/prefer-readonly-parameter-types': 'off',
 };
 
 const restrictionTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/non-nullable-type-assertion-style': 'off',
   '@typescript-eslint/promise-function-async': 'off',
   '@typescript-eslint/use-unknown-in-catch-callback-variable': 'off',
-};
-
-const styleTypeAwareRules: Record<string, 'off'> = {
-  '@typescript-eslint/prefer-find': 'off',
-  '@typescript-eslint/prefer-readonly': 'off',
-  '@typescript-eslint/prefer-reduce-type-parameter': 'off',
-  '@typescript-eslint/prefer-regexp-exec': 'off',
-  '@typescript-eslint/prefer-return-this-type': 'off',
-  '@typescript-eslint/prefer-string-starts-ends-with': 'off',
 };
 
 export {
@@ -823,9 +835,9 @@ export {
   nurseryRules,
   perfRules,
   correctnessTypeAwareRules,
-  nurseryTypeAwareRules,
-  pedanticTypeAwareRules,
   suspiciousTypeAwareRules,
-  restrictionTypeAwareRules,
   styleTypeAwareRules,
+  pedanticTypeAwareRules,
+  nurseryTypeAwareRules,
+  restrictionTypeAwareRules,
 };
