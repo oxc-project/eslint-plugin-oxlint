@@ -54,7 +54,7 @@ function fixValueOfRule(rule: Rule): void {
  * some rules are reimplemented in another scope or available in multiple ESLint plugins,
  * remap them so we can disable all of those too
  */
-function getAliasRules(rule: Rule): Rule | undefined {
+function getAliasRules(rule: Rule): Rule | void {
   if (rule.scope === 'eslint' && typescriptRulesExtendEslintRules.includes(rule.value)) {
     return {
       value: `@typescript-eslint/${rule.value}`,
@@ -105,6 +105,8 @@ function getAliasRules(rule: Rule): Rule | undefined {
       category: rule.category,
     };
   }
+
+  return;
 }
 
 export function traverseRules(): Rule[] {
