@@ -105,8 +105,6 @@ function getAliasRules(rule: Rule): Rule | void {
       category: rule.category,
     };
   }
-
-  return;
 }
 
 export function traverseRules(): Rule[] {
