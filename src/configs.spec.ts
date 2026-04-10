@@ -1,4 +1,4 @@
-import { expect, it, describe } from 'vitest';
+import { expect, it, describe } from 'vite-plus/test';
 import { ESLint } from 'eslint';
 import { ESLintTestConfig } from '../test/helpers.js';
 import configs from './configs.js';

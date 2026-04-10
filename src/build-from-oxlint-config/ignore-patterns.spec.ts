@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vite-plus/test';
 import { handleIgnorePatternsScope } from './ignore-patterns.js';
 
 describe('ignorePattern handleIgnorePatternsScope', () => {

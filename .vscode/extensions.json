@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "oxc.oxc-vscode",
-    "vitest.explorer"
+    "vitest.explorer",
+    "VoidZero.vite-plus-extension-pack"
   ]
 }

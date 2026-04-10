@@ -21,10 +21,10 @@ jobs:
       - uses: oxc-project/setup-node@4c26e7cb3605b6bdef5450dacd02c434b10fd8ba # v1.2.0
 
       - name: Run oxlint
-        run: npx oxlint
+        run: pnpm lint
 
       - name: Run Format (oxfmt)
-        run: npx oxfmt . --check
+        run: pnpm format --check
 
       - name: Run tests
         run: pnpm run test --coverage
