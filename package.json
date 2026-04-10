@@ -49,7 +49,7 @@
     "generate": "node --import @oxc-node/core/register ./scripts/generate-vitest-rules.ts && node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
     "build": "vp build",
     "lint": "vp oxlint",
-    "format": "vp oxfmt",
+    "format": "vp fmt",
     "test": "vp test --reporter=verbose"
   },
   "dependencies": {
