@@ -1,6 +1,5 @@
 {
   "editor.formatOnSave": true,
-  "eslint.workingDirectories": ["."],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "never",
     "source.fixAll.oxc": "explicit"
