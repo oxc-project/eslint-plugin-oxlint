@@ -9,6 +9,9 @@ import type { Linter } from 'eslint';
 import { typescriptRulesExtendEslintRules, unicornRulesExtendEslintRules } from './constants.js';
 import vitestCompatibleRules from '../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 
+// oxlint-disable-next-line unicorn/prefer-module
+const resolvedOxlint = require.resolve('oxlint').replace('index.js', 'cli.js');
+
 describe('buildFromOxlintConfigFile', () => {
   it('successfully parse oxlint json config', () => {
     const configs = createConfigFileAndBuildFromIt(
@@ -332,7 +335,7 @@ const executeOxlintWithConfiguration = (
   ];
 
   try {
-    oxlintOutput = execSync(`npx oxlint ${cliArguments.join(' ')}`, {
+    oxlintOutput = execSync(`${process.execPath} ${resolvedOxlint} ${cliArguments.join(' ')}`, {
       encoding: 'utf8',
       stdio: 'pipe',
     });

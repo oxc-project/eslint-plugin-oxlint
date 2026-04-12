@@ -48,7 +48,7 @@
     "prepare": "vp config",
     "generate": "node --import @oxc-node/core/register ./scripts/generate-vitest-rules.ts && node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
     "build": "vp build",
-    "lint": "vp oxlint",
+    "lint": "vp lint",
     "format": "vp fmt",
     "test": "vp test --reporter=verbose"
   },
