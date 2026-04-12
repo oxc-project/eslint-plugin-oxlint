@@ -45,12 +45,12 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "prepare": "husky",
+    "prepare": "vp config",
     "generate": "node --import @oxc-node/core/register ./scripts/generate-vitest-rules.ts && node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
-    "build": "vite build",
-    "lint": "npx oxlint",
-    "format": "npx oxfmt",
-    "test": "vitest --reporter=verbose"
+    "build": "vp build",
+    "lint": "vp lint",
+    "format": "vp fmt",
+    "test": "vp test --reporter=verbose"
   },
   "dependencies": {
     "jsonc-parser": "^3.3.1"
@@ -64,26 +64,18 @@
     "dedent": "^1.7.2",
     "eslint": "^10.0.3",
     "eslint-plugin-unicorn": "^64.0.0",
-    "husky": "^9.1.7",
     "jiti": "^2.6.1",
-    "lint-staged": "^16.4.0",
     "memfs": "^4.56.11",
-    "oxfmt": "^0.43.0",
-    "oxlint": "^1.59.0",
-    "oxlint-tsgolint": "^0.17.0",
     "scule": "^1.3.0",
     "shelljs": "^0.10.0",
     "typescript-eslint": "^8.57.1",
-    "vite": "^8.0.0",
+    "vite": "catalog:",
     "vite-plugin-dts": "^4.5.4",
-    "vitest": "^4.1.0"
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "oxlint": "~1.59.0"
-  },
-  "lint-staged": {
-    "*.{js,cjs,ts}": "pnpm run lint",
-    "*": "oxfmt ."
   },
   "volta": {
     "node": "20.18.0"

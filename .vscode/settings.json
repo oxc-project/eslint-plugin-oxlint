@@ -1,12 +1,10 @@
 {
-  // Editor values
   "editor.formatOnSave": true,
-  // Eslint Configuration
-  "eslint.workingDirectories": ["."],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.organizeImports": "never",
+    "source.fixAll.oxc": "explicit"
   },
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "eslint.validate": ["javascript", "typescript"]
+  "oxc.fmt.configPath": "./vite.config.ts",
+  "editor.formatOnSaveMode": "file"
 }

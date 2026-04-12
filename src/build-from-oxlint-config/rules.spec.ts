@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vite-plus/test';
 import { handleRulesScope } from './rules.js';
 import { unicornRulesExtendEslintRules } from '../constants.js';
 import vitestCompatibleRules from '../../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };

@@ -1,4 +1,4 @@
-import { test, suite, expect } from 'vitest';
+import { test, suite, expect } from 'vite-plus/test';
 import { RulesGenerator, RulesGrouping } from './rules-generator.js';
 import type { Rule } from './traverse-rules.js';
 
