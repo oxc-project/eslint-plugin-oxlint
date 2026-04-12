@@ -25,19 +25,19 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
       "default": "./dist/index.mjs"
     },
     "./rules-by-category": {
-      "types": "./dist/generated/rules-by-category.d.ts",
+      "types": "./dist/generated/rules-by-category.d.mts",
       "import": "./dist/generated/rules-by-category.mjs",
       "require": "./dist/generated/rules-by-category.cjs",
       "default": "./dist/generated/rules-by-category.mjs"
     },
     "./rules-by-scope": {
-      "types": "./dist/generated/rules-by-scope.d.ts",
+      "types": "./dist/generated/rules-by-scope.d.mts",
       "import": "./dist/generated/rules-by-scope.mjs",
       "require": "./dist/generated/rules-by-scope.cjs",
       "default": "./dist/generated/rules-by-scope.mjs"
