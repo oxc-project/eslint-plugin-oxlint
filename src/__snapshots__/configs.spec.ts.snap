@@ -257,6 +257,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-unnecessary-parameter-property-assignment": [
     0,
   ],
+  "@typescript-eslint/no-unnecessary-qualifier": [
+    0,
+  ],
   "@typescript-eslint/no-unnecessary-template-expression": [
     0,
   ],
@@ -270,6 +273,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-unnecessary-type-conversion": [
+    0,
+  ],
+  "@typescript-eslint/no-unnecessary-type-parameters": [
     0,
   ],
   "@typescript-eslint/no-unsafe-argument": [
@@ -312,6 +318,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/no-useless-constructor": [
+    0,
+  ],
+  "@typescript-eslint/no-useless-default-assignment": [
     0,
   ],
   "@typescript-eslint/no-useless-empty-export": [
@@ -365,6 +374,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/prefer-readonly": [
     0,
   ],
+  "@typescript-eslint/prefer-readonly-parameter-types": [
+    0,
+  ],
   "@typescript-eslint/prefer-reduce-type-parameter": [
     0,
   ],
@@ -402,6 +414,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "@typescript-eslint/strict-boolean-expressions": [
+    0,
+  ],
+  "@typescript-eslint/strict-void-return": [
     0,
   ],
   "@typescript-eslint/switch-exhaustiveness-check": [
@@ -796,6 +811,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jest/prefer-each": [
     0,
   ],
+  "jest/prefer-ending-with-an-expect": [
+    0,
+  ],
   "jest/prefer-equality-matcher": [
     0,
   ],
@@ -806,6 +824,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/prefer-hooks-on-top": [
+    0,
+  ],
+  "jest/prefer-importing-jest-globals": [
     0,
   ],
   "jest/prefer-jest-mocked": [
@@ -860,6 +881,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/valid-expect": [
+    0,
+  ],
+  "jest/valid-expect-in-promise": [
     0,
   ],
   "jest/valid-title": [
@@ -1905,6 +1929,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/consistent-function-scoping": [
     0,
   ],
+  "unicorn/consistent-template-literal-escape": [
+    0,
+  ],
   "unicorn/custom-error-definition": [
     0,
   ],
@@ -2486,6 +2513,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/valid-expect": [
+    0,
+  ],
+  "vitest/valid-expect-in-promise": [
     0,
   ],
   "vitest/valid-title": [
