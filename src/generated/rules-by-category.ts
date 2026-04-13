@@ -190,10 +190,12 @@ const styleRules: Record<string, 'off'> = {
   'jest/prefer-called-with': 'off',
   'jest/prefer-comparison-matcher': 'off',
   'jest/prefer-each': 'off',
+  'jest/prefer-ending-with-an-expect': 'off',
   'jest/prefer-equality-matcher': 'off',
   'jest/prefer-expect-resolves': 'off',
   'jest/prefer-hooks-in-order': 'off',
   'jest/prefer-hooks-on-top': 'off',
+  'jest/prefer-importing-jest-globals': 'off',
   'jest/prefer-jest-mocked': 'off',
   'jest/prefer-lowercase-title': 'off',
   'jest/prefer-mock-promise-shorthand': 'off',
@@ -248,6 +250,7 @@ const styleRules: Record<string, 'off'> = {
   'unicorn/catch-error-name': 'off',
   'unicorn/consistent-date-clone': 'off',
   'unicorn/consistent-existence-index-check': 'off',
+  'unicorn/consistent-template-literal-escape': 'off',
   'unicorn/custom-error-definition': 'off',
   'unicorn/empty-brace-spaces': 'off',
   'unicorn/error-message': 'off',
@@ -580,6 +583,7 @@ const correctnessRules: Record<string, 'off'> = {
   'jest/require-to-throw-message': 'off',
   'jest/valid-describe-callback': 'off',
   'jest/valid-expect': 'off',
+  'jest/valid-expect-in-promise': 'off',
   'jest/valid-title': 'off',
   'jsdoc/check-property-names': 'off',
   'jsdoc/check-tag-names': 'off',
@@ -717,6 +721,7 @@ const correctnessRules: Record<string, 'off'> = {
   'vitest/require-to-throw-message': 'off',
   'vitest/valid-describe-callback': 'off',
   'vitest/valid-expect': 'off',
+  'vitest/valid-expect-in-promise': 'off',
   'vitest/valid-title': 'off',
 };
 
@@ -730,8 +735,6 @@ const nurseryRules: Record<string, 'off'> = {
   'import/named': 'off',
   'promise/no-return-in-finally': 'off',
   'react/require-render-return': 'off',
-  '@typescript-eslint/no-useless-default-assignment': 'off',
-  '@typescript-eslint/strict-void-return': 'off',
   'unicorn/no-useless-iterator-to-array': 'off',
   'import-x/export': 'off',
   'import-x/named': 'off',
@@ -763,6 +766,7 @@ const correctnessTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-misused-spread': 'off',
   '@typescript-eslint/no-redundant-type-constituents': 'off',
   '@typescript-eslint/no-unsafe-unary-minus': 'off',
+  '@typescript-eslint/no-useless-default-assignment': 'off',
   '@typescript-eslint/require-array-sort-compare': 'off',
   '@typescript-eslint/restrict-template-expressions': 'off',
   '@typescript-eslint/unbound-method': 'off',
@@ -775,6 +779,7 @@ const suspiciousTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unnecessary-type-arguments': 'off',
   '@typescript-eslint/no-unnecessary-type-assertion': 'off',
   '@typescript-eslint/no-unnecessary-type-conversion': 'off',
+  '@typescript-eslint/no-unnecessary-type-parameters': 'off',
   '@typescript-eslint/no-unsafe-enum-comparison': 'off',
   '@typescript-eslint/no-unsafe-type-assertion': 'off',
 };
@@ -782,6 +787,7 @@ const suspiciousTypeAwareRules: Record<string, 'off'> = {
 const styleTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-type-exports': 'off',
   '@typescript-eslint/dot-notation': 'off',
+  '@typescript-eslint/no-unnecessary-qualifier': 'off',
   '@typescript-eslint/prefer-find': 'off',
   '@typescript-eslint/prefer-readonly': 'off',
   '@typescript-eslint/prefer-reduce-type-parameter': 'off',
@@ -804,20 +810,19 @@ const pedanticTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/prefer-includes': 'off',
   '@typescript-eslint/prefer-nullish-coalescing': 'off',
   '@typescript-eslint/prefer-promise-reject-errors': 'off',
+  '@typescript-eslint/prefer-readonly-parameter-types': 'off',
   '@typescript-eslint/related-getter-setter-pairs': 'off',
   '@typescript-eslint/require-await': 'off',
   '@typescript-eslint/restrict-plus-operands': 'off',
   '@typescript-eslint/return-await': 'off',
   '@typescript-eslint/strict-boolean-expressions': 'off',
+  '@typescript-eslint/strict-void-return': 'off',
   '@typescript-eslint/switch-exhaustiveness-check': 'off',
 };
 
 const nurseryTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unnecessary-condition': 'off',
-  '@typescript-eslint/no-unnecessary-qualifier': 'off',
-  '@typescript-eslint/no-unnecessary-type-parameters': 'off',
   '@typescript-eslint/prefer-optional-chain': 'off',
-  '@typescript-eslint/prefer-readonly-parameter-types': 'off',
 };
 
 const restrictionTypeAwareRules: Record<string, 'off'> = {

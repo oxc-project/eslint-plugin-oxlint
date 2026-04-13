@@ -1,1 +1,1 @@
-vp staged
+VP_VERSION=1 vp staged
