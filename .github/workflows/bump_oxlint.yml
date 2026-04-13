@@ -34,7 +34,7 @@ jobs:
         env:
           OXLINT_VERSION: ${{ inputs.version }}
         run: |
-          pnpm install oxlint@${OXLINT_VERSION}
+          pnpm install oxlint@${OXLINT_VERSION} --no-frozen-lockfile
           npm pkg set "peerDependencies.oxlint=~${OXLINT_VERSION}"
           pnpm run generate # Generate rules
 
