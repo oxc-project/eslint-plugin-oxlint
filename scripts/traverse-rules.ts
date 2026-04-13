@@ -7,6 +7,7 @@ import {
   unicornRulesExtendEslintRules,
 } from '../src/constants.js';
 import vitestCompatibleRules from './generated/vitest-compatible-jest-rules.json' with { type: 'json' };
+import { createRequire } from 'node:module';
 
 export type Rule = {
   value: string;
@@ -18,8 +19,12 @@ export type Rule = {
  * Read the rules from oxlint command and returns an array of Rule-Objects
  */
 function readRulesFromCommand(): Rule[] {
+  // oxlint-disable-next-line unicorn/prefer-module
+  const resolvedOxlint = createRequire(import.meta.url)
+    .resolve('oxlint')
+    .replace('index.js', 'cli.js');
   // do not handle the exception
-  const oxlintOutput = execSync(`npx oxlint --rules --format=json`, {
+  const oxlintOutput = execSync(`${process.execPath} ${resolvedOxlint} --rules --format=json`, {
     encoding: 'utf8',
     stdio: 'pipe',
   });

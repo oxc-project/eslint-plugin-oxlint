@@ -52,7 +52,6 @@ const pedanticRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unsafe-function-type': 'off',
   '@typescript-eslint/prefer-enum-initializers': 'off',
   '@typescript-eslint/prefer-ts-expect-error': 'off',
-  '@typescript-eslint/strict-void-return': 'off',
   'unicorn/consistent-assert': 'off',
   'unicorn/consistent-empty-array-spread': 'off',
   'unicorn/escape-case': 'off',
@@ -674,7 +673,6 @@ const correctnessRules: Record<string, 'off'> = {
   '@typescript-eslint/no-this-alias': 'off',
   '@typescript-eslint/no-unnecessary-parameter-property-assignment': 'off',
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
-  '@typescript-eslint/no-useless-default-assignment': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',
   '@typescript-eslint/no-wrapper-object-types': 'off',
   '@typescript-eslint/prefer-as-const': 'off',
@@ -768,6 +766,7 @@ const correctnessTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-misused-spread': 'off',
   '@typescript-eslint/no-redundant-type-constituents': 'off',
   '@typescript-eslint/no-unsafe-unary-minus': 'off',
+  '@typescript-eslint/no-useless-default-assignment': 'off',
   '@typescript-eslint/require-array-sort-compare': 'off',
   '@typescript-eslint/restrict-template-expressions': 'off',
   '@typescript-eslint/unbound-method': 'off',
@@ -817,6 +816,7 @@ const pedanticTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/restrict-plus-operands': 'off',
   '@typescript-eslint/return-await': 'off',
   '@typescript-eslint/strict-boolean-expressions': 'off',
+  '@typescript-eslint/strict-void-return': 'off',
   '@typescript-eslint/switch-exhaustiveness-check': 'off',
 };
 
