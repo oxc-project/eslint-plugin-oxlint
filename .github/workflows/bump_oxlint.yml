@@ -42,7 +42,7 @@ jobs:
         continue-on-error: true # we check in PR why it fails
         run: pnpm run test -u # Update test snapshots
 
-      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3
+      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
         id: app-token
         with:
           client-id: ${{ secrets.APP_ID }}
