@@ -469,6 +469,7 @@ const restrictionRules: Record<string, 'off'> = {
   'react/only-export-components': 'off',
   'react/prefer-function-component': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',
+  '@typescript-eslint/explicit-member-accessibility': 'off',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
   '@typescript-eslint/no-dynamic-delete': 'off',
   '@typescript-eslint/no-empty-object-type': 'off',
