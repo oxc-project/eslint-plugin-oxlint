@@ -4,9 +4,9 @@ import packageJson from '../package.json' with { type: 'json' };
 
 // --- Generate the vitest rules file ---
 
-const __dirname = new URL('.', import.meta.url).pathname;
+const scriptDirectory = new URL('.', import.meta.url).pathname;
 // `<repo>/scripts/generated/`
-const scriptsGenerateFolder = path.resolve(__dirname, `generated`);
+const scriptsGenerateFolder = path.resolve(scriptDirectory, `generated`);
 
 if (!fs.existsSync(scriptsGenerateFolder)) {
   fs.mkdirSync(scriptsGenerateFolder);

@@ -1,10 +1,11 @@
 import path from 'node:path';
-import type {
-  OxlintConfig,
-  OxlintConfigOverride,
-  OxlintConfigPlugins,
-  OxlintConfigRules,
-  OxlintConfigExtends,
+import {
+  oxlintConfigMeta,
+  type OxlintConfig,
+  type OxlintConfigOverride,
+  type OxlintConfigPlugins,
+  type OxlintConfigRules,
+  type OxlintConfigExtends,
 } from './types.js';
 import { getConfigContent } from './utilities.js';
 import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
@@ -23,13 +24,13 @@ const readExtendsFromConfig = (config: OxlintConfig): OxlintConfigExtends | unde
  * Resolves the paths of the "extends" section relative to the given config file.
  */
 export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
-  if (!config.__misc?.filePath) {
+  if (!config[oxlintConfigMeta]?.filePath) {
     return;
   }
 
   const extendsFiles = readExtendsFromConfig(config);
   if (!extendsFiles?.length) return;
-  const configFileDirectory = path.dirname(config.__misc.filePath);
+  const configFileDirectory = path.dirname(config[oxlintConfigMeta].filePath);
   config.extends = extendsFiles.map((extendFile) => {
     if (typeof extendFile === 'string') {
       return path.resolve(configFileDirectory, extendFile);
@@ -75,7 +76,7 @@ export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig
     const extendConfig = getConfigContent(file);
     if (!extendConfig) continue;
 
-    extendConfig.__misc = {
+    extendConfig[oxlintConfigMeta] = {
       filePath: file,
     };
 

@@ -4,14 +4,14 @@ import { RulesGenerator, RulesGrouping } from './rules-generator.js';
 import { ConfigGenerator } from './config-generator.js';
 import { traverseRules } from './traverse-rules.js';
 
-const __dirname = new URL('.', import.meta.url).pathname;
+const scriptDirectory = new URL('.', import.meta.url).pathname;
 
 const successResultArray = traverseRules();
 
 const rulesGenerator = new RulesGenerator(successResultArray);
 const configGenerator = new ConfigGenerator(successResultArray);
 
-const generateFolder = path.resolve(__dirname, '..', `src/generated`);
+const generateFolder = path.resolve(scriptDirectory, '..', `src/generated`);
 
 if (!fs.existsSync(generateFolder)) {
   fs.mkdirSync(generateFolder);
