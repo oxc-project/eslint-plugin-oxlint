@@ -499,6 +499,9 @@ exports[`contains all the oxlint rules 1`] = `
   "for-direction": [
     0,
   ],
+  "func-name-matching": [
+    0,
+  ],
   "func-names": [
     0,
     "always",
@@ -511,6 +514,12 @@ exports[`contains all the oxlint rules 1`] = `
       "allowArrowFunctions": false,
       "allowTypeAnnotation": false,
       "overrides": {},
+    },
+  ],
+  "getter-return": [
+    0,
+    {
+      "allowImplicit": false,
     },
   ],
   "grouped-accessor-pairs": [
@@ -818,6 +827,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/prefer-equality-matcher": [
+    0,
+  ],
+  "jest/prefer-expect-assertions": [
     0,
   ],
   "jest/prefer-expect-resolves": [
@@ -1469,6 +1481,20 @@ exports[`contains all the oxlint rules 1`] = `
   "no-undefined": [
     0,
   ],
+  "no-underscore-dangle": [
+    0,
+    {
+      "allow": [],
+      "allowAfterSuper": false,
+      "allowAfterThis": false,
+      "allowAfterThisConstructor": false,
+      "allowFunctionParams": true,
+      "allowInArrayDestructuring": true,
+      "allowInObjectDestructuring": true,
+      "enforceInClassFields": false,
+      "enforceInMethodNames": false,
+    },
+  ],
   "no-unexpected-multiline": [
     0,
   ],
@@ -1480,6 +1506,9 @@ exports[`contains all the oxlint rules 1`] = `
     {
       "defaultAssignment": true,
     },
+  ],
+  "no-unreachable": [
+    0,
   ],
   "no-unsafe-finally": [
     0,
@@ -1716,6 +1745,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/display-name": [
     0,
   ],
+  "react/forbid-component-props": [
+    0,
+  ],
   "react/forbid-dom-props": [
     0,
   ],
@@ -1798,6 +1830,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-did-mount-set-state": [
+    0,
+  ],
+  "react/no-did-update-set-state": [
     0,
   ],
   "react/no-direct-mutation-state": [
@@ -2428,6 +2463,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-equality-matcher": [
     0,
   ],
+  "vitest/prefer-expect-assertions": [
+    0,
+  ],
   "vitest/prefer-expect-resolves": [
     0,
   ],
@@ -2542,7 +2580,19 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-arrow-functions-in-watch": [
     0,
   ],
+  "vue/no-deprecated-data-object-declaration": [
+    0,
+  ],
+  "vue/no-deprecated-delete-set": [
+    0,
+  ],
   "vue/no-deprecated-destroyed-lifecycle": [
+    0,
+  ],
+  "vue/no-deprecated-events-api": [
+    0,
+  ],
+  "vue/no-deprecated-vue-config-keycodes": [
     0,
   ],
   "vue/no-export-in-script-setup": [

@@ -27,14 +27,14 @@ const correctnessConfig = {
   rules: rules.correctnessRules,
 } as const;
 
-const nurseryConfig = {
-  name: 'oxlint/nursery',
-  rules: rules.nurseryRules,
-} as const;
-
 const perfConfig = {
   name: 'oxlint/perf',
   rules: rules.perfRules,
+} as const;
+
+const nurseryConfig = {
+  name: 'oxlint/nursery',
+  rules: rules.nurseryRules,
 } as const;
 
 const configByCategory = {
@@ -43,8 +43,8 @@ const configByCategory = {
   'flat/suspicious': suspiciousConfig,
   'flat/restriction': restrictionConfig,
   'flat/correctness': correctnessConfig,
-  'flat/nursery': nurseryConfig,
   'flat/perf': perfConfig,
+  'flat/nursery': nurseryConfig,
 };
 
 export default configByCategory;
