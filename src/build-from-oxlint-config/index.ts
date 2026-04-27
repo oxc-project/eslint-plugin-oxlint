@@ -1,4 +1,9 @@
-import { BuildFromOxlintConfigOptions, EslintPluginOxlintConfig, OxlintConfig } from './types.js';
+import {
+  oxlintConfigMeta,
+  type BuildFromOxlintConfigOptions,
+  type EslintPluginOxlintConfig,
+  type OxlintConfig,
+} from './types.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
   defaultCategories,
@@ -100,7 +105,7 @@ export const buildFromOxlintConfigFile = (
     return [];
   }
 
-  config.__misc = {
+  config[oxlintConfigMeta] = {
     filePath: path.resolve(oxlintConfigFile),
   };
 

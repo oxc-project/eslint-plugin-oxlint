@@ -1,5 +1,7 @@
 import type { Linter } from 'eslint';
 
+export const oxlintConfigMeta = Symbol('eslint-plugin-oxlint config metadata');
+
 export type BuildFromOxlintConfigOptions = {
   withNursery?: boolean;
   typeAware?: boolean;
@@ -39,8 +41,8 @@ export type OxlintConfig = {
   ignorePatterns?: OxlintConfigIgnorePatterns;
   options?: OxlintOptions;
 
-  // extra properties only used by  `eslint-plugin-oxlint`
-  __misc?: {
+  // extra properties only used by `eslint-plugin-oxlint`
+  [oxlintConfigMeta]?: {
     // absolute path to the config file
     filePath: string;
   };

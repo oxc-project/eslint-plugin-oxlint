@@ -4,7 +4,7 @@ import {
   readExtendsConfigsFromConfig,
   resolveRelativeExtendsPaths,
 } from './extends.js';
-import { OxlintConfig } from './types.js';
+import { oxlintConfigMeta, type OxlintConfig } from './types.js';
 
 describe('handleExtendsScope', () => {
   it('should handle empty extends configs', () => {
@@ -120,7 +120,7 @@ describe('resolveRelativeExtendsPaths', () => {
   it('should resolve relative paths', () => {
     const config: OxlintConfig = {
       extends: ['./extends1.json', './folder/extends2.json', '../parent/extends3.json'],
-      __misc: {
+      [oxlintConfigMeta]: {
         filePath: '/root/of/the/file/test-config.json',
       },
     };
@@ -140,7 +140,7 @@ describe('resolveRelativeExtendsPaths', () => {
           extends: [],
         },
       ],
-      __misc: {
+      [oxlintConfigMeta]: {
         filePath: '/root/of/the/file/test-config.json',
       },
     };
