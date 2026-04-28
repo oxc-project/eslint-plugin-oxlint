@@ -32,7 +32,7 @@ jobs:
       - uses: oxc-project/setup-node@4c26e7cb3605b6bdef5450dacd02c434b10fd8ba # v1.2.0
 
       - name: Remove current generated code
-        run: rm -r ./src/generated/ && rm -r ./scripts/generated/
+        run: rm -r ./src/generated/
 
       - name: Generate from source code
         run: pnpm run generate

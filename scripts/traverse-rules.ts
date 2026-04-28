@@ -6,7 +6,6 @@ import {
   typescriptRulesExtendEslintRules,
   unicornRulesExtendEslintRules,
 } from '../src/constants.js';
-import vitestCompatibleRules from './generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 import { createRequire } from 'node:module';
 
 export type Rule = {
@@ -64,14 +63,6 @@ function getAliasRules(rule: Rule): Rule | void {
     return {
       value: `@typescript-eslint/${rule.value}`,
       scope: 'typescript',
-      category: rule.category,
-    };
-  }
-
-  if (rule.scope === 'jest' && vitestCompatibleRules.includes(rule.value)) {
-    return {
-      value: `vitest/${rule.value}`,
-      scope: 'vitest',
       category: rule.category,
     };
   }
