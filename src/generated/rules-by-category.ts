@@ -344,27 +344,6 @@ const styleRules: Record<string, 'off'> = {
   'import-x/no-namespace': 'off',
   'import-x/no-nodejs-modules': 'off',
   'import-x/prefer-default-export': 'off',
-  'vitest/no-restricted-jest-methods': 'off',
-  'vitest/no-restricted-matchers': 'off',
-  'vitest/no-test-prefixes': 'off',
-  'vitest/no-test-return-statement': 'off',
-  'vitest/no-unneeded-async-expect-function': 'off',
-  'vitest/prefer-called-with': 'off',
-  'vitest/prefer-comparison-matcher': 'off',
-  'vitest/prefer-each': 'off',
-  'vitest/prefer-equality-matcher': 'off',
-  'vitest/prefer-expect-resolves': 'off',
-  'vitest/prefer-hooks-in-order': 'off',
-  'vitest/prefer-hooks-on-top': 'off',
-  'vitest/prefer-lowercase-title': 'off',
-  'vitest/prefer-mock-promise-shorthand': 'off',
-  'vitest/prefer-mock-return-shorthand': 'off',
-  'vitest/prefer-spy-on': 'off',
-  'vitest/prefer-strict-equal': 'off',
-  'vitest/prefer-to-be': 'off',
-  'vitest/prefer-to-have-been-called-times': 'off',
-  'vitest/prefer-to-have-length': 'off',
-  'vitest/require-hook': 'off',
 };
 
 const suspiciousRules: Record<string, 'off'> = {
@@ -731,11 +710,6 @@ const correctnessRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unused-vars': 'off',
   'import-x/default': 'off',
   'import-x/namespace': 'off',
-  'vitest/no-standalone-expect': 'off',
-  'vitest/prefer-snapshot-hint': 'off',
-  'vitest/require-to-throw-message': 'off',
-  'vitest/valid-describe-callback': 'off',
-  'vitest/valid-expect-in-promise': 'off',
 };
 
 const perfRules: Record<string, 'off'> = {

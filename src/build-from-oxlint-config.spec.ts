@@ -7,7 +7,6 @@ import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
 import { typescriptRulesExtendEslintRules, unicornRulesExtendEslintRules } from './constants.js';
-import vitestCompatibleRules from '../scripts/generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 
 // oxlint-disable-next-line unicorn/prefer-module
 const resolvedOxlint = require.resolve('oxlint').replace('index.js', 'cli.js');
@@ -158,13 +157,6 @@ describe('integration test with oxlint', () => {
         if (config.plugins === undefined || config.plugins.includes('typescript')) {
           expectedCount += typescriptRulesExtendEslintRules.filter(
             (aliasRule) => aliasRule in buildConfig.rules!
-          ).length;
-        }
-
-        // special case for vitest / jest alias rules
-        if (config.plugins?.includes('vitest')) {
-          expectedCount += vitestCompatibleRules.filter(
-            (aliasRule) => `vitest/${aliasRule}` in buildConfig.rules!
           ).length;
         }
 
