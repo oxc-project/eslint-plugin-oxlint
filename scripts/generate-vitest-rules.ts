@@ -20,13 +20,8 @@ const gitReference = `oxlint_v${packageJson.version}`;
 const githubURL = `https://raw.githubusercontent.com/oxc-project/oxc/${gitReference}/crates/oxc_linter/data/vitest_compatible_jest_rules.json`;
 const response = await fetch(githubURL);
 
-if (!response.ok) {
-  throw new Error(
-    `Failed to fetch vitest-compatible-jest-rules.json: ${response.status} ${response.statusText}`
-  );
-}
-
-const vitestRules = await response.text();
+// oxlint v1.63.0 will not have the vitest-compatible-jest-rules.json file, so if the response is not ok, we will write an empty array to the file.
+const vitestRules = response.ok ? await response.text() : '[]';
 const vitestRulesPath = path.resolve(scriptsGenerateFolder, 'vitest-compatible-jest-rules.json');
 fs.writeFileSync(vitestRulesPath, vitestRules, 'utf8');
 
