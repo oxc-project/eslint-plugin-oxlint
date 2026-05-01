@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vite-plus/test';
 import { handleRulesScope } from './rules.js';
-import { unicornRulesExtendEslintRules } from '../constants.js';
 
 describe('handleRulesScope', () => {
   for (const ruleSetting of ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]]) {
@@ -117,24 +116,6 @@ describe('handleRulesScope', () => {
 
     expect(rules).toStrictEqual({});
   });
-
-  for (const alias of unicornRulesExtendEslintRules) {
-    it(`disables unicorn eslint alias rules for ${alias}`, () => {
-      for (const rule of [`unicorn/${alias}`, alias]) {
-        const rules = {};
-        handleRulesScope(
-          {
-            [rule]: 'warn',
-          },
-          rules
-        );
-
-        expect(rules).toStrictEqual({
-          [rule]: 'off',
-        });
-      }
-    });
-  }
 
   describe('type-aware rules', () => {
     it('should filter out type-aware rules by default', () => {

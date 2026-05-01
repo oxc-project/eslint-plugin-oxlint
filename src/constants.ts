@@ -41,8 +41,6 @@ export const typescriptRulesExtendEslintRules = [
   'no-useless-constructor',
 ];
 
-export const unicornRulesExtendEslintRules = ['no-negated-condition'];
-
 // All rules from `eslint-plugin-react-hooks`
 // Since oxlint supports these rules under react/*, we need to remap them.
 export const reactHookRulesInsideReactScope = ['rules-of-hooks', 'exhaustive-deps'];

@@ -678,7 +678,6 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/switch-case-break-position': 'off',
   'unicorn/text-encoding-identifier-case': 'off',
   'unicorn/throw-new-error': 'off',
-  'unicorn/no-negated-condition': 'off',
 };
 
 const vitestRules: Record<string, 'off'> = {

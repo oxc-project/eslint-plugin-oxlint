@@ -100,7 +100,6 @@ const pedanticRules: Record<string, 'off'> = {
   'vitest/no-conditional-in-test': 'off',
   '@typescript-eslint/no-array-constructor': 'off',
   '@typescript-eslint/no-loop-func': 'off',
-  'unicorn/no-negated-condition': 'off',
   '@typescript-eslint/no-redeclare': 'off',
   'import-x/max-dependencies': 'off',
 };
