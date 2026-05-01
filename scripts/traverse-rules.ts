@@ -4,7 +4,6 @@ import {
   aliasPluginNames,
   reactHookRulesInsideReactScope,
   typescriptRulesExtendEslintRules,
-  unicornRulesExtendEslintRules,
 } from '../src/constants.js';
 import { createRequire } from 'node:module';
 
@@ -90,14 +89,6 @@ function getAliasRules(rule: Rule): Rule | void {
     return {
       value: `react-refresh/${rule.value}`,
       scope: 'react',
-      category: rule.category,
-    };
-  }
-
-  if (rule.scope === 'eslint' && unicornRulesExtendEslintRules.includes(rule.value)) {
-    return {
-      value: `unicorn/${rule.value}`,
-      scope: 'unicorn',
       category: rule.category,
     };
   }

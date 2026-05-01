@@ -6,7 +6,7 @@ import {
 import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
-import { typescriptRulesExtendEslintRules, unicornRulesExtendEslintRules } from './constants.js';
+import { typescriptRulesExtendEslintRules } from './constants.js';
 
 // oxlint-disable-next-line unicorn/prefer-module
 const resolvedOxlint = require.resolve('oxlint').replace('index.js', 'cli.js');
@@ -157,13 +157,6 @@ describe('integration test with oxlint', () => {
         if (config.plugins === undefined || config.plugins.includes('typescript')) {
           expectedCount += typescriptRulesExtendEslintRules.filter(
             (aliasRule) => aliasRule in buildConfig.rules!
-          ).length;
-        }
-
-        // special mapping for unicorn alias rules
-        if (config.plugins === undefined || config.plugins.includes('unicorn')) {
-          expectedCount += unicornRulesExtendEslintRules.filter(
-            (aliasRule) => `unicorn/${aliasRule}` in buildConfig.rules!
           ).length;
         }
       }
