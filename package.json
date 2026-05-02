@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-oxlint",
-  "version": "1.60.0",
+  "version": "1.62.0",
   "description": "Turn off all rules already supported by oxlint",
   "keywords": [
     "eslint",
@@ -46,9 +46,9 @@
   },
   "scripts": {
     "prepare": "vp config",
-    "generate": "node --import @oxc-node/core/register ./scripts/generate-vitest-rules.ts && node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
+    "generate": "node --import @oxc-node/core/register ./scripts/generate.ts && pnpm format",
     "build": "vp pack",
-    "lint": "VP_VERSION=1 vp lint",
+    "lint": "vp lint",
     "format": "vp fmt",
     "test": "vp test --reporter=verbose"
   },
@@ -70,7 +70,7 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
-    "oxlint": "~1.60.0"
+    "oxlint": "~1.62.0"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.2"
 }

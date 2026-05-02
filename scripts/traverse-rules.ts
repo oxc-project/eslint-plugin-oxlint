@@ -4,9 +4,7 @@ import {
   aliasPluginNames,
   reactHookRulesInsideReactScope,
   typescriptRulesExtendEslintRules,
-  unicornRulesExtendEslintRules,
 } from '../src/constants.js';
-import vitestCompatibleRules from './generated/vitest-compatible-jest-rules.json' with { type: 'json' };
 import { createRequire } from 'node:module';
 
 export type Rule = {
@@ -68,14 +66,6 @@ function getAliasRules(rule: Rule): Rule | void {
     };
   }
 
-  if (rule.scope === 'jest' && vitestCompatibleRules.includes(rule.value)) {
-    return {
-      value: `vitest/${rule.value}`,
-      scope: 'vitest',
-      category: rule.category,
-    };
-  }
-
   if (rule.scope === 'import') {
     return {
       value: `import-x/${rule.value}`,
@@ -99,14 +89,6 @@ function getAliasRules(rule: Rule): Rule | void {
     return {
       value: `react-refresh/${rule.value}`,
       scope: 'react',
-      category: rule.category,
-    };
-  }
-
-  if (rule.scope === 'eslint' && unicornRulesExtendEslintRules.includes(rule.value)) {
-    return {
-      value: `unicorn/${rule.value}`,
-      scope: 'unicorn',
       category: rule.category,
     };
   }

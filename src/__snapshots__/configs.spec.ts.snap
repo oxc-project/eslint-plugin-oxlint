@@ -119,6 +119,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/explicit-function-return-type": [
     0,
   ],
+  "@typescript-eslint/explicit-member-accessibility": [
+    0,
+  ],
   "@typescript-eslint/explicit-module-boundary-types": [
     0,
   ],
@@ -496,6 +499,9 @@ exports[`contains all the oxlint rules 1`] = `
   "for-direction": [
     0,
   ],
+  "func-name-matching": [
+    0,
+  ],
   "func-names": [
     0,
     "always",
@@ -508,6 +514,12 @@ exports[`contains all the oxlint rules 1`] = `
       "allowArrowFunctions": false,
       "allowTypeAnnotation": false,
       "overrides": {},
+    },
+  ],
+  "getter-return": [
+    0,
+    {
+      "allowImplicit": false,
     },
   ],
   "grouped-accessor-pairs": [
@@ -815,6 +827,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jest/prefer-equality-matcher": [
+    0,
+  ],
+  "jest/prefer-expect-assertions": [
     0,
   ],
   "jest/prefer-expect-resolves": [
@@ -1466,6 +1481,20 @@ exports[`contains all the oxlint rules 1`] = `
   "no-undefined": [
     0,
   ],
+  "no-underscore-dangle": [
+    0,
+    {
+      "allow": [],
+      "allowAfterSuper": false,
+      "allowAfterThis": false,
+      "allowAfterThisConstructor": false,
+      "allowFunctionParams": true,
+      "allowInArrayDestructuring": true,
+      "allowInObjectDestructuring": true,
+      "enforceInClassFields": false,
+      "enforceInMethodNames": false,
+    },
+  ],
   "no-unexpected-multiline": [
     0,
   ],
@@ -1477,6 +1506,9 @@ exports[`contains all the oxlint rules 1`] = `
     {
       "defaultAssignment": true,
     },
+  ],
+  "no-unreachable": [
+    0,
   ],
   "no-unsafe-finally": [
     0,
@@ -1713,6 +1745,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/display-name": [
     0,
   ],
+  "react/forbid-component-props": [
+    0,
+  ],
   "react/forbid-dom-props": [
     0,
   ],
@@ -1795,6 +1830,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-did-mount-set-state": [
+    0,
+  ],
+  "react/no-did-update-set-state": [
     0,
   ],
   "react/no-direct-mutation-state": [
@@ -2020,9 +2058,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-magic-array-flat-depth": [
-    0,
-  ],
-  "unicorn/no-negated-condition": [
     0,
   ],
   "unicorn/no-negation-in-equality-check": [
@@ -2383,24 +2418,6 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-mocks-import": [
     0,
   ],
-  "vitest/no-restricted-jest-methods": [
-    0,
-  ],
-  "vitest/no-restricted-matchers": [
-    0,
-  ],
-  "vitest/no-standalone-expect": [
-    0,
-  ],
-  "vitest/no-test-prefixes": [
-    0,
-  ],
-  "vitest/no-test-return-statement": [
-    0,
-  ],
-  "vitest/no-unneeded-async-expect-function": [
-    0,
-  ],
   "vitest/prefer-called-exactly-once-with": [
     0,
   ],
@@ -2410,31 +2427,13 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-called-times": [
     0,
   ],
-  "vitest/prefer-called-with": [
-    0,
-  ],
-  "vitest/prefer-comparison-matcher": [
-    0,
-  ],
   "vitest/prefer-describe-function-title": [
     0,
   ],
-  "vitest/prefer-each": [
-    0,
-  ],
-  "vitest/prefer-equality-matcher": [
-    0,
-  ],
-  "vitest/prefer-expect-resolves": [
+  "vitest/prefer-expect-assertions": [
     0,
   ],
   "vitest/prefer-expect-type-of": [
-    0,
-  ],
-  "vitest/prefer-hooks-in-order": [
-    0,
-  ],
-  "vitest/prefer-hooks-on-top": [
     0,
   ],
   "vitest/prefer-import-in-mock": [
@@ -2443,28 +2442,7 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-importing-vitest-globals": [
     0,
   ],
-  "vitest/prefer-lowercase-title": [
-    0,
-  ],
-  "vitest/prefer-mock-promise-shorthand": [
-    0,
-  ],
-  "vitest/prefer-mock-return-shorthand": [
-    0,
-  ],
-  "vitest/prefer-snapshot-hint": [
-    0,
-  ],
-  "vitest/prefer-spy-on": [
-    0,
-  ],
   "vitest/prefer-strict-boolean-matchers": [
-    0,
-  ],
-  "vitest/prefer-strict-equal": [
-    0,
-  ],
-  "vitest/prefer-to-be": [
     0,
   ],
   "vitest/prefer-to-be-falsy": [
@@ -2479,19 +2457,10 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-to-contain": [
     0,
   ],
-  "vitest/prefer-to-have-been-called-times": [
-    0,
-  ],
-  "vitest/prefer-to-have-length": [
-    0,
-  ],
   "vitest/prefer-todo": [
     0,
   ],
   "vitest/require-awaited-expect-poll": [
-    0,
-  ],
-  "vitest/require-hook": [
     0,
   ],
   "vitest/require-local-test-context-for-concurrent-snapshots": [
@@ -2503,19 +2472,10 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/require-test-timeout": [
     0,
   ],
-  "vitest/require-to-throw-message": [
-    0,
-  ],
   "vitest/require-top-level-describe": [
     0,
   ],
-  "vitest/valid-describe-callback": [
-    0,
-  ],
   "vitest/valid-expect": [
-    0,
-  ],
-  "vitest/valid-expect-in-promise": [
     0,
   ],
   "vitest/valid-title": [
@@ -2539,7 +2499,19 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-arrow-functions-in-watch": [
     0,
   ],
+  "vue/no-deprecated-data-object-declaration": [
+    0,
+  ],
+  "vue/no-deprecated-delete-set": [
+    0,
+  ],
   "vue/no-deprecated-destroyed-lifecycle": [
+    0,
+  ],
+  "vue/no-deprecated-events-api": [
+    0,
+  ],
+  "vue/no-deprecated-vue-config-keycodes": [
     0,
   ],
   "vue/no-export-in-script-setup": [

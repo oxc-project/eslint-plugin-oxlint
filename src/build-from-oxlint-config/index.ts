@@ -1,4 +1,9 @@
-import { BuildFromOxlintConfigOptions, EslintPluginOxlintConfig, OxlintConfig } from './types.js';
+import {
+  oxlintConfigMeta,
+  type BuildFromOxlintConfigOptions,
+  type EslintPluginOxlintConfig,
+  type OxlintConfig,
+} from './types.js';
 import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
   defaultCategories,
@@ -8,7 +13,7 @@ import {
 import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
 import { handleIgnorePatternsScope, readIgnorePatternsFromConfig } from './ignore-patterns.js';
 import { handleOverridesScope, readOverridesFromConfig } from './overrides.js';
-import { splitDisabledRulesForVueAndSvelteFiles } from '../config-helper.js';
+import { splitDisabledRulesForVueAstroAndSvelteFiles } from '../config-helper.js';
 import {
   handleExtendsScope,
   readExtendsConfigsFromConfig,
@@ -63,7 +68,9 @@ export const buildFromOxlintConfig = (
   };
 
   const overrides = readOverridesFromConfig(config);
-  const configs = splitDisabledRulesForVueAndSvelteFiles(baseConfig) as EslintPluginOxlintConfig[];
+  const configs = splitDisabledRulesForVueAstroAndSvelteFiles(
+    baseConfig
+  ) as EslintPluginOxlintConfig[];
 
   if (overrides !== undefined) {
     handleOverridesScope(overrides, configs, categories, options);
@@ -100,7 +107,7 @@ export const buildFromOxlintConfigFile = (
     return [];
   }
 
-  config.__misc = {
+  config[oxlintConfigMeta] = {
     filePath: path.resolve(oxlintConfigFile),
   };
 

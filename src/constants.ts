@@ -41,16 +41,15 @@ export const typescriptRulesExtendEslintRules = [
   'no-useless-constructor',
 ];
 
-export const unicornRulesExtendEslintRules = ['no-negated-condition'];
-
 // All rules from `eslint-plugin-react-hooks`
 // Since oxlint supports these rules under react/*, we need to remap them.
 export const reactHookRulesInsideReactScope = ['rules-of-hooks', 'exhaustive-deps'];
 
-// These rules are disabled for vue and svelte files
+// These rules are disabled for vue, astro, and svelte files
 // because oxlint can not parse currently the HTML
-export const rulesDisabledForVueAndSvelteFiles = [
+export const rulesDisabledForVueAstroAndSvelteFiles = [
   'no-unused-vars',
   '@typescript-eslint/no-unused-vars',
+  '@typescript-eslint/consistent-type-imports',
   'react-hooks/rules-of-hooks', // disabled because its react
 ];
