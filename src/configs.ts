@@ -4,8 +4,8 @@ import configByScope from './generated/configs-by-scope.js';
 import configByCategory from './generated/configs-by-category.js';
 import {
   overrideDisabledRulesForVueAndSvelteFiles,
-  splitDisabledRulesForVueAndSvelteFiles,
-  splitDisabledRulesForVueAndSvelteFilesDeep,
+  splitDisabledRulesForVueAstroAndSvelteFiles,
+  splitDisabledRulesForVueAstroAndSvelteFilesDeep,
 } from './config-helper.js';
 
 type UnionToIntersection<U> = (U extends unknown ? (x: U) => void : never) extends (
@@ -38,14 +38,14 @@ export default {
     plugins: ['oxlint'],
     rules: allRules,
   }),
-  'flat/all': splitDisabledRulesForVueAndSvelteFiles({
+  'flat/all': splitDisabledRulesForVueAstroAndSvelteFiles({
     name: 'oxlint/all',
     rules: allRules,
   }),
-  'flat/recommended': splitDisabledRulesForVueAndSvelteFiles({
+  'flat/recommended': splitDisabledRulesForVueAstroAndSvelteFiles({
     name: 'oxlint/recommended',
     rules: ruleMapsByCategory.correctnessRules,
   }),
-  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByScope),
-  ...splitDisabledRulesForVueAndSvelteFilesDeep(configByCategory),
+  ...splitDisabledRulesForVueAstroAndSvelteFilesDeep(configByScope),
+  ...splitDisabledRulesForVueAstroAndSvelteFilesDeep(configByCategory),
 } as const;

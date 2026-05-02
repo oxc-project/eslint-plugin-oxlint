@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vite-plus/test';
 import {
   overrideDisabledRulesForVueAndSvelteFiles,
-  splitDisabledRulesForVueAndSvelteFiles,
+  splitDisabledRulesForVueAstroAndSvelteFiles,
 } from './config-helper.js';
 
 describe('overrideDisabledRulesForVueAndSvelteFiles', () => {
@@ -38,7 +38,7 @@ describe('overrideDisabledRulesForVueAndSvelteFiles', () => {
       overrides: [
         {
           files: ['*.*'],
-          excludedFiles: ['*.vue', '*.svelte'],
+          excludedFiles: ['*.vue', '*.svelte', '*.astro'],
           rules: {
             'no-unused-vars': 'off',
           },
@@ -56,7 +56,7 @@ describe('splitDisabledRulesForVueAndSvelteFiles', () => {
       },
     } as const;
 
-    const newConfigs = splitDisabledRulesForVueAndSvelteFiles(config);
+    const newConfigs = splitDisabledRulesForVueAstroAndSvelteFiles(config);
 
     expect(newConfigs).toStrictEqual([
       {
@@ -67,7 +67,7 @@ describe('splitDisabledRulesForVueAndSvelteFiles', () => {
     ]);
   });
 
-  it('creates a second config when no matching rule detected', () => {
+  it('creates a second config when matching rule detected', () => {
     const config = {
       rules: {
         'no-magic-numbers': 'off',
@@ -75,7 +75,7 @@ describe('splitDisabledRulesForVueAndSvelteFiles', () => {
       },
     } as const;
 
-    const newConfigs = splitDisabledRulesForVueAndSvelteFiles(config);
+    const newConfigs = splitDisabledRulesForVueAstroAndSvelteFiles(config);
 
     expect(newConfigs).toStrictEqual([
       {
@@ -84,8 +84,8 @@ describe('splitDisabledRulesForVueAndSvelteFiles', () => {
         },
       },
       {
-        name: 'oxlint/vue-svelte-exceptions',
-        ignores: ['**/*.vue', '**/*.svelte'],
+        name: 'oxlint/vue-svelte-astro-exceptions',
+        ignores: ['**/*.vue', '**/*.svelte', '**/*.astro'],
         rules: {
           'no-unused-vars': 'off',
         },
