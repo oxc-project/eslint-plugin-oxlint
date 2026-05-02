@@ -1,4 +1,4 @@
-import { rulesDisabledForVueAndSvelteFiles } from './constants.js';
+import { rulesDisabledForVueAstroAndSvelteFiles } from './constants.js';
 
 // Some type helpers for better type inference
 type LegacyConfig = {
@@ -19,7 +19,7 @@ type FlatConfig = {
 // for eslint legacy configuration
 export const overrideDisabledRulesForVueAndSvelteFiles = <C extends LegacyConfig>(config: C): C => {
   const foundRules = Object.keys(config.rules!).filter((rule) =>
-    rulesDisabledForVueAndSvelteFiles.includes(rule)
+    rulesDisabledForVueAstroAndSvelteFiles.includes(rule)
   );
 
   if (foundRules.length === 0) {
@@ -32,7 +32,7 @@ export const overrideDisabledRulesForVueAndSvelteFiles = <C extends LegacyConfig
     {
       // classic configs use glob syntax
       files: ['*.*'],
-      excludedFiles: ['*.vue', '*.svelte'],
+      excludedFiles: ['*.vue', '*.svelte', '*.astro'],
       rules: {},
     },
   ];
@@ -48,11 +48,11 @@ export const overrideDisabledRulesForVueAndSvelteFiles = <C extends LegacyConfig
 export type SplittedFlatConfig<C extends FlatConfig> = [C] | [C, FlatConfig];
 
 // for eslint flat configuration
-export const splitDisabledRulesForVueAndSvelteFiles = <C extends FlatConfig>(
+export const splitDisabledRulesForVueAstroAndSvelteFiles = <C extends FlatConfig>(
   config: C
 ): SplittedFlatConfig<C> => {
   const foundRules = Object.keys(config.rules!).filter((rule) =>
-    rulesDisabledForVueAndSvelteFiles.includes(rule)
+    rulesDisabledForVueAstroAndSvelteFiles.includes(rule)
   );
 
   if (foundRules.length === 0) {
@@ -63,8 +63,8 @@ export const splitDisabledRulesForVueAndSvelteFiles = <C extends FlatConfig>(
 
   const newConfig: FlatConfig = {
     // flat configs use minimatch syntax
-    name: 'oxlint/vue-svelte-exceptions',
-    ignores: ['**/*.vue', '**/*.svelte'],
+    name: 'oxlint/vue-svelte-astro-exceptions',
+    ignores: ['**/*.vue', '**/*.svelte', '**/*.astro'],
     rules: {},
   };
 
@@ -76,13 +76,15 @@ export const splitDisabledRulesForVueAndSvelteFiles = <C extends FlatConfig>(
   return [oldConfig, newConfig];
 };
 
-export const splitDisabledRulesForVueAndSvelteFilesDeep = <T extends Record<string, FlatConfig>>(
+export const splitDisabledRulesForVueAstroAndSvelteFilesDeep = <
+  T extends Record<string, FlatConfig>,
+>(
   config: T
 ): { [K in keyof T]: SplittedFlatConfig<T[K]> } => {
   const result = {} as { [K in keyof T]: SplittedFlatConfig<T[K]> };
 
   for (const name in config) {
-    result[name] = splitDisabledRulesForVueAndSvelteFiles(config[name]);
+    result[name] = splitDisabledRulesForVueAstroAndSvelteFiles(config[name]);
   }
 
   return result;
