@@ -1003,6 +1003,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/img-redundant-alt": [
     0,
   ],
+  "jsx-a11y/interactive-supports-focus": [
+    0,
+  ],
   "jsx-a11y/label-has-associated-control": [
     0,
   ],
@@ -1049,6 +1052,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jsx-a11y/tabindex-no-positive": [
+    0,
+  ],
+  "logical-assignment-operators": [
     0,
   ],
   "max-classes-per-file": [
@@ -1416,6 +1422,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "no-restricted-imports": [
+    0,
+  ],
+  "no-restricted-properties": [
     0,
   ],
   "no-return-assign": [
@@ -1907,6 +1916,10 @@ exports[`contains all the oxlint rules 1`] = `
   "require-await": [
     0,
   ],
+  "require-unicode-regexp": [
+    0,
+    {},
+  ],
   "require-yield": [
     0,
   ],
@@ -2058,6 +2071,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-magic-array-flat-depth": [
+    0,
+  ],
+  "unicorn/no-negated-condition": [
     0,
   ],
   "unicorn/no-negation-in-equality-check": [
@@ -2418,6 +2434,24 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/no-mocks-import": [
     0,
   ],
+  "vitest/no-restricted-matchers": [
+    0,
+  ],
+  "vitest/no-restricted-vi-methods": [
+    0,
+  ],
+  "vitest/no-standalone-expect": [
+    0,
+  ],
+  "vitest/no-test-prefixes": [
+    0,
+  ],
+  "vitest/no-test-return-statement": [
+    0,
+  ],
+  "vitest/no-unneeded-async-expect-function": [
+    0,
+  ],
   "vitest/prefer-called-exactly-once-with": [
     0,
   ],
@@ -2427,13 +2461,34 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-called-times": [
     0,
   ],
+  "vitest/prefer-called-with": [
+    0,
+  ],
+  "vitest/prefer-comparison-matcher": [
+    0,
+  ],
   "vitest/prefer-describe-function-title": [
+    0,
+  ],
+  "vitest/prefer-each": [
+    0,
+  ],
+  "vitest/prefer-equality-matcher": [
     0,
   ],
   "vitest/prefer-expect-assertions": [
     0,
   ],
+  "vitest/prefer-expect-resolves": [
+    0,
+  ],
   "vitest/prefer-expect-type-of": [
+    0,
+  ],
+  "vitest/prefer-hooks-in-order": [
+    0,
+  ],
+  "vitest/prefer-hooks-on-top": [
     0,
   ],
   "vitest/prefer-import-in-mock": [
@@ -2442,7 +2497,28 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-importing-vitest-globals": [
     0,
   ],
+  "vitest/prefer-lowercase-title": [
+    0,
+  ],
+  "vitest/prefer-mock-promise-shorthand": [
+    0,
+  ],
+  "vitest/prefer-mock-return-shorthand": [
+    0,
+  ],
+  "vitest/prefer-snapshot-hint": [
+    0,
+  ],
+  "vitest/prefer-spy-on": [
+    0,
+  ],
   "vitest/prefer-strict-boolean-matchers": [
+    0,
+  ],
+  "vitest/prefer-strict-equal": [
+    0,
+  ],
+  "vitest/prefer-to-be": [
     0,
   ],
   "vitest/prefer-to-be-falsy": [
@@ -2457,10 +2533,19 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/prefer-to-contain": [
     0,
   ],
+  "vitest/prefer-to-have-been-called-times": [
+    0,
+  ],
+  "vitest/prefer-to-have-length": [
+    0,
+  ],
   "vitest/prefer-todo": [
     0,
   ],
   "vitest/require-awaited-expect-poll": [
+    0,
+  ],
+  "vitest/require-hook": [
     0,
   ],
   "vitest/require-local-test-context-for-concurrent-snapshots": [
@@ -2472,10 +2557,19 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/require-test-timeout": [
     0,
   ],
+  "vitest/require-to-throw-message": [
+    0,
+  ],
   "vitest/require-top-level-describe": [
     0,
   ],
+  "vitest/valid-describe-callback": [
+    0,
+  ],
   "vitest/valid-expect": [
+    0,
+  ],
+  "vitest/valid-expect-in-promise": [
     0,
   ],
   "vitest/valid-title": [
@@ -2511,6 +2605,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-deprecated-events-api": [
     0,
   ],
+  "vue/no-deprecated-model-definition": [
+    0,
+  ],
   "vue/no-deprecated-vue-config-keycodes": [
     0,
   ],
@@ -2539,6 +2636,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/require-typed-ref": [
+    0,
+  ],
+  "vue/return-in-computed-property": [
     0,
   ],
   "vue/valid-define-emits": [
