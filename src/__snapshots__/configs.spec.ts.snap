@@ -1030,6 +1030,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsx-a11y/no-distracting-elements": [
     0,
   ],
+  "jsx-a11y/no-noninteractive-element-to-interactive-role": [
+    0,
+  ],
   "jsx-a11y/no-noninteractive-tabindex": [
     0,
   ],
@@ -1659,6 +1662,12 @@ exports[`contains all the oxlint rules 1`] = `
     0,
     {
       "allowEmptyReject": false,
+    },
+  ],
+  "prefer-regex-literals": [
+    0,
+    {
+      "disallowRedundantWrapping": false,
     },
   ],
   "prefer-rest-params": [
