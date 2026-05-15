@@ -74,6 +74,7 @@ const eslintRules: Record<string, 'off'> = {
   'no-func-assign': 'off',
   'no-global-assign': 'off',
   'no-implicit-coercion': 'off',
+  'no-implicit-globals': 'off',
   'no-import-assign': 'off',
   'no-inline-comments': 'off',
   'no-inner-declarations': 'off',
@@ -152,6 +153,7 @@ const eslintRules: Record<string, 'off'> = {
   'no-with': 'off',
   'object-shorthand': 'off',
   'operator-assignment': 'off',
+  'prefer-arrow-callback': 'off',
   'prefer-const': 'off',
   'prefer-destructuring': 'off',
   'prefer-exponentiation-operator': 'off',
@@ -323,7 +325,10 @@ const jsdocRules: Record<string, 'off'> = {
   'jsdoc/require-returns': 'off',
   'jsdoc/require-returns-description': 'off',
   'jsdoc/require-returns-type': 'off',
+  'jsdoc/require-throws-description': 'off',
+  'jsdoc/require-throws-type': 'off',
   'jsdoc/require-yields': 'off',
+  'jsdoc/require-yields-type': 'off',
 };
 
 const jsxA11yRules: Record<string, 'off'> = {
@@ -338,6 +343,7 @@ const jsxA11yRules: Record<string, 'off'> = {
   'jsx-a11y/aria-unsupported-elements': 'off',
   'jsx-a11y/autocomplete-valid': 'off',
   'jsx-a11y/click-events-have-key-events': 'off',
+  'jsx-a11y/control-has-associated-label': 'off',
   'jsx-a11y/heading-has-content': 'off',
   'jsx-a11y/html-has-lang': 'off',
   'jsx-a11y/iframe-has-title': 'off',
@@ -351,6 +357,8 @@ const jsxA11yRules: Record<string, 'off'> = {
   'jsx-a11y/no-aria-hidden-on-focusable': 'off',
   'jsx-a11y/no-autofocus': 'off',
   'jsx-a11y/no-distracting-elements': 'off',
+  'jsx-a11y/no-interactive-element-to-noninteractive-role': 'off',
+  'jsx-a11y/no-noninteractive-element-interactions': 'off',
   'jsx-a11y/no-noninteractive-element-to-interactive-role': 'off',
   'jsx-a11y/no-noninteractive-tabindex': 'off',
   'jsx-a11y/no-redundant-roles': 'off',
