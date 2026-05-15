@@ -955,7 +955,16 @@ exports[`contains all the oxlint rules 1`] = `
   "jsdoc/require-returns-type": [
     0,
   ],
+  "jsdoc/require-throws-description": [
+    0,
+  ],
+  "jsdoc/require-throws-type": [
+    0,
+  ],
   "jsdoc/require-yields": [
+    0,
+  ],
+  "jsdoc/require-yields-type": [
     0,
   ],
   "jsx-a11y/alt-text": [
@@ -989,6 +998,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jsx-a11y/click-events-have-key-events": [
+    0,
+  ],
+  "jsx-a11y/control-has-associated-label": [
     0,
   ],
   "jsx-a11y/heading-has-content": [
@@ -1028,6 +1040,12 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "jsx-a11y/no-distracting-elements": [
+    0,
+  ],
+  "jsx-a11y/no-interactive-element-to-noninteractive-role": [
+    0,
+  ],
+  "jsx-a11y/no-noninteractive-element-interactions": [
     0,
   ],
   "jsx-a11y/no-noninteractive-element-to-interactive-role": [
@@ -1291,6 +1309,12 @@ exports[`contains all the oxlint rules 1`] = `
       "disallowTemplateShorthand": false,
       "number": true,
       "string": true,
+    },
+  ],
+  "no-implicit-globals": [
+    0,
+    {
+      "lexicalBindings": false,
     },
   ],
   "no-import-assign": [
@@ -1635,6 +1659,13 @@ exports[`contains all the oxlint rules 1`] = `
   "operator-assignment": [
     0,
     "always",
+  ],
+  "prefer-arrow-callback": [
+    0,
+    {
+      "allowNamedFunctions": false,
+      "allowUnboundThis": true,
+    },
   ],
   "prefer-const": [
     0,
