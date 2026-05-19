@@ -541,6 +541,16 @@ exports[`contains all the oxlint rules 1`] = `
       "properties": "always",
     },
   ],
+  "id-match": [
+    0,
+    "^.+$",
+    {
+      "classFields": false,
+      "ignoreDestructuring": false,
+      "onlyDeclarations": false,
+      "properties": false,
+    },
+  ],
   "import-x/consistent-type-specifier-style": [
     0,
   ],
@@ -563,6 +573,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import-x/namespace": [
+    0,
+  ],
+  "import-x/newline-after-import": [
     0,
   ],
   "import-x/no-absolute-path": [
@@ -653,6 +666,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "import/namespace": [
+    0,
+  ],
+  "import/newline-after-import": [
     0,
   ],
   "import/no-absolute-path": [
@@ -1317,6 +1333,9 @@ exports[`contains all the oxlint rules 1`] = `
       "lexicalBindings": false,
     },
   ],
+  "no-implied-eval": [
+    0,
+  ],
   "no-import-assign": [
     0,
   ],
@@ -1899,6 +1918,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/no-namespace": [
     0,
   ],
+  "react/no-object-type-as-default-prop": [
+    0,
+  ],
   "react/no-react-children": [
     0,
   ],
@@ -1924,6 +1946,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-unsafe": [
+    0,
+  ],
+  "react/no-unstable-nested-components": [
     0,
   ],
   "react/no-will-update-set-state": [
@@ -2490,6 +2515,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/no-unneeded-async-expect-function": [
+    0,
+  ],
+  "vitest/padding-around-after-all-blocks": [
     0,
   ],
   "vitest/prefer-called-exactly-once-with": [
