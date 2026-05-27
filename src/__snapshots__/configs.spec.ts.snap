@@ -463,6 +463,7 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "capitalized-comments": [
     0,
+    "always",
   ],
   "class-methods-use-this": [
     0,
@@ -495,12 +496,14 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "eqeqeq": [
     0,
+    "always",
   ],
   "for-direction": [
     0,
   ],
   "func-name-matching": [
     0,
+    "always",
   ],
   "func-names": [
     0,
@@ -739,6 +742,7 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "init-declarations": [
     0,
+    "always",
   ],
   "jest/consistent-test-it": [
     0,
@@ -1093,27 +1097,35 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "logical-assignment-operators": [
     0,
+    "always",
   ],
   "max-classes-per-file": [
     0,
+    1,
   ],
   "max-depth": [
     0,
+    4,
   ],
   "max-lines": [
     0,
+    300,
   ],
   "max-lines-per-function": [
     0,
+    50,
   ],
   "max-nested-callbacks": [
     0,
+    10,
   ],
   "max-params": [
     0,
+    3,
   ],
   "max-statements": [
     0,
+    10,
   ],
   "n/callback-return": [
     0,
@@ -1394,6 +1406,18 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-magic-numbers": [
     0,
+    {
+      "detectObjects": false,
+      "enforceConst": false,
+      "ignore": [],
+      "ignoreArrayIndexes": false,
+      "ignoreClassFieldInitialValues": false,
+      "ignoreDefaultValues": false,
+      "ignoreEnums": false,
+      "ignoreNumericLiteralTypes": false,
+      "ignoreReadonlyClassProperties": false,
+      "ignoreTypeIndexes": false,
+    },
   ],
   "no-misleading-character-class": [
     0,
@@ -1601,6 +1625,15 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-unused-vars": [
     0,
+    {
+      "args": "after-used",
+      "caughtErrors": "all",
+      "ignoreClassWithStaticInitBlock": false,
+      "ignoreRestSiblings": false,
+      "ignoreUsingDeclarations": false,
+      "reportUsedIgnorePattern": false,
+      "vars": "all",
+    },
   ],
   "no-use-before-define": [
     0,
@@ -1677,6 +1710,7 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "object-shorthand": [
     0,
+    "always",
   ],
   "operator-assignment": [
     0,
