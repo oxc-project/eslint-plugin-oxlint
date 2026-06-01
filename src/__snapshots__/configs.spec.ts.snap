@@ -131,6 +131,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/max-params": [
     0,
   ],
+  "@typescript-eslint/method-signature-style": [
+    0,
+  ],
   "@typescript-eslint/no-array-constructor": [
     0,
   ],
@@ -984,6 +987,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsdoc/require-yields": [
     0,
   ],
+  "jsdoc/require-yields-description": [
+    0,
+  ],
   "jsdoc/require-yields-type": [
     0,
   ],
@@ -1734,6 +1740,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "prefer-exponentiation-operator": [
+    0,
+  ],
+  "prefer-named-capture-group": [
     0,
   ],
   "prefer-numeric-literals": [
@@ -2686,6 +2695,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vitest/warn-todo": [
     0,
   ],
+  "vue/component-definition-name-casing": [
+    0,
+  ],
   "vue/define-emits-declaration": [
     0,
   ],
@@ -2743,6 +2755,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-required-prop-with-default": [
     0,
   ],
+  "vue/no-reserved-component-names": [
+    0,
+  ],
   "vue/no-shared-component-data": [
     0,
   ],
@@ -2756,6 +2771,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/require-default-export": [
+    0,
+  ],
+  "vue/require-prop-type-constructor": [
     0,
   ],
   "vue/require-render-return": [

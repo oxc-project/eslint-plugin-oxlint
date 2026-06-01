@@ -159,6 +159,7 @@ const eslintRules: Record<string, 'off'> = {
   'prefer-const': 'off',
   'prefer-destructuring': 'off',
   'prefer-exponentiation-operator': 'off',
+  'prefer-named-capture-group': 'off',
   'prefer-numeric-literals': 'off',
   'prefer-object-has-own': 'off',
   'prefer-object-spread': 'off',
@@ -332,6 +333,7 @@ const jsdocRules: Record<string, 'off'> = {
   'jsdoc/require-throws-description': 'off',
   'jsdoc/require-throws-type': 'off',
   'jsdoc/require-yields': 'off',
+  'jsdoc/require-yields-description': 'off',
   'jsdoc/require-yields-type': 'off',
 };
 
@@ -515,6 +517,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/explicit-function-return-type': 'off',
   '@typescript-eslint/explicit-member-accessibility': 'off',
   '@typescript-eslint/explicit-module-boundary-types': 'off',
+  '@typescript-eslint/method-signature-style': 'off',
   '@typescript-eslint/no-confusing-non-null-assertion': 'off',
   '@typescript-eslint/no-duplicate-enum-values': 'off',
   '@typescript-eslint/no-dynamic-delete': 'off',
@@ -779,6 +782,7 @@ const vitestRules: Record<string, 'off'> = {
 };
 
 const vueRules: Record<string, 'off'> = {
+  'vue/component-definition-name-casing': 'off',
   'vue/define-emits-declaration': 'off',
   'vue/define-props-declaration': 'off',
   'vue/define-props-destructuring': 'off',
@@ -798,11 +802,13 @@ const vueRules: Record<string, 'off'> = {
   'vue/no-lifecycle-after-await': 'off',
   'vue/no-multiple-slot-args': 'off',
   'vue/no-required-prop-with-default': 'off',
+  'vue/no-reserved-component-names': 'off',
   'vue/no-shared-component-data': 'off',
   'vue/no-this-in-before-route-enter': 'off',
   'vue/no-watch-after-await': 'off',
   'vue/prefer-import-from-vue': 'off',
   'vue/require-default-export': 'off',
+  'vue/require-prop-type-constructor': 'off',
   'vue/require-render-return': 'off',
   'vue/require-slots-as-functions': 'off',
   'vue/require-typed-ref': 'off',
