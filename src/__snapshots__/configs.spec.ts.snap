@@ -2710,6 +2710,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/max-props": [
     0,
   ],
+  "vue/next-tick-style": [
+    0,
+  ],
   "vue/no-arrow-functions-in-watch": [
     0,
   ],
@@ -2758,6 +2761,12 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-reserved-component-names": [
     0,
   ],
+  "vue/no-reserved-keys": [
+    0,
+  ],
+  "vue/no-reserved-props": [
+    0,
+  ],
   "vue/no-shared-component-data": [
     0,
   ],
@@ -2770,10 +2779,19 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/prefer-import-from-vue": [
     0,
   ],
+  "vue/prop-name-casing": [
+    0,
+  ],
   "vue/require-default-export": [
     0,
   ],
+  "vue/require-direct-export": [
+    0,
+  ],
   "vue/require-prop-type-constructor": [
+    0,
+  ],
+  "vue/require-prop-types": [
     0,
   ],
   "vue/require-render-return": [
