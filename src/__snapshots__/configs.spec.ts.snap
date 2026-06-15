@@ -1907,6 +1907,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-no-duplicate-props": [
     0,
   ],
+  "react/jsx-no-literals": [
+    0,
+  ],
   "react/jsx-no-script-url": [
     0,
   ],
@@ -2130,6 +2133,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/no-array-callback-reference": [
     0,
   ],
+  "unicorn/no-array-fill-with-reference-type": [
+    0,
+  ],
   "unicorn/no-array-for-each": [
     0,
   ],
@@ -2334,6 +2340,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/prefer-event-target": [
     0,
   ],
+  "unicorn/prefer-export-from": [
+    0,
+  ],
   "unicorn/prefer-global-this": [
     0,
   ],
@@ -2401,6 +2410,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-set-size": [
+    0,
+  ],
+  "unicorn/prefer-single-call": [
     0,
   ],
   "unicorn/prefer-spread": [
@@ -2740,6 +2752,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-deprecated-vue-config-keycodes": [
     0,
   ],
+  "vue/no-dupe-keys": [
+    0,
+  ],
   "vue/no-export-in-script-setup": [
     0,
   ],
@@ -2770,6 +2785,9 @@ exports[`contains all the oxlint rules 1`] = `
   "vue/no-shared-component-data": [
     0,
   ],
+  "vue/no-side-effects-in-computed-properties": [
+    0,
+  ],
   "vue/no-this-in-before-route-enter": [
     0,
   ],
@@ -2783,6 +2801,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/require-default-export": [
+    0,
+  ],
+  "vue/require-default-prop": [
     0,
   ],
   "vue/require-direct-export": [
