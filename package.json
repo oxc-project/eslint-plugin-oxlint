@@ -13,7 +13,7 @@
   "author": "Dunqing <dengqing0821@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oxc-project/eslint-plugin-oxlint.git"
+    "url": "git+https://github.com/oxc-project/eslint-plugin-oxlint"
   },
   "files": [
     "dist",
