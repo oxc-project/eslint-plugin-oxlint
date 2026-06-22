@@ -336,5 +336,5 @@ const executeOxlintWithConfiguration = (
     return;
   }
 
-  return Number.parseInt(result[1], 10) ?? undefined;
+  return Math.trunc(Number(result[1])) ?? undefined;
 };
