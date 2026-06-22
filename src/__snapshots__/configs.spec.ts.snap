@@ -1145,6 +1145,9 @@ exports[`contains all the oxlint rules 1`] = `
   "n/no-exports-assign": [
     0,
   ],
+  "n/no-mixed-requires": [
+    0,
+  ],
   "n/no-new-require": [
     0,
   ],
@@ -1152,6 +1155,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "n/no-process-env": [
+    0,
+  ],
+  "n/no-sync": [
     0,
   ],
   "new-cap": [
@@ -2118,6 +2124,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/import-style": [
     0,
   ],
+  "unicorn/max-nested-calls": [
+    0,
+  ],
   "unicorn/new-for-builtins": [
     0,
   ],
@@ -2380,6 +2389,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/prefer-node-protocol": [
+    0,
+  ],
+  "unicorn/prefer-number-coercion": [
     0,
   ],
   "unicorn/prefer-number-properties": [
@@ -2726,6 +2738,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vue/no-arrow-functions-in-watch": [
+    0,
+  ],
+  "vue/no-async-in-computed-properties": [
     0,
   ],
   "vue/no-computed-properties-in-data": [
