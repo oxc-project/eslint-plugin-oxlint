@@ -405,9 +405,11 @@ const nodeRules: Record<string, 'off'> = {
   'n/global-require': 'off',
   'n/handle-callback-err': 'off',
   'n/no-exports-assign': 'off',
+  'n/no-mixed-requires': 'off',
   'n/no-new-require': 'off',
   'n/no-path-concat': 'off',
   'n/no-process-env': 'off',
+  'n/no-sync': 'off',
 };
 
 const promiseRules: Record<string, 'off'> = {
@@ -589,6 +591,7 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/explicit-length-check': 'off',
   'unicorn/filename-case': 'off',
   'unicorn/import-style': 'off',
+  'unicorn/max-nested-calls': 'off',
   'unicorn/new-for-builtins': 'off',
   'unicorn/no-abusive-eslint-disable': 'off',
   'unicorn/no-accessor-recursion': 'off',
@@ -677,6 +680,7 @@ const unicornRules: Record<string, 'off'> = {
   'unicorn/prefer-native-coercion-functions': 'off',
   'unicorn/prefer-negative-index': 'off',
   'unicorn/prefer-node-protocol': 'off',
+  'unicorn/prefer-number-coercion': 'off',
   'unicorn/prefer-number-properties': 'off',
   'unicorn/prefer-object-from-entries': 'off',
   'unicorn/prefer-optional-catch-binding': 'off',
@@ -793,6 +797,7 @@ const vueRules: Record<string, 'off'> = {
   'vue/max-props': 'off',
   'vue/next-tick-style': 'off',
   'vue/no-arrow-functions-in-watch': 'off',
+  'vue/no-async-in-computed-properties': 'off',
   'vue/no-computed-properties-in-data': 'off',
   'vue/no-deprecated-data-object-declaration': 'off',
   'vue/no-deprecated-delete-set': 'off',
