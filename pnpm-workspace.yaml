@@ -1,7 +1,5 @@
 catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plus: ^0.2.0
-  vitest: npm:@voidzero-dev/vite-plus-test@latest
 minimumReleaseAgeExclude:
   - '@oxlint/binding-android-arm-eabi'
   - '@oxlint/binding-android-arm64'
@@ -23,9 +21,6 @@ minimumReleaseAgeExclude:
   - '@oxlint/binding-win32-ia32-msvc'
   - '@oxlint/binding-win32-x64-msvc'
   - oxlint
-overrides:
-  vite: 'catalog:'
-  vitest: 'catalog:'
 peerDependencyRules:
   allowAny:
     - vite
