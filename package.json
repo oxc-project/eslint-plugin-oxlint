@@ -65,12 +65,10 @@
     "jiti": "^2.6.1",
     "scule": "^1.3.0",
     "typescript-eslint": "^8.57.1",
-    "vite": "catalog:",
-    "vite-plus": "catalog:",
-    "vitest": "catalog:"
+    "vite-plus": "catalog:"
   },
   "peerDependencies": {
     "oxlint": "~1.71.0"
   },
-  "packageManager": "pnpm@11.5.1"
+  "packageManager": "pnpm@11.8.0"
 }

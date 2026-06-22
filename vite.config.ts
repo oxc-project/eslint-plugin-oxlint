@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite-plus';
-import { type DummyRuleMap } from 'oxlint';
+import { DummyRule, type DummyRuleMap } from 'oxlint';
 import unicorn from 'eslint-plugin-unicorn';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
@@ -201,9 +201,9 @@ export default defineConfig({
     },
     extends: [],
     rules: {
-      ...esLintRecommended,
-      ...uniCornRecommended,
-      ...typescriptRecommended,
+      ...(esLintRecommended as Record<string, DummyRule>),
+      ...(uniCornRecommended as Record<string, DummyRule>),
+      ...(typescriptRecommended as Record<string, DummyRule>),
       '@typescript-eslint/no-unsafe-type-assertion': 'off', // FIX: ignore them inline or fix them
       'no-shadow': 'off', // FIX: ignore them inline or fix them
     },
