@@ -183,7 +183,18 @@ delete uniCornRecommended['unicorn/require-proxy-trap-boolean-return'];
 delete uniCornRecommended['unicorn/string-content'];
 delete uniCornRecommended['unicorn/template-indent'];
 delete uniCornRecommended['unicorn/try-complexity'];
-
+delete uniCornRecommended['unicorn/consistent-tuple-labels'];
+delete uniCornRecommended['unicorn/no-invalid-well-known-symbol-methods'];
+delete uniCornRecommended['unicorn/no-late-event-control'];
+delete uniCornRecommended['unicorn/prefer-abort-signal-timeout'];
+delete uniCornRecommended['unicorn/prefer-aggregate-error'];
+delete uniCornRecommended['unicorn/prefer-dom-node-replace-children'];
+delete uniCornRecommended['unicorn/prefer-error-is-error'];
+delete uniCornRecommended['unicorn/prefer-observer-apis'];
+delete uniCornRecommended['unicorn/prefer-promise-try'];
+delete uniCornRecommended['unicorn/prefer-set-methods'];
+delete uniCornRecommended['unicorn/prefer-toggle-attribute'];
+delete uniCornRecommended['unicorn/prefer-url-search-parameters'];
 const typescriptRecommended: DummyRuleMap = {};
 for (const config of tseslint.configs.recommended) {
   Object.assign(typescriptRecommended, config.rules);
