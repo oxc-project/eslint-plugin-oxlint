@@ -273,6 +273,7 @@ const styleRules: Record<string, 'off'> = {
   'unicorn/custom-error-definition': 'off',
   'unicorn/empty-brace-spaces': 'off',
   'unicorn/error-message': 'off',
+  'unicorn/explicit-timer-delay': 'off',
   'unicorn/filename-case': 'off',
   'unicorn/max-nested-calls': 'off',
   'unicorn/no-array-method-this-argument': 'off',
@@ -434,6 +435,7 @@ const suspiciousRules: Record<string, 'off'> = {
   'unicorn/no-array-fill-with-reference-type': 'off',
   'unicorn/no-array-reverse': 'off',
   'unicorn/no-array-sort': 'off',
+  'unicorn/no-confusing-array-with': 'off',
   'unicorn/no-instanceof-builtins': 'off',
   'unicorn/prefer-add-event-listener': 'off',
   'unicorn/require-module-specifiers': 'off',
@@ -814,6 +816,7 @@ const perfRules: Record<string, 'off'> = {
 const nurseryRules: Record<string, 'off'> = {
   'no-restricted-exports': 'off',
   'no-undef': 'off',
+  'no-unreachable-loop': 'off',
   'no-useless-assignment': 'off',
   'import/export': 'off',
   'import/named': 'off',
