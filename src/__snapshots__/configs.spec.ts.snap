@@ -2118,6 +2118,9 @@ exports[`contains all the oxlint rules 1`] = `
   "unicorn/explicit-length-check": [
     0,
   ],
+  "unicorn/explicit-timer-delay": [
+    0,
+  ],
   "unicorn/filename-case": [
     0,
   ],
@@ -2164,6 +2167,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "unicorn/no-await-in-promise-methods": [
+    0,
+  ],
+  "unicorn/no-confusing-array-with": [
     0,
   ],
   "unicorn/no-console-spaces": [
