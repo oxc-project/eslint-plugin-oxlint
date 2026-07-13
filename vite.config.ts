@@ -195,6 +195,16 @@ delete uniCornRecommended['unicorn/prefer-promise-try'];
 delete uniCornRecommended['unicorn/prefer-set-methods'];
 delete uniCornRecommended['unicorn/prefer-toggle-attribute'];
 delete uniCornRecommended['unicorn/prefer-url-search-parameters'];
+delete uniCornRecommended['unicorn/no-async-promise-finally'];
+delete uniCornRecommended['unicorn/no-unnecessary-array-flat-map'];
+delete uniCornRecommended['unicorn/no-unnecessary-fetch-options'];
+delete uniCornRecommended['unicorn/no-unsafe-promise-all-settled-values'];
+delete uniCornRecommended['unicorn/prefer-abort-signal-any'];
+delete uniCornRecommended['unicorn/prefer-array-from-range'];
+delete uniCornRecommended['unicorn/prefer-block-statement-over-iife'];
+delete uniCornRecommended['unicorn/prefer-group-by'];
+delete uniCornRecommended['unicorn/prefer-iterator-helpers'];
+delete uniCornRecommended['unicorn/prefer-simplified-conditions'];
 const typescriptRecommended: DummyRuleMap = {};
 for (const config of tseslint.configs.recommended) {
   Object.assign(typescriptRecommended, config.rules);
