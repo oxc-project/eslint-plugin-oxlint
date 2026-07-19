@@ -14,10 +14,16 @@ jobs:
       contents: write
       id-token: write # for `pnpm publish --provenance`
     steps:
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        id: app-token
+        with:
+          client-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
-          persist-credentials: true
+          persist-credentials: false
 
       - uses: oxc-project/setup-node@4c588e9266bd930b6ddc34307df0659ed511d187 # v1.3.1
 
@@ -31,15 +37,10 @@ jobs:
           VERSION=$(echo "${COMMIT_MESSAGE}" | grep -oP 'release: \Kv[0-9]+\.[0-9]+\.[0-9]+')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Create and push tag
-        run: |
-          git tag ${VERSION}
-          git push origin ${VERSION}
-
-      - run: npx changelogithub
-        continue-on-error: true
+      - name: Create GitHub release and tag
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: gh release create ${VERSION} --target ${{ github.sha }} --generate-notes
 
       - name: Publish to NPM
         run: pnpm publish --tag latest --provenance --access public
