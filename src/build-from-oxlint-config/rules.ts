@@ -3,12 +3,7 @@ import {
   reactHookRulesInsideReactScope,
   typescriptRulesExtendEslintRules,
 } from '../constants.js';
-import {
-  BuildFromOxlintConfigOptions,
-  OxlintConfig,
-  OxlintConfigOverride,
-  OxlintConfigRules,
-} from './types.js';
+import { BuildFromOxlintConfigOptions, OxlintConfigRules } from './types.js';
 import * as allRulesObjects from '../generated/rules-by-category.js';
 import { isObject } from './utilities.js';
 
@@ -169,10 +164,6 @@ export const handleRulesScope = (
  * tries to return the "rules" section from the config.
  * it returns `undefined` when not found or invalid.
  */
-export const readRulesFromConfig = (
-  config: OxlintConfig | OxlintConfigOverride
-): OxlintConfigRules | undefined => {
-  return 'rules' in config && isObject(config.rules)
-    ? (config.rules as OxlintConfigRules)
-    : undefined;
+export const readRulesFromConfig = (config: unknown): OxlintConfigRules | undefined => {
+  return isObject(config) && 'rules' in config && isObject(config.rules) ? config.rules : undefined;
 };

@@ -1226,6 +1226,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-constant-binary-expression": [
     0,
+    {
+      "checkRelationalComparisons": false,
+    },
   ],
   "no-constant-condition": [
     0,
@@ -1784,6 +1787,7 @@ exports[`contains all the oxlint rules 1`] = `
   "preserve-caught-error": [
     0,
     {
+      "errorClassNames": [],
       "requireCatchParameter": false,
     },
   ],

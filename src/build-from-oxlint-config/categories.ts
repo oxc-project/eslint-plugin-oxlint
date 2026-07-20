@@ -2,7 +2,6 @@ import { aliasPluginNames } from '../constants.js';
 import * as allRulesObjects from '../generated/rules-by-category.js';
 import {
   BuildFromOxlintConfigOptions,
-  OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigPlugins,
 } from './types.js';
@@ -66,10 +65,8 @@ export const handleCategoriesScope = (
  * tries to return the "categories" section from the config.
  * it returns `undefined` when not found or invalid.
  */
-export const readCategoriesFromConfig = (
-  config: OxlintConfig
-): OxlintConfigCategories | undefined => {
-  return 'categories' in config && isObject(config.categories)
-    ? (config.categories as OxlintConfigCategories)
+export const readCategoriesFromConfig = (config: unknown): OxlintConfigCategories | undefined => {
+  return isObject(config) && 'categories' in config && isObject(config.categories)
+    ? config.categories
     : undefined;
 };
