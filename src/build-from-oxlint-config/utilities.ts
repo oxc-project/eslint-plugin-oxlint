@@ -5,7 +5,7 @@ import { OxlintConfig } from './types.js';
 /**
  * Detects it the value is an object
  */
-export const isObject = (value: unknown): boolean =>
+export const isObject = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
 
 /**
