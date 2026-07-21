@@ -1160,6 +1160,9 @@ exports[`contains all the oxlint rules 1`] = `
   "n/no-sync": [
     0,
   ],
+  "n/no-top-level-await": [
+    0,
+  ],
   "new-cap": [
     0,
     {
@@ -1879,6 +1882,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/forward-ref-uses-ref": [
+    0,
+  ],
+  "react/function-component-definition": [
     0,
   ],
   "react/hook-use-state": [
@@ -2601,6 +2607,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "vitest/padding-around-after-all-blocks": [
+    0,
+  ],
+  "vitest/padding-around-test-blocks": [
     0,
   ],
   "vitest/prefer-called-exactly-once-with": [
