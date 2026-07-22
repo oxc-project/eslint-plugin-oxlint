@@ -410,6 +410,7 @@ const nodeRules: Record<string, 'off'> = {
   'n/no-path-concat': 'off',
   'n/no-process-env': 'off',
   'n/no-sync': 'off',
+  'n/no-top-level-await': 'off',
 };
 
 const promiseRules: Record<string, 'off'> = {
@@ -438,6 +439,7 @@ const reactRules: Record<string, 'off'> = {
   'react/forbid-dom-props': 'off',
   'react/forbid-elements': 'off',
   'react/forward-ref-uses-ref': 'off',
+  'react/function-component-definition': 'off',
   'react/hook-use-state': 'off',
   'react/iframe-missing-sandbox': 'off',
   'react/jsx-boolean-value': 'off',
@@ -747,6 +749,7 @@ const vitestRules: Record<string, 'off'> = {
   'vitest/no-test-return-statement': 'off',
   'vitest/no-unneeded-async-expect-function': 'off',
   'vitest/padding-around-after-all-blocks': 'off',
+  'vitest/padding-around-test-blocks': 'off',
   'vitest/prefer-called-exactly-once-with': 'off',
   'vitest/prefer-called-once': 'off',
   'vitest/prefer-called-times': 'off',
