@@ -538,6 +538,9 @@ exports[`contains all the oxlint rules 1`] = `
   "guard-for-in": [
     0,
   ],
+  "id-denylist": [
+    0,
+  ],
   "id-length": [
     0,
     {
@@ -1134,6 +1137,9 @@ exports[`contains all the oxlint rules 1`] = `
     10,
   ],
   "n/callback-return": [
+    0,
+  ],
+  "n/exports-style": [
     0,
   ],
   "n/global-require": [

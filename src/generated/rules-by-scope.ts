@@ -21,6 +21,7 @@ const eslintRules: Record<string, 'off'> = {
   'getter-return': 'off',
   'grouped-accessor-pairs': 'off',
   'guard-for-in': 'off',
+  'id-denylist': 'off',
   'id-length': 'off',
   'id-match': 'off',
   'init-declarations': 'off',
@@ -402,6 +403,7 @@ const nextjsRules: Record<string, 'off'> = {
 
 const nodeRules: Record<string, 'off'> = {
   'n/callback-return': 'off',
+  'n/exports-style': 'off',
   'n/global-require': 'off',
   'n/handle-callback-err': 'off',
   'n/no-exports-assign': 'off',
