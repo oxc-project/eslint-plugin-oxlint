@@ -945,6 +945,9 @@ exports[`contains all the oxlint rules 1`] = `
   "jsdoc/implements-on-classes": [
     0,
   ],
+  "jsdoc/no-blank-blocks": [
+    0,
+  ],
   "jsdoc/no-defaults": [
     0,
   ],
@@ -1733,6 +1736,10 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "object-shorthand": [
+    0,
+    "always",
+  ],
+  "one-var": [
     0,
     "always",
   ],
