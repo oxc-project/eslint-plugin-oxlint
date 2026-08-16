@@ -37,8 +37,8 @@ importers:
         specifier: ^10.0.3
         version: 10.8.1(jiti@2.7.0)(supports-color@7.2.0)
       eslint-plugin-unicorn:
-        specifier: ^72.0.0
-        version: 72.0.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
+        specifier: ^73.0.0
+        version: 73.0.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
       jiti:
         specifier: ^2.6.1
         version: 2.7.0
@@ -1292,8 +1292,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-plugin-unicorn@72.0.0:
-    resolution: {integrity: sha512-hqO6ksoOHO+ZhdseTuKRVQbx9U7PRO/cv8qAR1mctwzdVO2hYud8uS9luAhp43RJgziYgHAph8eHyipT8GL0ng==}
+  eslint-plugin-unicorn@73.0.0:
+    resolution: {integrity: sha512-V0YatLe9nkGhXEXKe2Qljb1EY0sJHwDV0HUF1NKFwtsHh/fU7qGHDgv+6fchzZcgU2/7noHo2gdjnmo0P2uDPw==}
     engines: {node: '>=22'}
     peerDependencies:
       eslint: '>=10.4'
@@ -2894,7 +2894,7 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-unicorn@72.0.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)):
+  eslint-plugin-unicorn@73.0.0(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0)):
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.8.1(jiti@2.7.0)(supports-color@7.2.0))
       '@eslint/css-tree': 4.0.4
