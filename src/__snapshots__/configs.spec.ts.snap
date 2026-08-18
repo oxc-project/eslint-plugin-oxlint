@@ -1879,10 +1879,19 @@ exports[`contains all the oxlint rules 1`] = `
   "react/button-has-type": [
     0,
   ],
+  "react/capitalized-calls": [
+    0,
+  ],
   "react/checked-requires-onchange-or-readonly": [
     0,
   ],
   "react/display-name": [
+    0,
+  ],
+  "react/error-boundaries": [
+    0,
+  ],
+  "react/exhaustive-effect-dependencies": [
     0,
   ],
   "react/forbid-component-props": [
@@ -1900,10 +1909,25 @@ exports[`contains all the oxlint rules 1`] = `
   "react/function-component-definition": [
     0,
   ],
+  "react/globals": [
+    0,
+  ],
   "react/hook-use-state": [
     0,
   ],
+  "react/hooks": [
+    0,
+  ],
   "react/iframe-missing-sandbox": [
+    0,
+  ],
+  "react/immutability": [
+    0,
+  ],
+  "react/incompatible-library": [
+    0,
+  ],
+  "react/invariant": [
     0,
   ],
   "react/jsx-boolean-value": [
@@ -1960,6 +1984,9 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-props-no-spreading": [
     0,
   ],
+  "react/memo-dependencies": [
+    0,
+  ],
   "react/no-array-index-key": [
     0,
   ],
@@ -1973,6 +2000,9 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-danger-with-children": [
+    0,
+  ],
+  "react/no-deriving-state-in-effects": [
     0,
   ],
   "react/no-did-mount-set-state": [
@@ -2041,19 +2071,55 @@ exports[`contains all the oxlint rules 1`] = `
   "react/prefer-function-component": [
     0,
   ],
+  "react/preserve-manual-memoization": [
+    0,
+  ],
+  "react/purity": [
+    0,
+  ],
   "react/react-in-jsx-scope": [
+    0,
+  ],
+  "react/refs": [
+    0,
+  ],
+  "react/rule-suppression": [
     0,
   ],
   "react/self-closing-comp": [
     0,
   ],
+  "react/set-state-in-effect": [
+    0,
+  ],
+  "react/set-state-in-render": [
+    0,
+  ],
   "react/state-in-constructor": [
+    0,
+  ],
+  "react/static-components": [
     0,
   ],
   "react/style-prop-object": [
     0,
   ],
+  "react/syntax": [
+    0,
+  ],
+  "react/todo": [
+    0,
+  ],
+  "react/unsupported-syntax": [
+    0,
+  ],
+  "react/use-memo": [
+    0,
+  ],
   "react/void-dom-elements-no-children": [
+    0,
+  ],
+  "react/void-use-memo": [
     0,
   ],
   "require-await": [
