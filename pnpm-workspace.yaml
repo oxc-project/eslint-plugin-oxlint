@@ -1,5 +1,5 @@
 catalog:
-  vite-plus: ^0.2.0
+  vite-plus: ^0.3.0
 minimumReleaseAgeExclude:
   - '@oxlint/binding-android-arm-eabi'
   - '@oxlint/binding-android-arm64'
