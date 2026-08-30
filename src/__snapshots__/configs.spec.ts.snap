@@ -1609,6 +1609,9 @@ exports[`contains all the oxlint rules 1`] = `
   ],
   "no-unmodified-loop-condition": [
     0,
+    {
+      "checkConditionalExpressions": false,
+    },
   ],
   "no-unneeded-ternary": [
     0,
