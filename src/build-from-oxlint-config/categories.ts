@@ -1,4 +1,4 @@
-import { aliasPluginNames } from '../constants.js';
+import { additionalEslintPluginPrefixes, aliasPluginNames } from '../constants.js';
 import * as allRulesObjects from '../generated/rules-by-category.js';
 import {
   BuildFromOxlintConfigOptions,
@@ -47,14 +47,20 @@ export const handleCategoriesScope = (
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of possibleRules) {
       for (const plugin of plugins) {
-        const pluginPrefix = plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
+        const pluginPrefixes = [
+          plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin,
+          // one oxlint plugin can own rules under several ESLint plugin prefixes
+          ...(additionalEslintPluginPrefixes[plugin] ?? []),
+        ];
 
-        // the rule has no prefix, so it is a eslint one
-        if (pluginPrefix === '' && !rule.includes('/')) {
-          rules[rule] = 'off';
-          // other rules with a prefix like @typescript-eslint/
-        } else if (rule.startsWith(`${pluginPrefix}/`)) {
-          rules[rule] = 'off';
+        for (const pluginPrefix of pluginPrefixes) {
+          // the rule has no prefix, so it is a eslint one
+          if (pluginPrefix === '' && !rule.includes('/')) {
+            rules[rule] = 'off';
+            // other rules with a prefix like @typescript-eslint/
+          } else if (pluginPrefix !== '' && rule.startsWith(`${pluginPrefix}/`)) {
+            rules[rule] = 'off';
+          }
         }
       }
     }
