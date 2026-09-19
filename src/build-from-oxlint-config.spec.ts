@@ -159,6 +159,14 @@ describe('integration test with oxlint', () => {
             (aliasRule) => aliasRule in buildConfig.rules!
           ).length;
         }
+
+        // oxlint's single `react/only-export-components` is turned off under both the
+        // `react/` and the `react-refresh/` rule id, so it counts twice on our side
+        if (config.plugins?.includes('react')) {
+          expectedCount += ['react-refresh/only-export-components'].filter(
+            (aliasRule) => aliasRule in buildConfig.rules!
+          ).length;
+        }
       }
 
       expect(receivedCount).toBe(expectedCount);

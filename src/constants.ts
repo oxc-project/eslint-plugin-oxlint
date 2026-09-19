@@ -16,6 +16,16 @@ export const aliasPluginNames: Record<string, string> = {
   'import-x': 'import',
 };
 
+// `aliasPluginNames` maps one oxlint plugin to exactly one ESLint plugin, but some oxlint
+// plugins carry rules that upstream live in *several* ESLint plugins. These are the extra
+// prefixes a plugin can emit, on top of its `aliasPluginNames` entry.
+// Without this, enabling an oxlint plugin via `categories` never switches off the rules it
+// owns under a different prefix -- see `reactHookRulesInsideReactScope` and
+// `react-refresh/only-export-components`.
+export const additionalEslintPluginPrefixes: Record<string, string[]> = {
+  react: ['react-hooks', 'react-refresh'],
+};
+
 // Some typescript-eslint rules are re-implemented version of eslint rules.
 // Since oxlint supports these rules under eslint/* and it also supports TS,
 // we should override these to make implementation status up-to-date.
@@ -43,7 +53,37 @@ export const typescriptRulesExtendEslintRules = [
 
 // All rules from `eslint-plugin-react-hooks`
 // Since oxlint supports these rules under react/*, we need to remap them.
-export const reactHookRulesInsideReactScope = ['rules-of-hooks', 'exhaustive-deps'];
+// Keep this in sync with oxlint's `react` scope: every rule oxlint namespaces under
+// `react/` that upstream ships in `eslint-plugin-react-hooks` (rather than
+// `eslint-plugin-react`) belongs here, otherwise we emit `react/<rule>: off`, which
+// matches no real ESLint rule and silently leaves the `react-hooks/<rule>` copy running.
+// Most of these are the React Compiler rules, ported into oxlint's `react` plugin.
+export const reactHookRulesInsideReactScope = [
+  'capitalized-calls',
+  'error-boundaries',
+  'exhaustive-deps',
+  'exhaustive-effect-dependencies',
+  'globals',
+  'hooks',
+  'immutability',
+  'incompatible-library',
+  'invariant',
+  'memo-dependencies',
+  'no-deriving-state-in-effects',
+  'preserve-manual-memoization',
+  'purity',
+  'refs',
+  'rule-suppression',
+  'rules-of-hooks',
+  'set-state-in-effect',
+  'set-state-in-render',
+  'static-components',
+  'syntax',
+  'todo',
+  'unsupported-syntax',
+  'use-memo',
+  'void-use-memo',
+];
 
 // These rules are disabled for vue, astro, and svelte files
 // because oxlint can not parse currently the HTML

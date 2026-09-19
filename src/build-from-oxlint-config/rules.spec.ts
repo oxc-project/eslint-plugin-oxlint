@@ -58,6 +58,8 @@ describe('handleRulesScope', () => {
         'nextjs/no-img-element': 'warn',
         'jsx_a11y/alt-text': 'warn',
         'react/rules-of-hooks': 'warn',
+        // a React Compiler rule: oxlint namespaces it `react/`, eslint-plugin-react-hooks owns it
+        'react/purity': 'warn',
         'react/only-export-components': 'warn',
         'import-x/namespace': 'warn',
         'node/global-require': 'warn',
@@ -75,6 +77,7 @@ describe('handleRulesScope', () => {
       '@next/next/no-img-element': 'off',
       'jsx-a11y/alt-text': 'off',
       'react-hooks/rules-of-hooks': 'off',
+      'react-hooks/purity': 'off',
       'react-refresh/only-export-components': 'off',
       'import/namespace': 'off',
       'n/global-require': 'off',

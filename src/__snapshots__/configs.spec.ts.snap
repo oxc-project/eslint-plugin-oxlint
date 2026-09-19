@@ -1858,10 +1858,76 @@ exports[`contains all the oxlint rules 1`] = `
   "radix": [
     0,
   ],
+  "react-hooks/capitalized-calls": [
+    0,
+  ],
+  "react-hooks/error-boundaries": [
+    0,
+  ],
   "react-hooks/exhaustive-deps": [
     0,
   ],
+  "react-hooks/exhaustive-effect-dependencies": [
+    0,
+  ],
+  "react-hooks/globals": [
+    0,
+  ],
+  "react-hooks/hooks": [
+    0,
+  ],
+  "react-hooks/immutability": [
+    0,
+  ],
+  "react-hooks/incompatible-library": [
+    0,
+  ],
+  "react-hooks/invariant": [
+    0,
+  ],
+  "react-hooks/memo-dependencies": [
+    0,
+  ],
+  "react-hooks/no-deriving-state-in-effects": [
+    0,
+  ],
+  "react-hooks/preserve-manual-memoization": [
+    0,
+  ],
+  "react-hooks/purity": [
+    0,
+  ],
+  "react-hooks/refs": [
+    0,
+  ],
+  "react-hooks/rule-suppression": [
+    0,
+  ],
   "react-hooks/rules-of-hooks": [
+    0,
+  ],
+  "react-hooks/set-state-in-effect": [
+    0,
+  ],
+  "react-hooks/set-state-in-render": [
+    0,
+  ],
+  "react-hooks/static-components": [
+    0,
+  ],
+  "react-hooks/syntax": [
+    0,
+  ],
+  "react-hooks/todo": [
+    0,
+  ],
+  "react-hooks/unsupported-syntax": [
+    0,
+  ],
+  "react-hooks/use-memo": [
+    0,
+  ],
+  "react-hooks/void-use-memo": [
     0,
   ],
   "react-perf/jsx-no-jsx-as-prop": [
@@ -1882,19 +1948,10 @@ exports[`contains all the oxlint rules 1`] = `
   "react/button-has-type": [
     0,
   ],
-  "react/capitalized-calls": [
-    0,
-  ],
   "react/checked-requires-onchange-or-readonly": [
     0,
   ],
   "react/display-name": [
-    0,
-  ],
-  "react/error-boundaries": [
-    0,
-  ],
-  "react/exhaustive-effect-dependencies": [
     0,
   ],
   "react/forbid-component-props": [
@@ -1912,25 +1969,10 @@ exports[`contains all the oxlint rules 1`] = `
   "react/function-component-definition": [
     0,
   ],
-  "react/globals": [
-    0,
-  ],
   "react/hook-use-state": [
     0,
   ],
-  "react/hooks": [
-    0,
-  ],
   "react/iframe-missing-sandbox": [
-    0,
-  ],
-  "react/immutability": [
-    0,
-  ],
-  "react/incompatible-library": [
-    0,
-  ],
-  "react/invariant": [
     0,
   ],
   "react/jsx-boolean-value": [
@@ -1987,9 +2029,6 @@ exports[`contains all the oxlint rules 1`] = `
   "react/jsx-props-no-spreading": [
     0,
   ],
-  "react/memo-dependencies": [
-    0,
-  ],
   "react/no-array-index-key": [
     0,
   ],
@@ -2003,9 +2042,6 @@ exports[`contains all the oxlint rules 1`] = `
     0,
   ],
   "react/no-danger-with-children": [
-    0,
-  ],
-  "react/no-deriving-state-in-effects": [
     0,
   ],
   "react/no-did-mount-set-state": [
@@ -2074,55 +2110,19 @@ exports[`contains all the oxlint rules 1`] = `
   "react/prefer-function-component": [
     0,
   ],
-  "react/preserve-manual-memoization": [
-    0,
-  ],
-  "react/purity": [
-    0,
-  ],
   "react/react-in-jsx-scope": [
-    0,
-  ],
-  "react/refs": [
-    0,
-  ],
-  "react/rule-suppression": [
     0,
   ],
   "react/self-closing-comp": [
     0,
   ],
-  "react/set-state-in-effect": [
-    0,
-  ],
-  "react/set-state-in-render": [
-    0,
-  ],
   "react/state-in-constructor": [
-    0,
-  ],
-  "react/static-components": [
     0,
   ],
   "react/style-prop-object": [
     0,
   ],
-  "react/syntax": [
-    0,
-  ],
-  "react/todo": [
-    0,
-  ],
-  "react/unsupported-syntax": [
-    0,
-  ],
-  "react/use-memo": [
-    0,
-  ],
   "react/void-dom-elements-no-children": [
-    0,
-  ],
-  "react/void-use-memo": [
     0,
   ],
   "require-await": [
