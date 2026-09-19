@@ -54,7 +54,7 @@ export const handleCategoriesScope = (
         ];
 
         for (const pluginPrefix of pluginPrefixes) {
-          // the rule has no prefix, so it is a eslint one
+          // the rule has no prefix, so it is an ESLint core rule
           if (pluginPrefix === '' && !rule.includes('/')) {
             rules[rule] = 'off';
             // other rules with a prefix like @typescript-eslint/
