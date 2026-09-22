@@ -54,10 +54,8 @@ jobs:
           # See https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
           token: ${{ steps.app-token.outputs.token }}
           commit-message: 'release: v${{ inputs.version }}'
-          committer: Boshen <Boshen@users.noreply.github.com>
-          author: Boshen <Boshen@users.noreply.github.com>
           branch: release
           branch-suffix: timestamp
           title: 'release: v${{ inputs.version }}'
-          assignees: camc314, Boshen
+          assignees: camc314
           base: main
