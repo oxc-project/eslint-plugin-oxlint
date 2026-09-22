@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite-plus';
-import { DummyRule, type DummyRuleMap } from 'oxlint';
+import type { DummyRule, DummyRuleMap } from 'oxlint';
 import unicorn from 'eslint-plugin-unicorn';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
