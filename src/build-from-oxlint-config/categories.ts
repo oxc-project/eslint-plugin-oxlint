@@ -47,10 +47,11 @@ export const handleCategoriesScope = (
     // iterate to each rule to check if the rule can be appended, because the plugin is activated
     for (const rule of possibleRules) {
       for (const plugin of plugins) {
+        const esPluginName = plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin;
         const pluginPrefixes = [
-          plugin in aliasPluginNames ? aliasPluginNames[plugin] : plugin,
+          esPluginName,
           // one oxlint plugin can own rules under several ESLint plugin prefixes
-          ...(additionalEslintPluginPrefixes[plugin] ?? []),
+          ...(additionalEslintPluginPrefixes[esPluginName] ?? []),
         ];
 
         for (const pluginPrefix of pluginPrefixes) {

@@ -167,6 +167,14 @@ describe('integration test with oxlint', () => {
             (aliasRule) => aliasRule in buildConfig.rules!
           ).length;
         }
+
+        // every oxlint `import/` rule is turned off for `eslint-plugin-import` and its
+        // `eslint-plugin-import-x` fork, so it counts twice on our side
+        if (config.plugins?.includes('import')) {
+          expectedCount += Object.keys(buildConfig.rules!).filter((rule) =>
+            rule.startsWith('import-x/')
+          ).length;
+        }
       }
 
       expect(receivedCount).toBe(expectedCount);
