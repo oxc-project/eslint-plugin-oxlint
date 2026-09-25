@@ -80,6 +80,8 @@ describe('handleRulesScope', () => {
       'react-hooks/purity': 'off',
       'react-refresh/only-export-components': 'off',
       'import/namespace': 'off',
+      // eslint-plugin-import-x is a fork of eslint-plugin-import, both have to be turned off
+      'import-x/namespace': 'off',
       'n/global-require': 'off',
     });
   });
@@ -104,6 +106,50 @@ describe('handleRulesScope', () => {
       'react-perf/jsx-no-new-array-as-prop': 'off',
       '@next/next/no-img-element': 'off',
       'unicorn/no-array-reduce': 'off',
+    });
+  });
+
+  describe('eslint-plugin-import-x', () => {
+    // eslint-plugin-import-x is a fork of eslint-plugin-import publishing the same rules under
+    // its own prefix. oxlint only knows one `import` plugin, so both have to be turned off.
+    it('disables both prefixes for an `import/` rule', () => {
+      const rules = {};
+      handleRulesScope({ 'import/no-cycle': 'error' }, rules);
+
+      expect(rules).toStrictEqual({
+        'import/no-cycle': 'off',
+        'import-x/no-cycle': 'off',
+      });
+    });
+
+    it('disables both prefixes for an `import-x/` rule', () => {
+      const rules = {};
+      handleRulesScope({ 'import-x/no-cycle': 'error' }, rules);
+
+      expect(rules).toStrictEqual({
+        'import/no-cycle': 'off',
+        'import-x/no-cycle': 'off',
+      });
+    });
+
+    it('disables both prefixes for a rule without plugin name', () => {
+      const rules = {};
+      handleRulesScope({ 'no-cycle': 'error' }, rules);
+
+      expect(rules).toStrictEqual({
+        'import/no-cycle': 'off',
+        'import-x/no-cycle': 'off',
+      });
+    });
+
+    it('removes both prefixes when the rule is turned off again', () => {
+      const rules: Record<string, 'off'> = {
+        'import/no-cycle': 'off',
+        'import-x/no-cycle': 'off',
+      };
+      handleRulesScope({ 'import/no-cycle': 'off' }, rules);
+
+      expect(rules).toStrictEqual({});
     });
   });
 
