@@ -290,9 +290,6 @@ export default defineConfig({
     deps: {
       neverBundle: ['eslint'],
     },
-    dts: {
-      cjsReexport: true,
-    },
     platform: 'node',
     format: ['cjs', 'esm'],
   },
