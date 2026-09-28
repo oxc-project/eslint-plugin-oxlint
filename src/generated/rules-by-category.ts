@@ -231,7 +231,6 @@ const styleRules: Record<string, 'off'> = {
   'n/callback-return': 'off',
   'n/exports-style': 'off',
   'n/global-require': 'off',
-  'n/no-exports-assign': 'off',
   'n/no-mixed-requires': 'off',
   'n/no-sync': 'off',
   'promise/avoid-new': 'off',
@@ -423,6 +422,7 @@ const suspiciousRules: Record<string, 'off'> = {
   'import/no-self-import': 'off',
   'import/no-unassigned-import': 'off',
   'jest/no-commented-out-tests': 'off',
+  'n/no-exports-assign': 'off',
   'promise/always-return': 'off',
   'promise/no-multiple-resolved': 'off',
   'promise/no-promise-in-callback': 'off',
@@ -876,6 +876,7 @@ const correctnessTypeAwareRules: Record<string, 'off'> = {
 
 const suspiciousTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-return': 'off',
+  '@typescript-eslint/no-generated-empty-object-type': 'off',
   '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
   '@typescript-eslint/no-unnecessary-template-expression': 'off',
   '@typescript-eslint/no-unnecessary-type-arguments': 'off',
