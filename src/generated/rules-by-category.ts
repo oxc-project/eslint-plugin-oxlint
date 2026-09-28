@@ -439,7 +439,6 @@ const suspiciousRules: Record<string, 'off'> = {
   'react/style-prop-object': 'off',
   '@typescript-eslint/no-confusing-non-null-assertion': 'off',
   '@typescript-eslint/no-extraneous-class': 'off',
-  '@typescript-eslint/no-generated-empty-object-type': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/no-accessor-recursion': 'off',
@@ -877,6 +876,7 @@ const correctnessTypeAwareRules: Record<string, 'off'> = {
 
 const suspiciousTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/consistent-return': 'off',
+  '@typescript-eslint/no-generated-empty-object-type': 'off',
   '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
   '@typescript-eslint/no-unnecessary-template-expression': 'off',
   '@typescript-eslint/no-unnecessary-type-arguments': 'off',
