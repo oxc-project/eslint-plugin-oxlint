@@ -188,6 +188,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-for-in-array": [
     0,
   ],
+  "@typescript-eslint/no-generated-empty-object-type": [
+    0,
+  ],
   "@typescript-eslint/no-implied-eval": [
     0,
   ],

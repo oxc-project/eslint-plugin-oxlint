@@ -557,6 +557,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/no-explicit-any': 'off',
   '@typescript-eslint/no-extra-non-null-assertion': 'off',
   '@typescript-eslint/no-extraneous-class': 'off',
+  '@typescript-eslint/no-generated-empty-object-type': 'off',
   '@typescript-eslint/no-import-type-side-effects': 'off',
   '@typescript-eslint/no-inferrable-types': 'off',
   '@typescript-eslint/no-invalid-void-type': 'off',
