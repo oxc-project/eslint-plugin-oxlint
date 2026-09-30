@@ -70,5 +70,5 @@
   "peerDependencies": {
     "oxlint": "~1.86.0"
   },
-  "packageManager": "pnpm@12.5.1"
+  "packageManager": "pnpm@12.7.0"
 }
