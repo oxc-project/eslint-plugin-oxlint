@@ -134,3 +134,4 @@ dist
 
 .oxc_sparse
 package-lock.json
+.vitest/

@@ -279,6 +279,7 @@ export default defineConfig({
   test: {
     coverage: {
       include: ['src', 'scripts'],
+      exclude: ['**/*.snap'],
     },
   },
   pack: {

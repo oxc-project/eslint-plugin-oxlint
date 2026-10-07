@@ -1,5 +1,8 @@
 catalog:
-  vite-plus: ^0.3.0
+  vite-plus: 1.1.0
+  vite: npm:@voidzero-dev/vite-plus-core@1.1.0
+  vitest: 5.0.3
+  '@vitest/coverage-v8': 5.0.3
 minimumReleaseAgeExclude:
   - '@oxlint/binding-android-arm-eabi'
   - '@oxlint/binding-android-arm64'
@@ -21,6 +24,16 @@ minimumReleaseAgeExclude:
   - '@oxlint/binding-win32-ia32-msvc'
   - '@oxlint/binding-win32-x64-msvc'
   - oxlint
+  - '@voidzero-dev/vite-plus-core@1.1.0'
+  - '@voidzero-dev/vite-plus-darwin-arm64@1.1.0'
+  - '@voidzero-dev/vite-plus-darwin-x64@1.1.0'
+  - '@voidzero-dev/vite-plus-linux-arm64-gnu@1.1.0'
+  - '@voidzero-dev/vite-plus-linux-arm64-musl@1.1.0'
+  - '@voidzero-dev/vite-plus-linux-x64-gnu@1.1.0'
+  - '@voidzero-dev/vite-plus-linux-x64-musl@1.1.0'
+  - '@voidzero-dev/vite-plus-win32-arm64-msvc@1.1.0'
+  - '@voidzero-dev/vite-plus-win32-x64-msvc@1.1.0'
+  - vite-plus@1.1.0
 peerDependencyRules:
   allowAny:
     - vite
@@ -29,3 +42,6 @@ peerDependencyRules:
     vite: '*'
     vitest: '*'
 verifyDepsBeforeRun: install
+overrides:
+  vite@*: 'catalog:'
+  vitest@*: 'catalog:'
