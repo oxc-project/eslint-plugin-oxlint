@@ -7,7 +7,7 @@ import {
   type OxlintConfigRules,
   type OxlintConfigExtends,
 } from './types.js';
-import { getConfigContent } from './utilities.js';
+import { getJsoncContent } from './loader.js';
 import { defaultPlugins, readPluginsFromConfig } from './plugins.js';
 import { readRulesFromConfig } from './rules.js';
 import { readOverridesFromConfig } from './overrides.js';
@@ -73,7 +73,7 @@ export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig
       continue;
     }
 
-    const extendConfig = getConfigContent(file);
+    const extendConfig = getJsoncContent(file);
     if (!extendConfig) continue;
 
     extendConfig[oxlintConfigMeta] = {

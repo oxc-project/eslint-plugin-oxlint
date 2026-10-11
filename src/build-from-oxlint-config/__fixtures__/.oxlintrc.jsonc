@@ -1,0 +1,6 @@
+{
+  // a comment
+  "rules": {
+    "eqeqeq": "error",
+  },
+}
