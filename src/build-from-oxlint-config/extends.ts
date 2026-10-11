@@ -16,7 +16,9 @@ import { readOverridesFromConfig } from './overrides.js';
  * tries to return the "extends" section from the config.
  * it returns `undefined` when not found or invalid.
  */
-const readExtendsFromConfig = (config: OxlintConfig): OxlintConfigExtends | undefined => {
+const readExtendsFromConfig = (
+  config: Record<string, unknown>
+): OxlintConfigExtends | undefined => {
   return 'extends' in config && Array.isArray(config.extends) ? config.extends : undefined;
 };
 
@@ -31,12 +33,15 @@ export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
   const extendsFiles = readExtendsFromConfig(config);
   if (!extendsFiles?.length) return;
   const configFileDirectory = path.dirname(config[oxlintConfigMeta].filePath);
+  // The "extends" array cannot mix strings and OxlintConfig objects.
+  // string is only allowed in json config files
+  // objects are only allowed in js/ts config files
   config.extends = extendsFiles.map((extendFile) => {
     if (typeof extendFile === 'string') {
       return path.resolve(configFileDirectory, extendFile);
     }
     return extendFile;
-  });
+  }) as OxlintConfigExtends;
 };
 
 /**
@@ -51,7 +56,7 @@ export const handleExtendsScope = (extendsConfigs: OxlintConfig[], config: Oxlin
     rules = { ...readRulesFromConfig(extendConfig), ...rules };
     overrides.unshift(...(readOverridesFromConfig(extendConfig) ?? []));
   }
-  if (plugins.length > 0) config.plugins = [...new Set(plugins)];
+  if (plugins.length > 0) config.plugins = [...new Set<OxlintConfigPlugins[number]>(plugins)];
   if (Object.keys(rules).length > 0) config.rules = rules;
   if (overrides.length > 0) config.overrides = overrides;
 };
@@ -66,27 +71,26 @@ export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig
   const extendsConfigs: OxlintConfig[] = [];
   for (const file of extendsFiles) {
     // resolved extends from js config, we can directly use it without reading the file content
-    if (typeof file !== 'string') {
+    if (typeof file === 'string') {
+      // for jsonc configs, we can only extend other jsonc configs. no js/ts configs are supported.
+      // upstream test coverage: https://github.com/oxc-project/oxc/pull/27554
+      const extendConfig = getJsoncContent(file);
+      if (!extendConfig) continue;
+
+      extendConfig[oxlintConfigMeta] = {
+        filePath: file,
+      };
+
+      resolveRelativeExtendsPaths(extendConfig);
+
+      const extended = readExtendsConfigsFromConfig(extendConfig);
+      delete extendConfig.extends;
+      extendsConfigs.push(extendConfig, ...extended);
+    } else {
       const extended = readExtendsConfigsFromConfig(file);
       delete file.extends;
       extendsConfigs.push(file, ...extended);
-      continue;
     }
-
-    // for jsonc configs, we can only extend other jsonc configs. no js/ts configs are supported.
-    // upstream test coverage: https://github.com/oxc-project/oxc/pull/27554
-    const extendConfig = getJsoncContent(file);
-    if (!extendConfig) continue;
-
-    extendConfig[oxlintConfigMeta] = {
-      filePath: file,
-    };
-
-    resolveRelativeExtendsPaths(extendConfig);
-
-    const extended = readExtendsConfigsFromConfig(extendConfig);
-    delete extendConfig.extends;
-    extendsConfigs.push(extendConfig, ...extended);
   }
   return extendsConfigs;
 };

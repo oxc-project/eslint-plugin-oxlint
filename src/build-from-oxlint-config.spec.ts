@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import { execSync } from 'node:child_process';
 import type { Linter } from 'eslint';
 import { typescriptRulesExtendEslintRules } from './constants.js';
+import { OxlintConfig } from 'oxlint';
 
 // oxlint-disable-next-line unicorn/prefer-module
 const resolvedOxlint = require.resolve('oxlint').replace('index.js', 'cli.js');
@@ -54,7 +55,7 @@ describe('buildFromOxlintConfigFile', () => {
 });
 
 describe('integration test with oxlint', () => {
-  for (const [index, config] of [
+  const testCases: OxlintConfig[] = [
     // default
     {},
     // no plugins
@@ -133,7 +134,9 @@ describe('integration test with oxlint', () => {
         suspicious: 'warn',
       },
     },
-  ].entries()) {
+  ];
+
+  for (const [index, config] of testCases.entries()) {
     const fileContent = JSON.stringify(config);
 
     it(`should output same rule count for: ${fileContent}`, () => {
@@ -308,15 +311,7 @@ const createConfigFileAndBuildFromIt = (
   return rules;
 };
 
-const executeOxlintWithConfiguration = (
-  filename: string,
-  config: {
-    [key: string]: unknown;
-    plugins?: string[];
-    categories?: Record<string, unknown>;
-    rules?: Record<string, unknown>;
-  }
-): number | void => {
+const executeOxlintWithConfiguration = (filename: string, config: OxlintConfig): number | void => {
   fs.writeFileSync(filename, JSON.stringify(config));
   let oxlintOutput: string;
 
