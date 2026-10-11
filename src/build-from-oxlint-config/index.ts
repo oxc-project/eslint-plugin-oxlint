@@ -96,7 +96,7 @@ export const buildFromOxlintConfig = (
  * no rules will be deactivated and an error to `console.error` will be emitted.
  *
  * Does only work with JSON / JSONC files.
- * @deprecated Use `buildFromOxlintJsConfigFile` instead.
+ * @deprecated Use `buildFromConfigFile` instead.
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string,
@@ -124,9 +124,9 @@ export const buildFromOxlintConfigFile = (
  * If the oxlint config file could not be found or parsed,
  * no rules will be deactivated and an error to `console.error` will be emitted.
  *
- * Does work with JS / TS / JSON / JSONC files.
+ * Does work with Oxlint JS / TS / JSON / JSONC configuration files.
  */
-export const buildFromOxlintJsConfigFile = async (
+export const buildFromConfigFile = async (
   oxlintConfigFile: string,
   options: BuildFromOxlintConfigOptions = {}
 ): Promise<EslintPluginOxlintConfig[]> => {
