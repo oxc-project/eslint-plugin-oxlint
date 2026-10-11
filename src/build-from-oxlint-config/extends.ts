@@ -33,7 +33,7 @@ export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
   const extendsFiles = readExtendsFromConfig(config);
   if (!extendsFiles?.length) return;
   const configFileDirectory = path.dirname(config[oxlintConfigMeta].filePath);
-  // there can no be mixed string and OxlintConfig objects in the "extends" array
+  // The "extends" array cannot mix strings and OxlintConfig objects.
   // string is only allowed in json config files
   // objects are only allowed in js/ts config files
   config.extends = extendsFiles.map((extendFile) => {
