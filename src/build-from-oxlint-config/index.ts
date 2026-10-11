@@ -19,7 +19,7 @@ import {
   readExtendsConfigsFromConfig,
   resolveRelativeExtendsPaths,
 } from './extends.js';
-import { getConfigContent } from './utilities.js';
+import { getConfigContent, getJsoncContent } from './loader.js';
 import path from 'node:path';
 
 /**
@@ -93,13 +93,44 @@ export const buildFromOxlintConfig = (
  * It accepts an filepath to the .oxlintrc.json file.
  *
  * It the .oxlintrc.json file could not be found or parsed,
- * no rules will be deactivated and an error to `console.error` will be emitted
+ * no rules will be deactivated and an error to `console.error` will be emitted.
+ *
+ * Does only work with JSON / JSONC files.
+ * @deprecated Use `buildFromConfigFile` instead.
  */
 export const buildFromOxlintConfigFile = (
   oxlintConfigFile: string,
   options: BuildFromOxlintConfigOptions = {}
 ): EslintPluginOxlintConfig[] => {
-  const config = getConfigContent(oxlintConfigFile);
+  const config = getJsoncContent(oxlintConfigFile);
+
+  // we could not parse form the file, do not build with default values
+  // we can not be sure if the setup is right
+  if (config === undefined) {
+    return [];
+  }
+
+  config[oxlintConfigMeta] = {
+    filePath: path.resolve(oxlintConfigFile),
+  };
+
+  return buildFromOxlintConfig(config, options);
+};
+
+/**
+ * builds turned off rules, which are supported by oxlint.
+ * It accepts an filepath to the oxlint config file.
+ *
+ * If the oxlint config file could not be found or parsed,
+ * no rules will be deactivated and an error to `console.error` will be emitted.
+ *
+ * Does work with Oxlint JS / TS / JSON / JSONC configuration files.
+ */
+export const buildFromConfigFile = async (
+  oxlintConfigFile: string,
+  options: BuildFromOxlintConfigOptions = {}
+): Promise<EslintPluginOxlintConfig[]> => {
+  const config = await getConfigContent(oxlintConfigFile);
 
   // we could not parse form the file, do not build with default values
   // we can not be sure if the setup is right

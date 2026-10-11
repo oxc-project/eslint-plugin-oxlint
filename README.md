@@ -64,7 +64,7 @@ If you are using flat configuration (eslint >= 9.0), you can use the following c
 import oxlint from 'eslint-plugin-oxlint';
 export default [
   ..., // other plugins
-  ...oxlint.buildFromOxlintConfigFile('./.oxlintrc.json'),
+  ...(await oxlint.buildFromConfigFile('./.oxlintrc.json')),
 ];
 ```
 
@@ -86,7 +86,7 @@ export default [
 ];
 ```
 
-`buildFromOxlintConfigFile` is not supported for legacy configuration (eslint < 9.0).
+`buildFromConfigFile` is not supported for legacy configuration (eslint < 9.0).
 
 ## All Configs
 
