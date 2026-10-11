@@ -7,29 +7,25 @@ import { pathToFileURL } from 'url';
 const JS_EXTENSIONS = ['.js', '.cjs', '.mjs', '.ts', '.mts', '.cts'];
 const JSON_EXTENSIONS = ['.json', '.jsonc'];
 
-export const getJsoncContent = (filePath: string): OxlintConfig | undefined => {
+export const getJsoncContent = (filePath: string): OxlintConfig => {
+  let content: string;
+
   try {
-    const content = fs.readFileSync(filePath, 'utf8');
-
-    try {
-      const configContent = parseJSONC(content);
-
-      if (!isObject(configContent)) {
-        throw new TypeError('not an valid config file');
-      }
-
-      return configContent;
-    } catch {
-      console.error(`eslint-plugin-oxlint: could not parse oxlint config file: ${filePath}`);
-      return undefined;
-    }
+    content = fs.readFileSync(filePath, 'utf8');
   } catch {
-    console.error(`eslint-plugin-oxlint: could not find oxlint config file: ${filePath}`);
-    return undefined;
+    throw new Error(`eslint-plugin-oxlint: could not find oxlint config file: ${filePath}`);
   }
+
+  const configContent = parseJSONC(content);
+
+  if (!isObject(configContent)) {
+    throw new Error(`eslint-plugin-oxlint: failed to parse JSON config file: ${filePath}`);
+  }
+
+  return configContent;
 };
 
-const getJsContent = async (filePath: string): Promise<OxlintConfig | undefined> => {
+const getJsContent = async (filePath: string): Promise<OxlintConfig> => {
   const importedConfig = await import(pathToFileURL(filePath).href);
   const config = isObject(importedConfig.default) ? importedConfig.default : importedConfig;
 
@@ -45,17 +41,14 @@ const getJsContent = async (filePath: string): Promise<OxlintConfig | undefined>
  * if the file is not found or could not be parsed, undefined is returned.
  * And an error message will be emitted to `console.error`
  */
-export const getConfigContent = async (
-  oxlintConfigFile: string
-): Promise<OxlintConfig | undefined> => {
+export const getConfigContent = async (oxlintConfigFile: string): Promise<OxlintConfig> => {
   if (JS_EXTENSIONS.some((ext) => oxlintConfigFile.endsWith(ext))) {
     return getJsContent(oxlintConfigFile);
   }
   if (JSON_EXTENSIONS.some((ext) => oxlintConfigFile.endsWith(ext))) {
     return Promise.resolve(getJsoncContent(oxlintConfigFile));
   }
-  console.error(
+  throw new Error(
     `eslint-plugin-oxlint: unsupported oxlint config file extension: ${oxlintConfigFile}, only ${JS_EXTENSIONS.concat(JSON_EXTENSIONS).join(', ')} are supported`
   );
-  return undefined;
 };

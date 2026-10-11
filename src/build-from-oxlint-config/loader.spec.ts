@@ -19,23 +19,37 @@ describe('getConfigContent', () => {
     }
   );
 
-  it('returns undefined and reports unsupported extensions', async () => {
-    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
-    const filePath = fixturePath('unsupported.yaml');
+  it('fails to parse invalid JSON', async () => {
+    const filePath = fixturePath('invalid-json.json');
 
-    await expect(getConfigContent(filePath)).resolves.toBeUndefined();
-    expect(error).toHaveBeenCalledWith(
-      expect.stringContaining(`unsupported oxlint config file extension: ${filePath}`)
+    await expect(getConfigContent(filePath)).rejects.toThrow(
+      new Error(`eslint-plugin-oxlint: failed to parse JSON config file: ${filePath}`)
     );
   });
 
-  it('returns undefined and reports missing config files', async () => {
-    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+  it('fails to parse invalid config', async () => {
+    const filePath = fixturePath('invalid-config.json');
+
+    await expect(getConfigContent(filePath)).rejects.toThrow(
+      new Error(`eslint-plugin-oxlint: failed to parse JSON config file: ${filePath}`)
+    );
+  });
+
+  it('throws and reports unsupported extensions', async () => {
+    const filePath = fixturePath('unsupported.yaml');
+
+    await expect(getConfigContent(filePath)).rejects.toThrow(
+      new Error(
+        `eslint-plugin-oxlint: unsupported oxlint config file extension: ${filePath}, only .js, .cjs, .mjs, .ts, .mts, .cts, .json, .jsonc are supported`
+      )
+    );
+  });
+
+  it('throws and reports missing config files', async () => {
     const filePath = fixturePath('missing.json');
 
-    await expect(getConfigContent(filePath)).resolves.toBeUndefined();
-    expect(error).toHaveBeenCalledWith(
-      `eslint-plugin-oxlint: could not find oxlint config file: ${filePath}`
+    await expect(getConfigContent(filePath)).rejects.toThrow(
+      new Error(`eslint-plugin-oxlint: could not find oxlint config file: ${filePath}`)
     );
   });
 });

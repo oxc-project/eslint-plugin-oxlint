@@ -28,30 +28,6 @@ describe('buildFromOxlintConfigFile', () => {
     expect(configs[0].rules).not.toBeUndefined();
     expect('no-await-in-loop' in configs[0].rules!).toBe(true);
   });
-
-  it('fails to find oxlint config', () => {
-    const configs = buildFromOxlintConfigFile('not-found.json');
-
-    expect(configs).toStrictEqual([]);
-  });
-
-  it('fails to parse invalid json', () => {
-    const configs = createConfigFileAndBuildFromIt(
-      'invalid-json.json',
-      '["this", is an invalid json format]'
-    );
-
-    expect(configs).toStrictEqual([]);
-  });
-
-  it('fails to parse invalid oxlint config', () => {
-    const configs = createConfigFileAndBuildFromIt(
-      'invalid-config.json',
-      JSON.stringify(['this is valid json but not an object'])
-    );
-
-    expect(configs).toStrictEqual([]);
-  });
 });
 
 describe('integration test with oxlint', () => {

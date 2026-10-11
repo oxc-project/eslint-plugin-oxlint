@@ -93,7 +93,7 @@ export const buildFromOxlintConfig = (
  * It accepts an filepath to the .oxlintrc.json file.
  *
  * It the .oxlintrc.json file could not be found or parsed,
- * no rules will be deactivated and an error to `console.error` will be emitted.
+ * an error will be thrown
  *
  * Does only work with JSON / JSONC files.
  * @deprecated Use `buildFromConfigFile` instead.
@@ -103,12 +103,6 @@ export const buildFromOxlintConfigFile = (
   options: BuildFromOxlintConfigOptions = {}
 ): EslintPluginOxlintConfig[] => {
   const config = getJsoncContent(oxlintConfigFile);
-
-  // we could not parse form the file, do not build with default values
-  // we can not be sure if the setup is right
-  if (config === undefined) {
-    return [];
-  }
 
   config[oxlintConfigMeta] = {
     filePath: path.resolve(oxlintConfigFile),
@@ -122,7 +116,7 @@ export const buildFromOxlintConfigFile = (
  * It accepts an filepath to the oxlint config file.
  *
  * If the oxlint config file could not be found or parsed,
- * no rules will be deactivated and an error to `console.error` will be emitted.
+ * an error will be thrown.
  *
  * Does work with Oxlint JS / TS / JSON / JSONC configuration files.
  */
@@ -131,12 +125,6 @@ export const buildFromConfigFile = async (
   options: BuildFromOxlintConfigOptions = {}
 ): Promise<EslintPluginOxlintConfig[]> => {
   const config = await getConfigContent(oxlintConfigFile);
-
-  // we could not parse form the file, do not build with default values
-  // we can not be sure if the setup is right
-  if (config === undefined) {
-    return [];
-  }
 
   config[oxlintConfigMeta] = {
     filePath: path.resolve(oxlintConfigFile),
