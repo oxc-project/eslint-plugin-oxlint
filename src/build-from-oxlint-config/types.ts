@@ -33,7 +33,6 @@ type OxlintConfigMeta = {
     // absolute path to the config file
     filePath: string;
   };
-  [k: string]: unknown;
 };
 
 export type OxlintConfig = (OxlintConfigJs | OxlintConfigJson) & OxlintConfigMeta;

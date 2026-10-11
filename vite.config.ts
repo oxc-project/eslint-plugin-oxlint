@@ -57,7 +57,7 @@ export default defineConfig({
       'src/generated/rules-by-scope.ts',
     ],
     deps: {
-      neverBundle: ['eslint'],
+      neverBundle: ['eslint', 'oxlint'],
     },
     platform: 'node',
     format: ['cjs', 'esm'],
