@@ -142,6 +142,7 @@ describe('integration test with oxlint', () => {
         config
       );
 
+      // @ts-expect-error -- `config` is not strictly typed
       const configs = buildFromOxlintConfig(config);
 
       expect(configs.length).toBeGreaterThanOrEqual(1);

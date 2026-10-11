@@ -4,7 +4,6 @@ import { handleRulesScope, readRulesFromConfig } from './rules.js';
 import {
   BuildFromOxlintConfigOptions,
   EslintPluginOxlintConfig,
-  OxlintConfig,
   OxlintConfigCategories,
   OxlintConfigOverride,
 } from './types.js';
@@ -39,7 +38,7 @@ export const handleOverridesScope = (
 };
 
 export const readOverridesFromConfig = (
-  config: OxlintConfig
+  config: Record<string, unknown>
 ): OxlintConfigOverride[] | undefined => {
   return 'overrides' in config && Array.isArray(config.overrides)
     ? (config.overrides as OxlintConfigOverride[])

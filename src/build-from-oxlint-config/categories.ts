@@ -30,7 +30,10 @@ export const handleCategoriesScope = (
     }
 
     // category is not enabled or not in found categories
-    if (categories[category] === 'off' || !(configName in allRulesObjects)) {
+    if (
+      categories[category as keyof OxlintConfigCategories] === 'off' ||
+      !(configName in allRulesObjects)
+    ) {
       continue;
     }
 
