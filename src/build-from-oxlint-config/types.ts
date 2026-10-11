@@ -24,6 +24,7 @@ type OxlintConfigJs = Omit<OxlintConfigJsInternal, 'extends' | 'rules'> & {
 };
 
 type OxlintConfigJson = Omit<OxlintConfigJs, 'extends'> & {
+  $schema?: string;
   extends?: string[];
 };
 
