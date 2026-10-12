@@ -9,14 +9,23 @@ const JSON_EXTENSIONS = ['.json', '.jsonc'];
 
 export const getJsoncContent = (filePath: string): OxlintConfig => {
   let content: string;
+  let configContent: unknown;
 
   try {
     content = fs.readFileSync(filePath, 'utf8');
-  } catch {
-    throw new Error(`eslint-plugin-oxlint: could not find oxlint config file: ${filePath}`);
+  } catch (e) {
+    throw new Error(`eslint-plugin-oxlint: could not read oxlint config file: ${filePath}`, {
+      cause: e,
+    });
   }
 
-  const configContent = parseJSONC(content);
+  try {
+    configContent = parseJSONC(content);
+  } catch (e) {
+    throw new Error(`eslint-plugin-oxlint: could not parse oxlint config file: ${filePath}`, {
+      cause: e,
+    });
+  }
 
   if (!isObject(configContent)) {
     throw new Error(`eslint-plugin-oxlint: failed to parse JSON config file: ${filePath}`);
@@ -30,7 +39,7 @@ const getJsContent = async (filePath: string): Promise<OxlintConfig> => {
   const config = isObject(importedConfig.default) ? importedConfig.default : importedConfig;
 
   if (!isObject(config)) {
-    throw new TypeError('not an valid config file');
+    throw new TypeError(`eslint-plugin-oxlint: not a valid config file: ${filePath}`);
   }
 
   return config;

@@ -92,8 +92,8 @@ export const buildFromOxlintConfig = (
  * builds turned off rules, which are supported by oxlint.
  * It accepts an filepath to the .oxlintrc.json file.
  *
- * It the .oxlintrc.json file could not be found or parsed,
- * an error will be thrown
+ * If the .oxlintrc.json file could not be found or parsed,
+ * an error will be thrown.
  *
  * Does only work with JSON / JSONC files.
  * @deprecated Use `buildFromConfigFile` instead.

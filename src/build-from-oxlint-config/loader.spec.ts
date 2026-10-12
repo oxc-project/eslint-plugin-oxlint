@@ -49,7 +49,7 @@ describe('getConfigContent', () => {
     const filePath = fixturePath('missing.json');
 
     await expect(getConfigContent(filePath)).rejects.toThrow(
-      new Error(`eslint-plugin-oxlint: could not find oxlint config file: ${filePath}`)
+      new Error(`eslint-plugin-oxlint: could not read oxlint config file: ${filePath}`)
     );
   });
 });
