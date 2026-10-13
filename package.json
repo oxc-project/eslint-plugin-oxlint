@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-oxlint",
-  "version": "1.87.0",
+  "version": "1.88.0",
   "description": "Turn off all rules already supported by oxlint",
   "keywords": [
     "eslint",
@@ -68,7 +68,7 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
-    "oxlint": "~1.87.0"
+    "oxlint": "~1.88.0"
   },
   "packageManager": "pnpm@12.10.1"
 }
