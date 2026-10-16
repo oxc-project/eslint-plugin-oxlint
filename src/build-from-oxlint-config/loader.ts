@@ -47,8 +47,7 @@ const getJsContent = async (filePath: string): Promise<OxlintConfig> => {
 
 /**
  * tries to read the oxlint config file and returning its JSON content.
- * if the file is not found or could not be parsed, undefined is returned.
- * And an error message will be emitted to `console.error`
+ * if the file is not found or could not be parsed, and error is thrown.
  */
 export const getConfigContent = async (oxlintConfigFile: string): Promise<OxlintConfig> => {
   if (JS_EXTENSIONS.some((ext) => oxlintConfigFile.endsWith(ext))) {
