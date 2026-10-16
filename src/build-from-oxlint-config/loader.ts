@@ -1,6 +1,6 @@
 import fs from 'node:fs';
-import { parse as parseJSONC } from 'jsonc-parser';
-import { OxlintConfig } from './types.js';
+import { type ParseError, parse as parseJSONC } from 'jsonc-parser';
+import type { OxlintConfig } from './types.js';
 import { isObject } from './utilities.js';
 import { pathToFileURL } from 'url';
 
@@ -9,7 +9,6 @@ const JSON_EXTENSIONS = ['.json', '.jsonc'];
 
 export const getJsoncContent = (filePath: string): OxlintConfig => {
   let content: string;
-  let configContent: unknown;
 
   try {
     content = fs.readFileSync(filePath, 'utf8');
@@ -19,12 +18,13 @@ export const getJsoncContent = (filePath: string): OxlintConfig => {
     });
   }
 
-  try {
-    configContent = parseJSONC(content);
-  } catch (e) {
-    throw new Error(`eslint-plugin-oxlint: could not parse oxlint config file: ${filePath}`, {
-      cause: e,
-    });
+  const errors: ParseError[] = [];
+  const configContent = parseJSONC(content, errors, {
+    allowTrailingComma: true,
+  });
+
+  if (errors.length > 0) {
+    throw new Error(`eslint-plugin-oxlint: failed to parse JSON config file: ${filePath}`);
   }
 
   if (!isObject(configContent)) {
