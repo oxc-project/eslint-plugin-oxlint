@@ -78,11 +78,20 @@ describe('handleExtendsScope', () => {
     };
     handleExtendsScope(extendsConfigs, config);
     expect(config).toEqual({
-      plugins: ['typescript', 'react', 'unicorn', 'vitest'],
+      plugins: ['react', 'unicorn', 'typescript', 'vitest'],
       categories: config.categories,
       rules: { rule1: 'warn', rule2: 'error' },
       overrides: [{ files: ['*.ts'], rules: { rule3: 'error' } }],
     });
+  });
+
+  it('should let the last extends config win', () => {
+    const config: OxlintConfig = {};
+    handleExtendsScope(
+      [{ rules: { 'no-debugger': 'off' } }, { rules: { 'no-debugger': 'error' } }],
+      config
+    );
+    expect(config.rules).toEqual({ 'no-debugger': 'error' });
   });
 
   it('should merge multiple extends configs with multiple overrides', () => {
@@ -105,7 +114,7 @@ describe('handleExtendsScope', () => {
     };
     handleExtendsScope(extendsConfigs, config);
     expect(config).toEqual({
-      plugins: ['typescript', 'react', 'unicorn', 'vitest'],
+      plugins: ['react', 'unicorn', 'typescript', 'vitest'],
       categories: config.categories,
       rules: { rule1: 'warn', rule2: 'error' },
       overrides: [
@@ -175,11 +184,11 @@ describe('readExtendsConfigsFromConfig', () => {
 
     expect(extendsConfigs).toEqual([
       {
-        plugins: ['react'],
-        rules: { rule1: 'error' },
+        plugins: ['unicorn'],
       },
       {
-        plugins: ['unicorn'],
+        plugins: ['react'],
+        rules: { rule1: 'error' },
       },
     ]);
   });
