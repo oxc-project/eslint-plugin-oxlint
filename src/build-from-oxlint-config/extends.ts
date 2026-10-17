@@ -48,14 +48,19 @@ export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
  * Appends plugins, rules and overrides from the extends configs files to the given config.
  */
 export const handleExtendsScope = (extendsConfigs: OxlintConfig[], config: OxlintConfig) => {
-  let rules: OxlintConfigRules = readRulesFromConfig(config) ?? {};
-  const plugins: OxlintConfigPlugins = readPluginsFromConfig(config) ?? [];
-  const overrides: OxlintConfigOverride[] = readOverridesFromConfig(config) ?? [];
+  // extendsConfigs is ordered from lowest to highest precedence (last extends wins),
+  // the config itself overrides all of them.
+  let extendedRules: OxlintConfigRules = {};
+  const plugins: OxlintConfigPlugins = [];
+  const overrides: OxlintConfigOverride[] = [];
   for (const extendConfig of extendsConfigs) {
-    plugins.unshift(...(readPluginsFromConfig(extendConfig) ?? defaultPlugins));
-    rules = { ...readRulesFromConfig(extendConfig), ...rules };
-    overrides.unshift(...(readOverridesFromConfig(extendConfig) ?? []));
+    plugins.push(...(readPluginsFromConfig(extendConfig) ?? defaultPlugins));
+    extendedRules = { ...extendedRules, ...readRulesFromConfig(extendConfig) };
+    overrides.push(...(readOverridesFromConfig(extendConfig) ?? []));
   }
+  plugins.push(...(readPluginsFromConfig(config) ?? []));
+  const rules: OxlintConfigRules = { ...extendedRules, ...readRulesFromConfig(config) };
+  overrides.push(...(readOverridesFromConfig(config) ?? []));
   if (plugins.length > 0) config.plugins = [...new Set<OxlintConfigPlugins[number]>(plugins)];
   if (Object.keys(rules).length > 0) config.rules = rules;
   if (overrides.length > 0) config.overrides = overrides;
@@ -84,11 +89,11 @@ export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig
 
       const extended = readExtendsConfigsFromConfig(extendConfig);
       delete extendConfig.extends;
-      extendsConfigs.push(extendConfig, ...extended);
+      extendsConfigs.push(...extended, extendConfig);
     } else {
       const extended = readExtendsConfigsFromConfig(file);
       delete file.extends;
-      extendsConfigs.push(file, ...extended);
+      extendsConfigs.push(...extended, file);
     }
   }
   return extendsConfigs;
