@@ -43,6 +43,7 @@ export default defineConfig({
     tabWidth: 2,
     semi: true,
     singleQuote: true,
+    ignorePatterns: ['dist/', '__fixtures__/'],
   },
   test: {
     coverage: {
