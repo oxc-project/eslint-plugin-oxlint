@@ -1,5 +1,4 @@
 import {
-  oxlintConfigMeta,
   type BuildFromOxlintConfigOptions,
   type EslintPluginOxlintConfig,
   type OxlintConfig,
@@ -20,7 +19,6 @@ import {
   resolveRelativeExtendsPaths,
 } from './extends.js';
 import { getConfigContent, getJsoncContent } from './loader.js';
-import path from 'node:path';
 
 /**
  * builds turned off rules, which are supported by oxlint.
@@ -110,10 +108,6 @@ export const buildFromOxlintConfigFile = (
     return [];
   }
 
-  config[oxlintConfigMeta] = {
-    filePath: path.resolve(oxlintConfigFile),
-  };
-
   return buildFromOxlintConfig(config, options);
 };
 
@@ -137,10 +131,6 @@ export const buildFromConfigFile = async (
   if (config === undefined) {
     return [];
   }
-
-  config[oxlintConfigMeta] = {
-    filePath: path.resolve(oxlintConfigFile),
-  };
 
   return buildFromOxlintConfig(config, options);
 };

@@ -1,22 +1,27 @@
 import fs from 'node:fs';
 import { parse as parseJSONC } from 'jsonc-parser';
-import { OxlintConfig } from './types.js';
+import { OxlintConfig, OxlintConfigJson, oxlintConfigMeta } from './types.js';
 import { isObject } from './utilities.js';
 import { pathToFileURL } from 'url';
+import path from 'node:path';
 
 const JS_EXTENSIONS = ['.js', '.cjs', '.mjs', '.ts', '.mts', '.cts'];
 const JSON_EXTENSIONS = ['.json', '.jsonc'];
 
-export const getJsoncContent = (filePath: string): OxlintConfig | undefined => {
+export const getJsoncContent = (filePath: string): OxlintConfigJson | undefined => {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
 
     try {
-      const configContent = parseJSONC(content);
+      const configContent: Record<string | symbol, unknown> = parseJSONC(content);
 
       if (!isObject(configContent)) {
         throw new TypeError('not an valid config file');
       }
+
+      configContent[oxlintConfigMeta] = {
+        filePath: path.resolve(filePath),
+      };
 
       return configContent;
     } catch {

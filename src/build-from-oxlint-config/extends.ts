@@ -26,9 +26,8 @@ const readExtendsFromConfig = (
  * Resolves the paths of the "extends" section relative to the given config file.
  */
 export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
-  if (!config[oxlintConfigMeta]?.filePath) {
-    return;
-  }
+  if (!(oxlintConfigMeta in config)) return;
+  if (!config[oxlintConfigMeta]?.filePath) return;
 
   const extendsFiles = readExtendsFromConfig(config);
   if (!extendsFiles?.length) return;
@@ -41,7 +40,7 @@ export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
       return path.resolve(configFileDirectory, extendFile);
     }
     return extendFile;
-  }) as OxlintConfigExtends;
+  }) as string[];
 };
 
 /**
