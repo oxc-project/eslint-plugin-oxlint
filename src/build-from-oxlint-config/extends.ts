@@ -74,7 +74,6 @@ export const readExtendsConfigsFromConfig = (config: OxlintConfig): OxlintConfig
       // for jsonc configs, we can only extend other jsonc configs. no js/ts configs are supported.
       // upstream test coverage: https://github.com/oxc-project/oxc/pull/27554
       const extendConfig = getJsoncContent(file);
-      if (!extendConfig) continue;
 
       extendConfig[oxlintConfigMeta] = {
         filePath: file,
