@@ -55,7 +55,7 @@ module.exports = {
 }
 ```
 
-### Detect rules from `.oxlintrc.json`
+### Detect rules from `.oxlintrc.json` / `oxlint.config.ts` / `vite.config.ts`
 
 If you are using flat configuration (eslint >= 9.0), you can use the following config:
 
