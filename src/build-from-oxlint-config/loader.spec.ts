@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vite-plus/test';
 import { fileURLToPath } from 'node:url';
 import { getConfigContent } from './loader.js';
+import { oxlintConfigMeta } from './types.js';
 
 const fixturePath = (name: string) =>
   fileURLToPath(new URL(`./__fixtures__/${name}`, import.meta.url));
@@ -10,11 +11,20 @@ describe('getConfigContent', () => {
     vi.restoreAllMocks();
   });
 
-  it.each(['.oxlintrc.json', '.oxlintrc.jsonc', 'oxlint.config.js', 'oxlint.config.ts'])(
-    'loads %s config files',
+  it.each(['oxlint.config.js', 'oxlint.config.ts'])('loads %s config file', async (fileName) => {
+    await expect(getConfigContent(fixturePath(fileName))).resolves.toEqual({
+      rules: { eqeqeq: 'error' },
+    });
+  });
+
+  it.each(['.oxlintrc.json', '.oxlintrc.jsonc'])(
+    'loads %s config file with meta information',
     async (fileName) => {
       await expect(getConfigContent(fixturePath(fileName))).resolves.toEqual({
         rules: { eqeqeq: 'error' },
+        [oxlintConfigMeta]: {
+          filePath: fixturePath(fileName),
+        },
       });
     }
   );
