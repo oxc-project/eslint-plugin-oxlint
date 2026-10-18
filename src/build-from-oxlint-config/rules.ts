@@ -95,7 +95,7 @@ const isValueInSet = (value: unknown, validSet: unknown[]) =>
 /**
  * check if the value is "off", "allow", 0, ["off", ...], ["allow", ...], or [0, ...]
  */
-export const isDeactivateValue = (value: unknown) => isValueInSet(value, ['off', 'allow', 0]);
+const isDeactivateValue = (value: unknown) => isValueInSet(value, ['off', 'allow', 0]);
 
 /**
  * check if the value is "error", "deny", "warn", 1, 2,

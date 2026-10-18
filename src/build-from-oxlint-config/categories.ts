@@ -5,13 +5,14 @@ import {
   OxlintConfigCategories,
   OxlintConfigPlugins,
 } from './types.js';
-import { isDeactivateValue } from './rules.js';
 import { isObject } from './utilities.js';
 
 // default categories, see <https://github.com/oxc-project/oxc/blob/0acca58/crates/oxc_linter/src/builder.rs#L82>
 export const defaultCategories: OxlintConfigCategories = {
   correctness: 'warn',
 };
+
+const isDeactivateValue = (value: unknown) => value === 'off' || value === 'allow' || value === 0;
 
 /**
  * appends all rules which are enabled by a plugin and falls into a specific category
