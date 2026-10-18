@@ -93,14 +93,15 @@ const isValueInSet = (value: unknown, validSet: unknown[]) =>
   validSet.includes(value) || (Array.isArray(value) && validSet.includes(value[0]));
 
 /**
- * check if the value is "off", 0, ["off", ...], or [0, ...]
+ * check if the value is "off", "allow", 0, ["off", ...], ["allow", ...], or [0, ...]
  */
-const isDeactivateValue = (value: unknown) => isValueInSet(value, ['off', 0]);
+export const isDeactivateValue = (value: unknown) => isValueInSet(value, ['off', 'allow', 0]);
 
 /**
- * check if the value is "error", "warn", 1, 2, ["error", ...], ["warn", ...], [1, ...], or [2, ...]
+ * check if the value is "error", "deny", "warn", 1, 2,
+ * ["error", ...], ["deny", ...], ["warn", ...], [1, ...], or [2, ...]
  */
-const isActiveValue = (value: unknown) => isValueInSet(value, ['error', 'warn', 1, 2]);
+const isActiveValue = (value: unknown) => isValueInSet(value, ['error', 'deny', 'warn', 1, 2]);
 
 /**
  * checks if the oxlint rule is activated/deactivated and append/remove it.

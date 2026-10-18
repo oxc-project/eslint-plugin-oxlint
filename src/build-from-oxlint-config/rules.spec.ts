@@ -2,7 +2,18 @@ import { describe, expect, it } from 'vite-plus/test';
 import { handleRulesScope } from './rules.js';
 
 describe('handleRulesScope', () => {
-  for (const ruleSetting of ['error', ['error'], 'warn', ['warn'], 1, [1], 2, [2]]) {
+  for (const ruleSetting of [
+    'error',
+    ['error'],
+    'deny',
+    ['deny'],
+    'warn',
+    ['warn'],
+    1,
+    [1],
+    2,
+    [2],
+  ]) {
     it(`detect active rule ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
       const rules = {};
       handleRulesScope(
@@ -18,9 +29,25 @@ describe('handleRulesScope', () => {
     });
   }
 
-  for (const ruleSetting of ['off', ['off'], 0, [0]]) {
+  for (const ruleSetting of ['off', ['off'], 'allow', ['allow'], 0, [0]]) {
     it(`skip deactive rule ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
       const rules = {};
+      handleRulesScope(
+        {
+          eqeqeq: ruleSetting,
+        },
+        rules
+      );
+
+      expect(rules).toStrictEqual({});
+    });
+  }
+
+  for (const ruleSetting of ['off', ['off'], 'allow', ['allow'], 0, [0]]) {
+    it(`remove rule enabled by a category with ${JSON.stringify(ruleSetting)} inside "rules" scope`, () => {
+      const rules: Record<string, 'off'> = {
+        eqeqeq: 'off',
+      };
       handleRulesScope(
         {
           eqeqeq: ruleSetting,
