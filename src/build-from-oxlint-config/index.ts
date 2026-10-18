@@ -1,5 +1,4 @@
 import {
-  oxlintConfigMeta,
   type BuildFromOxlintConfigOptions,
   type EslintPluginOxlintConfig,
   type OxlintConfig,
@@ -20,7 +19,6 @@ import {
   resolveRelativeExtendsPaths,
 } from './extends.js';
 import { getConfigContent, getJsoncContent } from './loader.js';
-import path from 'node:path';
 
 /**
  * builds turned off rules, which are supported by oxlint.
@@ -103,11 +101,6 @@ export const buildFromOxlintConfigFile = (
   options: BuildFromOxlintConfigOptions = {}
 ): EslintPluginOxlintConfig[] => {
   const config = getJsoncContent(oxlintConfigFile);
-
-  config[oxlintConfigMeta] = {
-    filePath: path.resolve(oxlintConfigFile),
-  };
-
   return buildFromOxlintConfig(config, options);
 };
 
@@ -125,10 +118,5 @@ export const buildFromConfigFile = async (
   options: BuildFromOxlintConfigOptions = {}
 ): Promise<EslintPluginOxlintConfig[]> => {
   const config = await getConfigContent(oxlintConfigFile);
-
-  config[oxlintConfigMeta] = {
-    filePath: path.resolve(oxlintConfigFile),
-  };
-
   return buildFromOxlintConfig(config, options);
 };

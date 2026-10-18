@@ -1,13 +1,14 @@
 import fs from 'node:fs';
 import { type ParseError, parse as parseJSONC } from 'jsonc-parser';
-import type { OxlintConfig } from './types.js';
+import { type OxlintConfig, type OxlintConfigJson, oxlintConfigMeta } from './types.js';
 import { isObject } from './utilities.js';
 import { pathToFileURL } from 'url';
+import path from 'node:path';
 
 const JS_EXTENSIONS = ['.js', '.cjs', '.mjs', '.ts', '.mts', '.cts'];
 const JSON_EXTENSIONS = ['.json', '.jsonc'];
 
-export const getJsoncContent = (filePath: string): OxlintConfig => {
+export const getJsoncContent = (filePath: string): OxlintConfigJson => {
   let content: string;
 
   try {
@@ -19,7 +20,7 @@ export const getJsoncContent = (filePath: string): OxlintConfig => {
   }
 
   const errors: ParseError[] = [];
-  const configContent = parseJSONC(content, errors, {
+  const configContent: Record<string | symbol, unknown> = parseJSONC(content, errors, {
     allowTrailingComma: true,
   });
 
@@ -30,6 +31,10 @@ export const getJsoncContent = (filePath: string): OxlintConfig => {
   if (!isObject(configContent)) {
     throw new Error(`eslint-plugin-oxlint: failed to parse JSON config file: ${filePath}`);
   }
+
+  configContent[oxlintConfigMeta] = {
+    filePath: path.resolve(filePath),
+  };
 
   return configContent;
 };

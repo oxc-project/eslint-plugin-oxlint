@@ -18,17 +18,15 @@ export type OxlintConfigOverride = Exclude<OxlintConfig['overrides'], undefined>
 
 export type EslintPluginOxlintConfig = Linter.Config<Record<string, 'off'>>;
 
-type OxlintConfigJs = Omit<OxlintConfigJsInternal, 'extends' | 'rules'> & {
+export type OxlintConfigJs = Omit<OxlintConfigJsInternal, 'extends' | 'rules'> & {
   rules?: Record<string, unknown>;
   extends?: OxlintConfigJs[];
 };
 
-type OxlintConfigJson = Omit<OxlintConfigJs, 'extends'> & {
+export type OxlintConfigJson = Omit<OxlintConfigJs, 'extends'> & {
   $schema?: string;
   extends?: string[];
-};
 
-type OxlintConfigMeta = {
   // extra properties only used by `eslint-plugin-oxlint`
   [oxlintConfigMeta]?: {
     // absolute path to the config file
@@ -36,4 +34,4 @@ type OxlintConfigMeta = {
   };
 };
 
-export type OxlintConfig = (OxlintConfigJs | OxlintConfigJson) & OxlintConfigMeta;
+export type OxlintConfig = OxlintConfigJs | OxlintConfigJson;
