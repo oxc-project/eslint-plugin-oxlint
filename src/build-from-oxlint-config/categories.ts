@@ -12,6 +12,8 @@ export const defaultCategories: OxlintConfigCategories = {
   correctness: 'warn',
 };
 
+const isDeactivateValue = (value: unknown) => value === 'off' || value === 'allow' || value === 0;
+
 /**
  * appends all rules which are enabled by a plugin and falls into a specific category
  */
@@ -31,7 +33,7 @@ export const handleCategoriesScope = (
 
     // category is not enabled or not in found categories
     if (
-      categories[category as keyof OxlintConfigCategories] === 'off' ||
+      isDeactivateValue(categories[category as keyof OxlintConfigCategories]) ||
       !(configName in allRulesObjects)
     ) {
       continue;

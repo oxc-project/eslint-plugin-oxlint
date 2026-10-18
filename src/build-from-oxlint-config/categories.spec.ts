@@ -43,6 +43,15 @@ describe('handleCategoriesScope', () => {
     expect(rules).toStrictEqual({});
   });
 
+  for (const categorySetting of ['off', 'allow', 0] as const) {
+    it(`skip category set to ${JSON.stringify(categorySetting)}`, () => {
+      const rules = {};
+      handleCategoriesScope(['eslint', 'unicorn'], { correctness: categorySetting }, rules);
+
+      expect(rules).toStrictEqual({});
+    });
+  }
+
   it('custom plugins, default categories', () => {
     const rules = {};
     handleCategoriesScope(
