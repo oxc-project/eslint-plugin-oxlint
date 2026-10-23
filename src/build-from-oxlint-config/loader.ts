@@ -4,9 +4,11 @@ import { type OxlintConfig, type OxlintConfigJson, oxlintConfigMeta } from './ty
 import { isObject } from './utilities.js';
 import { pathToFileURL } from 'url';
 import path from 'node:path';
+import type { defineConfig } from 'vite-plus';
 
 const JS_EXTENSIONS = ['.js', '.cjs', '.mjs', '.ts', '.mts', '.cts'];
 const JSON_EXTENSIONS = ['.json', '.jsonc'];
+const VITE_EXTENSIONS = JS_EXTENSIONS.map((ext) => `vite.config${ext}`);
 
 export const getJsoncContent = (filePath: string): OxlintConfigJson => {
   let content: string;
@@ -50,11 +52,41 @@ const getJsContent = async (filePath: string): Promise<OxlintConfig> => {
   return config;
 };
 
+const getViteContent = async (filePath: string): Promise<OxlintConfig> => {
+  const importedConfig = await import(pathToFileURL(filePath).href);
+  const config = 'default' in importedConfig ? importedConfig.default : importedConfig;
+
+  return resolveViteConfig(config);
+};
+
+const resolveViteConfig = async (
+  config: ReturnType<typeof defineConfig>
+): Promise<OxlintConfig> => {
+  if (typeof config === 'function') {
+    // We need to pass an env with `command` and `mode` properties to the function.
+    // there is no good way to know what `command` and `mode` should be here, so we cannot safely call the function.
+    throw new Error(`eslint-plugin-oxlint: Vite config cannot be a function`);
+  }
+
+  const resolvedConfig = await Promise.resolve(config);
+
+  if (!isObject(resolvedConfig) || !('lint' in resolvedConfig) || !isObject(resolvedConfig.lint)) {
+    throw new Error(
+      `eslint-plugin-oxlint: Vite config object does not contain a valid 'lint' section`
+    );
+  }
+
+  return resolvedConfig.lint;
+};
+
 /**
  * tries to read the oxlint config file and returning its JSON content.
  * if the file is not found or could not be parsed, and error is thrown.
  */
 export const getConfigContent = async (oxlintConfigFile: string): Promise<OxlintConfig> => {
+  if (VITE_EXTENSIONS.some((ext) => oxlintConfigFile.endsWith(ext))) {
+    return getViteContent(oxlintConfigFile);
+  }
   if (JS_EXTENSIONS.some((ext) => oxlintConfigFile.endsWith(ext))) {
     return getJsContent(oxlintConfigFile);
   }

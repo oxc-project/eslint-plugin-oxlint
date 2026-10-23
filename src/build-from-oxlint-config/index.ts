@@ -88,7 +88,7 @@ export const buildFromOxlintConfig = (
 
 /**
  * builds turned off rules, which are supported by oxlint.
- * It accepts an filepath to the .oxlintrc.json file.
+ * It accepts a filepath to the .oxlintrc.json file.
  *
  * If the .oxlintrc.json file could not be found or parsed,
  * an error will be thrown.
@@ -106,12 +106,13 @@ export const buildFromOxlintConfigFile = (
 
 /**
  * builds turned off rules, which are supported by oxlint.
- * It accepts an filepath to the oxlint config file.
+ * It accepts a filepath to the oxlint/vite config file.
  *
- * If the oxlint config file could not be found or parsed,
- * an error will be thrown.
+ * If the config file could not be found or parsed, an error will be thrown.
  *
  * Does work with Oxlint JS / TS / JSON / JSONC configuration files.
+ * Does work with Vite-Plus configuration files (`vite.config.*`),
+ * which do not use function-based configurations.
  */
 export const buildFromConfigFile = async (
   oxlintConfigFile: string,
