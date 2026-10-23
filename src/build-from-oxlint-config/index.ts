@@ -112,7 +112,7 @@ export const buildFromOxlintConfigFile = (
  *
  * Does work with Oxlint JS / TS / JSON / JSONC configuration files.
  * Does work with Vite-Plus configuration files (`vite.config.*`),
- * which do not used function-based configurations.
+ * which do not use function-based configurations.
  */
 export const buildFromConfigFile = async (
   oxlintConfigFile: string,
