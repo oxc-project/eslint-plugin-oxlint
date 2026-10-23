@@ -111,7 +111,8 @@ export const buildFromOxlintConfigFile = (
  * If the config file could not be found or parsed, an error will be thrown.
  *
  * Does work with Oxlint JS / TS / JSON / JSONC configuration files.
- * Does work with  Vite-Plus configuration files (`vite.config.*`).
+ * Does work with Vite-Plus configuration files (`vite.config.*`),
+ * which do not used function-based configurations.
  */
 export const buildFromConfigFile = async (
   oxlintConfigFile: string,

@@ -70,7 +70,7 @@ const resolveViteConfig = async (
 
   const resolvedConfig = await Promise.resolve(config);
 
-  if (!('lint' in resolvedConfig) || !isObject(resolvedConfig.lint)) {
+  if (!isObject(resolvedConfig) || !('lint' in resolvedConfig) || !isObject(resolvedConfig.lint)) {
     throw new Error(
       `eslint-plugin-oxlint: Vite config object does not contain a valid 'lint' section`
     );
