@@ -36,6 +36,26 @@ describe('handleCategoriesScope', () => {
     expect(rules['react/no-children-prop']).toBe('off');
   });
 
+  it('import plugin also covers the eslint-plugin-import-x fork', () => {
+    const rules: Record<string, 'off'> = {};
+    handleCategoriesScope(['import'], { correctness: 'warn' }, rules);
+
+    // oxlint only knows one `import` plugin, but the rules are published by both
+    // eslint-plugin-import and its fork eslint-plugin-import-x
+    expect(rules['import/namespace']).toBe('off');
+    expect(rules['import-x/namespace']).toBe('off');
+    expect(rules['import/default']).toBe('off');
+    expect(rules['import-x/default']).toBe('off');
+  });
+
+  it('import-x plugin alias also covers eslint-plugin-import', () => {
+    const rules: Record<string, 'off'> = {};
+    handleCategoriesScope(['import-x'], { correctness: 'warn' }, rules);
+
+    expect(rules['import/namespace']).toBe('off');
+    expect(rules['import-x/namespace']).toBe('off');
+  });
+
   it('skip deactivate categories', () => {
     const rules = {};
     handleCategoriesScope(['unicorn', 'react', 'typescript'], {}, rules);
