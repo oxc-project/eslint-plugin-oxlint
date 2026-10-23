@@ -59,13 +59,13 @@ const getViteContent = async (filePath: string): Promise<OxlintConfig> => {
     throw new TypeError(`eslint-plugin-oxlint: not a valid Vite config file: ${filePath}`);
   }
 
-  if (!('lint' in config)) {
+  if (!('lint' in config) || !isObject(config.lint)) {
     throw new TypeError(
-      `eslint-plugin-oxlint: Vite config file does not contain a 'lint' section: ${filePath}`
+      `eslint-plugin-oxlint: Vite config file does not contain a valid 'lint' section: ${filePath}`
     );
   }
 
-  return config.lint as OxlintConfig;
+  return config.lint;
 };
 
 /**
