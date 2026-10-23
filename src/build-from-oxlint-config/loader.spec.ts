@@ -11,14 +11,17 @@ describe('getConfigContent', () => {
     vi.restoreAllMocks();
   });
 
-  it.each(['oxlint.config.js', 'oxlint.config.ts', 'vite.config.js', 'vite.config.ts'])(
-    'loads %s config file',
-    async (fileName) => {
-      await expect(getConfigContent(fixturePath(fileName))).resolves.toEqual({
-        rules: { eqeqeq: 'error' },
-      });
-    }
-  );
+  it.each([
+    'oxlint.config.js',
+    'oxlint.config.ts',
+    'vite-plus/vite.config.js',
+    'vite-plus/vite.config.ts',
+    'vite-plus/promise.vite.config.js',
+  ])('loads %s config file', async (fileName) => {
+    await expect(getConfigContent(fixturePath(fileName))).resolves.toEqual({
+      rules: { eqeqeq: 'error' },
+    });
+  });
 
   it.each(['.oxlintrc.json', '.oxlintrc.jsonc'])(
     'loads %s config file with meta information',
@@ -64,5 +67,15 @@ describe('getConfigContent', () => {
     await expect(getConfigContent(filePath)).rejects.toThrow(
       new Error(`eslint-plugin-oxlint: could not read oxlint config file: ${filePath}`)
     );
+  });
+
+  describe('vite-plus config', () => {
+    it('throws when loading function vite-plus config', async () => {
+      const filePath = fixturePath('vite-plus/fn.vite.config.js');
+
+      await expect(getConfigContent(filePath)).rejects.toThrow(
+        new Error('eslint-plugin-oxlint: Vite config cannot be a function')
+      );
+    });
   });
 });

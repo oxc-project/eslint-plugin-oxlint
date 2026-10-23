@@ -88,7 +88,7 @@ export const buildFromOxlintConfig = (
 
 /**
  * builds turned off rules, which are supported by oxlint.
- * It accepts an filepath to the .oxlintrc.json file.
+ * It accepts a filepath to the .oxlintrc.json file.
  *
  * If the .oxlintrc.json file could not be found or parsed,
  * an error will be thrown.
@@ -106,7 +106,7 @@ export const buildFromOxlintConfigFile = (
 
 /**
  * builds turned off rules, which are supported by oxlint.
- * It accepts an filepath to the oxlint/vite config file.
+ * It accepts a filepath to the oxlint/vite config file.
  *
  * If the config file could not be found or parsed, an error will be thrown.
  *

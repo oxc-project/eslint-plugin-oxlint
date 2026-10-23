@@ -4,6 +4,7 @@ import { type OxlintConfig, type OxlintConfigJson, oxlintConfigMeta } from './ty
 import { isObject } from './utilities.js';
 import { pathToFileURL } from 'url';
 import path from 'node:path';
+import type { defineConfig } from 'vite-plus';
 
 const JS_EXTENSIONS = ['.js', '.cjs', '.mjs', '.ts', '.mts', '.cts'];
 const JSON_EXTENSIONS = ['.json', '.jsonc'];
@@ -53,19 +54,29 @@ const getJsContent = async (filePath: string): Promise<OxlintConfig> => {
 
 const getViteContent = async (filePath: string): Promise<OxlintConfig> => {
   const importedConfig = await import(pathToFileURL(filePath).href);
-  const config = isObject(importedConfig.default) ? importedConfig.default : importedConfig;
+  const config = 'default' in importedConfig ? importedConfig.default : importedConfig;
 
-  if (!isObject(config)) {
-    throw new TypeError(`eslint-plugin-oxlint: not a valid Vite config file: ${filePath}`);
+  return resolveViteConfig(config);
+};
+
+const resolveViteConfig = async (
+  config: ReturnType<typeof defineConfig>
+): Promise<OxlintConfig> => {
+  if (typeof config === 'function') {
+    // We need to pass an env with `command` and `mode` properties to the function.
+    // there is no good way to know what `command` and `mode` should be here, so we cannot safely call the function.
+    throw new Error(`eslint-plugin-oxlint: Vite config cannot be a function`);
   }
 
-  if (!('lint' in config) || !isObject(config.lint)) {
-    throw new TypeError(
-      `eslint-plugin-oxlint: Vite config file does not contain a valid 'lint' section: ${filePath}`
+  const resolvedConfig = await Promise.resolve(config);
+
+  if (!('lint' in resolvedConfig) || !isObject(resolvedConfig.lint)) {
+    throw new Error(
+      `eslint-plugin-oxlint: Vite config object does not contain a valid 'lint' section`
     );
   }
 
-  return config.lint;
+  return resolvedConfig.lint;
 };
 
 /**
