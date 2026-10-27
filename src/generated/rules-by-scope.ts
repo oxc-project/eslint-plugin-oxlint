@@ -571,6 +571,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unnecessary-parameter-property-assignment': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
+  '@typescript-eslint/no-unsafe-enum-assignment': 'off',
   '@typescript-eslint/no-unsafe-function-type': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',
   '@typescript-eslint/no-var-requires': 'off',
