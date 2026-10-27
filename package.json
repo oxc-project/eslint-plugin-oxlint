@@ -19,7 +19,8 @@
     "dist",
     "src",
     "!**/*.snap",
-    "!**/*.spec.ts"
+    "!**/*.spec.ts",
+    "!**/__fixtures__/**"
   ],
   "type": "module",
   "types": "./dist/index.d.ts",
