@@ -440,7 +440,6 @@ const suspiciousRules: Record<string, 'off'> = {
   '@typescript-eslint/no-confusing-non-null-assertion': 'off',
   '@typescript-eslint/no-extraneous-class': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
-  '@typescript-eslint/no-unsafe-enum-assignment': 'off',
   'unicorn/consistent-function-scoping': 'off',
   'unicorn/no-accessor-recursion': 'off',
   'unicorn/no-array-fill-with-reference-type': 'off',
@@ -884,6 +883,7 @@ const suspiciousTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unnecessary-type-assertion': 'off',
   '@typescript-eslint/no-unnecessary-type-conversion': 'off',
   '@typescript-eslint/no-unnecessary-type-parameters': 'off',
+  '@typescript-eslint/no-unsafe-enum-assignment': 'off',
   '@typescript-eslint/no-unsafe-enum-comparison': 'off',
   '@typescript-eslint/no-unsafe-type-assertion': 'off',
 };
