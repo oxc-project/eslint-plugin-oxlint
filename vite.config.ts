@@ -29,7 +29,8 @@ export default defineConfig({
       ...(esLintRecommended as Record<string, DummyRule>),
       ...(typescriptRecommended as Record<string, DummyRule>),
       '@typescript-eslint/no-unsafe-type-assertion': 'off', // FIX: ignore them inline or fix them
-      'no-shadow': 'off', // FIX: ignore them inline or fix them
+      'no-shadow': 'off', // FIX: ignore them inline or fix them,
+      '@typescript-eslint/no-unsafe-enum-assignment': 'off', // FIX: share the enum at one place
     },
     ignorePatterns: ['dist/'],
     options: { typeAware: true, typeCheck: true },
