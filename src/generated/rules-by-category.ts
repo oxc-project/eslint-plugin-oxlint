@@ -883,6 +883,7 @@ const suspiciousTypeAwareRules: Record<string, 'off'> = {
   '@typescript-eslint/no-unnecessary-type-assertion': 'off',
   '@typescript-eslint/no-unnecessary-type-conversion': 'off',
   '@typescript-eslint/no-unnecessary-type-parameters': 'off',
+  '@typescript-eslint/no-unsafe-enum-assignment': 'off',
   '@typescript-eslint/no-unsafe-enum-comparison': 'off',
   '@typescript-eslint/no-unsafe-type-assertion': 'off',
 };

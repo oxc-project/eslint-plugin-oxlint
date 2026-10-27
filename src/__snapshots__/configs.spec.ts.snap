@@ -299,6 +299,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-unsafe-declaration-merging": [
     0,
   ],
+  "@typescript-eslint/no-unsafe-enum-assignment": [
+    0,
+  ],
   "@typescript-eslint/no-unsafe-enum-comparison": [
     0,
   ],
