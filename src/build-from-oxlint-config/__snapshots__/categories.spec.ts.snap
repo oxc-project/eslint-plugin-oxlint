@@ -3,6 +3,12 @@
 exports[`handleCategoriesScope > custom plugins, custom categories > customPluginCustomCategories 1`] = `
 {
   "block-scoped-var": "off",
+  "import-x/no-absolute-path": "off",
+  "import-x/no-empty-named-blocks": "off",
+  "import-x/no-named-as-default": "off",
+  "import-x/no-named-as-default-member": "off",
+  "import-x/no-self-import": "off",
+  "import-x/no-unassigned-import": "off",
   "import/no-absolute-path": "off",
   "import/no-empty-named-blocks": "off",
   "import/no-named-as-default": "off",
