@@ -1,6 +1,7 @@
 import path from 'node:path';
 import {
   oxlintConfigMeta,
+  type OxlintConfigJson,
   type OxlintConfig,
   type OxlintConfigOverride,
   type OxlintConfigPlugins,
@@ -25,22 +26,18 @@ const readExtendsFromConfig = (
 /**
  * Resolves the paths of the "extends" section relative to the given config file.
  */
-export const resolveRelativeExtendsPaths = (config: OxlintConfig) => {
-  if (!(oxlintConfigMeta in config)) return;
+export const resolveRelativeExtendsPaths = (config: OxlintConfigJson) => {
   if (!config[oxlintConfigMeta]?.filePath) return;
 
-  const extendsFiles = readExtendsFromConfig(config);
-  if (!extendsFiles?.length) return;
-  const configFileDirectory = path.dirname(config[oxlintConfigMeta].filePath);
   // The "extends" array cannot mix strings and OxlintConfig objects.
   // string is only allowed in json config files
   // objects are only allowed in js/ts config files
+  const extendsFiles = readExtendsFromConfig(config) as string[];
+  if (!extendsFiles?.length) return;
+  const configFileDirectory = path.dirname(config[oxlintConfigMeta].filePath);
   config.extends = extendsFiles.map((extendFile) => {
-    if (typeof extendFile === 'string') {
-      return path.resolve(configFileDirectory, extendFile);
-    }
-    return extendFile;
-  }) as string[];
+    return path.resolve(configFileDirectory, extendFile);
+  });
 };
 
 /**
