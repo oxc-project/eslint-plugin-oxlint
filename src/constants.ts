@@ -17,13 +17,18 @@ export const aliasPluginNames: Record<string, string> = {
 };
 
 // `aliasPluginNames` maps one oxlint plugin to exactly one ESLint plugin, but some oxlint
-// plugins carry rules that upstream live in *several* ESLint plugins. These are the extra
-// prefixes a plugin can emit, on top of its `aliasPluginNames` entry.
+// plugins carry rules that upstream live in *several* ESLint plugins. Keyed by the ESLint
+// plugin name (the value side of `aliasPluginNames`), these are the extra prefixes the same
+// rules are also published under.
 // Without this, enabling an oxlint plugin via `categories` never switches off the rules it
 // owns under a different prefix -- see `reactHookRulesInsideReactScope` and
-// `react-refresh/only-export-components`.
+// `react-refresh/only-export-components` -- and `rules` entries only switch off one of the
+// prefixes.
 export const additionalEslintPluginPrefixes: Record<string, string[]> = {
   react: ['react-hooks', 'react-refresh'],
+  // `eslint-plugin-import-x` is a fork of `eslint-plugin-import` shipping the same rules under
+  // an `import-x/` prefix. oxlint only knows one `import` plugin, so both have to be turned off.
+  import: ['import-x'],
 };
 
 // Some typescript-eslint rules are re-implemented version of eslint rules.
