@@ -570,6 +570,7 @@ const typescriptRules: Record<string, 'off'> = {
   '@typescript-eslint/no-this-alias': 'off',
   '@typescript-eslint/no-unnecessary-parameter-property-assignment': 'off',
   '@typescript-eslint/no-unnecessary-type-constraint': 'off',
+  '@typescript-eslint/no-unsafe-class-instance-assignment': 'off',
   '@typescript-eslint/no-unsafe-declaration-merging': 'off',
   '@typescript-eslint/no-unsafe-function-type': 'off',
   '@typescript-eslint/no-useless-empty-export': 'off',

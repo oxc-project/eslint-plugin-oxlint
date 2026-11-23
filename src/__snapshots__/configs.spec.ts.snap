@@ -296,6 +296,9 @@ exports[`contains all the oxlint rules 1`] = `
   "@typescript-eslint/no-unsafe-call": [
     0,
   ],
+  "@typescript-eslint/no-unsafe-class-instance-assignment": [
+    0,
+  ],
   "@typescript-eslint/no-unsafe-declaration-merging": [
     0,
   ],
