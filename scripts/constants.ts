@@ -37,6 +37,7 @@ export const typescriptTypeAwareRules = [
   'no-unsafe-argument',
   'no-unsafe-assignment',
   'no-unsafe-call',
+  'no-unsafe-class-instance-assignment',
   'no-unsafe-enum-comparison',
   'no-unsafe-enum-assignment',
   'no-unsafe-member-access',
